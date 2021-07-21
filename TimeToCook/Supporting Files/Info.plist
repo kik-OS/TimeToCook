@@ -55,6 +55,10 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>Required background modes </key>
+	<array>
+		<string>App processes data in the background</string>
+	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>Для сканирования продукта, необходимо разрешить доступ к камере</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>

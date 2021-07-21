@@ -8,6 +8,10 @@
 import UIKit
 //import BarcodeScanner
 
+protocol BarcodeScannerViewControllerDelegate {
+    func scanner(barcode: String)
+}
+
 final class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
 
     
@@ -53,12 +57,16 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
     
     @objc private func centerButtonAction(sender: UIButton) {
         sender.animationForMiddleButton()
-//        let barCodeScannerVC = CustomBarcodeScannerViewController(delegate: self)
+        
+//        let barCodeScannerVC = ScannerViewController()
+//        barCodeScannerVC.delegate = self
 //        barCodeScannerVC.modalPresentationStyle = .fullScreen
         
-        let scan = ScannerViewController()
+        let barCodeScannerVC = BarcodeScannerViewController()
+        barCodeScannerVC.delegate = self
+
+        present(barCodeScannerVC, animated: true, completion: nil)
         
-        present(scan, animated: true, completion: nil)
     }
     
     @IBAction private func timerBarButtonTapped(_ sender: UIBarButtonItem) {
@@ -140,18 +148,8 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
 
 // MARK: - Extensions
 
-//extension CustomTabBarController: BarcodeScannerCodeDelegate, BarcodeScannerErrorDelegate, BarcodeScannerDismissalDelegate {
-//    
-//    func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {        
-//        viewModel.findProduct(byCode: code)
-//        dismiss(animated: true)
-//    }
-//    
-//    func scanner(_ controller: BarcodeScannerViewController, didReceiveError error: Error) {
-//        print(error.localizedDescription)
-//    }
-//    
-//    func scannerDidDismiss(_ controller: BarcodeScannerViewController) {
-//        dismiss(animated: true)
-//    }
-//}
+extension CustomTabBarController: BarcodeScannerViewControllerDelegate {
+    func scanner(barcode: String) {
+        viewModel.findProduct(byCode: barcode)
+    }
+}
