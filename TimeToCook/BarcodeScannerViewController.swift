@@ -11,28 +11,48 @@ import UIKit
 import AVFoundation
 
 final class BarcodeScannerViewController: UIViewController {
-
+    
     private var scanner: BarcodeScanner?
     weak var delegate: CustomTabBarController?
-
-   private lazy var flashButton: UIButton = {
+    
+    private lazy var flashButton: UIButton = {
         let flashButton = FlashButton(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         return flashButton
     }()
     
-   private lazy var overlayLayer: CALayer = {
-    let overlayView = CameraOverlay(frame: view.frame)
-    return overlayView.layer
+    private lazy var overlayView: UIView = {
+        let overlayView = CameraOverlay(frame: view.frame)
+        overlayView.addSubview(line)
+        return overlayView
+        
+    }()
     
-   }()
+    private lazy var line: UIView = {
+        let line = UIView(frame: CGRect(x: 15, y: view.center.y - 100 , width: view.frame.width - 30, height: 1))
+        line.backgroundColor = .red
+        line.tintColor = .red
+        return line
+    }()
     
-  
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scanner = BarcodeScanner(withDelegate: self, overlayLayer: overlayLayer)
+        scanner = BarcodeScanner(withDelegate: self, overlayLayer: overlayView.layer)
         scanner?.requestCaptureSessionStartRunning()
         view.addSubview(flashButton)
+        view.addSubview(line)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        scanningLineAnimate()
+    }
+    
+    private func scanningLineAnimate() {
+        UIView.animate(withDuration: 2, delay: 0, options: [.repeat, .autoreverse]) { [self] in
+            self.view.layoutIfNeeded()
+            line.transform = CGAffineTransform(translationX: 0, y: 200)
+        }
     }
 }
 

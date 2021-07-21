@@ -11,7 +11,7 @@ final class CameraOverlay: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        backgroundColor = UIColor.black.withAlphaComponent(0.6)
         let path = CGMutablePath()
         path.addRoundedRect(in: CGRect(x: 15, y: center.y - 100, width: frame.width - 30,
                                        height: 200), cornerWidth: 10, cornerHeight: 10)
@@ -23,7 +23,7 @@ final class CameraOverlay: UIView {
         path.addRect(CGRect(origin: .zero, size: frame.size))
         
         let maskLayer = CAShapeLayer()
-        maskLayer.backgroundColor = UIColor.black.cgColor
+//        maskLayer.backgroundColor = UIColor.black.cgColor
         maskLayer.path = path
         maskLayer.fillRule = CAShapeLayerFillRule.evenOdd
         layer.mask = maskLayer
