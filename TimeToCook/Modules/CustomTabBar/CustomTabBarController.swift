@@ -57,14 +57,11 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
     
     @objc private func centerButtonAction(sender: UIButton) {
         sender.animationForMiddleButton()
-        
-//        let barCodeScannerVC = ScannerViewController()
-//        barCodeScannerVC.delegate = self
-//        barCodeScannerVC.modalPresentationStyle = .fullScreen
+
         
         let barCodeScannerVC = BarcodeScannerViewController()
         barCodeScannerVC.delegate = self
-
+        barCodeScannerVC.modalPresentationStyle = .fullScreen
         present(barCodeScannerVC, animated: true, completion: nil)
         
     }

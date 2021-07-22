@@ -65,6 +65,7 @@
 		E41C3CBB26A7048A006F1AE9 /* BarcodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3CB826A7048A006F1AE9 /* BarcodeScanner.swift */; };
 		E41C3CC026A85FC4006F1AE9 /* FlashButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3CBF26A85FC3006F1AE9 /* FlashButton.swift */; };
 		E41C3CC426A87304006F1AE9 /* CameraOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3CC326A87304006F1AE9 /* CameraOverlay.swift */; };
+		E41C3CC626A9A977006F1AE9 /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3CC526A9A977006F1AE9 /* CancelButton.swift */; };
 		E44BBF6C26A6FEB4003D403C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44BBF6B26A6FEB4003D403C /* AppDelegate.swift */; };
 		E44BBF6E26A6FEB4003D403C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44BBF6D26A6FEB4003D403C /* SceneDelegate.swift */; };
 		E44BBF7626A6FEB4003D403C /* TimeToCook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E44BBF7426A6FEB4003D403C /* TimeToCook.xcdatamodeld */; };
@@ -131,6 +132,7 @@
 		E41C3CB826A7048A006F1AE9 /* BarcodeScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScanner.swift; sourceTree = "<group>"; };
 		E41C3CBF26A85FC3006F1AE9 /* FlashButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashButton.swift; sourceTree = "<group>"; };
 		E41C3CC326A87304006F1AE9 /* CameraOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraOverlay.swift; sourceTree = "<group>"; };
+		E41C3CC526A9A977006F1AE9 /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
 		E44BBF6826A6FEB4003D403C /* TimeToCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeToCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44BBF6B26A6FEB4003D403C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E44BBF6D26A6FEB4003D403C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 			children = (
 				E41C3CBC26A754E0006F1AE9 /* Supporting Files */,
 				E41C3CBF26A85FC3006F1AE9 /* FlashButton.swift */,
+				E41C3CC526A9A977006F1AE9 /* CancelButton.swift */,
 				E41C3CB826A7048A006F1AE9 /* BarcodeScanner.swift */,
 				E41C3CB726A70489006F1AE9 /* BarcodeScannerViewController.swift */,
 				E41C3CC326A87304006F1AE9 /* CameraOverlay.swift */,
@@ -592,6 +595,7 @@
 				E41C3CC426A87304006F1AE9 /* CameraOverlay.swift in Sources */,
 				E41C3C8526A702DA006F1AE9 /* Int+Extension.swift in Sources */,
 				E41C3C8426A702DA006F1AE9 /* UIDevice+Extension.swift in Sources */,
+				E41C3CC626A9A977006F1AE9 /* CancelButton.swift in Sources */,
 				E41C3CAD26A702DB006F1AE9 /* ProductInfoViewModel.swift in Sources */,
 				E41C3C9F26A702DB006F1AE9 /* CustomTabBarViewModel.swift in Sources */,
 				E41C3CA026A702DB006F1AE9 /* MiddleButtonTabBar.swift in Sources */,

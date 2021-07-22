@@ -15,7 +15,10 @@ final class FlashButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addTarget(self, action: #selector(flash), for: .touchUpInside)
-        changeImage()
+        backgroundColor = .black.withAlphaComponent(0.3)
+        layer.cornerRadius = frame.width / 2
+        setImage(UIImage(systemName: "bolt.fill"), for: .normal)
+        changeTintColor()
     }
     
     required init?(coder: NSCoder) {
@@ -24,9 +27,11 @@ final class FlashButton: UIButton {
     
     @objc private func flash() {
         flashIsOn.toggle()
+        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+        
         guard let device = AVCaptureDevice.default(for: AVMediaType.video) else { return }
         flashIsOn ? turnOnTorch(device: device) : turnOffTorch(device: device)
-        changeImage()
+        changeTintColor()
     }
     
     private func turnOnTorch(device: AVCaptureDevice) {
@@ -53,8 +58,8 @@ final class FlashButton: UIButton {
         }
     }
     
-    private func changeImage() {
-        setImage(UIImage(named: flashIsOn ? "flashOn": "flashOff"), for: .normal)
+    private func changeTintColor() {
+        tintColor = flashIsOn ? .yellow : .white
     }
     
 }

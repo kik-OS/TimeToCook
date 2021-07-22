@@ -13,8 +13,8 @@ final class CameraOverlay: UIView {
         
         backgroundColor = UIColor.black.withAlphaComponent(0.6)
         let path = CGMutablePath()
-        path.addRoundedRect(in: CGRect(x: 15, y: center.y - 100, width: frame.width - 30,
-                                       height: 200), cornerWidth: 10, cornerHeight: 10)
+        path.addRoundedRect(in: CGRect(x: 15, y: center.y - 90, width: frame.width - 30,
+                                       height: 180), cornerWidth: 10, cornerHeight: 10)
         path.closeSubpath()
         
         let shape = CAShapeLayer()

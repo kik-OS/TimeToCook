@@ -32,7 +32,7 @@ final class BarcodeScanner {
         guard let delegate = delegate else { return }
         
         let cameraView = delegate.cameraView()
-        let previewLayer = self.createPreviewLayer(withCaptureSession: captureSession,
+        let previewLayer = createPreviewLayer(withCaptureSession: captureSession,
                                                    view: cameraView)
         cameraView.layer.addSublayer(previewLayer)
     }

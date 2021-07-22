@@ -16,21 +16,26 @@ final class BarcodeScannerViewController: UIViewController {
     weak var delegate: CustomTabBarController?
     
     private lazy var flashButton: UIButton = {
-        let flashButton = FlashButton(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        let flashButton = FlashButton(frame: CGRect(x: view.frame.width - 80, y: view.center.y + 200, width: 40, height: 40))
         return flashButton
+    }()
+    
+    private lazy var cancelButton: UIButton = {
+        let cancelButton = CancelCameraButton(frame: CGRect(x: 15, y: view.center.y + 200, width: 120, height: 40))
+        cancelButton.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
+        return cancelButton
     }()
     
     private lazy var overlayView: UIView = {
         let overlayView = CameraOverlay(frame: view.frame)
-        overlayView.addSubview(line)
+        overlayView.addSubview(redLine)
         return overlayView
         
     }()
     
-    private lazy var line: UIView = {
-        let line = UIView(frame: CGRect(x: 15, y: view.center.y - 100 , width: view.frame.width - 30, height: 1))
-        line.backgroundColor = .red
-        line.tintColor = .red
+    private lazy var redLine: UIView = {
+        let line = UIView(frame: CGRect(x: 25, y: view.center.y - 90 , width: view.frame.width - 50, height: 1))
+        line.backgroundColor = .red.withAlphaComponent(0.7)
         return line
     }()
     
@@ -40,7 +45,8 @@ final class BarcodeScannerViewController: UIViewController {
         scanner = BarcodeScanner(withDelegate: self, overlayLayer: overlayView.layer)
         scanner?.requestCaptureSessionStartRunning()
         view.addSubview(flashButton)
-        view.addSubview(line)
+        view.addSubview(redLine)
+        view.addSubview(cancelButton)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -49,10 +55,14 @@ final class BarcodeScannerViewController: UIViewController {
     }
     
     private func scanningLineAnimate() {
-        UIView.animate(withDuration: 2, delay: 0, options: [.repeat, .autoreverse]) { [self] in
+        UIView.animate(withDuration: 1, delay: 0, options: [.repeat, .autoreverse]) { [self] in
             self.view.layoutIfNeeded()
-            line.transform = CGAffineTransform(translationX: 0, y: 200)
+            redLine.transform = CGAffineTransform(translationX: 0, y: 180)
         }
+    }
+    
+    @objc private func cancelButtonTapped() {
+        dismiss(animated: true, completion: nil)
     }
 }
 
