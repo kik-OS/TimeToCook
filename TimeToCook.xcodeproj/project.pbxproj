@@ -66,6 +66,7 @@
 		E41C3CC026A85FC4006F1AE9 /* FlashButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3CBF26A85FC3006F1AE9 /* FlashButton.swift */; };
 		E41C3CC426A87304006F1AE9 /* CameraOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3CC326A87304006F1AE9 /* CameraOverlay.swift */; };
 		E41C3CC626A9A977006F1AE9 /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3CC526A9A977006F1AE9 /* CancelButton.swift */; };
+		E41C3CE926A9E091006F1AE9 /* ProductInfoViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3CE826A9E091006F1AE9 /* ProductInfoViewController2.swift */; };
 		E44BBF6C26A6FEB4003D403C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44BBF6B26A6FEB4003D403C /* AppDelegate.swift */; };
 		E44BBF6E26A6FEB4003D403C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44BBF6D26A6FEB4003D403C /* SceneDelegate.swift */; };
 		E44BBF7626A6FEB4003D403C /* TimeToCook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E44BBF7426A6FEB4003D403C /* TimeToCook.xcdatamodeld */; };
@@ -133,6 +134,7 @@
 		E41C3CBF26A85FC3006F1AE9 /* FlashButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashButton.swift; sourceTree = "<group>"; };
 		E41C3CC326A87304006F1AE9 /* CameraOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraOverlay.swift; sourceTree = "<group>"; };
 		E41C3CC526A9A977006F1AE9 /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
+		E41C3CE826A9E091006F1AE9 /* ProductInfoViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoViewController2.swift; sourceTree = "<group>"; };
 		E44BBF6826A6FEB4003D403C /* TimeToCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeToCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44BBF6B26A6FEB4003D403C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E44BBF6D26A6FEB4003D403C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 		E41C3C5226A702DA006F1AE9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				E41C3CC726A9AB06006F1AE9 /* BarcodeScanner */,
 				E41C3C5326A702DA006F1AE9 /* AddingNewProduct */,
 				E41C3C5626A702DA006F1AE9 /* Timer */,
 				E41C3C5E26A702DA006F1AE9 /* CustomTabBar */,
@@ -427,6 +430,18 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E41C3CC726A9AB06006F1AE9 /* BarcodeScanner */ = {
+			isa = PBXGroup;
+			children = (
+				E41C3CBF26A85FC3006F1AE9 /* FlashButton.swift */,
+				E41C3CC526A9A977006F1AE9 /* CancelButton.swift */,
+				E41C3CB826A7048A006F1AE9 /* BarcodeScanner.swift */,
+				E41C3CB726A70489006F1AE9 /* BarcodeScannerViewController.swift */,
+				E41C3CC326A87304006F1AE9 /* CameraOverlay.swift */,
+			);
+			path = BarcodeScanner;
+			sourceTree = "<group>";
+		};
 		E44BBF5F26A6FEB4003D403C = {
 			isa = PBXGroup;
 			children = (
@@ -449,17 +464,13 @@
 			isa = PBXGroup;
 			children = (
 				E41C3CBC26A754E0006F1AE9 /* Supporting Files */,
-				E41C3CBF26A85FC3006F1AE9 /* FlashButton.swift */,
-				E41C3CC526A9A977006F1AE9 /* CancelButton.swift */,
-				E41C3CB826A7048A006F1AE9 /* BarcodeScanner.swift */,
-				E41C3CB726A70489006F1AE9 /* BarcodeScannerViewController.swift */,
-				E41C3CC326A87304006F1AE9 /* CameraOverlay.swift */,
 				E41C3C3626A702D6006F1AE9 /* Additional Files  */,
 				E41C3C3326A702D6006F1AE9 /* Models */,
 				E41C3C5226A702DA006F1AE9 /* Modules */,
 				E41C3C4626A702D9006F1AE9 /* Resources */,
 				E41C3C7826A702DA006F1AE9 /* Services */,
 				E41C3C4D26A702D9006F1AE9 /* Storyboards */,
+				E41C3CE826A9E091006F1AE9 /* ProductInfoViewController2.swift */,
 			);
 			path = TimeToCook;
 			sourceTree = "<group>";
@@ -622,6 +633,7 @@
 				E41C3CA626A702DB006F1AE9 /* RecentProductCollectionViewCellViewModel.swift in Sources */,
 				E41C3C8A26A702DA006F1AE9 /* Box.swift in Sources */,
 				E41C3C8626A702DA006F1AE9 /* UIButton+Extension.swift in Sources */,
+				E41C3CE926A9E091006F1AE9 /* ProductInfoViewController2.swift in Sources */,
 				E41C3CBA26A7048A006F1AE9 /* BarcodeScannerViewController.swift in Sources */,
 				E41C3C8B26A702DA006F1AE9 /* Notifications.swift in Sources */,
 				E44BBF6C26A6FEB4003D403C /* AppDelegate.swift in Sources */,

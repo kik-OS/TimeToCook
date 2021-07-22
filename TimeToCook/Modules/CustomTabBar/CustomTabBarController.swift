@@ -87,7 +87,9 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
         recentProductsVC.viewModel = viewModel.getRecentProductViewModel()
         recentProductsVC.tabBarItem.title = Inscriptions.tabBarItemRightTitle
         recentProductsVC.tabBarItem.image = UIImage(named: ImageTitles.tabBarItemRight)
-        viewControllers = [productInfoVC, recentProductsVC]
+        
+        let newVC = ProductInfoViewController2()
+        viewControllers = [newVC, recentProductsVC]
     }
     
     private func setupMiddleButton() {

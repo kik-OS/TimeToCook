@@ -23,7 +23,6 @@ final class CameraOverlay: UIView {
         path.addRect(CGRect(origin: .zero, size: frame.size))
         
         let maskLayer = CAShapeLayer()
-//        maskLayer.backgroundColor = UIColor.black.cgColor
         maskLayer.path = path
         maskLayer.fillRule = CAShapeLayerFillRule.evenOdd
         layer.mask = maskLayer
