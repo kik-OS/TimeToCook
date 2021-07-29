@@ -9,7 +9,7 @@ import UIKit
 
 class TabBarTransition: NSObject, UIViewControllerAnimatedTransitioning {
     let viewControllers: [UIViewController]?
-    let transitionDuration: Double = 0.2
+    let transitionDuration: Double = 0.5
 
         init(viewControllers: [UIViewController]?) {
             self.viewControllers = viewControllers
