@@ -70,6 +70,8 @@
 		E44BBF6C26A6FEB4003D403C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44BBF6B26A6FEB4003D403C /* AppDelegate.swift */; };
 		E44BBF6E26A6FEB4003D403C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44BBF6D26A6FEB4003D403C /* SceneDelegate.swift */; };
 		E44BBF7626A6FEB4003D403C /* TimeToCook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E44BBF7426A6FEB4003D403C /* TimeToCook.xcdatamodeld */; };
+		E4570FC126B2A3C80013F7C9 /* PlateImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC026B2A3C80013F7C9 /* PlateImageView.swift */; };
+		E4570FC326B2A4F40013F7C9 /* ViewWithContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC226B2A4F40013F7C9 /* ViewWithContent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,6 +142,8 @@
 		E44BBF6D26A6FEB4003D403C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E44BBF7526A6FEB4003D403C /* TimeToCook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TimeToCook.xcdatamodel; sourceTree = "<group>"; };
 		E44BBF7C26A6FEB7003D403C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4570FC026B2A3C80013F7C9 /* PlateImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateImageView.swift; sourceTree = "<group>"; };
+		E4570FC226B2A4F40013F7C9 /* ViewWithContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithContent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -463,6 +467,7 @@
 		E44BBF6A26A6FEB4003D403C /* TimeToCook */ = {
 			isa = PBXGroup;
 			children = (
+				E4570FBE26B2A33A0013F7C9 /* ProductInfo */,
 				E41C3CBC26A754E0006F1AE9 /* Supporting Files */,
 				E41C3C3626A702D6006F1AE9 /* Additional Files  */,
 				E41C3C3326A702D6006F1AE9 /* Models */,
@@ -470,9 +475,26 @@
 				E41C3C4626A702D9006F1AE9 /* Resources */,
 				E41C3C7826A702DA006F1AE9 /* Services */,
 				E41C3C4D26A702D9006F1AE9 /* Storyboards */,
-				E41C3CE826A9E091006F1AE9 /* ProductInfoViewController2.swift */,
 			);
 			path = TimeToCook;
+			sourceTree = "<group>";
+		};
+		E4570FBE26B2A33A0013F7C9 /* ProductInfo */ = {
+			isa = PBXGroup;
+			children = (
+				E4570FBF26B2A3530013F7C9 /* SubViews */,
+				E41C3CE826A9E091006F1AE9 /* ProductInfoViewController2.swift */,
+			);
+			path = ProductInfo;
+			sourceTree = "<group>";
+		};
+		E4570FBF26B2A3530013F7C9 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				E4570FC026B2A3C80013F7C9 /* PlateImageView.swift */,
+				E4570FC226B2A4F40013F7C9 /* ViewWithContent.swift */,
+			);
+			path = SubViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -628,6 +650,7 @@
 				E41C3C9A26A702DB006F1AE9 /* TimeDiagram.swift in Sources */,
 				E41C3C9026A702DB006F1AE9 /* ImageTitles.swift in Sources */,
 				E41C3C9C26A702DB006F1AE9 /* StartTimerButton.swift in Sources */,
+				E4570FC126B2A3C80013F7C9 /* PlateImageView.swift in Sources */,
 				E41C3CC026A85FC4006F1AE9 /* FlashButton.swift in Sources */,
 				E41C3CBB26A7048A006F1AE9 /* BarcodeScanner.swift in Sources */,
 				E41C3CA626A702DB006F1AE9 /* RecentProductCollectionViewCellViewModel.swift in Sources */,
@@ -648,6 +671,7 @@
 				E41C3C9826A702DB006F1AE9 /* AddingNewProductViewModel.swift in Sources */,
 				E41C3CB426A702DB006F1AE9 /* DeviceManager.swift in Sources */,
 				E41C3CA126A702DB006F1AE9 /* CustomTabBar.swift in Sources */,
+				E4570FC326B2A4F40013F7C9 /* ViewWithContent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
