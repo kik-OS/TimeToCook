@@ -26,6 +26,13 @@ final class ProductInfoViewController2: UIViewController {
         return stillEmpty
     }()
     
+    private lazy var mascotImageView: UIImageView = {
+        let mascotImageView = UIImageView()
+        mascotImageView.image = UIImage(named: "mascot.png")
+        mascotImageView.translatesAutoresizingMaskIntoConstraints = false
+        mascotImageView.contentMode = .scaleAspectFit
+        return mascotImageView
+    }()
     
     //MARK: Properties
     
@@ -75,21 +82,26 @@ final class ProductInfoViewController2: UIViewController {
         plateImageViewLeadingConstraint = plateImageView.leadingAnchor.constraint(equalTo: view.trailingAnchor)
         plateImageViewLeadingConstraint?.isActive = true
         
-        NSLayoutConstraint.activate([plateImageView.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor,
-                                                                            multiplier: 0.56),
-                                     plateImageView.widthAnchor.constraint(equalTo: plateImageView.heightAnchor),
-                                     plateImageView.centerYAnchor.constraint(equalTo: viewWithContent.topAnchor,
-                                                                             constant: -20)])
+        NSLayoutConstraint.activate([
+             plateImageView.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 0.56),
+             plateImageView.widthAnchor.constraint(equalTo: plateImageView.heightAnchor),
+             plateImageView.centerYAnchor.constraint(equalTo: viewWithContent.topAnchor, constant: -20)])
     }
     
     private func setupStillEmptyViewConstraints() {
         viewWithContent.addSubview(stillEmpty)
-        NSLayoutConstraint.activate([stillEmpty.leadingAnchor.constraint(equalTo: viewWithContent.leadingAnchor,
-                                                                         constant: 8),
-                                     stillEmpty.trailingAnchor.constraint(equalTo: viewWithContent.trailingAnchor,
-                                                                          constant: -8),
-                                     stillEmpty.topAnchor.constraint(equalTo: plateImageView.bottomAnchor, constant: 15)
-        ])
+        NSLayoutConstraint.activate([
+            stillEmpty.leadingAnchor.constraint(equalTo: viewWithContent.leadingAnchor, constant: 8),
+            stillEmpty.trailingAnchor.constraint(equalTo: viewWithContent.trailingAnchor,constant: -8),
+            stillEmpty.topAnchor.constraint(equalTo: plateImageView.bottomAnchor, constant: 15)])
+        
+        viewWithContent.addSubview(mascotImageView)
+//        mascotImageView.setContentHuggingPriority(.init(252), for: .vertical)
+        NSLayoutConstraint.activate([
+            mascotImageView.topAnchor.constraint(equalTo: stillEmpty.bottomAnchor),
+                                        mascotImageView.leadingAnchor.constraint(equalTo: stillEmpty.leadingAnchor, constant: 15),
+                                        mascotImageView.trailingAnchor.constraint(equalTo: stillEmpty.trailingAnchor, constant: 15),
+                                        mascotImageView.heightAnchor.constraint(equalToConstant: 150)])
     }
     
     
