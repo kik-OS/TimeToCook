@@ -72,6 +72,7 @@
 		E44BBF7626A6FEB4003D403C /* TimeToCook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E44BBF7426A6FEB4003D403C /* TimeToCook.xcdatamodeld */; };
 		E4570FC126B2A3C80013F7C9 /* PlateImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC026B2A3C80013F7C9 /* PlateImageView.swift */; };
 		E4570FC326B2A4F40013F7C9 /* ViewWithContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC226B2A4F40013F7C9 /* ViewWithContent.swift */; };
+		E4570FC526B3F02E0013F7C9 /* StillEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC426B3F02E0013F7C9 /* StillEmptyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -144,6 +145,7 @@
 		E44BBF7C26A6FEB7003D403C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4570FC026B2A3C80013F7C9 /* PlateImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateImageView.swift; sourceTree = "<group>"; };
 		E4570FC226B2A4F40013F7C9 /* ViewWithContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithContent.swift; sourceTree = "<group>"; };
+		E4570FC426B3F02E0013F7C9 /* StillEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StillEmptyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -493,6 +495,7 @@
 			children = (
 				E4570FC026B2A3C80013F7C9 /* PlateImageView.swift */,
 				E4570FC226B2A4F40013F7C9 /* ViewWithContent.swift */,
+				E4570FC426B3F02E0013F7C9 /* StillEmptyView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -632,6 +635,7 @@
 				E41C3CAD26A702DB006F1AE9 /* ProductInfoViewModel.swift in Sources */,
 				E41C3C9F26A702DB006F1AE9 /* CustomTabBarViewModel.swift in Sources */,
 				E41C3CA026A702DB006F1AE9 /* MiddleButtonTabBar.swift in Sources */,
+				E4570FC526B3F02E0013F7C9 /* StillEmptyView.swift in Sources */,
 				E41C3C8226A702DA006F1AE9 /* Category.swift in Sources */,
 				E41C3CAE26A702DB006F1AE9 /* ProductInfoCollectionViewCell.swift in Sources */,
 				E41C3CB226A702DB006F1AE9 /* FirebaseServiceError.swift in Sources */,

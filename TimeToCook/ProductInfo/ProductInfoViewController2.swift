@@ -21,6 +21,11 @@ final class ProductInfoViewController2: UIViewController {
         return plateImageView
     }()
     
+    private lazy var stillEmpty: StillEmptyView = {
+        let stillEmpty = StillEmptyView()
+        return stillEmpty
+    }()
+    
     
     //MARK: Properties
     
@@ -52,6 +57,7 @@ final class ProductInfoViewController2: UIViewController {
     private func setupAllConstraints() {
         setupViewWithContentConstraints()
         setupPlateImageViewConstraints()
+        setupStillEmptyViewConstraints()
     }
     
     private func setupViewWithContentConstraints() {
@@ -60,7 +66,8 @@ final class ProductInfoViewController2: UIViewController {
                                                                               constant: view.frame.height * 2/3)
         contentViewBottomConstraint?.isActive = true
         NSLayoutConstraint.activate([viewWithContent.widthAnchor.constraint(equalTo: view.widthAnchor),
-                                     viewWithContent.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 2/3)])
+                                     viewWithContent.heightAnchor.constraint(equalTo: view.heightAnchor,
+                                                                             multiplier: 2/3)])
     }
     
     private func setupPlateImageViewConstraints() {
@@ -68,10 +75,21 @@ final class ProductInfoViewController2: UIViewController {
         plateImageViewLeadingConstraint = plateImageView.leadingAnchor.constraint(equalTo: view.trailingAnchor)
         plateImageViewLeadingConstraint?.isActive = true
         
-        NSLayoutConstraint.activate([plateImageView.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 0.56),
+        NSLayoutConstraint.activate([plateImageView.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor,
+                                                                            multiplier: 0.56),
                                      plateImageView.widthAnchor.constraint(equalTo: plateImageView.heightAnchor),
-                                     plateImageView.centerYAnchor.constraint(equalTo: viewWithContent.topAnchor, constant: -20)])
-        
+                                     plateImageView.centerYAnchor.constraint(equalTo: viewWithContent.topAnchor,
+                                                                             constant: -20)])
+    }
+    
+    private func setupStillEmptyViewConstraints() {
+        viewWithContent.addSubview(stillEmpty)
+        NSLayoutConstraint.activate([stillEmpty.leadingAnchor.constraint(equalTo: viewWithContent.leadingAnchor,
+                                                                         constant: 8),
+                                     stillEmpty.trailingAnchor.constraint(equalTo: viewWithContent.trailingAnchor,
+                                                                          constant: -8),
+                                     stillEmpty.topAnchor.constraint(equalTo: plateImageView.bottomAnchor, constant: 15)
+        ])
     }
     
     
@@ -89,8 +107,8 @@ final class ProductInfoViewController2: UIViewController {
     
     private func appearPlateAnimation() {
         plateImageView.alpha = 1
-        UIView.animate(withDuration: 1, delay: 0.3, usingSpringWithDamping: 2,
-                       initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 1, delay: 0.3, usingSpringWithDamping: 0.8,
+                       initialSpringVelocity: 10, options: .curveEaseOut, animations: {
                         self.plateImageViewLeadingConstraint?.constant = -self.plateImageView.frame.width * 0.8
                         self.plateImageView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi * 2))
                         self.view.layoutIfNeeded()
@@ -118,7 +136,7 @@ final class ProductInfoViewController2: UIViewController {
         UIView.animate(withDuration: 0.2) {
             self.contentViewBottomConstraint?.constant = self.view.frame.height * 2/3
             self.view.layoutIfNeeded()
-
+            
         }
     }
     
