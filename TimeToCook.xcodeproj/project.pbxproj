@@ -72,7 +72,9 @@
 		E44BBF7626A6FEB4003D403C /* TimeToCook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E44BBF7426A6FEB4003D403C /* TimeToCook.xcdatamodeld */; };
 		E4570FC126B2A3C80013F7C9 /* PlateImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC026B2A3C80013F7C9 /* PlateImageView.swift */; };
 		E4570FC326B2A4F40013F7C9 /* ViewWithContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC226B2A4F40013F7C9 /* ViewWithContent.swift */; };
-		E4570FC526B3F02E0013F7C9 /* StillEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC426B3F02E0013F7C9 /* StillEmptyView.swift */; };
+		E4570FC526B3F02E0013F7C9 /* StillEmptyLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC426B3F02E0013F7C9 /* StillEmptyLabels.swift */; };
+		E4570FC726B47B500013F7C9 /* MascotImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC626B47B500013F7C9 /* MascotImageView.swift */; };
+		E4570FC926B47C2D0013F7C9 /* StillEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC826B47C2D0013F7C9 /* StillEmptyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -145,7 +147,9 @@
 		E44BBF7C26A6FEB7003D403C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4570FC026B2A3C80013F7C9 /* PlateImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateImageView.swift; sourceTree = "<group>"; };
 		E4570FC226B2A4F40013F7C9 /* ViewWithContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithContent.swift; sourceTree = "<group>"; };
-		E4570FC426B3F02E0013F7C9 /* StillEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StillEmptyView.swift; sourceTree = "<group>"; };
+		E4570FC426B3F02E0013F7C9 /* StillEmptyLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StillEmptyLabels.swift; sourceTree = "<group>"; };
+		E4570FC626B47B500013F7C9 /* MascotImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MascotImageView.swift; sourceTree = "<group>"; };
+		E4570FC826B47C2D0013F7C9 /* StillEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StillEmptyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -495,7 +499,9 @@
 			children = (
 				E4570FC026B2A3C80013F7C9 /* PlateImageView.swift */,
 				E4570FC226B2A4F40013F7C9 /* ViewWithContent.swift */,
-				E4570FC426B3F02E0013F7C9 /* StillEmptyView.swift */,
+				E4570FC426B3F02E0013F7C9 /* StillEmptyLabels.swift */,
+				E4570FC626B47B500013F7C9 /* MascotImageView.swift */,
+				E4570FC826B47C2D0013F7C9 /* StillEmptyView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -635,7 +641,7 @@
 				E41C3CAD26A702DB006F1AE9 /* ProductInfoViewModel.swift in Sources */,
 				E41C3C9F26A702DB006F1AE9 /* CustomTabBarViewModel.swift in Sources */,
 				E41C3CA026A702DB006F1AE9 /* MiddleButtonTabBar.swift in Sources */,
-				E4570FC526B3F02E0013F7C9 /* StillEmptyView.swift in Sources */,
+				E4570FC526B3F02E0013F7C9 /* StillEmptyLabels.swift in Sources */,
 				E41C3C8226A702DA006F1AE9 /* Category.swift in Sources */,
 				E41C3CAE26A702DB006F1AE9 /* ProductInfoCollectionViewCell.swift in Sources */,
 				E41C3CB226A702DB006F1AE9 /* FirebaseServiceError.swift in Sources */,
@@ -643,6 +649,7 @@
 				E41C3C8926A702DA006F1AE9 /* CGPath+Extension.swift in Sources */,
 				E41C3C8F26A702DA006F1AE9 /* Inscriptions.swift in Sources */,
 				E41C3CAC26A702DB006F1AE9 /* ProductInfoViewController.swift in Sources */,
+				E4570FC726B47B500013F7C9 /* MascotImageView.swift in Sources */,
 				E41C3CA726A702DB006F1AE9 /* RecentProductCollectionViewCell.swift in Sources */,
 				E44BBF7626A6FEB4003D403C /* TimeToCook.xcdatamodeld in Sources */,
 				E41C3CA226A702DB006F1AE9 /* CustomBarcodeScannerViewController.swift in Sources */,
@@ -662,6 +669,7 @@
 				E41C3C8626A702DA006F1AE9 /* UIButton+Extension.swift in Sources */,
 				E41C3CE926A9E091006F1AE9 /* ProductInfoViewController2.swift in Sources */,
 				E41C3CBA26A7048A006F1AE9 /* BarcodeScannerViewController.swift in Sources */,
+				E4570FC926B47C2D0013F7C9 /* StillEmptyView.swift in Sources */,
 				E41C3C8B26A702DA006F1AE9 /* Notifications.swift in Sources */,
 				E44BBF6C26A6FEB4003D403C /* AppDelegate.swift in Sources */,
 				E41C3C8E26A702DA006F1AE9 /* DeviceModel.swift in Sources */,
