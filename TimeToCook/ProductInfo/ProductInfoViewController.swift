@@ -63,13 +63,12 @@ final class ProductInfoViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        appearAnimations()
         viewModel.checkCurrentStateAndUpdateView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        disappearAnimations()
+        disappearAnimations()
     }
     
     //MARK: AutoLayout
@@ -106,16 +105,10 @@ final class ProductInfoViewController: UIViewController {
             stillEmpty.leadingAnchor.constraint(equalTo: viewWithContent.leadingAnchor, constant: 15),
             stillEmpty.trailingAnchor.constraint(equalTo: viewWithContent.trailingAnchor,constant: -15),
             stillEmpty.topAnchor.constraint(equalTo: viewWithContent.topAnchor, constant: 15),
-            stillEmpty.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 2/3)
-        ])
+            stillEmpty.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 2/3)])
     }
     
     //MARK: Animations
-    
-    private func appearAnimations() {
-        appearPlateAnimation()
-        appearContentViewAnimation()
-    }
     
     private func disappearAnimations() {
         disappearPlateAnimation()
@@ -128,32 +121,33 @@ final class ProductInfoViewController: UIViewController {
         UIView.animate(withDuration: 1, delay: 0.3, usingSpringWithDamping: 2,
                        initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                         self.plateImageViewLeadingConstraint?.constant = -self.plateImageView.frame.width * 0.8
-                        self.plateImageView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi * 2))
-                        self.view.layoutIfNeeded()
-                       })
-    }
+                        self.view.layoutIfNeeded() })
+        
+        UIView.animate(withDuration: 0.3,
+            animations: { self.plateImageView.transform = CGAffineTransform(scaleX: 0.7, y: 0.7) },
+            completion: { _ in UIView.animate(withDuration: 0.4) {
+                    self.plateImageView.transform = CGAffineTransform.identity }})
+        }
+    
     
     private func disappearPlateAnimation() {
         UIView.animate(withDuration: 0.1) {
             self.plateImageView.alpha = 0
             self.plateImageViewLeadingConstraint?.constant = 0
-            self.view.layoutIfNeeded()
-        }
+            self.view.layoutIfNeeded() }
     }
     
     private func appearContentViewAnimation() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 2,
                        initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                         self.contentViewBottomConstraint?.constant = 0
-                        self.view.layoutIfNeeded()
-                       })
+                        self.view.layoutIfNeeded() })
     }
     
     private func disappearContentViewAnimation() {
         UIView.animate(withDuration: 0.2) {
             self.contentViewBottomConstraint?.constant = self.view.frame.height * 2/3
-            self.view.layoutIfNeeded()
-        }
+            self.view.layoutIfNeeded() }
     }
     
     
@@ -161,22 +155,24 @@ final class ProductInfoViewController: UIViewController {
     //MARK: Private Methodes
     
     private func  setupViewModelBindings() {
-//        plateImageView.setImage(image: UIImage(named: viewModel.productImage))
+
     }
     
     private func setupViewModelBindingsForAnimation() {
         viewModel.needUpdateViewForFirstStep = { [weak self] in
+            
             self?.appearContentViewAnimation()
         }
         
         viewModel.needUpdateViewForSecondStep = { [weak self] in
             self?.stillEmpty.alpha = 0
+            self?.appearContentViewAnimation()
             self?.appearPlateAnimation()
- 
         }
         
-        viewModel.needUpdateViewForThirdStep = {[weak self] in
-        }
+//        viewModel.needUpdateViewForThirdStep = { [weak self] in
+//
+//        }
     }
     
     //Gradient
@@ -197,3 +193,5 @@ final class ProductInfoViewController: UIViewController {
     }
     
 }
+
+
