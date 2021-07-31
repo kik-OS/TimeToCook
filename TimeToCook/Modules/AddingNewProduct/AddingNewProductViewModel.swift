@@ -30,7 +30,7 @@ protocol AddingNewProductViewModelProtocol: AnyObject {
   
     init(code: String)
   
-    func getProductInfoViewModel() -> ProductInfoViewModelProtocol2
+    func getProductInfoViewModel() -> ProductInfoViewModelProtocol
     func validation() -> Bool
     func calculateWaterRatio(row: Int)
     func createProductInFB()
@@ -190,7 +190,7 @@ final class AddingNewProductViewModel: AddingNewProductViewModelProtocol {
         }
     }
     
-    func getProductInfoViewModel() -> ProductInfoViewModelProtocol2 {
-        ProductInfoViewModel2(product: completedProduct)
+    func getProductInfoViewModel() -> ProductInfoViewModelProtocol {
+        ProductInfoViewModel(product: completedProduct)
     }
 }

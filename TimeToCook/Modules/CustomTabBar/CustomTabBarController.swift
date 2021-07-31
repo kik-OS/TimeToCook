@@ -89,7 +89,7 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
         recentProductsVC.tabBarItem.image = UIImage(named: ImageTitles.tabBarItemRight)
         
         let productInfoViewModel2 = viewModel.getProductInfoViewModel(product: nil)
-        let newVC = ProductInfoViewController2(viewModel: productInfoViewModel2)
+        let newVC = ProductInfoViewController(viewModel: productInfoViewModel2)
         newVC.tabBarItem.title = Inscriptions.tabBarItemLeftTitle
         newVC.tabBarItem.image = UIImage(named: ImageTitles.tabBarItemLeft)
         viewControllers = [newVC, recentProductsVC]
@@ -109,7 +109,7 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
     
     private func setupViewModelBindings() {
         viewModel.productDidReceive = { [unowned self] productInfoViewModel in
-            guard let productInfoVC = viewControllers?.first as? ProductInfoViewController2 else { return }
+            guard let productInfoVC = viewControllers?.first as? ProductInfoViewController else { return }
             productInfoVC.viewModel = productInfoViewModel
             selectedViewController = viewControllers?.first
         }

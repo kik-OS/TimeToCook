@@ -1,5 +1,5 @@
 //
-//  ProductInfoViewController2.swift
+//  ProductInfoViewController.swift
 //  TimeToCook
 //
 //  Created by Никита Гвоздиков on 22.07.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ProductInfoViewController2: UIViewController {
+final class ProductInfoViewController: UIViewController {
     
     //MARK: UI
     
@@ -28,7 +28,7 @@ final class ProductInfoViewController2: UIViewController {
     
     //MARK: Dependences
     
-    var viewModel: ProductInfoViewModelProtocol2 {
+    var viewModel: ProductInfoViewModelProtocol {
         didSet {
             setupViewModelBindings()
         }
@@ -36,7 +36,7 @@ final class ProductInfoViewController2: UIViewController {
     
     //MARK: Init
     
-    init(viewModel: ProductInfoViewModelProtocol2) {
+    init(viewModel: ProductInfoViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -57,16 +57,19 @@ final class ProductInfoViewController2: UIViewController {
         setupNavigationBar()
         addVerticalGradientLayer()
         setupAllConstraints()
+        setupViewModelBindingsForAnimation()
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        appearAnimations()
+//        appearAnimations()
+        viewModel.checkCurrentStateAndUpdateView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        disappearAnimations()
+//        disappearAnimations()
     }
     
     //MARK: AutoLayout
@@ -102,8 +105,8 @@ final class ProductInfoViewController2: UIViewController {
         NSLayoutConstraint.activate([
             stillEmpty.leadingAnchor.constraint(equalTo: viewWithContent.leadingAnchor, constant: 15),
             stillEmpty.trailingAnchor.constraint(equalTo: viewWithContent.trailingAnchor,constant: -15),
-            stillEmpty.topAnchor.constraint(equalTo: plateImageView.bottomAnchor, constant: 8),
-            stillEmpty.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 1/2)
+            stillEmpty.topAnchor.constraint(equalTo: viewWithContent.topAnchor, constant: 15),
+            stillEmpty.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 2/3)
         ])
     }
     
@@ -121,6 +124,7 @@ final class ProductInfoViewController2: UIViewController {
     
     private func appearPlateAnimation() {
         plateImageView.alpha = 1
+        plateImageView.image = UIImage(named: viewModel.productImage)
         UIView.animate(withDuration: 1, delay: 0.3, usingSpringWithDamping: 2,
                        initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                         self.plateImageViewLeadingConstraint?.constant = -self.plateImageView.frame.width * 0.8
@@ -157,7 +161,22 @@ final class ProductInfoViewController2: UIViewController {
     //MARK: Private Methodes
     
     private func  setupViewModelBindings() {
-        plateImageView.setImage(image: UIImage(named: viewModel.productImage))
+//        plateImageView.setImage(image: UIImage(named: viewModel.productImage))
+    }
+    
+    private func setupViewModelBindingsForAnimation() {
+        viewModel.needUpdateViewForFirstStep = { [weak self] in
+            self?.appearContentViewAnimation()
+        }
+        
+        viewModel.needUpdateViewForSecondStep = { [weak self] in
+            self?.stillEmpty.alpha = 0
+            self?.appearPlateAnimation()
+ 
+        }
+        
+        viewModel.needUpdateViewForThirdStep = {[weak self] in
+        }
     }
     
     //Gradient
