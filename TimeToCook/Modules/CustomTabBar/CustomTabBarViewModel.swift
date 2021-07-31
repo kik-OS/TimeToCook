@@ -9,7 +9,7 @@ import Foundation
 
 protocol CustomTabBarViewModelProtocol: AnyObject {
     /// Вызывается в случае успешного получения продукта из базы. В параметр передаётся ProductInfoViewModel с полученным из базы продуктом.
-    var productDidReceive: ((_ productInfoViewModel: ProductInfoViewModelProtocol) -> Void)? { get set }
+    var productDidReceive: ((_ productInfoViewModel: ProductInfoViewModelProtocol2) -> Void)? { get set }
     /// Вызывается для предложения добавить товар. В параметр передаётся бар-код, полученный от сканера.
     var addingNewProductOffer: ((_ code: String) -> Void)? { get set }
     /// Вызывается при каждом шаге таймера.
@@ -18,7 +18,8 @@ protocol CustomTabBarViewModelProtocol: AnyObject {
     var sizeForMiddleButton: Float { get }
     
     func findProduct(byCode code: String)
-    func getProductInfoViewModel(product: Product?) -> ProductInfoViewModelProtocol
+//    func getProductInfoViewModel(product: Product?) -> ProductInfoViewModelProtocol
+    func getProductInfoViewModel(product: Product?) -> ProductInfoViewModelProtocol2
     func getRecentProductViewModel() -> RecentProductViewModelProtocol
     func getAddingNewProductViewModel(withCode code: String) -> AddingNewProductViewModelProtocol
     func getTimerViewModel() -> TimerViewModelProtocol
@@ -29,7 +30,7 @@ final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
     
     // MARK: - Properties
     
-    var productDidReceive: ((_ productInfoViewModel: ProductInfoViewModelProtocol) -> Void)?
+    var productDidReceive: ((_ productInfoViewModel: ProductInfoViewModelProtocol2) -> Void)?
     var addingNewProductOffer: ((_ code: String) -> Void)?
     var timerDidStep: ((_ time: String) -> Void)?
     var constantForMiddleButton: Float {
@@ -64,8 +65,8 @@ final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
         }
     }
     
-    func getProductInfoViewModel(product: Product?) -> ProductInfoViewModelProtocol {
-        ProductInfoViewModel(product: product)
+    func getProductInfoViewModel(product: Product?) -> ProductInfoViewModelProtocol2 {
+        ProductInfoViewModel2(product: product)
     }
     
     func getRecentProductViewModel() -> RecentProductViewModelProtocol {

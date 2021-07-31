@@ -75,6 +75,7 @@
 		E4570FC526B3F02E0013F7C9 /* StillEmptyLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC426B3F02E0013F7C9 /* StillEmptyLabels.swift */; };
 		E4570FC726B47B500013F7C9 /* MascotImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC626B47B500013F7C9 /* MascotImageView.swift */; };
 		E4570FC926B47C2D0013F7C9 /* StillEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC826B47C2D0013F7C9 /* StillEmptyView.swift */; };
+		E4F14A3626B556C1008312DA /* ProductInfoViewModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F14A3526B556C1008312DA /* ProductInfoViewModel2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -150,6 +151,7 @@
 		E4570FC426B3F02E0013F7C9 /* StillEmptyLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StillEmptyLabels.swift; sourceTree = "<group>"; };
 		E4570FC626B47B500013F7C9 /* MascotImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MascotImageView.swift; sourceTree = "<group>"; };
 		E4570FC826B47C2D0013F7C9 /* StillEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StillEmptyView.swift; sourceTree = "<group>"; };
+		E4F14A3526B556C1008312DA /* ProductInfoViewModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoViewModel2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -490,6 +492,7 @@
 			children = (
 				E4570FBF26B2A3530013F7C9 /* SubViews */,
 				E41C3CE826A9E091006F1AE9 /* ProductInfoViewController2.swift */,
+				E4F14A3526B556C1008312DA /* ProductInfoViewModel2.swift */,
 			);
 			path = ProductInfo;
 			sourceTree = "<group>";
@@ -655,6 +658,7 @@
 				E41C3CA226A702DB006F1AE9 /* CustomBarcodeScannerViewController.swift in Sources */,
 				E41C3CB026A702DB006F1AE9 /* ProductInfoCollectionViewCellViewModel.swift in Sources */,
 				E41C3CA526A702DB006F1AE9 /* RecentProductCollectionViewViewModel.swift in Sources */,
+				E4F14A3626B556C1008312DA /* ProductInfoViewModel2.swift in Sources */,
 				E41C3C8D26A702DA006F1AE9 /* Constants.swift in Sources */,
 				E41C3C9E26A702DB006F1AE9 /* TimerViewController.swift in Sources */,
 				E41C3CA426A702DB006F1AE9 /* RecentProductCollectionView.swift in Sources */,

@@ -77,18 +77,21 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
     
     private func setupTabBarItems() {
         tabBar.tintColor = VarkaColors.mainColor
-        let productInfoViewModel = viewModel.getProductInfoViewModel(product: nil)
-        let productInfoVC = ProductInfoViewController(nibName: nil,
-                                                      bundle: nil,
-                                                      viewModel: productInfoViewModel)
-        productInfoVC.tabBarItem.title = Inscriptions.tabBarItemLeftTitle
-        productInfoVC.tabBarItem.image = UIImage(named: ImageTitles.tabBarItemLeft)
+//        let productInfoViewModel = viewModel.getProductInfoViewModel(product: nil)
+//        let productInfoVC = ProductInfoViewController(nibName: nil,
+//                                                      bundle: nil,
+//                                                      viewModel: productInfoViewModel)
+//        productInfoVC.tabBarItem.title = Inscriptions.tabBarItemLeftTitle
+//        productInfoVC.tabBarItem.image = UIImage(named: ImageTitles.tabBarItemLeft)
         let recentProductsVC = RecentProductsViewController()
         recentProductsVC.viewModel = viewModel.getRecentProductViewModel()
         recentProductsVC.tabBarItem.title = Inscriptions.tabBarItemRightTitle
         recentProductsVC.tabBarItem.image = UIImage(named: ImageTitles.tabBarItemRight)
         
-        let newVC = ProductInfoViewController2()
+        let productInfoViewModel2 = viewModel.getProductInfoViewModel(product: nil)
+        let newVC = ProductInfoViewController2(viewModel: productInfoViewModel2)
+        newVC.tabBarItem.title = Inscriptions.tabBarItemLeftTitle
+        newVC.tabBarItem.image = UIImage(named: ImageTitles.tabBarItemLeft)
         viewControllers = [newVC, recentProductsVC]
     }
     
@@ -106,7 +109,7 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
     
     private func setupViewModelBindings() {
         viewModel.productDidReceive = { [unowned self] productInfoViewModel in
-            guard let productInfoVC = viewControllers?.first as? ProductInfoViewController else { return }
+            guard let productInfoVC = viewControllers?.first as? ProductInfoViewController2 else { return }
             productInfoVC.viewModel = productInfoViewModel
             selectedViewController = viewControllers?.first
         }

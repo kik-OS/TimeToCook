@@ -112,7 +112,7 @@ final class AddingNewProductViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let productInfoVC = segue.destination as? ProductInfoViewController else { return }
+        guard let productInfoVC = segue.destination as? ProductInfoViewController2 else { return }
         productInfoVC.viewModel = viewModel.getProductInfoViewModel()
     }
 }

@@ -71,7 +71,7 @@ final class RecentProductsViewController: UIViewController {
 extension RecentProductsViewController: RecentProductCollectionViewDelegate {
     func presentInfoAboutProduct(product: Product) {
         let productInfoViewModel = viewModel.getProductInfoViewModel(product: product)
-        guard let productInfoVC = tabBarController?.viewControllers?.first as? ProductInfoViewController else { return }
+        guard let productInfoVC = tabBarController?.viewControllers?.first as? ProductInfoViewController2 else { return }
         productInfoVC.viewModel = productInfoViewModel
         tabBarController?.selectedViewController = tabBarController?.viewControllers?.first
     }

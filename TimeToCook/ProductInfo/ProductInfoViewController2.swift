@@ -26,6 +26,25 @@ final class ProductInfoViewController2: UIViewController {
         return stillEmpty
     }()
     
+    //MARK: Dependences
+    
+    var viewModel: ProductInfoViewModelProtocol2 {
+        didSet {
+            setupViewModelBindings()
+        }
+    }
+    
+    //MARK: Init
+    
+    init(viewModel: ProductInfoViewModelProtocol2) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     //MARK: Properties
     
     private var plateImageViewLeadingConstraint: NSLayoutConstraint?
@@ -39,7 +58,6 @@ final class ProductInfoViewController2: UIViewController {
         addVerticalGradientLayer()
         setupAllConstraints()
     }
-    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -86,10 +104,8 @@ final class ProductInfoViewController2: UIViewController {
             stillEmpty.trailingAnchor.constraint(equalTo: viewWithContent.trailingAnchor,constant: -15),
             stillEmpty.topAnchor.constraint(equalTo: plateImageView.bottomAnchor, constant: 8),
             stillEmpty.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 1/2)
-
         ])
     }
-    
     
     //MARK: Animations
     
@@ -105,14 +121,13 @@ final class ProductInfoViewController2: UIViewController {
     
     private func appearPlateAnimation() {
         plateImageView.alpha = 1
-        UIView.animate(withDuration: 1, delay: 0.3, usingSpringWithDamping: 0.8,
-                       initialSpringVelocity: 10, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 1, delay: 0.3, usingSpringWithDamping: 2,
+                       initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                         self.plateImageViewLeadingConstraint?.constant = -self.plateImageView.frame.width * 0.8
                         self.plateImageView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi * 2))
                         self.view.layoutIfNeeded()
                        })
     }
-    
     
     private func disappearPlateAnimation() {
         UIView.animate(withDuration: 0.1) {
@@ -134,13 +149,16 @@ final class ProductInfoViewController2: UIViewController {
         UIView.animate(withDuration: 0.2) {
             self.contentViewBottomConstraint?.constant = self.view.frame.height * 2/3
             self.view.layoutIfNeeded()
-            
         }
     }
     
     
     
     //MARK: Private Methodes
+    
+    private func  setupViewModelBindings() {
+        plateImageView.setImage(image: UIImage(named: viewModel.productImage))
+    }
     
     //Gradient
     private func addVerticalGradientLayer() {

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol RecentProductViewModelProtocol {
-    func getProductInfoViewModel(product: Product?) -> ProductInfoViewModelProtocol
+    func getProductInfoViewModel(product: Product?) -> ProductInfoViewModelProtocol2
     func getRecentProductCollectionViewViewModel() -> RecentProductCollectionViewViewModelProtocol
 }
 
@@ -17,7 +17,7 @@ final class RecentProductViewModel: RecentProductViewModelProtocol {
         RecentProductCollectionViewViewModel()
     }
     
-    func getProductInfoViewModel(product: Product?) -> ProductInfoViewModelProtocol {
-        ProductInfoViewModel(product: product)
+    func getProductInfoViewModel(product: Product?) -> ProductInfoViewModelProtocol2 {
+        ProductInfoViewModel2(product: product)
     }
 }

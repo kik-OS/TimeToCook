@@ -9,6 +9,8 @@ import UIKit
 
 final class StillEmptyLabels: UIView {
     
+    //MARK: UI
+    
     private lazy var title: UILabel = {
         let title = UILabel()
         title.text = "Упс..."
@@ -31,20 +33,23 @@ final class StillEmptyLabels: UIView {
         return message
     }()
     
+    //MARK: Init
+    
     init() {
         super.init(frame: .zero)
-        setupConstraints()
         layer.cornerRadius = 10
         layer.borderWidth = 1
         layer.borderColor = #colorLiteral(red: 0.5570600033, green: 0.5567737818, blue: 0.5772830844, alpha: 1).cgColor
         translatesAutoresizingMaskIntoConstraints = false
         setContentHuggingPriority(.init(253), for: .vertical)
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: Private Methodes 
     
     private func setupConstraints() {
         addSubview(title)
@@ -52,13 +57,11 @@ final class StillEmptyLabels: UIView {
         title.setContentHuggingPriority(.init(252), for: .vertical)
         NSLayoutConstraint.activate([title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
                                      title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-                                     title.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-        ])
+                                     title.topAnchor.constraint(equalTo: topAnchor, constant: 8)])
         
         NSLayoutConstraint.activate([message.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
                                      message.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
                                      message.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 4),
-                                     message.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)
-        ])
+                                     message.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)])
     }
 }
