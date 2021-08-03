@@ -26,6 +26,11 @@ final class ProductInfoViewController: UIViewController {
         return stillEmpty
     }()
     
+    private lazy var productView: ProductView = {
+        let productView = ProductView()
+        return productView
+    }()
+    
     //MARK: Dependences
     
     var viewModel: ProductInfoViewModelProtocol {
@@ -77,6 +82,7 @@ final class ProductInfoViewController: UIViewController {
         setupViewWithContentConstraints()
         setupPlateImageViewConstraints()
         setupStillEmptyViewConstraints()
+        setupProductViewConstraints()
     }
     
     private func setupViewWithContentConstraints() {
@@ -106,6 +112,15 @@ final class ProductInfoViewController: UIViewController {
             stillEmpty.trailingAnchor.constraint(equalTo: viewWithContent.trailingAnchor,constant: -15),
             stillEmpty.topAnchor.constraint(equalTo: viewWithContent.topAnchor, constant: 15),
             stillEmpty.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 2/3)])
+    }
+    
+    private func setupProductViewConstraints() {
+        viewWithContent.addSubview(productView)
+        NSLayoutConstraint.activate([
+            productView.leadingAnchor.constraint(equalTo: viewWithContent.leadingAnchor, constant: 15),
+            productView.trailingAnchor.constraint(equalTo: viewWithContent.trailingAnchor, constant: -15),
+            productView.topAnchor.constraint(equalTo: plateImageView.bottomAnchor, constant: 15),
+            productView.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 1/4)])
     }
     
     //MARK: Animations

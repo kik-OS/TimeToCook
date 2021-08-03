@@ -69,6 +69,8 @@
 		E4570FC526B3F02E0013F7C9 /* StillEmptyLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC426B3F02E0013F7C9 /* StillEmptyLabels.swift */; };
 		E4570FC726B47B500013F7C9 /* MascotImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC626B47B500013F7C9 /* MascotImageView.swift */; };
 		E4570FC926B47C2D0013F7C9 /* StillEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC826B47C2D0013F7C9 /* StillEmptyView.swift */; };
+		E49CB14026B97CF900B99038 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB13F26B97CF900B99038 /* ProductView.swift */; };
+		E49CB14226B9811900B99038 /* SingleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB14126B9811900B99038 /* SingleStackView.swift */; };
 		E4F14A3626B556C1008312DA /* ProductInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F14A3526B556C1008312DA /* ProductInfoViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +141,8 @@
 		E4570FC426B3F02E0013F7C9 /* StillEmptyLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StillEmptyLabels.swift; sourceTree = "<group>"; };
 		E4570FC626B47B500013F7C9 /* MascotImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MascotImageView.swift; sourceTree = "<group>"; };
 		E4570FC826B47C2D0013F7C9 /* StillEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StillEmptyView.swift; sourceTree = "<group>"; };
+		E49CB13F26B97CF900B99038 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
+		E49CB14126B9811900B99038 /* SingleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStackView.swift; sourceTree = "<group>"; };
 		E4F14A3526B556C1008312DA /* ProductInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -471,6 +475,8 @@
 				E4570FC426B3F02E0013F7C9 /* StillEmptyLabels.swift */,
 				E4570FC626B47B500013F7C9 /* MascotImageView.swift */,
 				E4570FC826B47C2D0013F7C9 /* StillEmptyView.swift */,
+				E49CB13F26B97CF900B99038 /* ProductView.swift */,
+				E49CB14126B9811900B99038 /* SingleStackView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -626,6 +632,7 @@
 				E41C3C9026A702DB006F1AE9 /* ImageTitles.swift in Sources */,
 				E41C3C9C26A702DB006F1AE9 /* StartTimerButton.swift in Sources */,
 				E4570FC126B2A3C80013F7C9 /* PlateImageView.swift in Sources */,
+				E49CB14226B9811900B99038 /* SingleStackView.swift in Sources */,
 				E41C3CC026A85FC4006F1AE9 /* FlashButton.swift in Sources */,
 				E41C3CBB26A7048A006F1AE9 /* BarcodeScanner.swift in Sources */,
 				E41C3CA626A702DB006F1AE9 /* RecentProductCollectionViewCellViewModel.swift in Sources */,
@@ -640,6 +647,7 @@
 				E41C3C9B26A702DB006F1AE9 /* TimerPickerView.swift in Sources */,
 				E44BBF6E26A6FEB4003D403C /* SceneDelegate.swift in Sources */,
 				E41C3C9D26A702DB006F1AE9 /* TimerViewModel.swift in Sources */,
+				E49CB14026B97CF900B99038 /* ProductView.swift in Sources */,
 				E41C3C8726A702DA006F1AE9 /* UIView+Extension.swift in Sources */,
 				E41C3C8826A702DA006F1AE9 /* DateFormatter+Extension.swift in Sources */,
 				E41C3C8326A702DA006F1AE9 /* Product.swift in Sources */,
