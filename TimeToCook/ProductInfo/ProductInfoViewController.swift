@@ -31,6 +31,11 @@ final class ProductInfoViewController: UIViewController {
         return productView
     }()
     
+    private lazy var productNameLabel: ProductNameLabel = {
+        let productNameLabel = ProductNameLabel()
+        return productNameLabel
+    }()
+    
     //MARK: Dependences
     
     var viewModel: ProductInfoViewModelProtocol {
@@ -82,6 +87,7 @@ final class ProductInfoViewController: UIViewController {
         setupViewWithContentConstraints()
         setupPlateImageViewConstraints()
         setupStillEmptyViewConstraints()
+        setupProductNameLabelConstraints()
         setupProductViewConstraints()
     }
     
@@ -114,20 +120,31 @@ final class ProductInfoViewController: UIViewController {
             stillEmpty.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 2/3)])
     }
     
+    private func setupProductNameLabelConstraints() {
+        viewWithContent.addSubview(productNameLabel)
+        NSLayoutConstraint.activate([
+            productNameLabel.leadingAnchor.constraint(equalTo: viewWithContent.leadingAnchor, constant: 15),
+            productNameLabel.trailingAnchor.constraint(equalTo: viewWithContent.trailingAnchor, constant: -15),
+            productNameLabel.topAnchor.constraint(equalTo: plateImageView.bottomAnchor, constant: 15)])
+    }
     private func setupProductViewConstraints() {
         viewWithContent.addSubview(productView)
         NSLayoutConstraint.activate([
             productView.leadingAnchor.constraint(equalTo: viewWithContent.leadingAnchor, constant: 15),
             productView.trailingAnchor.constraint(equalTo: viewWithContent.trailingAnchor, constant: -15),
-            productView.topAnchor.constraint(equalTo: plateImageView.bottomAnchor, constant: 15),
+            productView.topAnchor.constraint(equalTo: productNameLabel.bottomAnchor, constant: 10),
             productView.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 1/4)])
     }
+    
+        
+    
     
     //MARK: Animations
     
     private func disappearAnimations() {
         disappearPlateAnimation()
         disappearContentViewAnimation()
+        disappearProductViewAnimation()
     }
     
     private func appearPlateAnimation() {
@@ -164,6 +181,24 @@ final class ProductInfoViewController: UIViewController {
             self.view.layoutIfNeeded() }
     }
     
+    private func appearProductViewAnimation() {
+        UIView.animate(
+            withDuration: 0.5, delay: 0.5, usingSpringWithDamping: 0.55, initialSpringVelocity: 3,
+            options: .curveEaseOut, animations: {
+                self.productNameLabel.transform = .identity
+                self.productNameLabel.alpha = 1
+                self.productView.transform = .identity
+                self.productView.alpha = 1
+        }, completion: nil)
+    }
+    
+    private func disappearProductViewAnimation() {
+        self.productView.alpha = 0
+        self.productView.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+        self.productNameLabel.alpha = 0
+        self.productNameLabel.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+    }
+    
     
     
     //MARK: Private Methodes
@@ -183,6 +218,7 @@ final class ProductInfoViewController: UIViewController {
             self?.appearContentViewAnimation()
             self?.appearPlateAnimation()
             self?.updateProductInfo()
+            self?.appearProductViewAnimation()
         }
         
 //        viewModel.needUpdateViewForThirdStep = { [weak self] in
@@ -197,6 +233,7 @@ final class ProductInfoViewController: UIViewController {
         productView.setWeight(weight: viewModel.weight)
         productView.setProducer(producer: viewModel.product?.producer ?? "")
         productView.setTime(time: viewModel.cookingTime)
+        productNameLabel.setName(name: viewModel.product?.title ?? "")
     }
     
     //Gradient

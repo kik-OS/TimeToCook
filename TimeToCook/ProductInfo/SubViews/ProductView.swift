@@ -9,6 +9,8 @@ import UIKit
 
 final class ProductView: UIStackView {
     
+    // MARK: UI
+    
     private lazy var barcodeSV: SingleStackView = {
         let barcodeSV = SingleStackView()
         barcodeSV.setTitle(title: "Barcode:")
@@ -39,14 +41,17 @@ final class ProductView: UIStackView {
         return timeSV
     }()
     
+    // MARK: Init
+    
     init() {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         axis = NSLayoutConstraint.Axis.vertical
         distribution = UIStackView.Distribution.fillEqually
         alignment = UIStackView.Alignment.fill
-        spacing = 0
-        
+        spacing = 4
+        alpha = 0
+        transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
         addArrangedSubview(barcodeSV)
         addArrangedSubview(categorySV)
         addArrangedSubview(producerSV)
@@ -57,6 +62,8 @@ final class ProductView: UIStackView {
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: Methods
     
     func setBarcode(barcode: String) {
         barcodeSV.setLabel(label: barcode)
@@ -77,6 +84,5 @@ final class ProductView: UIStackView {
     func setTime(time: String) {
         timeSV.setLabel(label: time)
     }
-    
     
 }
