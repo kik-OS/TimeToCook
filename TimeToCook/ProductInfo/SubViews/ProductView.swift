@@ -58,5 +58,25 @@ final class ProductView: UIStackView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setBarcode(barcode: String) {
+        barcodeSV.setLabel(label: barcode)
+    }
+    
+    func setCategory(category: String) {
+        categorySV.setLabel(label: category)
+    }
+    
+    func setProducer(producer: String) {
+        producerSV.setLabel(label: producer)
+    }
+    
+    func setWeight(weight: String) {
+        weightSV.setLabel(label: weight)
+    }
+    
+    func setTime(time: String) {
+        timeSV.setLabel(label: time)
+    }
+    
     
 }

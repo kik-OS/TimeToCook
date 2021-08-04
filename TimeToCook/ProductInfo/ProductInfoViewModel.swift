@@ -8,7 +8,7 @@
 import UIKit
 
     protocol ProductInfoViewModelProtocol {
-        var product: Box<Product?> { get }
+        var product: Product? { get }
         var weight: String { get }
         var cookingTime: String { get }
         var isHiddenProductStackView: Bool { get }
@@ -25,7 +25,7 @@ import UIKit
         var buttonStartCookTapped: Bool { get set }
         func checkCurrentStateAndUpdateView()
         
-        func updateProduct(product: Product)
+        func updateProduct(product: Product?)
         
     }
 
@@ -39,27 +39,27 @@ import UIKit
         
         // MARK: - Properties
         
-        var product: Box<Product?> = Box(nil) 
+        var product: Product? = nil
         
         var productImage: String {
-            let productImage = product.value?.category ?? ""
+            let productImage = product?.category ?? ""
             return "\(productImage).png"
         }
         
         var weight: String {
-            guard let weight = product.value?.weight else {
+            guard let weight = product?.weight else {
                 return "Н/Д"
             }
             return "\(weight) г."
         }
         
         var cookingTime: String {
-            let cookingTime = (product.value?.cookingTime ?? 0)
+            let cookingTime = (product?.cookingTime ?? 0)
             return "\(cookingTime) мин."
         }
         
         var isHiddenProductStackView: Bool {
-            return product.value == nil
+            return product == nil
         }
         
         
@@ -67,7 +67,7 @@ import UIKit
         // MARK: - Initializers
         
         init(product: Product? = nil) {
-            self.product.value = product
+            self.product = product
         }
         
         // MARK: - Methods
@@ -79,12 +79,12 @@ import UIKit
         // MARK: - Public methods
         
         func getTimerViewModel() -> TimerViewModelProtocol {
-            TimerViewModel(minutes: product.value?.cookingTime ?? 0)
+            TimerViewModel(minutes: product?.cookingTime ?? 0)
         }
         
         
         func checkCurrentStateAndUpdateView() {
-            if product.value == nil {
+            if product == nil {
                 needUpdateViewForFirstStep?()
             } else {
                 buttonStartCookTapped
@@ -93,8 +93,8 @@ import UIKit
             }
         }
         
-        func updateProduct(product: Product) {
-            self.product.value = product
+        func updateProduct(product: Product?) {
+            self.product = product
         }
     }
 

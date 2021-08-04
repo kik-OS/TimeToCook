@@ -108,9 +108,9 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
     }
     
     private func setupViewModelBindings() {
-        viewModel.productDidReceive = { [unowned self] productInfoViewModel in
+        viewModel.productDidReceive = { [unowned self] product in
             guard let productInfoVC = viewControllers?.first as? ProductInfoViewController else { return }
-            productInfoVC.viewModel = productInfoViewModel
+            productInfoVC.viewModel.updateProduct(product: product)
             selectedViewController = viewControllers?.first
         }
         

@@ -132,7 +132,6 @@ final class ProductInfoViewController: UIViewController {
     
     private func appearPlateAnimation() {
         plateImageView.alpha = 1
-        plateImageView.image = UIImage(named: viewModel.productImage)
         UIView.animate(withDuration: 1, delay: 0.3, usingSpringWithDamping: 2,
                        initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                         self.plateImageViewLeadingConstraint?.constant = -self.plateImageView.frame.width * 0.8
@@ -183,11 +182,21 @@ final class ProductInfoViewController: UIViewController {
             self?.stillEmpty.alpha = 0
             self?.appearContentViewAnimation()
             self?.appearPlateAnimation()
+            self?.updateProductInfo()
         }
         
 //        viewModel.needUpdateViewForThirdStep = { [weak self] in
 //
 //        }
+    }
+    
+    private func updateProductInfo() {
+        plateImageView.image = UIImage(named: viewModel.productImage)
+        productView.setBarcode(barcode: viewModel.product?.code ?? "")
+        productView.setCategory(category: viewModel.product?.category ?? "")
+        productView.setWeight(weight: viewModel.weight)
+        productView.setProducer(producer: viewModel.product?.producer ?? "")
+        productView.setTime(time: viewModel.cookingTime)
     }
     
     //Gradient

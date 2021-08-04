@@ -9,7 +9,7 @@ import Foundation
 
 protocol CustomTabBarViewModelProtocol: AnyObject {
     /// Вызывается в случае успешного получения продукта из базы. В параметр передаётся ProductInfoViewModel с полученным из базы продуктом.
-    var productDidReceive: ((_ productInfoViewModel: ProductInfoViewModelProtocol) -> Void)? { get set }
+    var productDidReceive: ((_ product: Product) -> Void)? { get set }
     /// Вызывается для предложения добавить товар. В параметр передаётся бар-код, полученный от сканера.
     var addingNewProductOffer: ((_ code: String) -> Void)? { get set }
     /// Вызывается при каждом шаге таймера.
@@ -18,7 +18,6 @@ protocol CustomTabBarViewModelProtocol: AnyObject {
     var sizeForMiddleButton: Float { get }
     
     func findProduct(byCode code: String)
-//    func getProductInfoViewModel(product: Product?) -> ProductInfoViewModelProtocol
     func getProductInfoViewModel(product: Product?) -> ProductInfoViewModelProtocol
     func getRecentProductViewModel() -> RecentProductViewModelProtocol
     func getAddingNewProductViewModel(withCode code: String) -> AddingNewProductViewModelProtocol
@@ -30,7 +29,7 @@ final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
     
     // MARK: - Properties
     
-    var productDidReceive: ((_ productInfoViewModel: ProductInfoViewModelProtocol) -> Void)?
+    var productDidReceive: ((_ product: Product) -> Void)?
     var addingNewProductOffer: ((_ code: String) -> Void)?
     var timerDidStep: ((_ time: String) -> Void)?
     var constantForMiddleButton: Float {
@@ -56,7 +55,7 @@ final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
             
             switch result {
             case .success(let product):
-                self.productDidReceive?(self.getProductInfoViewModel(product: product))
+                self.productDidReceive?(product)
                 self.createProductInCoreData(product: product)
             case .failure(let error):
                 print(error.localizedDescription)
