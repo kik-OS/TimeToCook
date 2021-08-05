@@ -166,7 +166,7 @@ final class ProductInfoViewController: UIViewController {
             collectionView.leadingAnchor.constraint(equalTo: viewWithContent.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: viewWithContent.trailingAnchor),
             collectionView.topAnchor.constraint(equalTo: viewWithContent.topAnchor, constant: 15),
-            collectionView.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 1/2)
+            collectionView.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 1/2.5)
         ])
     }
     
@@ -344,7 +344,7 @@ extension ProductInfoViewController: UICollectionViewDelegate {
 
 extension ProductInfoViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        7
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -352,11 +352,11 @@ extension ProductInfoViewController: UICollectionViewDataSource {
         
         cell.setViewModel(viewModel: viewModel.cellViewModel(at: indexPath))
         
-                if indexPath.item % 2 == 0 {
-                    cell.backgroundColor = .blue
-                } else {
-                    cell.backgroundColor = .green
-                }
+//                if indexPath.item % 2 == 0 {
+//                    cell.backgroundColor = .blue
+//                } else {
+//                    cell.backgroundColor = .green
+//                }
                 return cell
 
     }
