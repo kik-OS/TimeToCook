@@ -7,95 +7,126 @@
 
 import UIKit
 
-    protocol ProductInfoViewModelProtocol {
-        var product: Product? { get }
-        var weight: String { get }
-        var cookingTime: String { get }
-        var isHiddenProductStackView: Bool { get }
-        var productImage: String { get }
-//        func cellViewModel(at indexPath: IndexPath) -> ProductInfoCollectionViewCellViewModelProtocol?
-        
-        init(product: Product?)
-        func getTimerViewModel() -> TimerViewModelProtocol
-        
-        
-        var needUpdateViewForFirstStep: (() -> Void)? { get set }
-        var needUpdateViewForSecondStep: (() -> Void)? { get set }
-        var needUpdateViewForThirdStep: (() -> Void)? { get set }
-        var buttonStartCookTapped: Bool { get set }
-        func checkCurrentStateAndUpdateView()
-        
-        func updateProduct(product: Product?)
-        
-    }
+protocol ProductInfoViewModelProtocol {
+    var product: Product? { get }
+    var weight: String { get }
+    var cookingTime: String { get }
+    var isHiddenProductStackView: Bool { get }
+    var productImage: String { get }
+    init(product: Product?)
+    
+    func getTimerViewModel() -> TimerViewModelProtocol
+    
+    
+    var needUpdateViewForFirstStep: (() -> Void)? { get set }
+    var needUpdateViewForSecondStep: (() -> Void)? { get set }
+    var needUpdateViewForThirdStep: (() -> Void)? { get set }
+    var buttonStartCookTapped: Bool { get set }
+    var previousOffset: CGFloat {get set}
+    var currentPage: Int {get set}
+    func checkCurrentStateAndUpdateView()
+    func updateProduct(product: Product?)
+    func targetContentOffset(_ scrollView: UIScrollView,
+                             withVelocity velocity: CGPoint,
+                             collectionView: UICollectionView) -> CGPoint
+    
+    func cellViewModel(at indexPath: IndexPath) -> ProductInfoCollectionViewCellViewModelProtocol?
+    
+    
+}
 
-    final class ProductInfoViewModel: ProductInfoViewModelProtocol {
-        
-        var needUpdateViewForFirstStep: (() -> Void)?
-        var needUpdateViewForSecondStep: (() -> Void)?
-        var needUpdateViewForThirdStep: (() -> Void)?
-        var buttonStartCookTapped: Bool = false
-        
-        
-        // MARK: - Properties
-        
-        var product: Product? = nil
-        
-        var productImage: String {
-            let productImage = product?.category ?? ""
-            return "\(productImage).png"
-        }
-        
-        var weight: String {
-            guard let weight = product?.weight else {
-                return "Н/Д"
-            }
-            return "\(weight) г."
-        }
-        
-        var cookingTime: String {
-            let cookingTime = (product?.cookingTime ?? 0)
-            return "\(cookingTime) мин."
-        }
-        
-        var isHiddenProductStackView: Bool {
-            return product == nil
-        }
-        
-        
-        
-        // MARK: - Initializers
-        
-        init(product: Product? = nil) {
-            self.product = product
-        }
-        
-        // MARK: - Methods
-        
-//        func cellViewModel(at indexPath: IndexPath) -> ProductInfoCollectionViewCellViewModelProtocol? {
-//            return ProductInfoCollectionViewCellViewModel(product: product.value, indexPath: indexPath)
-//        }
-        
-        // MARK: - Public methods
-        
-        func getTimerViewModel() -> TimerViewModelProtocol {
-            TimerViewModel(minutes: product?.cookingTime ?? 0)
-        }
-        
-        
-        func checkCurrentStateAndUpdateView() {
-            if product == nil {
-                needUpdateViewForFirstStep?()
-            } else {
-                buttonStartCookTapped
-                    ? needUpdateViewForThirdStep?()
-                    : needUpdateViewForSecondStep?()
-            }
-        }
-        
-        func updateProduct(product: Product?) {
-            self.product = product
+final class ProductInfoViewModel: ProductInfoViewModelProtocol {
+    
+    var needUpdateViewForFirstStep: (() -> Void)?
+    var needUpdateViewForSecondStep: (() -> Void)?
+    var needUpdateViewForThirdStep: (() -> Void)?
+    var buttonStartCookTapped: Bool = false
+    var previousOffset: CGFloat = 0
+    var currentPage: Int = 0
+    
+    
+    // MARK: - Properties
+    
+    var product: Product? = nil {
+        didSet {
+            buttonStartCookTapped = false
         }
     }
+    
+    var productImage: String {
+        let productImage = product?.category ?? ""
+        return "\(productImage).png"
+    }
+    
+    var weight: String {
+        guard let weight = product?.weight else {
+            return "Н/Д"
+        }
+        return "\(weight) г."
+    }
+    
+    var cookingTime: String {
+        let cookingTime = (product?.cookingTime ?? 0)
+        return "\(cookingTime) мин."
+    }
+    
+    var isHiddenProductStackView: Bool {
+        return product == nil
+    }
+    
+    
+    
+    // MARK: - Initializers
+    
+    init(product: Product? = nil) {
+        self.product = product
+    }
+    
+    // MARK: - Methods
+    
+    
+    // MARK: - Public methods
+    
+    func getTimerViewModel() -> TimerViewModelProtocol {
+        TimerViewModel(minutes: product?.cookingTime ?? 0)
+    }
+    
+    
+    func checkCurrentStateAndUpdateView() {
+        if product == nil {
+            needUpdateViewForFirstStep?()
+        } else {
+            buttonStartCookTapped
+                ? needUpdateViewForThirdStep?()
+                : needUpdateViewForSecondStep?()
+        }
+    }
+    
+    func updateProduct(product: Product?) {
+        self.product = product
+    }
+    
+    func targetContentOffset(_ scrollView: UIScrollView,
+                             withVelocity velocity: CGPoint,
+                             collectionView: UICollectionView) -> CGPoint {
+        
+        guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return .zero }
+        if previousOffset > collectionView.contentOffset.x && velocity.x < 0 {
+            currentPage -= 1
+        } else if previousOffset < collectionView.contentOffset.x && velocity.x > 0 {
+            currentPage += 1
+        }
+        
+        let additional = (flowLayout.itemSize.width + flowLayout.minimumLineSpacing) - flowLayout.headerReferenceSize.width
+        let updatedOffset = (flowLayout.itemSize.width + flowLayout.minimumLineSpacing) * CGFloat(currentPage) - additional
+        previousOffset = updatedOffset
+        
+        return CGPoint(x: updatedOffset, y: 0)
+    }
+    
+    func cellViewModel(at indexPath: IndexPath) -> ProductInfoCollectionViewCellViewModelProtocol? {
+        return ProductInfoCollectionViewCellViewModel(product: product, indexPath: indexPath)
+    }
+}
 
 

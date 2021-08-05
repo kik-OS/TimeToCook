@@ -44,6 +44,7 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
         StorageManager.shared.saveProductCD(product: Product(code: "333219090", title: "Нут", producer: "Макфа", category: "Бобовые", weight: 200, cookingTime: 40, intoBoilingWater: true, needStirring: true, waterRatio: 3))
         StorageManager.shared.saveProductCD(product: Product(code: "938040340", title: "Пельмени-Экстра", producer: "Мираторг", category: "Пельмени", weight: 1000, cookingTime: 8, intoBoilingWater: true, needStirring: true, waterRatio: 3))
         StorageManager.shared.saveProductCD(product: Product(code: "943560000", title: "Пшено", producer: "Увелка", category: "Каши", weight: 500, cookingTime: 3, intoBoilingWater: true, needStirring: true, waterRatio: 3))
+        StorageManager.shared.saveProductCD(product: Product(code: "94356000043", title: "Пшено еще пшено опять пшено вкусное пшено", producer: "Увелка4к34к34кцуауцауцауцацу", category: "Каши", weight: 500, cookingTime: 3, intoBoilingWater: true, needStirring: true, waterRatio: 3))
     }
     
     override func viewDidLayoutSubviews() {

@@ -16,7 +16,7 @@ final class SingleStackView: UIStackView {
         description.text = "Заголовок"
         description.setContentHuggingPriority(.init(253), for: .horizontal)
         description.numberOfLines = 0
-        description.minimumScaleFactor = 0.5
+        description.minimumScaleFactor = 0.8
         description.textColor = #colorLiteral(red: 0.5570600033, green: 0.5567737818, blue: 0.5772830844, alpha: 1)
         description.adjustsFontSizeToFitWidth = true
         description.font = description.font.bold
@@ -27,7 +27,7 @@ final class SingleStackView: UIStackView {
         let label = UILabel()
         label.text = "Основной текст"
         label.numberOfLines = 0
-        label.minimumScaleFactor = 0.5
+        label.minimumScaleFactor = 0.8
         label.textColor = #colorLiteral(red: 0.5570600033, green: 0.5567737818, blue: 0.5772830844, alpha: 1)
         label.adjustsFontSizeToFitWidth = true
         return label

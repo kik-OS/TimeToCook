@@ -36,13 +36,22 @@ final class ProductInfoViewController: UIViewController {
         return productNameLabel
     }()
     
+    private lazy var startCookButton: StartCookButton = {
+        let startCookButton = StartCookButton()
+        startCookButton.addTarget(self, action: #selector(startCookButtonTapped), for: .touchUpInside)
+        return startCookButton
+    }()
+    
+    private lazy var collectionView: InstructionCollectionView = {
+        let collectionView = InstructionCollectionView()
+        return collectionView
+    }()
+    
+ 
+    
     //MARK: Dependences
     
-    var viewModel: ProductInfoViewModelProtocol {
-        didSet {
-            setupViewModelBindings()
-        }
-    }
+    var viewModel: ProductInfoViewModelProtocol
     
     //MARK: Init
     
@@ -68,12 +77,14 @@ final class ProductInfoViewController: UIViewController {
         addVerticalGradientLayer()
         setupAllConstraints()
         setupViewModelBindingsForAnimation()
+        
     }
     
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         viewModel.checkCurrentStateAndUpdateView()
+        setupCollectionView() // временно
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -89,6 +100,8 @@ final class ProductInfoViewController: UIViewController {
         setupStillEmptyViewConstraints()
         setupProductNameLabelConstraints()
         setupProductViewConstraints()
+        setupStartCookButtonConstraints()
+        setupCollectionViewConstraints()
     }
     
     private func setupViewWithContentConstraints() {
@@ -125,7 +138,7 @@ final class ProductInfoViewController: UIViewController {
         NSLayoutConstraint.activate([
             productNameLabel.leadingAnchor.constraint(equalTo: viewWithContent.leadingAnchor, constant: 15),
             productNameLabel.trailingAnchor.constraint(equalTo: viewWithContent.trailingAnchor, constant: -15),
-            productNameLabel.topAnchor.constraint(equalTo: plateImageView.bottomAnchor, constant: 15)])
+            productNameLabel.topAnchor.constraint(equalTo: plateImageView.bottomAnchor, constant: 6)])
     }
     private func setupProductViewConstraints() {
         viewWithContent.addSubview(productView)
@@ -133,7 +146,28 @@ final class ProductInfoViewController: UIViewController {
             productView.leadingAnchor.constraint(equalTo: viewWithContent.leadingAnchor, constant: 15),
             productView.trailingAnchor.constraint(equalTo: viewWithContent.trailingAnchor, constant: -15),
             productView.topAnchor.constraint(equalTo: productNameLabel.bottomAnchor, constant: 10),
-            productView.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 1/4)])
+            productView.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 1/4)
+        ])
+    }
+    
+    private func setupStartCookButtonConstraints() {
+        viewWithContent.addSubview(startCookButton)
+        NSLayoutConstraint.activate([
+            startCookButton.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 1/12),
+            startCookButton.centerXAnchor.constraint(equalTo: viewWithContent.centerXAnchor),
+            startCookButton.topAnchor.constraint(equalTo: productView.bottomAnchor, constant: 35),
+            startCookButton.widthAnchor.constraint(equalTo: viewWithContent.widthAnchor, multiplier: 2/3)
+        ])
+    }
+    
+    private func setupCollectionViewConstraints() {
+        viewWithContent.addSubview(collectionView)
+        NSLayoutConstraint.activate([
+            collectionView.leadingAnchor.constraint(equalTo: viewWithContent.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: viewWithContent.trailingAnchor),
+            collectionView.topAnchor.constraint(equalTo: viewWithContent.topAnchor, constant: 15),
+            collectionView.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 1/2)
+        ])
     }
     
         
@@ -145,6 +179,7 @@ final class ProductInfoViewController: UIViewController {
         disappearPlateAnimation()
         disappearContentViewAnimation()
         disappearProductViewAnimation()
+        disappearStartCookButtonAnimation()
     }
     
     private func appearPlateAnimation() {
@@ -183,7 +218,7 @@ final class ProductInfoViewController: UIViewController {
     
     private func appearProductViewAnimation() {
         UIView.animate(
-            withDuration: 0.5, delay: 0.5, usingSpringWithDamping: 0.55, initialSpringVelocity: 3,
+            withDuration: 0.5, delay: 0.8, usingSpringWithDamping: 0.55, initialSpringVelocity: 3,
             options: .curveEaseOut, animations: {
                 self.productNameLabel.transform = .identity
                 self.productNameLabel.alpha = 1
@@ -199,17 +234,35 @@ final class ProductInfoViewController: UIViewController {
         self.productNameLabel.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
     }
     
+    private func appearStartCookButtonAnimation() {
+        UIView.animate(
+            withDuration: 0.5, delay: 1, usingSpringWithDamping: 0.55, initialSpringVelocity: 3,
+            options: .curveEaseOut, animations: {
+                self.startCookButton.transform = .identity
+                self.startCookButton.alpha = 1
+        }, completion: nil)
+    }
+    
+    private func disappearStartCookButtonAnimation() {
+        self.startCookButton.alpha = 0
+        self.startCookButton.transform = CGAffineTransform(scaleX: 0.4, y: 0.4)
+    }
+    
+    private func collectionViewLayoutAnimation(velocity: CGPoint, point: CGPoint ) {
+        UIView.animate(withDuration: 0.3, delay: 0,
+                       usingSpringWithDamping: 1,
+                       initialSpringVelocity: velocity.x,
+                       options: .allowUserInteraction, animations: {
+            self.collectionView.setContentOffset(point, animated: true)
+        }, completion: nil)
+    }
+    
     
     
     //MARK: Private Methodes
     
-    private func  setupViewModelBindings() {
-
-    }
-    
     private func setupViewModelBindingsForAnimation() {
         viewModel.needUpdateViewForFirstStep = { [weak self] in
-            
             self?.appearContentViewAnimation()
         }
         
@@ -219,11 +272,17 @@ final class ProductInfoViewController: UIViewController {
             self?.appearPlateAnimation()
             self?.updateProductInfo()
             self?.appearProductViewAnimation()
+            self?.appearStartCookButtonAnimation()
+            self?.startCookButton.startState()
         }
         
-//        viewModel.needUpdateViewForThirdStep = { [weak self] in
-//
-//        }
+        viewModel.needUpdateViewForThirdStep = { [weak self] in
+            self?.disappearPlateAnimation()
+            self?.disappearProductViewAnimation()
+            self?.startCookButton.stopState()
+            self?.appearContentViewAnimation()
+            self?.appearStartCookButtonAnimation()
+        }
     }
     
     private func updateProductInfo() {
@@ -234,6 +293,13 @@ final class ProductInfoViewController: UIViewController {
         productView.setProducer(producer: viewModel.product?.producer ?? "")
         productView.setTime(time: viewModel.cookingTime)
         productNameLabel.setName(name: viewModel.product?.title ?? "")
+    }
+    
+    //CollectionView
+    private func setupCollectionView() {
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.createLayout(width: view.bounds.width)
     }
     
     //Gradient
@@ -253,6 +319,49 @@ final class ProductInfoViewController: UIViewController {
         navigationController?.navigationBar.isTranslucent = true
     }
     
+    @objc private func startCookButtonTapped() {
+        viewModel.buttonStartCookTapped.toggle()
+        viewModel.checkCurrentStateAndUpdateView()
+    }
 }
 
+//MARK: UICollectionViewDelegate
 
+extension ProductInfoViewController: UICollectionViewDelegate {
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint,
+                                   targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
+        let point = viewModel.targetContentOffset(scrollView,
+                                                  withVelocity: velocity,
+                                                  collectionView: collectionView)
+        targetContentOffset.pointee = point
+        collectionViewLayoutAnimation(velocity: velocity, point: point)
+    }
+}
+
+//MARK: UICollectionViewDataSource
+
+extension ProductInfoViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "instructionCell", for: indexPath) as? ProductInfoCollectionViewCell else { return UICollectionViewCell() }
+        
+        cell.setViewModel(viewModel: viewModel.cellViewModel(at: indexPath))
+        
+                if indexPath.item % 2 == 0 {
+                    cell.backgroundColor = .blue
+                } else {
+                    cell.backgroundColor = .green
+                }
+                return cell
+
+    }
+    
+    
+    
+    
+}

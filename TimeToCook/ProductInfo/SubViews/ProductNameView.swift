@@ -13,10 +13,11 @@ final class ProductNameLabel: UILabel {
         super.init(frame: .zero)
         font = UIFont.preferredFont(forTextStyle: .title2)
         textColor = VarkaColors.mainColor
+        font = font.bold
         translatesAutoresizingMaskIntoConstraints = false
         adjustsFontSizeToFitWidth = true
-        numberOfLines = 0
-        minimumScaleFactor = 0.5
+        numberOfLines = 1
+        minimumScaleFactor = 0.8
         alpha = 0
         transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
     }
