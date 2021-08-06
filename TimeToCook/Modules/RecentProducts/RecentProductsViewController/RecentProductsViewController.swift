@@ -70,9 +70,9 @@ final class RecentProductsViewController: UIViewController {
 
 extension RecentProductsViewController: RecentProductCollectionViewDelegate {
     func presentInfoAboutProduct(product: Product) {
-        let productInfoViewModel = viewModel.getProductInfoViewModel(product: product)
+//        let productInfoViewModel = viewModel.getProductInfoViewModel(product: product)
         guard let productInfoVC = tabBarController?.viewControllers?.first as? ProductInfoViewController else { return }
-        productInfoVC.viewModel = productInfoViewModel
+        productInfoVC.viewModel.updateProduct(product: product)
         tabBarController?.selectedViewController = tabBarController?.viewControllers?.first
     }
 }

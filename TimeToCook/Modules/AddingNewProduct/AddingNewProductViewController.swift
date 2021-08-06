@@ -113,7 +113,8 @@ final class AddingNewProductViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let productInfoVC = segue.destination as? ProductInfoViewController else { return }
-        productInfoVC.viewModel = viewModel.getProductInfoViewModel()
+//        productInfoVC.viewModel = viewModel.getProductInfoViewModel()
+        productInfoVC.viewModel.updateProduct(product: viewModel.completedProduct)
     }
 }
 

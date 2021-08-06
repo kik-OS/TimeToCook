@@ -1,14 +1,17 @@
 //
 //  ProductInfoCollectionViewCellViewModel.swift
-//  VarkaAPP
+//  TimeToCook
 //
-//  Created by Никита Гвоздиков on 09.05.2021.
+//  Created by Никита Гвоздиков on 05.08.2021.
 //
 
 import Foundation
 
 
-protocol ProductInfoCollectionViewCellViewModelProtocol {
+import Foundation
+
+
+protocol InstructionCollectionViewCellViewModelProtocol {
     var numberOfCard: String { get }
     var instrImage: String { get }
     var isShowNextLabel: Bool { get }
@@ -17,7 +20,10 @@ protocol ProductInfoCollectionViewCellViewModelProtocol {
     
 }
 
-class ProductInfoCollectionViewCellViewModel: ProductInfoCollectionViewCellViewModelProtocol {
+final class InstructionCollectionViewCellViewModel: InstructionCollectionViewCellViewModelProtocol {
+    
+    //MARK: Properties
+    
     private let product: Product?
     private let indexPath: IndexPath
     
@@ -49,7 +55,7 @@ class ProductInfoCollectionViewCellViewModel: ProductInfoCollectionViewCellViewM
         case 2:
             return "Дождитесь закипания воды"
         case 3:
-            return "Опустите продукт в кипящую воду. Нажмите на завести таймер"
+            return "Опустите продукт в кипящую воду. Нажмите на таймер 👇🏻"
         case 4:
             return "Необходимо варить \(product.cookingTime)мин., периодически помешивая"
         case 5:
@@ -61,13 +67,10 @@ class ProductInfoCollectionViewCellViewModel: ProductInfoCollectionViewCellViewM
         }
     }
     
-    
-    
     // MARK: - Initializer
     
     required init(product: Product?, indexPath: IndexPath) {
         self.product = product
         self.indexPath = indexPath
     }
-    
 }

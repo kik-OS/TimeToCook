@@ -44,6 +44,7 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
         StorageManager.shared.saveProductCD(product: Product(code: "333219090", title: "Нут", producer: "Макфа", category: "Бобовые", weight: 200, cookingTime: 40, intoBoilingWater: true, needStirring: true, waterRatio: 3))
         StorageManager.shared.saveProductCD(product: Product(code: "938040340", title: "Пельмени-Экстра", producer: "Мираторг", category: "Пельмени", weight: 1000, cookingTime: 8, intoBoilingWater: true, needStirring: true, waterRatio: 3))
         StorageManager.shared.saveProductCD(product: Product(code: "943560000", title: "Пшено", producer: "Увелка", category: "Каши", weight: 500, cookingTime: 3, intoBoilingWater: true, needStirring: true, waterRatio: 3))
+        StorageManager.shared.saveProductCD(product: Product(code: "94356000043", title: "Пшено еще пшено опять пшено вкусное пшено", producer: "Увелка4к34к34кцуауцауцауцацу", category: "Каши", weight: 500, cookingTime: 3, intoBoilingWater: true, needStirring: true, waterRatio: 3))
     }
     
     override func viewDidLayoutSubviews() {
@@ -77,18 +78,21 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
     
     private func setupTabBarItems() {
         tabBar.tintColor = VarkaColors.mainColor
-        let productInfoViewModel = viewModel.getProductInfoViewModel(product: nil)
-        let productInfoVC = ProductInfoViewController(nibName: nil,
-                                                      bundle: nil,
-                                                      viewModel: productInfoViewModel)
-        productInfoVC.tabBarItem.title = Inscriptions.tabBarItemLeftTitle
-        productInfoVC.tabBarItem.image = UIImage(named: ImageTitles.tabBarItemLeft)
+//        let productInfoViewModel = viewModel.getProductInfoViewModel(product: nil)
+//        let productInfoVC = ProductInfoViewController(nibName: nil,
+//                                                      bundle: nil,
+//                                                      viewModel: productInfoViewModel)
+//        productInfoVC.tabBarItem.title = Inscriptions.tabBarItemLeftTitle
+//        productInfoVC.tabBarItem.image = UIImage(named: ImageTitles.tabBarItemLeft)
         let recentProductsVC = RecentProductsViewController()
         recentProductsVC.viewModel = viewModel.getRecentProductViewModel()
         recentProductsVC.tabBarItem.title = Inscriptions.tabBarItemRightTitle
         recentProductsVC.tabBarItem.image = UIImage(named: ImageTitles.tabBarItemRight)
         
-        let newVC = ProductInfoViewController2()
+        let productInfoViewModel2 = viewModel.getProductInfoViewModel(product: nil)
+        let newVC = ProductInfoViewController(viewModel: productInfoViewModel2)
+        newVC.tabBarItem.title = Inscriptions.tabBarItemLeftTitle
+        newVC.tabBarItem.image = UIImage(named: ImageTitles.tabBarItemLeft)
         viewControllers = [newVC, recentProductsVC]
     }
     
@@ -105,9 +109,9 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
     }
     
     private func setupViewModelBindings() {
-        viewModel.productDidReceive = { [unowned self] productInfoViewModel in
+        viewModel.productDidReceive = { [unowned self] product in
             guard let productInfoVC = viewControllers?.first as? ProductInfoViewController else { return }
-            productInfoVC.viewModel = productInfoViewModel
+            productInfoVC.viewModel.updateProduct(product: product)
             selectedViewController = viewControllers?.first
         }
         

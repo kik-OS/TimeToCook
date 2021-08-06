@@ -17,7 +17,7 @@ final class CustomTabBar: UITabBar {
         shapeLayer.fillColor = UIColor.white.cgColor
         shapeLayer.shadowRadius = 5
         shapeLayer.shadowOpacity = 0.2
-        shapeLayer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        shapeLayer.shadowColor = #colorLiteral(red: 0.249324028, green: 0.249324028, blue: 0.249324028, alpha: 1)
         shapeLayer.shadowOffset = CGSize(width: 0, height: 0)
         
         if let oldShapeLayer = self.shapeLayer {
