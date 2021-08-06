@@ -84,5 +84,4 @@ final class ProductView: UIStackView {
     func setTime(time: String) {
         timeSV.setLabel(label: time)
     }
-    
 }

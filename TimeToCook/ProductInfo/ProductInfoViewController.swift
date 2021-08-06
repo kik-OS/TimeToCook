@@ -53,9 +53,11 @@ final class ProductInfoViewController: UIViewController {
         return collectionView
     }()
     
-
-    
- 
+    private lazy var closeButton: CloseButton = {
+        let closeButton = CloseButton()
+        closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
+        return closeButton
+    }()
     
     //MARK: Dependences
     
@@ -85,9 +87,7 @@ final class ProductInfoViewController: UIViewController {
         addVerticalGradientLayer()
         setupAllConstraints()
         setupViewModelBindingsForAnimation()
-        
     }
-    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -111,6 +111,7 @@ final class ProductInfoViewController: UIViewController {
         setupStartCookButtonConstraints()
         setupTimerButtonConstraints()
         setupCollectionViewConstraints()
+        setupCloseButtonConstraints()
     }
     
     private func setupViewWithContentConstraints() {
@@ -138,7 +139,7 @@ final class ProductInfoViewController: UIViewController {
         NSLayoutConstraint.activate([
             stillEmpty.leadingAnchor.constraint(equalTo: viewWithContent.leadingAnchor, constant: 15),
             stillEmpty.trailingAnchor.constraint(equalTo: viewWithContent.trailingAnchor,constant: -15),
-            stillEmpty.topAnchor.constraint(equalTo: viewWithContent.topAnchor, constant: 15),
+            stillEmpty.topAnchor.constraint(equalTo: viewWithContent.topAnchor, constant: 30),
             stillEmpty.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 2/3)])
     }
     
@@ -155,8 +156,7 @@ final class ProductInfoViewController: UIViewController {
             productView.leadingAnchor.constraint(equalTo: viewWithContent.leadingAnchor, constant: 15),
             productView.trailingAnchor.constraint(equalTo: viewWithContent.trailingAnchor, constant: -15),
             productView.topAnchor.constraint(equalTo: productNameLabel.bottomAnchor, constant: 10),
-            productView.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 1/4)
-        ])
+            productView.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 1/4)])
     }
     
     private func setupStartCookButtonConstraints() {
@@ -165,8 +165,7 @@ final class ProductInfoViewController: UIViewController {
             startCookButton.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 1/12),
             startCookButton.centerXAnchor.constraint(equalTo: viewWithContent.centerXAnchor),
             startCookButton.topAnchor.constraint(equalTo: productView.bottomAnchor, constant: 35),
-            startCookButton.widthAnchor.constraint(equalTo: viewWithContent.widthAnchor, multiplier: 2/3)
-        ])
+            startCookButton.widthAnchor.constraint(equalTo: viewWithContent.widthAnchor, multiplier: 2/3)])
     }
     
     private func setupTimerButtonConstraints() {
@@ -175,8 +174,7 @@ final class ProductInfoViewController: UIViewController {
             timerButton.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 1/12),
             timerButton.centerXAnchor.constraint(equalTo: viewWithContent.centerXAnchor),
             timerButton.bottomAnchor.constraint(equalTo: startCookButton.topAnchor, constant: -15),
-            timerButton.widthAnchor.constraint(equalTo: viewWithContent.widthAnchor, multiplier: 2/3)
-        ])
+            timerButton.widthAnchor.constraint(equalTo: viewWithContent.widthAnchor, multiplier: 2/3)])
     }
     
     private func setupCollectionViewConstraints() {
@@ -185,17 +183,17 @@ final class ProductInfoViewController: UIViewController {
             collectionView.leadingAnchor.constraint(equalTo: viewWithContent.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: viewWithContent.trailingAnchor),
             collectionView.topAnchor.constraint(equalTo: viewWithContent.topAnchor, constant: 15),
-//            collectionView.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 1/3)
-            collectionView.bottomAnchor.constraint(equalTo: timerButton.topAnchor, constant: -35)
-        ])
+            collectionView.bottomAnchor.constraint(equalTo: timerButton.topAnchor, constant: -35)])
     }
     
-  
-    
-
-    
-        
-    
+    private func setupCloseButtonConstraints() {
+        viewWithContent.addSubview(closeButton)
+        NSLayoutConstraint.activate([
+            closeButton.leadingAnchor.constraint(equalTo: viewWithContent.leadingAnchor, constant:  15),
+            closeButton.topAnchor.constraint(equalTo: viewWithContent.topAnchor, constant: 15),
+            closeButton.widthAnchor.constraint(equalToConstant: 20),
+            closeButton.heightAnchor.constraint(equalTo: closeButton.widthAnchor)])
+    }
     
     //MARK: Animations
     
@@ -206,6 +204,7 @@ final class ProductInfoViewController: UIViewController {
         disappearStartCookButtonAnimation()
         disappearCollectionViewAnimation()
         disappearTimerButtonAnimation()
+        disappearCloseButtonAnimation()
     }
     
     private func appearPlateAnimation() {
@@ -220,7 +219,6 @@ final class ProductInfoViewController: UIViewController {
             completion: { _ in UIView.animate(withDuration: 0.4) {
                     self.plateImageView.transform = CGAffineTransform.identity }})
         }
-    
     
     private func disappearPlateAnimation() {
         UIView.animate(withDuration: 0.1) {
@@ -274,16 +272,19 @@ final class ProductInfoViewController: UIViewController {
         self.startCookButton.transform = CGAffineTransform(scaleX: 0.4, y: 0.4)
     }
     
-    
     private func appearCollectionViewAnimation() {
         collectionView.reloadData()
-        UIView.animate(withDuration: 0.5) {
-            self.collectionView.alpha = 1
-        }
+        UIView.animate(
+            withDuration: 0.5, delay: 0.5, usingSpringWithDamping: 0.55, initialSpringVelocity: 3,
+            options: .curveEaseOut, animations: {
+                self.collectionView.transform = .identity
+                self.collectionView.alpha = 1
+        }, completion: nil)
     }
     
     private func disappearCollectionViewAnimation() {
         collectionView.alpha = 0
+        collectionView.transform = CGAffineTransform(scaleX: 0.4, y: 0.4)
     }
     
     
@@ -298,7 +299,7 @@ final class ProductInfoViewController: UIViewController {
     
     private func appearTimerButtonAnimation() {
         UIView.animate(
-            withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.55, initialSpringVelocity: 3,
+            withDuration: 0.5, delay: 0.5, usingSpringWithDamping: 0.55, initialSpringVelocity: 3,
             options: .curveEaseOut, animations: {
                 self.timerButton.transform = .identity
                 self.timerButton.alpha = 1
@@ -309,9 +310,22 @@ final class ProductInfoViewController: UIViewController {
         self.timerButton.alpha = 0
         self.timerButton.transform = CGAffineTransform(scaleX: 0.4, y: 0.4)
     }
-
     
+    private func appearCloseButtonAnimation() {
+        UIView.animate(
+            withDuration: 0.5, delay: 0.8, usingSpringWithDamping: 0.55, initialSpringVelocity: 3,
+            options: .curveEaseOut, animations: {
+                self.closeButton.transform = .identity
+                self.closeButton.alpha = 1
+        }, completion: nil)
+    }
     
+    private func disappearCloseButtonAnimation() {
+        closeButton.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
+        UIView.animate(withDuration: 0.5) {
+            self.closeButton.alpha = 0
+        }
+    }
     
     //MARK: Private Methodes
     
@@ -322,6 +336,7 @@ final class ProductInfoViewController: UIViewController {
         
         viewModel.needUpdateViewForSecondStep = { [weak self] in
             self?.stillEmpty.alpha = 0
+            self?.appearCloseButtonAnimation()
             self?.appearContentViewAnimation()
             self?.appearPlateAnimation()
             self?.updateProductInfo()
@@ -333,6 +348,7 @@ final class ProductInfoViewController: UIViewController {
         }
         
         viewModel.needUpdateViewForThirdStep = { [weak self] in
+            self?.closeButton.alpha = 0
             self?.disappearPlateAnimation()
             self?.disappearProductViewAnimation()
             self?.startCookButton.stopState()
@@ -397,6 +413,16 @@ final class ProductInfoViewController: UIViewController {
         timerButton.layer.removeAllAnimations()
         present(timerVC, animated: true)
     }
+    
+    @objc private func closeButtonTapped() {
+        disappearAnimations()
+        viewModel.updateProduct(product: nil)
+        disappearCloseButtonAnimation()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+            self?.viewModel.checkCurrentStateAndUpdateView()
+            self?.stillEmpty.alpha = 1
+        }
+    }
 }
 
 //MARK: UICollectionViewDelegate
@@ -417,17 +443,13 @@ extension ProductInfoViewController: UICollectionViewDelegate {
 //MARK: UICollectionViewDataSource
 
 extension ProductInfoViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        7
-    }
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int { 7 }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "instructionCell", for: indexPath) as? InstructionCollectionViewCell else { return UICollectionViewCell() }
-        
         cell.setViewModel(viewModel: viewModel.cellViewModel(at: indexPath))
         return cell
-        
     }
-    
-    
 }

@@ -78,6 +78,7 @@
 		E4EB3E6F26BC346D00DA752C /* InstructionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E6E26BC346D00DA752C /* InstructionCollectionViewCell.swift */; };
 		E4EB3E7126BC3DB800DA752C /* InstructionCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E7026BC3DB800DA752C /* InstructionCollectionView.swift */; };
 		E4EB3E7426BD1F4400DA752C /* TimerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E7326BD1F4400DA752C /* TimerButton.swift */; };
+		E4EB3E7626BD550C00DA752C /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E7526BD550C00DA752C /* CloseButton.swift */; };
 		E4F14A3626B556C1008312DA /* ProductInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F14A3526B556C1008312DA /* ProductInfoViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -157,6 +158,7 @@
 		E4EB3E6E26BC346D00DA752C /* InstructionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionCollectionViewCell.swift; sourceTree = "<group>"; };
 		E4EB3E7026BC3DB800DA752C /* InstructionCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionCollectionView.swift; sourceTree = "<group>"; };
 		E4EB3E7326BD1F4400DA752C /* TimerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerButton.swift; sourceTree = "<group>"; };
+		E4EB3E7526BD550C00DA752C /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		E4F14A3526B556C1008312DA /* ProductInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -496,6 +498,7 @@
 				E49CB14726BAE52D00B99038 /* ProductNameView.swift */,
 				E47E0C7726BBBC300060BE3A /* StartCookButton.swift */,
 				E4EB3E7326BD1F4400DA752C /* TimerButton.swift */,
+				E4EB3E7526BD550C00DA752C /* CloseButton.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -669,6 +672,7 @@
 				E41C3CBB26A7048A006F1AE9 /* BarcodeScanner.swift in Sources */,
 				E41C3CA626A702DB006F1AE9 /* RecentProductCollectionViewCellViewModel.swift in Sources */,
 				E41C3C8A26A702DA006F1AE9 /* Box.swift in Sources */,
+				E4EB3E7626BD550C00DA752C /* CloseButton.swift in Sources */,
 				E41C3C8626A702DA006F1AE9 /* UIButton+Extension.swift in Sources */,
 				E41C3CE926A9E091006F1AE9 /* ProductInfoViewController.swift in Sources */,
 				E41C3CBA26A7048A006F1AE9 /* BarcodeScannerViewController.swift in Sources */,

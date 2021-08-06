@@ -9,6 +9,8 @@ import UIKit
 
 final class TimerButton: UIButton {
     
+    //MARK: Init
+    
     init() {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false

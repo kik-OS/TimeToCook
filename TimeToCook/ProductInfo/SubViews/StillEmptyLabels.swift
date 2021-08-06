@@ -37,11 +37,15 @@ final class StillEmptyLabels: UIView {
     
     init() {
         super.init(frame: .zero)
-        layer.cornerRadius = 10
-        layer.borderWidth = 1
-        layer.borderColor = #colorLiteral(red: 0.5570600033, green: 0.5567737818, blue: 0.5772830844, alpha: 1).cgColor
+        backgroundColor = .white
         translatesAutoresizingMaskIntoConstraints = false
         setContentHuggingPriority(.init(253), for: .vertical)
+        clipsToBounds = false
+        layer.cornerRadius = 15
+        layer.shadowRadius = 5
+        layer.shadowOpacity = 0.3
+        layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        layer.shadowOffset = CGSize(width: 0, height: 0)
         setupConstraints()
     }
     

@@ -13,30 +13,27 @@ protocol ProductInfoViewModelProtocol {
     var cookingTime: String { get }
     var isHiddenProductStackView: Bool { get }
     var productImage: String { get }
-    init(product: Product?)
-    
-    func getTimerViewModel() -> TimerViewModelProtocol
-    
-    
     var needUpdateViewForFirstStep: (() -> Void)? { get set }
     var needUpdateViewForSecondStep: (() -> Void)? { get set }
     var needUpdateViewForThirdStep: (() -> Void)? { get set }
     var buttonStartCookTapped: Bool { get set }
     var previousOffset: CGFloat {get set}
     var currentPage: Int {get set}
+    init(product: Product?)
+    
+    func getTimerViewModel() -> TimerViewModelProtocol
     func checkCurrentStateAndUpdateView()
     func updateProduct(product: Product?)
     func targetContentOffset(_ scrollView: UIScrollView,
                              withVelocity velocity: CGPoint,
                              collectionView: UICollectionView) -> CGPoint
-    
     func cellViewModel(at indexPath: IndexPath) -> InstructionCollectionViewCellViewModelProtocol?
-    
     func resetCollectionViewLayout()
-    
 }
 
 final class ProductInfoViewModel: ProductInfoViewModelProtocol {
+    
+    // MARK: - Properties
     
     var needUpdateViewForFirstStep: (() -> Void)?
     var needUpdateViewForSecondStep: (() -> Void)?
@@ -44,9 +41,6 @@ final class ProductInfoViewModel: ProductInfoViewModelProtocol {
     var buttonStartCookTapped: Bool = false
     var previousOffset: CGFloat = 0
     var currentPage: Int = 0
-    
-    
-    // MARK: - Properties
     
     var product: Product? = nil {
         didSet {
@@ -76,15 +70,11 @@ final class ProductInfoViewModel: ProductInfoViewModelProtocol {
     }
     
     
-    
-    // MARK: - Initializers
+    // MARK: - Init
     
     init(product: Product? = nil) {
         self.product = product
     }
-    
-    // MARK: - Methods
-    
     
     // MARK: - Public methods
     

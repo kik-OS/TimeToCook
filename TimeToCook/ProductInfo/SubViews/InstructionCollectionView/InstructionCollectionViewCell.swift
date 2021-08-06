@@ -10,6 +10,8 @@ import UIKit
 
 final class InstructionCollectionViewCell: UICollectionViewCell {
     
+    //MARK: UI
+    
     private lazy var numberOfCardLabel: UILabel = {
         let numberOfCardLabel = UILabel()
         numberOfCardLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -50,6 +52,8 @@ final class InstructionCollectionViewCell: UICollectionViewCell {
         return instructionImage
     }()
     
+    //MARK: Dependences
+    
     private var viewModel: InstructionCollectionViewCellViewModelProtocol? {
         didSet {
             numberOfCardLabel.text = viewModel?.numberOfCard
@@ -58,6 +62,8 @@ final class InstructionCollectionViewCell: UICollectionViewCell {
             nextLabel.isHidden = viewModel?.isShowNextLabel ?? true
         }
     }
+    
+    //MARK: Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -79,6 +85,8 @@ final class InstructionCollectionViewCell: UICollectionViewCell {
         clipsToBounds = false
     }
     
+    //MARK: Private Methodes
+    
     private func setupAllConstraints() {
         contentView.addSubview(instructionImage)
         contentView.addSubview(numberOfCardLabel)
@@ -95,10 +103,7 @@ final class InstructionCollectionViewCell: UICollectionViewCell {
             instructionImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             instructionImage.topAnchor.constraint(equalTo: contentView.topAnchor),
             instructionImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-//            instructionImage.widthAnchor.constraint(equalTo: instructionImage.heightAnchor)
-            instructionImage.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1/3)
-        
-        ])
+            instructionImage.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1/3)])
     }
     
     private func setupNumberOfCardLabelConstraints() {
@@ -121,6 +126,8 @@ final class InstructionCollectionViewCell: UICollectionViewCell {
             nextLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             nextLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)])
     }
+    
+    //MARK: Methods
     
     func setViewModel(viewModel: InstructionCollectionViewCellViewModelProtocol?) {
         self.viewModel = viewModel

@@ -28,6 +28,8 @@ final class PlateImageView: UIImageView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: Methods
+    
     func setImage(image: UIImage?) {
         self.image = image
     }

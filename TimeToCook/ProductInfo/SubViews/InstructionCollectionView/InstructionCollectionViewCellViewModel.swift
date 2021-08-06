@@ -20,7 +20,10 @@ protocol InstructionCollectionViewCellViewModelProtocol {
     
 }
 
-class InstructionCollectionViewCellViewModel: InstructionCollectionViewCellViewModelProtocol {
+final class InstructionCollectionViewCellViewModel: InstructionCollectionViewCellViewModelProtocol {
+    
+    //MARK: Properties
+    
     private let product: Product?
     private let indexPath: IndexPath
     
@@ -64,13 +67,10 @@ class InstructionCollectionViewCellViewModel: InstructionCollectionViewCellViewM
         }
     }
     
-    
-    
     // MARK: - Initializer
     
     required init(product: Product?, indexPath: IndexPath) {
         self.product = product
         self.indexPath = indexPath
     }
-    
 }

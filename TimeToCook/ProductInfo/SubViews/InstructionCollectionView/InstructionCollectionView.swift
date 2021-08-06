@@ -9,6 +9,7 @@ import UIKit
 
 final class InstructionCollectionView: UICollectionView {
     
+    //MARK: Properties
     
     private var width: CGFloat
     
@@ -25,6 +26,7 @@ final class InstructionCollectionView: UICollectionView {
         backgroundColor = .none
         showsHorizontalScrollIndicator = false
         alpha = 0
+        transform = CGAffineTransform(scaleX: 0.4, y: 0.4)
     }
     
     required init?(coder: NSCoder) {

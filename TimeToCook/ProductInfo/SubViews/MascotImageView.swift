@@ -9,6 +9,8 @@ import UIKit
 
 final class MascotImageView: UIImageView {
     
+    //MARK: Init
+    
     init() {
         super.init(frame: .zero)
         image = UIImage(named: "mascot.png")
@@ -20,5 +22,4 @@ final class MascotImageView: UIImageView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
