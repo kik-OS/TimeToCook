@@ -74,9 +74,10 @@
 		E49CB14226B9811900B99038 /* SingleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB14126B9811900B99038 /* SingleStackView.swift */; };
 		E49CB14426BADC9300B99038 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB14326BADC9300B99038 /* UIFont+Extension.swift */; };
 		E49CB14826BAE52D00B99038 /* ProductNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB14726BAE52D00B99038 /* ProductNameView.swift */; };
-		E4EB3E6D26BC344B00DA752C /* ProductInfoCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E6C26BC344B00DA752C /* ProductInfoCollectionViewCellViewModel.swift */; };
-		E4EB3E6F26BC346D00DA752C /* ProductInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E6E26BC346D00DA752C /* ProductInfoCollectionViewCell.swift */; };
+		E4EB3E6D26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E6C26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift */; };
+		E4EB3E6F26BC346D00DA752C /* InstructionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E6E26BC346D00DA752C /* InstructionCollectionViewCell.swift */; };
 		E4EB3E7126BC3DB800DA752C /* InstructionCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E7026BC3DB800DA752C /* InstructionCollectionView.swift */; };
+		E4EB3E7426BD1F4400DA752C /* TimerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E7326BD1F4400DA752C /* TimerButton.swift */; };
 		E4F14A3626B556C1008312DA /* ProductInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F14A3526B556C1008312DA /* ProductInfoViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -152,9 +153,10 @@
 		E49CB14126B9811900B99038 /* SingleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStackView.swift; sourceTree = "<group>"; };
 		E49CB14326BADC9300B99038 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		E49CB14726BAE52D00B99038 /* ProductNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductNameView.swift; sourceTree = "<group>"; };
-		E4EB3E6C26BC344B00DA752C /* ProductInfoCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
-		E4EB3E6E26BC346D00DA752C /* ProductInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoCollectionViewCell.swift; sourceTree = "<group>"; };
+		E4EB3E6C26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		E4EB3E6E26BC346D00DA752C /* InstructionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionCollectionViewCell.swift; sourceTree = "<group>"; };
 		E4EB3E7026BC3DB800DA752C /* InstructionCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionCollectionView.swift; sourceTree = "<group>"; };
+		E4EB3E7326BD1F4400DA752C /* TimerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerButton.swift; sourceTree = "<group>"; };
 		E4F14A3526B556C1008312DA /* ProductInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -476,8 +478,6 @@
 				E4570FBF26B2A3530013F7C9 /* SubViews */,
 				E41C3CE826A9E091006F1AE9 /* ProductInfoViewController.swift */,
 				E4F14A3526B556C1008312DA /* ProductInfoViewModel.swift */,
-				E4EB3E6C26BC344B00DA752C /* ProductInfoCollectionViewCellViewModel.swift */,
-				E4EB3E6E26BC346D00DA752C /* ProductInfoCollectionViewCell.swift */,
 			);
 			path = ProductInfo;
 			sourceTree = "<group>";
@@ -485,6 +485,7 @@
 		E4570FBF26B2A3530013F7C9 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				E4EB3E7226BD082300DA752C /* InstructionCollectionView */,
 				E4570FC026B2A3C80013F7C9 /* PlateImageView.swift */,
 				E4570FC226B2A4F40013F7C9 /* ViewWithContent.swift */,
 				E4570FC426B3F02E0013F7C9 /* StillEmptyLabels.swift */,
@@ -494,9 +495,19 @@
 				E49CB14126B9811900B99038 /* SingleStackView.swift */,
 				E49CB14726BAE52D00B99038 /* ProductNameView.swift */,
 				E47E0C7726BBBC300060BE3A /* StartCookButton.swift */,
-				E4EB3E7026BC3DB800DA752C /* InstructionCollectionView.swift */,
+				E4EB3E7326BD1F4400DA752C /* TimerButton.swift */,
 			);
 			path = SubViews;
+			sourceTree = "<group>";
+		};
+		E4EB3E7226BD082300DA752C /* InstructionCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				E4EB3E7026BC3DB800DA752C /* InstructionCollectionView.swift */,
+				E4EB3E6E26BC346D00DA752C /* InstructionCollectionViewCell.swift */,
+				E4EB3E6C26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift */,
+			);
+			path = InstructionCollectionView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -661,7 +672,7 @@
 				E41C3C8626A702DA006F1AE9 /* UIButton+Extension.swift in Sources */,
 				E41C3CE926A9E091006F1AE9 /* ProductInfoViewController.swift in Sources */,
 				E41C3CBA26A7048A006F1AE9 /* BarcodeScannerViewController.swift in Sources */,
-				E4EB3E6D26BC344B00DA752C /* ProductInfoCollectionViewCellViewModel.swift in Sources */,
+				E4EB3E6D26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift in Sources */,
 				E4570FC926B47C2D0013F7C9 /* StillEmptyView.swift in Sources */,
 				E41C3C8B26A702DA006F1AE9 /* Notifications.swift in Sources */,
 				E44BBF6C26A6FEB4003D403C /* AppDelegate.swift in Sources */,
@@ -669,7 +680,7 @@
 				E41C3C9B26A702DB006F1AE9 /* TimerPickerView.swift in Sources */,
 				E44BBF6E26A6FEB4003D403C /* SceneDelegate.swift in Sources */,
 				E41C3C9D26A702DB006F1AE9 /* TimerViewModel.swift in Sources */,
-				E4EB3E6F26BC346D00DA752C /* ProductInfoCollectionViewCell.swift in Sources */,
+				E4EB3E6F26BC346D00DA752C /* InstructionCollectionViewCell.swift in Sources */,
 				E49CB14026B97CF900B99038 /* ProductView.swift in Sources */,
 				E41C3C8726A702DA006F1AE9 /* UIView+Extension.swift in Sources */,
 				E41C3C8826A702DA006F1AE9 /* DateFormatter+Extension.swift in Sources */,
@@ -680,6 +691,7 @@
 				E41C3CB426A702DB006F1AE9 /* DeviceManager.swift in Sources */,
 				E41C3CA126A702DB006F1AE9 /* CustomTabBar.swift in Sources */,
 				E4570FC326B2A4F40013F7C9 /* ViewWithContent.swift in Sources */,
+				E4EB3E7426BD1F4400DA752C /* TimerButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

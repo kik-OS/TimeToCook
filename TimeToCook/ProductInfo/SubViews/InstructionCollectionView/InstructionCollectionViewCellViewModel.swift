@@ -11,7 +11,7 @@ import Foundation
 import Foundation
 
 
-protocol ProductInfoCollectionViewCellViewModelProtocol {
+protocol InstructionCollectionViewCellViewModelProtocol {
     var numberOfCard: String { get }
     var instrImage: String { get }
     var isShowNextLabel: Bool { get }
@@ -20,7 +20,7 @@ protocol ProductInfoCollectionViewCellViewModelProtocol {
     
 }
 
-class ProductInfoCollectionViewCellViewModel: ProductInfoCollectionViewCellViewModelProtocol {
+class InstructionCollectionViewCellViewModel: InstructionCollectionViewCellViewModelProtocol {
     private let product: Product?
     private let indexPath: IndexPath
     
@@ -52,7 +52,7 @@ class ProductInfoCollectionViewCellViewModel: ProductInfoCollectionViewCellViewM
         case 2:
             return "Дождитесь закипания воды"
         case 3:
-            return "Опустите продукт в кипящую воду. Нажмите на завести таймер"
+            return "Опустите продукт в кипящую воду. Нажмите на таймер 👇🏻"
         case 4:
             return "Необходимо варить \(product.cookingTime)мин., периодически помешивая"
         case 5:

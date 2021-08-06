@@ -8,13 +8,14 @@
 
 import UIKit
 
-final class ProductInfoCollectionViewCell: UICollectionViewCell {
+final class InstructionCollectionViewCell: UICollectionViewCell {
     
     private lazy var numberOfCardLabel: UILabel = {
         let numberOfCardLabel = UILabel()
         numberOfCardLabel.translatesAutoresizingMaskIntoConstraints = false
         numberOfCardLabel.textColor = .black
         numberOfCardLabel.numberOfLines = 0
+        numberOfCardLabel.textColor = #colorLiteral(red: 0.5570600033, green: 0.5567737818, blue: 0.5772830844, alpha: 1)
         return numberOfCardLabel
     }()
     
@@ -27,6 +28,7 @@ final class ProductInfoCollectionViewCell: UICollectionViewCell {
         instructionLabel.setContentHuggingPriority(.init(1), for: .vertical)
         instructionLabel.adjustsFontSizeToFitWidth = true
         instructionLabel.minimumScaleFactor = 0.5
+        instructionLabel.textColor = #colorLiteral(red: 0.5570600033, green: 0.5567737818, blue: 0.5772830844, alpha: 1)
         return instructionLabel
     }()
     
@@ -35,6 +37,7 @@ final class ProductInfoCollectionViewCell: UICollectionViewCell {
         nextLabel.translatesAutoresizingMaskIntoConstraints = false
         nextLabel.textColor = .black
         nextLabel.text = "→"
+        nextLabel.textColor = #colorLiteral(red: 0.5570600033, green: 0.5567737818, blue: 0.5772830844, alpha: 1)
         return nextLabel
     }()
     
@@ -42,10 +45,12 @@ final class ProductInfoCollectionViewCell: UICollectionViewCell {
         let instructionImage = UIImageView()
         instructionImage.translatesAutoresizingMaskIntoConstraints = false
         instructionImage.layer.cornerRadius = 20
+        instructionImage.clipsToBounds = true
+        instructionImage.contentMode = .scaleAspectFit
         return instructionImage
     }()
     
-    private var viewModel: ProductInfoCollectionViewCellViewModelProtocol? {
+    private var viewModel: InstructionCollectionViewCellViewModelProtocol? {
         didSet {
             numberOfCardLabel.text = viewModel?.numberOfCard
             instructionImage.image = UIImage(named: viewModel?.instrImage ?? "")
@@ -64,8 +69,6 @@ final class ProductInfoCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
  
-
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.shadowRadius = 5
@@ -87,46 +90,39 @@ final class ProductInfoCollectionViewCell: UICollectionViewCell {
         setupNextLabelConstraints()
     }
     
-  
-    
     private func setupInstructionImageConstraints() {
-        
         NSLayoutConstraint.activate([
             instructionImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             instructionImage.topAnchor.constraint(equalTo: contentView.topAnchor),
             instructionImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            instructionImage.widthAnchor.constraint(equalTo: instructionImage.heightAnchor)
+//            instructionImage.widthAnchor.constraint(equalTo: instructionImage.heightAnchor)
+            instructionImage.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1/3)
+        
         ])
     }
     
     private func setupNumberOfCardLabelConstraints() {
-      
         NSLayoutConstraint.activate([
-        numberOfCardLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-        numberOfCardLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-        numberOfCardLabel.bottomAnchor.constraint(equalTo: instructionLabel.topAnchor, constant: -8)
-        ])
+            numberOfCardLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            numberOfCardLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            numberOfCardLabel.bottomAnchor.constraint(equalTo: instructionLabel.topAnchor, constant: -8)])
     }
     
     private func setupInstructionLabelConstraints() {
         NSLayoutConstraint.activate([
-          
             instructionLabel.leadingAnchor.constraint(equalTo: instructionImage.trailingAnchor, constant: 8),
             instructionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
-            instructionLabel.bottomAnchor.constraint(equalTo: nextLabel.topAnchor, constant: 8)
-        ])
+            instructionLabel.bottomAnchor.constraint(equalTo: nextLabel.topAnchor, constant: 8)])
     }
     
     private func setupNextLabelConstraints() {
         NSLayoutConstraint.activate([
             nextLabel.topAnchor.constraint(equalTo: instructionLabel.bottomAnchor, constant: -8),
             nextLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-            nextLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
-        ])
+            nextLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)])
     }
     
-    
-    func setViewModel(viewModel: ProductInfoCollectionViewCellViewModelProtocol?) {
+    func setViewModel(viewModel: InstructionCollectionViewCellViewModelProtocol?) {
         self.viewModel = viewModel
     }
 }

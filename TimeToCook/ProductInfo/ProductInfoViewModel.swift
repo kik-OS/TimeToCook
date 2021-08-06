@@ -30,8 +30,9 @@ protocol ProductInfoViewModelProtocol {
                              withVelocity velocity: CGPoint,
                              collectionView: UICollectionView) -> CGPoint
     
-    func cellViewModel(at indexPath: IndexPath) -> ProductInfoCollectionViewCellViewModelProtocol?
+    func cellViewModel(at indexPath: IndexPath) -> InstructionCollectionViewCellViewModelProtocol?
     
+    func resetCollectionViewLayout()
     
 }
 
@@ -124,8 +125,13 @@ final class ProductInfoViewModel: ProductInfoViewModelProtocol {
         return CGPoint(x: updatedOffset, y: 0)
     }
     
-    func cellViewModel(at indexPath: IndexPath) -> ProductInfoCollectionViewCellViewModelProtocol? {
-        return ProductInfoCollectionViewCellViewModel(product: product, indexPath: indexPath)
+    func cellViewModel(at indexPath: IndexPath) -> InstructionCollectionViewCellViewModelProtocol? {
+        return InstructionCollectionViewCellViewModel(product: product, indexPath: indexPath)
+    }
+    
+    func resetCollectionViewLayout() {
+        currentPage = 0
+        previousOffset = 0
     }
 }
 

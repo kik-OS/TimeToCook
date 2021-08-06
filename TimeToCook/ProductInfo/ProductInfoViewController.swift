@@ -42,10 +42,18 @@ final class ProductInfoViewController: UIViewController {
         return startCookButton
     }()
     
+    private lazy var timerButton: TimerButton = {
+        let timerButton = TimerButton()
+        timerButton.addTarget(self, action: #selector(setTimerButtonTapped), for: .touchUpInside)
+        return timerButton
+    }()
+    
     private lazy var collectionView: InstructionCollectionView = {
-        let collectionView = InstructionCollectionView()
+        let collectionView = InstructionCollectionView(width: view.bounds.width)
         return collectionView
     }()
+    
+
     
  
     
@@ -101,6 +109,7 @@ final class ProductInfoViewController: UIViewController {
         setupProductNameLabelConstraints()
         setupProductViewConstraints()
         setupStartCookButtonConstraints()
+        setupTimerButtonConstraints()
         setupCollectionViewConstraints()
     }
     
@@ -160,15 +169,30 @@ final class ProductInfoViewController: UIViewController {
         ])
     }
     
+    private func setupTimerButtonConstraints() {
+        viewWithContent.addSubview(timerButton)
+        NSLayoutConstraint.activate([
+            timerButton.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 1/12),
+            timerButton.centerXAnchor.constraint(equalTo: viewWithContent.centerXAnchor),
+            timerButton.bottomAnchor.constraint(equalTo: startCookButton.topAnchor, constant: -15),
+            timerButton.widthAnchor.constraint(equalTo: viewWithContent.widthAnchor, multiplier: 2/3)
+        ])
+    }
+    
     private func setupCollectionViewConstraints() {
         viewWithContent.addSubview(collectionView)
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: viewWithContent.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: viewWithContent.trailingAnchor),
             collectionView.topAnchor.constraint(equalTo: viewWithContent.topAnchor, constant: 15),
-            collectionView.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 1/2.5)
+//            collectionView.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 1/3)
+            collectionView.bottomAnchor.constraint(equalTo: timerButton.topAnchor, constant: -35)
         ])
     }
+    
+  
+    
+
     
         
     
@@ -180,6 +204,8 @@ final class ProductInfoViewController: UIViewController {
         disappearContentViewAnimation()
         disappearProductViewAnimation()
         disappearStartCookButtonAnimation()
+        disappearCollectionViewAnimation()
+        disappearTimerButtonAnimation()
     }
     
     private func appearPlateAnimation() {
@@ -248,6 +274,19 @@ final class ProductInfoViewController: UIViewController {
         self.startCookButton.transform = CGAffineTransform(scaleX: 0.4, y: 0.4)
     }
     
+    
+    private func appearCollectionViewAnimation() {
+        collectionView.reloadData()
+        UIView.animate(withDuration: 0.5) {
+            self.collectionView.alpha = 1
+        }
+    }
+    
+    private func disappearCollectionViewAnimation() {
+        collectionView.alpha = 0
+    }
+    
+    
     private func collectionViewLayoutAnimation(velocity: CGPoint, point: CGPoint ) {
         UIView.animate(withDuration: 0.3, delay: 0,
                        usingSpringWithDamping: 1,
@@ -256,6 +295,21 @@ final class ProductInfoViewController: UIViewController {
             self.collectionView.setContentOffset(point, animated: true)
         }, completion: nil)
     }
+    
+    private func appearTimerButtonAnimation() {
+        UIView.animate(
+            withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.55, initialSpringVelocity: 3,
+            options: .curveEaseOut, animations: {
+                self.timerButton.transform = .identity
+                self.timerButton.alpha = 1
+        }, completion: nil)
+    }
+    
+    private func disappearTimerButtonAnimation() {
+        self.timerButton.alpha = 0
+        self.timerButton.transform = CGAffineTransform(scaleX: 0.4, y: 0.4)
+    }
+
     
     
     
@@ -274,6 +328,8 @@ final class ProductInfoViewController: UIViewController {
             self?.appearProductViewAnimation()
             self?.appearStartCookButtonAnimation()
             self?.startCookButton.startState()
+            self?.disappearCollectionViewAnimation()
+            self?.disappearTimerButtonAnimation()
         }
         
         viewModel.needUpdateViewForThirdStep = { [weak self] in
@@ -282,6 +338,10 @@ final class ProductInfoViewController: UIViewController {
             self?.startCookButton.stopState()
             self?.appearContentViewAnimation()
             self?.appearStartCookButtonAnimation()
+            self?.appearCollectionViewAnimation()
+            self?.appearTimerButtonAnimation()
+            self?.viewModel.resetCollectionViewLayout()
+            self?.collectionView.createLayout()
         }
     }
     
@@ -299,7 +359,7 @@ final class ProductInfoViewController: UIViewController {
     private func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.createLayout(width: view.bounds.width)
+        collectionView.createLayout()
     }
     
     //Gradient
@@ -312,6 +372,7 @@ final class ProductInfoViewController: UIViewController {
         gradient.endPoint = CGPoint(x: 0, y: 1)
         view.layer.insertSublayer(gradient, at: 0)
     }
+    
     //NavigationBar
     private func setupNavigationBar() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -322,6 +383,19 @@ final class ProductInfoViewController: UIViewController {
     @objc private func startCookButtonTapped() {
         viewModel.buttonStartCookTapped.toggle()
         viewModel.checkCurrentStateAndUpdateView()
+    }
+    
+    @objc private func setTimerButtonTapped() {
+        let timerViewModel = viewModel.getTimerViewModel()
+        let timerVC = TimerViewController(nibName: nil, bundle: nil, viewModel: timerViewModel)
+        timerVC.modalPresentationStyle = .overCurrentContext
+        
+        Notifications.shared.checkNotificationSettings { [weak self] in
+            let alert = Notifications.notificationsAreNotAvailableAlert()
+            self?.present(alert, animated: true)
+        }
+        timerButton.layer.removeAllAnimations()
+        present(timerVC, animated: true)
     }
 }
 
@@ -348,20 +422,12 @@ extension ProductInfoViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "instructionCell", for: indexPath) as? ProductInfoCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "instructionCell", for: indexPath) as? InstructionCollectionViewCell else { return UICollectionViewCell() }
         
         cell.setViewModel(viewModel: viewModel.cellViewModel(at: indexPath))
+        return cell
         
-//                if indexPath.item % 2 == 0 {
-//                    cell.backgroundColor = .blue
-//                } else {
-//                    cell.backgroundColor = .green
-//                }
-                return cell
-
     }
-    
-    
     
     
 }

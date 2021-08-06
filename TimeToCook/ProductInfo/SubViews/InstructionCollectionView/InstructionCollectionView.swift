@@ -9,17 +9,22 @@ import UIKit
 
 final class InstructionCollectionView: UICollectionView {
     
+    
+    private var width: CGFloat
+    
     //MARK: Init
     
-    init() {
+    init(width: CGFloat) {
+        self.width = width
         super.init(frame: .zero, collectionViewLayout: UICollectionViewLayout())
         decelerationRate = .fast
         isPagingEnabled = false
         translatesAutoresizingMaskIntoConstraints = false
-        register(ProductInfoCollectionViewCell.self, forCellWithReuseIdentifier: "instructionCell")
+        register(InstructionCollectionViewCell.self, forCellWithReuseIdentifier: "instructionCell")
         clipsToBounds = false
         backgroundColor = .none
         showsHorizontalScrollIndicator = false
+        alpha = 0
     }
     
     required init?(coder: NSCoder) {
@@ -28,11 +33,11 @@ final class InstructionCollectionView: UICollectionView {
     
     //MARK: Methods
     
-    func createLayout(width: CGFloat) {
+    func createLayout() {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: width - 40, height: bounds.height - 40)
         layout.minimumLineSpacing = 20
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         layout.scrollDirection = .horizontal
         collectionViewLayout = layout
     }
