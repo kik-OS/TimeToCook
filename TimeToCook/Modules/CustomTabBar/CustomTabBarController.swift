@@ -45,6 +45,12 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
         StorageManager.shared.saveProductCD(product: Product(code: "938040340", title: "Пельмени-Экстра", producer: "Мираторг", category: "Пельмени", weight: 1000, cookingTime: 8, intoBoilingWater: true, needStirring: true, waterRatio: 3))
         StorageManager.shared.saveProductCD(product: Product(code: "943560000", title: "Пшено", producer: "Увелка", category: "Каши", weight: 500, cookingTime: 3, intoBoilingWater: true, needStirring: true, waterRatio: 3))
         StorageManager.shared.saveProductCD(product: Product(code: "94356000043", title: "Пшено еще пшено опять пшено вкусное пшено", producer: "Увелка4к34к34кцуауцауцауцацу", category: "Каши", weight: 500, cookingTime: 3, intoBoilingWater: true, needStirring: true, waterRatio: 3))
+        
+        
+        let newAdd = AddingNewProductViewController()
+        newAdd.viewModel = AddingNewProductViewModel(code: "12345566477")
+        newAdd.modalPresentationStyle = .fullScreen
+        present(newAdd, animated: true, completion: nil)
     }
     
     override func viewDidLayoutSubviews() {
@@ -78,12 +84,7 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
     
     private func setupTabBarItems() {
         tabBar.tintColor = VarkaColors.mainColor
-//        let productInfoViewModel = viewModel.getProductInfoViewModel(product: nil)
-//        let productInfoVC = ProductInfoViewController(nibName: nil,
-//                                                      bundle: nil,
-//                                                      viewModel: productInfoViewModel)
-//        productInfoVC.tabBarItem.title = Inscriptions.tabBarItemLeftTitle
-//        productInfoVC.tabBarItem.image = UIImage(named: ImageTitles.tabBarItemLeft)
+
         let recentProductsVC = RecentProductsViewController()
         recentProductsVC.viewModel = viewModel.getRecentProductViewModel()
         recentProductsVC.tabBarItem.title = Inscriptions.tabBarItemRightTitle
@@ -117,12 +118,15 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
         
         viewModel.addingNewProductOffer = { [unowned self] code in
             let alertController = offerToAddingProductAlertController {
-                guard let addNewProductVC = self.storyboard?.instantiateViewController(
-                    identifier: Inscriptions.addNewProductVCStoryBoardID
-                ) as? AddingNewProductViewController else { return }
-                addNewProductVC.viewModel = self.viewModel.getAddingNewProductViewModel(withCode: code)
-                addNewProductVC.modalPresentationStyle = .fullScreen
-                self.present(addNewProductVC, animated: true)
+//                guard let addNewProductVC = self.storyboard?.instantiateViewController(
+//                    identifier: Inscriptions.addNewProductVCStoryBoardID
+//                ) as? AddingNewProductViewController else { return }
+//                addNewProductVC.viewModel = self.viewModel.getAddingNewProductViewModel(withCode: code)
+//                addNewProductVC.modalPresentationStyle = .fullScreen
+                
+//
+//
+//                self.present(addNewProductVC, animated: true)
             }
             self.present(alertController, animated: true)
         }

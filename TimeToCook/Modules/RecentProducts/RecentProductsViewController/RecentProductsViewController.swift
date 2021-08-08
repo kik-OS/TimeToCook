@@ -30,10 +30,17 @@ final class RecentProductsViewController: UIViewController {
         configureConstraints()
         recentProductCollectionView.viewModel = viewModel.getRecentProductCollectionViewViewModel()
         recentProductCollectionView.viewModel.delegate = self
-        view.backgroundColor = .white
-        
+        addVerticalGradientLayer()
     }
-    
+    private func addVerticalGradientLayer() {
+        let gradient = CAGradientLayer()
+        gradient.frame = view.bounds 
+        gradient.colors = [#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).cgColor, #colorLiteral(red: 0.8979474902, green: 0.9020553231, blue: 0.8977640867, alpha: 1).cgColor]
+        gradient.locations = [0.0, 1.0]
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 0, y: 1)
+        view.layer.insertSublayer(gradient, at: 0)
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         recentProductCollectionView.viewModel.fetchProductFromCoreData { [ weak self] in
@@ -57,15 +64,15 @@ final class RecentProductsViewController: UIViewController {
         ])
     }
     
-    func addVerticalGradientLayer(topColor: UIColor, bottomColor: UIColor) {
-           let gradient = CAGradientLayer()
-           gradient.frame = view.bounds
-           gradient.colors = [topColor.cgColor, bottomColor.cgColor]
-           gradient.locations = [0.0, 1.0]
-           gradient.startPoint = CGPoint(x: 0, y: 0)
-           gradient.endPoint = CGPoint(x: 0, y: 1)
-           view.layer.insertSublayer(gradient, at: 0)
-       }
+//    func addVerticalGradientLayer(topColor: UIColor, bottomColor: UIColor) {
+//           let gradient = CAGradientLayer()
+//           gradient.frame = view.bounds
+//           gradient.colors = [topColor.cgColor, bottomColor.cgColor]
+//           gradient.locations = [0.0, 1.0]
+//           gradient.startPoint = CGPoint(x: 0, y: 0)
+//           gradient.endPoint = CGPoint(x: 0, y: 1)
+//           view.layer.insertSublayer(gradient, at: 0)
+//       }
 }
 
 extension RecentProductsViewController: RecentProductCollectionViewDelegate {
