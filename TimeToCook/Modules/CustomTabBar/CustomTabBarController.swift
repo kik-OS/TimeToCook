@@ -25,20 +25,26 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
     
     // MARK: - Initializers
     
-    required init?(coder: NSCoder) {
+    init() {
         viewModel = CustomTabBarViewModel()
-        super.init(coder: coder)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        delegate = self
+        loadTabBar()
         setupMiddleButton()
         setupTabBarItems()
         setupViewModelBindings()
-        delegate = self
         createTemporaryProductForDemonstration()
+        setupNavigationBar()
     }
     
     override func viewDidLayoutSubviews() {
@@ -49,16 +55,29 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
     
     // MARK: - Actions
     
+    private func loadTabBar() {
+        self.setValue(CustomTabBar(), forKey: "tabBar")
+    }
+    
+    private func setupNavigationBar() {
+        let image = UIImage(systemName: "timer")
+        let timerButton = UIBarButtonItem(image: image,
+                                          style: .plain,
+                                          target: self,
+                                          action: #selector(timerBarButtonTapped))
+        timerButton.tintColor = .systemGray
+        navigationItem.rightBarButtonItems = [timerButton]
+    }
+    
     @objc private func centerButtonAction(sender: UIButton) {
         sender.animationForMiddleButton()
         let barCodeScannerVC = BarcodeScannerViewController()
         barCodeScannerVC.delegate = self
         barCodeScannerVC.modalPresentationStyle = .fullScreen
         present(barCodeScannerVC, animated: true, completion: nil)
-        
     }
     
-    @IBAction private func timerBarButtonTapped(_ sender: UIBarButtonItem) {
+    @objc private func timerBarButtonTapped(_ sender: UIBarButtonItem) {
         let timerViewModel = viewModel.getTimerViewModel()
         let timerVC = TimerViewController(nibName: nil, bundle: nil, viewModel: timerViewModel)
         timerVC.modalPresentationStyle = .overCurrentContext
@@ -69,7 +88,7 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
     
     private func setupTabBarItems() {
         tabBar.tintColor = VarkaColors.mainColor
-
+        
         let recentProductsVC = RecentProductsViewController()
         recentProductsVC.viewModel = viewModel.getRecentProductViewModel()
         recentProductsVC.tabBarItem.title = Inscriptions.tabBarItemRightTitle
@@ -88,7 +107,8 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
         view.layoutIfNeeded()
         NSLayoutConstraint.activate([
             middleButton.centerXAnchor.constraint(equalTo: tabBar.centerXAnchor),
-            middleButton.centerYAnchor.constraint(equalTo: tabBar.topAnchor, constant: CGFloat(viewModel.constantForMiddleButton)),
+            middleButton.centerYAnchor.constraint(equalTo: tabBar.topAnchor,
+                                                  constant: CGFloat(viewModel.constantForMiddleButton)),
             middleButton.widthAnchor.constraint(equalToConstant: CGFloat(viewModel.sizeForMiddleButton)),
             middleButton.heightAnchor.constraint(equalToConstant: CGFloat(viewModel.sizeForMiddleButton))
         ])
@@ -103,13 +123,11 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
         
         viewModel.addingNewProductOffer = { [unowned self] code in
             let alertController = offerToAddingProductAlertController {
-
                 let addNewProductVC = AddingNewProductViewController()
                 addNewProductVC.viewModel = self.viewModel.getAddingNewProductViewModel(withCode: code)
                 addNewProductVC.delegate = self
                 addNewProductVC.modalPresentationStyle = .fullScreen
                 self.present(addNewProductVC, animated: true)
-
             }
             self.present(alertController, animated: true)
         }
@@ -132,20 +150,44 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
     }
     
     private func createTemporaryProductForDemonstration() {
-        StorageManager.shared.saveProductCD(product: Product(code: "21121909098", title: "Макароны", producer: "Макфа", category: "Макароны", weight: 20, cookingTime: 10, intoBoilingWater: true, needStirring: true, waterRatio: 3))
-        StorageManager.shared.saveProductCD(product: Product(code: "3332156464", title: "Вареники с вишней", producer: "ВкусВилл", category: "Вареники", weight: 1000, cookingTime: 7, intoBoilingWater: true, needStirring: true, waterRatio: 5))
-        StorageManager.shared.saveProductCD(product: Product(code: "21121453543", title: "Гречка Русская", producer: "Макфа", category: "Гречка", weight: 500, cookingTime: 20, intoBoilingWater: true, needStirring: true, waterRatio: 3))
-        StorageManager.shared.saveProductCD(product: Product(code: "333219090", title: "Нут", producer: "Макфа", category: "Бобовые", weight: 200, cookingTime: 40, intoBoilingWater: true, needStirring: true, waterRatio: 3))
-        StorageManager.shared.saveProductCD(product: Product(code: "938040340", title: "Пельмени-Экстра", producer: "Мираторг", category: "Пельмени", weight: 1000, cookingTime: 8, intoBoilingWater: true, needStirring: true, waterRatio: 3))
-        StorageManager.shared.saveProductCD(product: Product(code: "943560000", title: "Пшено", producer: "Увелка", category: "Каши", weight: 500, cookingTime: 3, intoBoilingWater: true, needStirring: true, waterRatio: 3))
-        StorageManager.shared.saveProductCD(product: Product(code: "94356000043", title: "Пшено еще пшено опять пшено вкусное пшено", producer: "Увелка4к34к34кцуауцауцауцацу", category: "Каши", weight: 500, cookingTime: 3, intoBoilingWater: true, needStirring: true, waterRatio: 3))
+        StorageManager.shared.saveProductCD(product: Product(code: "21121909098", title: "Макароны",
+                                                             producer: "Макфа", category: "Макароны",
+                                                             weight: 20, cookingTime: 10,
+                                                             intoBoilingWater: true,
+                                                             needStirring: true, waterRatio: 3))
+        StorageManager.shared.saveProductCD(product: Product(code: "3332156464", title: "Вареники с вишней",
+                                                             producer: "ВкусВилл", category: "Вареники",
+                                                             weight: 1000, cookingTime: 7,
+                                                             intoBoilingWater: true,
+                                                             needStirring: true, waterRatio: 5))
+        StorageManager.shared.saveProductCD(product: Product(code: "21121453543", title: "Гречка Русская",
+                                                             producer: "Макфа", category: "Гречка",
+                                                             weight: 500, cookingTime: 20,
+                                                             intoBoilingWater: true,
+                                                             needStirring: true, waterRatio: 3))
+        StorageManager.shared.saveProductCD(product: Product(code: "333219090", title: "Нут",
+                                                             producer: "Макфа", category: "Бобовые",
+                                                             weight: 200, cookingTime: 40,
+                                                             intoBoilingWater: true,
+                                                             needStirring: true, waterRatio: 3))
+        StorageManager.shared.saveProductCD(product: Product(code: "938040340", title: "Пельмени-Экстра",
+                                                             producer: "Мираторг", category: "Пельмени",
+                                                             weight: 1000, cookingTime: 8,
+                                                             intoBoilingWater: true,
+                                                             needStirring: true, waterRatio: 3))
+        StorageManager.shared.saveProductCD(product: Product(code: "943560000", title: "Пшено",
+                                                             producer: "Увелка", category: "Каши",
+                                                             weight: 500, cookingTime: 3,
+                                                             intoBoilingWater: true,
+                                                             needStirring: true, waterRatio: 3))
     }
     
-    func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func tabBarController(_ tabBarController: UITabBarController,
+                          animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return TabBarTransition(viewControllers: tabBarController.viewControllers)
     }
     
- 
+    
 }
 
 // MARK: - Extensions
