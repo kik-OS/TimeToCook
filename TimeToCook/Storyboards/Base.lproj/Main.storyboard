@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K9i-IV-iPe">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -33,7 +34,7 @@
         <!--Custom Tab Bar Controller-->
         <scene sceneID="mpw-V2-NPN">
             <objects>
-                <tabBarController storyboardIdentifier="customTabBar" useStoryboardIdentifierAsRestorationIdentifier="YES" id="C3u-R3-MZb" customClass="CustomTabBarController" customModule="VarkaAPP" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="customTabBar" useStoryboardIdentifierAsRestorationIdentifier="YES" id="C3u-R3-MZb" customClass="CustomTabBarController" customModule="TimeToCook" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="dlE-K4-omA">
                         <barButtonItem key="rightBarButtonItem" image="timer" catalog="system" id="URZ-Nx-ETA">
                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -42,7 +43,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ccC-ff-bsM" customClass="CustomTabBar" customModule="VarkaAPP" customModuleProvider="target">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ccC-ff-bsM" customClass="CustomTabBar" customModule="TimeToCook" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -55,7 +56,7 @@
         <!--Adding New Product View Controller-->
         <scene sceneID="2JN-jQ-wYi">
             <objects>
-                <viewController storyboardIdentifier="addNewProductVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7Z7-UH-SDU" customClass="AddingNewProductViewController" customModule="VarkaAPP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addNewProductVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7Z7-UH-SDU" customClass="AddingNewProductViewController" customModule="TimeToCook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q42-Nc-QYf" customClass="UIScrollView">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -91,9 +92,6 @@
                                                         <rect key="frame" x="0.0" y="20.666666666666671" width="350" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                                        <connections>
-                                                            <action selector="textFieldsEditingDidBegin:" destination="7Z7-UH-SDU" eventType="editingDidBegin" id="9xL-Jp-irU"/>
-                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -120,10 +118,6 @@
                                                         <rect key="frame" x="0.0" y="20.666666666666657" width="350" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="yes" textContentType="organization"/>
-                                                        <connections>
-                                                            <action selector="textFieldsEditingChanged:" destination="7Z7-UH-SDU" eventType="editingChanged" id="X1s-X6-u1B"/>
-                                                            <action selector="textFieldsEditingDidBegin:" destination="7Z7-UH-SDU" eventType="editingDidBegin" id="zM8-2S-lLw"/>
-                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -144,10 +138,6 @@
                                                         <rect key="frame" x="0.0" y="20.666666666666686" width="350" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="yes" textContentType="organization"/>
-                                                        <connections>
-                                                            <action selector="textFieldsEditingChanged:" destination="7Z7-UH-SDU" eventType="editingChanged" id="l6U-RD-pbS"/>
-                                                            <action selector="textFieldsEditingDidBegin:" destination="7Z7-UH-SDU" eventType="editingDidBegin" id="7Qb-Qj-jKJ"/>
-                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -168,10 +158,6 @@
                                                         <rect key="frame" x="0.0" y="20.666666666666686" width="350" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                                        <connections>
-                                                            <action selector="textFieldsEditingChanged:" destination="7Z7-UH-SDU" eventType="editingChanged" id="8Vy-eb-ZTF"/>
-                                                            <action selector="textFieldsEditingDidBegin:" destination="7Z7-UH-SDU" eventType="editingDidBegin" id="kdz-UK-aG3"/>
-                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -192,10 +178,6 @@
                                                         <rect key="frame" x="0.0" y="20.666666666666686" width="350" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                                        <connections>
-                                                            <action selector="textFieldsEditingChanged:" destination="7Z7-UH-SDU" eventType="editingChanged" id="fUt-0J-pEA"/>
-                                                            <action selector="textFieldsEditingDidBegin:" destination="7Z7-UH-SDU" eventType="editingDidBegin" id="ouj-Ij-fqo"/>
-                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -216,9 +198,6 @@
                                                         <rect key="frame" x="0.0" y="20.666666666666629" width="350" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                                        <connections>
-                                                            <action selector="textFieldsEditingDidBegin:" destination="7Z7-UH-SDU" eventType="editingDidBegin" id="nsI-ta-NsQ"/>
-                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -270,9 +249,6 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="saveButtonPressed" destination="7Z7-UH-SDU" eventType="touchUpInside" id="tfJ-mi-w1A"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -285,9 +261,6 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PT2-Dh-npl">
                                 <rect key="frame" x="350" y="44" width="30" height="30"/>
-                                <connections>
-                                    <action selector="closeButtonPressed" destination="7Z7-UH-SDU" eventType="touchUpInside" id="b4r-f1-paC"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="azP-E7-7oK"/>
@@ -302,15 +275,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="categoryTF" destination="C2H-PC-HAl" id="U1j-uj-dbn"/>
                         <outlet property="codeLabel" destination="498-Wo-fVB" id="AWQ-Tp-621"/>
-                        <outlet property="cookingTimeTF" destination="rwY-qc-xSG" id="8I5-xl-ZUz"/>
                         <outlet property="mainScrollView" destination="q42-Nc-QYf" id="94x-mS-IKz"/>
-                        <outlet property="producerTF" destination="YaD-L5-W2x" id="4Co-0e-RYb"/>
-                        <outlet property="saveButton" destination="N3F-mr-hrf" id="0x0-FT-yrQ"/>
-                        <outlet property="titleProductTF" destination="Opw-DD-c1S" id="dwF-xm-mHy"/>
-                        <outlet property="waterRatioTF" destination="vWR-vs-Heh" id="onA-f9-xD1"/>
-                        <outlet property="weightTF" destination="dGI-iU-gH8" id="2M1-w6-2SU"/>
                         <segue destination="MeM-Oj-keO" kind="unwind" identifier="unwindToProductInfo" unwindAction="unwindWithSegue:" id="GKk-Dw-5wY"/>
                     </connections>
                 </viewController>

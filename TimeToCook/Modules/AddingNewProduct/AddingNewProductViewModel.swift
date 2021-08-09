@@ -1,8 +1,8 @@
 //
-//  AddingNewProductViewModel.swift
-//  VarkaAPP
+//  Add2VM.swift
+//  TimeToCook
 //
-//  Created by Никита Гвоздиков on 09.03.2021.
+//  Created by Никита Гвоздиков on 07.08.2021.
 //
 
 import Foundation
@@ -29,8 +29,7 @@ protocol AddingNewProductViewModelProtocol: AnyObject {
     var stateForDownButton: Bool { get }
   
     init(code: String)
-  
-//    func getProductInfoViewModel() -> ProductInfoViewModelProtocol
+    
     func validation() -> Bool
     func calculateWaterRatio(row: Int)
     func createProductInFB()
@@ -189,8 +188,4 @@ final class AddingNewProductViewModel: AddingNewProductViewModelProtocol {
             needUpdateFirstResponder?(calculationOfUpperResponder())
         }
     }
-    
-//    func getProductInfoViewModel() -> ProductInfoViewModelProtocol {
-//        ProductInfoViewModel(product: completedProduct)
-//    }
 }

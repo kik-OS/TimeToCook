@@ -16,12 +16,15 @@ final class BarcodeScannerViewController: UIViewController {
     weak var delegate: CustomTabBarController?
     
     private lazy var flashButton: UIButton = {
-        let flashButton = FlashButton(frame: CGRect(x: view.frame.width - 80, y: view.center.y + 200, width: 40, height: 40))
+        let flashButton = FlashButton(frame: CGRect(x: view.frame.width - 80,
+                                                    y: view.center.y + 200,
+                                                    width: 40, height: 40))
         return flashButton
     }()
     
     private lazy var cancelButton: UIButton = {
-        let cancelButton = CancelCameraButton(frame: CGRect(x: 15, y: view.center.y + 200, width: 120, height: 40))
+        let cancelButton = CancelCameraButton(frame: CGRect(x: 15, y: view.center.y + 200,
+                                                            width: 120, height: 40))
         cancelButton.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
         return cancelButton
     }()
@@ -34,7 +37,8 @@ final class BarcodeScannerViewController: UIViewController {
     }()
     
     private lazy var redLine: UIView = {
-        let line = UIView(frame: CGRect(x: 25, y: view.center.y - 90 , width: view.frame.width - 50, height: 1))
+        let line = UIView(frame: CGRect(x: 25, y: view.center.y - 90,
+                                        width: view.frame.width - 50, height: 1))
         line.backgroundColor = .red.withAlphaComponent(0.7)
         return line
     }()
@@ -55,9 +59,9 @@ final class BarcodeScannerViewController: UIViewController {
     }
     
     private func scanningLineAnimate() {
-        UIView.animate(withDuration: 1, delay: 0, options: [.repeat, .autoreverse]) { [self] in
+        UIView.animate(withDuration: 1, delay: 0, options: [.repeat, .autoreverse]) {
             self.view.layoutIfNeeded()
-            redLine.transform = CGAffineTransform(translationX: 0, y: 180)
+            self.redLine.transform = CGAffineTransform(translationX: 0, y: 180)
         }
     }
     

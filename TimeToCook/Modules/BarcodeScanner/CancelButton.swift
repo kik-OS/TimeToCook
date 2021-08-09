@@ -6,8 +6,8 @@
 //
 
 import UIKit
+
 final class CancelCameraButton: UIButton {
-    
     
    override init(frame: CGRect) {
     super.init(frame: frame)
