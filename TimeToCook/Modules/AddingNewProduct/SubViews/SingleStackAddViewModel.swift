@@ -17,7 +17,6 @@ enum TextFieldsType {
 }
 
 protocol SingleStackAddViewModelProtocol {
-    
     var tag: Int { get }
     var name: String { get }
     var placeHolder: String { get }
@@ -30,20 +29,27 @@ protocol SingleStackAddViewModelProtocol {
 
 final class SingleStackAddViewModel: SingleStackAddViewModelProtocol {
     
+    // MARK: Private Properties
+    
     private var textFieldType: TextFieldsType
     
+    // MARK: Public Properties
+    
     var returnKeyType: UIReturnKeyType = .next
-    var autocorrectionType: UITextAutocorrectionType = .no
+    var autocorrectionType: UITextAutocorrectionType = .default
     var keyBoardType: UIKeyboardType = .default
     var name = ""
     var placeHolder = ""
     var tag = 0
     
+    // MARK: Init
     
     init(textFieldType: TextFieldsType) {
         self.textFieldType = textFieldType
         setup()
     }
+    
+    // MARK: Private Methodes
     
     private func setup() {
         switch textFieldType {

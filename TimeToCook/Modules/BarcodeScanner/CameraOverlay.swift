@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 final class CameraOverlay: UIView {
     
     override init(frame: CGRect) {

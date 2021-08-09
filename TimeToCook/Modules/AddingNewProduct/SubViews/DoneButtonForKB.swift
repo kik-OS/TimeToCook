@@ -9,6 +9,8 @@ import UIKit
 
 final class DoneButtonForKB: UIBarButtonItem {
     
+    //MARK: Init
+    
     override init() {
         super.init()
         tintColor = .white

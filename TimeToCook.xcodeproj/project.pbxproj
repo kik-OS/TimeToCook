@@ -30,8 +30,6 @@
 		E41C3C9426A702DB006F1AE9 /* not.wav in Resources */ = {isa = PBXBuildFile; fileRef = E41C3C4C26A702D9006F1AE9 /* not.wav */; };
 		E41C3C9526A702DB006F1AE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E41C3C4E26A702D9006F1AE9 /* LaunchScreen.storyboard */; };
 		E41C3C9626A702DB006F1AE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E41C3C5026A702D9006F1AE9 /* Main.storyboard */; };
-		E41C3C9726A702DB006F1AE9 /* AddingNewProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C5426A702DA006F1AE9 /* AddingNewProductViewController.swift */; };
-		E41C3C9826A702DB006F1AE9 /* AddingNewProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C5526A702DA006F1AE9 /* AddingNewProductViewModel.swift */; };
 		E41C3C9926A702DB006F1AE9 /* TimerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E41C3C5726A702DA006F1AE9 /* TimerViewController.xib */; };
 		E41C3C9A26A702DB006F1AE9 /* TimeDiagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C5926A702DA006F1AE9 /* TimeDiagram.swift */; };
 		E41C3C9B26A702DB006F1AE9 /* TimerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C5A26A702DA006F1AE9 /* TimerPickerView.swift */; };
@@ -64,10 +62,10 @@
 		E44BBF6C26A6FEB4003D403C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44BBF6B26A6FEB4003D403C /* AppDelegate.swift */; };
 		E44BBF6E26A6FEB4003D403C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44BBF6D26A6FEB4003D403C /* SceneDelegate.swift */; };
 		E44BBF7626A6FEB4003D403C /* TimeToCook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E44BBF7426A6FEB4003D403C /* TimeToCook.xcdatamodeld */; };
-		E44E9E0426BE815E00E7082B /* Add2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E9E0326BE815E00E7082B /* Add2VC.swift */; };
-		E44E9E0626BE817400E7082B /* Add2VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E9E0526BE817400E7082B /* Add2VM.swift */; };
+		E44E9E0426BE815E00E7082B /* AddingNewProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E9E0326BE815E00E7082B /* AddingNewProductViewController.swift */; };
+		E44E9E0626BE817400E7082B /* AddingNewProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E9E0526BE817400E7082B /* AddingNewProductViewModel.swift */; };
 		E44E9E0926BE872800E7082B /* ContentScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E9E0826BE872800E7082B /* ContentScroll.swift */; };
-		E44E9E0B26BE8C8100E7082B /* AddCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E9E0A26BE8C8100E7082B /* AddCloseButton.swift */; };
+		E44E9E0B26BE8C8100E7082B /* CloseButtonAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E9E0A26BE8C8100E7082B /* CloseButtonAdd.swift */; };
 		E44E9E0D26BE8E5800E7082B /* SingleStackAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E9E0C26BE8E5800E7082B /* SingleStackAddView.swift */; };
 		E44E9E0F26BEB44900E7082B /* TextFieldsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E9E0E26BEB44900E7082B /* TextFieldsStackView.swift */; };
 		E44E9E1126BFAD5200E7082B /* SaveProductButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E9E1026BFAD5200E7082B /* SaveProductButton.swift */; };
@@ -119,8 +117,6 @@
 		E41C3C4C26A702D9006F1AE9 /* not.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = not.wav; sourceTree = "<group>"; };
 		E41C3C4F26A702D9006F1AE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E41C3C5126A702D9006F1AE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E41C3C5426A702DA006F1AE9 /* AddingNewProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddingNewProductViewController.swift; sourceTree = "<group>"; };
-		E41C3C5526A702DA006F1AE9 /* AddingNewProductViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddingNewProductViewModel.swift; sourceTree = "<group>"; };
 		E41C3C5726A702DA006F1AE9 /* TimerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimerViewController.xib; sourceTree = "<group>"; };
 		E41C3C5926A702DA006F1AE9 /* TimeDiagram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeDiagram.swift; sourceTree = "<group>"; };
 		E41C3C5A26A702DA006F1AE9 /* TimerPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerPickerView.swift; sourceTree = "<group>"; };
@@ -155,10 +151,10 @@
 		E44BBF6D26A6FEB4003D403C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E44BBF7526A6FEB4003D403C /* TimeToCook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TimeToCook.xcdatamodel; sourceTree = "<group>"; };
 		E44BBF7C26A6FEB7003D403C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E44E9E0326BE815E00E7082B /* Add2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Add2VC.swift; sourceTree = "<group>"; };
-		E44E9E0526BE817400E7082B /* Add2VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Add2VM.swift; sourceTree = "<group>"; };
+		E44E9E0326BE815E00E7082B /* AddingNewProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingNewProductViewController.swift; sourceTree = "<group>"; };
+		E44E9E0526BE817400E7082B /* AddingNewProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingNewProductViewModel.swift; sourceTree = "<group>"; };
 		E44E9E0826BE872800E7082B /* ContentScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentScroll.swift; sourceTree = "<group>"; };
-		E44E9E0A26BE8C8100E7082B /* AddCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCloseButton.swift; sourceTree = "<group>"; };
+		E44E9E0A26BE8C8100E7082B /* CloseButtonAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButtonAdd.swift; sourceTree = "<group>"; };
 		E44E9E0C26BE8E5800E7082B /* SingleStackAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStackAddView.swift; sourceTree = "<group>"; };
 		E44E9E0E26BEB44900E7082B /* TextFieldsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldsStackView.swift; sourceTree = "<group>"; };
 		E44E9E1026BFAD5200E7082B /* SaveProductButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveProductButton.swift; sourceTree = "<group>"; };
@@ -298,6 +294,7 @@
 		E41C3C5226A702DA006F1AE9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				E4570FBE26B2A33A0013F7C9 /* ProductInfo */,
 				E41C3CC726A9AB06006F1AE9 /* BarcodeScanner */,
 				E41C3C5326A702DA006F1AE9 /* AddingNewProduct */,
 				E41C3C5626A702DA006F1AE9 /* Timer */,
@@ -310,8 +307,9 @@
 		E41C3C5326A702DA006F1AE9 /* AddingNewProduct */ = {
 			isa = PBXGroup;
 			children = (
-				E41C3C5426A702DA006F1AE9 /* AddingNewProductViewController.swift */,
-				E41C3C5526A702DA006F1AE9 /* AddingNewProductViewModel.swift */,
+				E4C1A11226C12EF2008C1D17 /* SubViews */,
+				E44E9E0526BE817400E7082B /* AddingNewProductViewModel.swift */,
+				E44E9E0326BE815E00E7082B /* AddingNewProductViewController.swift */,
 			);
 			path = AddingNewProduct;
 			sourceTree = "<group>";
@@ -484,8 +482,6 @@
 		E44BBF6A26A6FEB4003D403C /* TimeToCook */ = {
 			isa = PBXGroup;
 			children = (
-				E44E9E0726BE86FE00E7082B /* Add */,
-				E4570FBE26B2A33A0013F7C9 /* ProductInfo */,
 				E41C3CBC26A754E0006F1AE9 /* Supporting Files */,
 				E41C3C3626A702D6006F1AE9 /* Additional Files  */,
 				E41C3C3326A702D6006F1AE9 /* Models */,
@@ -495,24 +491,6 @@
 				E41C3C4D26A702D9006F1AE9 /* Storyboards */,
 			);
 			path = TimeToCook;
-			sourceTree = "<group>";
-		};
-		E44E9E0726BE86FE00E7082B /* Add */ = {
-			isa = PBXGroup;
-			children = (
-				E44E9E0526BE817400E7082B /* Add2VM.swift */,
-				E44E9E0326BE815E00E7082B /* Add2VC.swift */,
-				E44E9E0826BE872800E7082B /* ContentScroll.swift */,
-				E44E9E0A26BE8C8100E7082B /* AddCloseButton.swift */,
-				E44E9E0C26BE8E5800E7082B /* SingleStackAddView.swift */,
-				E44E9E1226BFB6F000E7082B /* SingleStackAddViewModel.swift */,
-				E44E9E0E26BEB44900E7082B /* TextFieldsStackView.swift */,
-				E44E9E1026BFAD5200E7082B /* SaveProductButton.swift */,
-				E44E9E1426C10FF600E7082B /* DoneButtonForKB.swift */,
-				E44E9E1626C110A200E7082B /* DownButtonForKB.swift */,
-				E44E9E1826C1110D00E7082B /* UpButtonForKB.swift */,
-			);
-			path = Add;
 			sourceTree = "<group>";
 		};
 		E4570FBE26B2A33A0013F7C9 /* ProductInfo */ = {
@@ -540,6 +518,22 @@
 				E47E0C7726BBBC300060BE3A /* StartCookButton.swift */,
 				E4EB3E7326BD1F4400DA752C /* TimerButton.swift */,
 				E4EB3E7526BD550C00DA752C /* CloseButton.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		E4C1A11226C12EF2008C1D17 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				E44E9E0826BE872800E7082B /* ContentScroll.swift */,
+				E44E9E0A26BE8C8100E7082B /* CloseButtonAdd.swift */,
+				E44E9E0C26BE8E5800E7082B /* SingleStackAddView.swift */,
+				E44E9E1226BFB6F000E7082B /* SingleStackAddViewModel.swift */,
+				E44E9E0E26BEB44900E7082B /* TextFieldsStackView.swift */,
+				E44E9E1026BFAD5200E7082B /* SaveProductButton.swift */,
+				E44E9E1426C10FF600E7082B /* DoneButtonForKB.swift */,
+				E44E9E1626C110A200E7082B /* DownButtonForKB.swift */,
+				E44E9E1826C1110D00E7082B /* UpButtonForKB.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -676,7 +670,6 @@
 			files = (
 				E47E0C7826BBBC300060BE3A /* StartCookButton.swift in Sources */,
 				E44E9E0F26BEB44900E7082B /* TextFieldsStackView.swift in Sources */,
-				E41C3C9726A702DB006F1AE9 /* AddingNewProductViewController.swift in Sources */,
 				E41C3CB526A702DB006F1AE9 /* TimerManager.swift in Sources */,
 				E41C3C8C26A702DA006F1AE9 /* Transition.swift in Sources */,
 				E44E9E0926BE872800E7082B /* ContentScroll.swift in Sources */,
@@ -736,16 +729,15 @@
 				E41C3C8826A702DA006F1AE9 /* DateFormatter+Extension.swift in Sources */,
 				E41C3C8326A702DA006F1AE9 /* Product.swift in Sources */,
 				E41C3CA926A702DB006F1AE9 /* RecentProductViewModel.swift in Sources */,
-				E41C3C9826A702DB006F1AE9 /* AddingNewProductViewModel.swift in Sources */,
-				E44E9E0626BE817400E7082B /* Add2VM.swift in Sources */,
+				E44E9E0626BE817400E7082B /* AddingNewProductViewModel.swift in Sources */,
 				E4EB3E7126BC3DB800DA752C /* InstructionCollectionView.swift in Sources */,
-				E44E9E0426BE815E00E7082B /* Add2VC.swift in Sources */,
+				E44E9E0426BE815E00E7082B /* AddingNewProductViewController.swift in Sources */,
 				E41C3CB426A702DB006F1AE9 /* DeviceManager.swift in Sources */,
 				E41C3CA126A702DB006F1AE9 /* CustomTabBar.swift in Sources */,
 				E44E9E0D26BE8E5800E7082B /* SingleStackAddView.swift in Sources */,
 				E44E9E1126BFAD5200E7082B /* SaveProductButton.swift in Sources */,
 				E4570FC326B2A4F40013F7C9 /* ViewWithContent.swift in Sources */,
-				E44E9E0B26BE8C8100E7082B /* AddCloseButton.swift in Sources */,
+				E44E9E0B26BE8C8100E7082B /* CloseButtonAdd.swift in Sources */,
 				E44E9E1526C10FF600E7082B /* DoneButtonForKB.swift in Sources */,
 				E4EB3E7426BD1F4400DA752C /* TimerButton.swift in Sources */,
 			);
