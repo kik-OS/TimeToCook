@@ -72,6 +72,9 @@
 		E44E9E0F26BEB44900E7082B /* TextFieldsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E9E0E26BEB44900E7082B /* TextFieldsStackView.swift */; };
 		E44E9E1126BFAD5200E7082B /* SaveProductButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E9E1026BFAD5200E7082B /* SaveProductButton.swift */; };
 		E44E9E1326BFB6F000E7082B /* SingleStackAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E9E1226BFB6F000E7082B /* SingleStackAddViewModel.swift */; };
+		E44E9E1526C10FF600E7082B /* DoneButtonForKB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E9E1426C10FF600E7082B /* DoneButtonForKB.swift */; };
+		E44E9E1726C110A200E7082B /* DownButtonForKB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E9E1626C110A200E7082B /* DownButtonForKB.swift */; };
+		E44E9E1926C1110D00E7082B /* UpButtonForKB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E9E1826C1110D00E7082B /* UpButtonForKB.swift */; };
 		E4570FC126B2A3C80013F7C9 /* PlateImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC026B2A3C80013F7C9 /* PlateImageView.swift */; };
 		E4570FC326B2A4F40013F7C9 /* ViewWithContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC226B2A4F40013F7C9 /* ViewWithContent.swift */; };
 		E4570FC526B3F02E0013F7C9 /* StillEmptyLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC426B3F02E0013F7C9 /* StillEmptyLabels.swift */; };
@@ -160,6 +163,9 @@
 		E44E9E0E26BEB44900E7082B /* TextFieldsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldsStackView.swift; sourceTree = "<group>"; };
 		E44E9E1026BFAD5200E7082B /* SaveProductButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveProductButton.swift; sourceTree = "<group>"; };
 		E44E9E1226BFB6F000E7082B /* SingleStackAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStackAddViewModel.swift; sourceTree = "<group>"; };
+		E44E9E1426C10FF600E7082B /* DoneButtonForKB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneButtonForKB.swift; sourceTree = "<group>"; };
+		E44E9E1626C110A200E7082B /* DownButtonForKB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownButtonForKB.swift; sourceTree = "<group>"; };
+		E44E9E1826C1110D00E7082B /* UpButtonForKB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpButtonForKB.swift; sourceTree = "<group>"; };
 		E4570FC026B2A3C80013F7C9 /* PlateImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateImageView.swift; sourceTree = "<group>"; };
 		E4570FC226B2A4F40013F7C9 /* ViewWithContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithContent.swift; sourceTree = "<group>"; };
 		E4570FC426B3F02E0013F7C9 /* StillEmptyLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StillEmptyLabels.swift; sourceTree = "<group>"; };
@@ -502,6 +508,9 @@
 				E44E9E1226BFB6F000E7082B /* SingleStackAddViewModel.swift */,
 				E44E9E0E26BEB44900E7082B /* TextFieldsStackView.swift */,
 				E44E9E1026BFAD5200E7082B /* SaveProductButton.swift */,
+				E44E9E1426C10FF600E7082B /* DoneButtonForKB.swift */,
+				E44E9E1626C110A200E7082B /* DownButtonForKB.swift */,
+				E44E9E1826C1110D00E7082B /* UpButtonForKB.swift */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -676,6 +685,7 @@
 				E41C3CA326A702DB006F1AE9 /* CustomTabBarController.swift in Sources */,
 				E41C3CC426A87304006F1AE9 /* CameraOverlay.swift in Sources */,
 				E41C3C8526A702DA006F1AE9 /* Int+Extension.swift in Sources */,
+				E44E9E1926C1110D00E7082B /* UpButtonForKB.swift in Sources */,
 				E41C3C8426A702DA006F1AE9 /* UIDevice+Extension.swift in Sources */,
 				E41C3CC626A9A977006F1AE9 /* CancelButton.swift in Sources */,
 				E41C3C9F26A702DB006F1AE9 /* CustomTabBarViewModel.swift in Sources */,
@@ -722,6 +732,7 @@
 				E4EB3E6F26BC346D00DA752C /* InstructionCollectionViewCell.swift in Sources */,
 				E49CB14026B97CF900B99038 /* ProductView.swift in Sources */,
 				E41C3C8726A702DA006F1AE9 /* UIView+Extension.swift in Sources */,
+				E44E9E1726C110A200E7082B /* DownButtonForKB.swift in Sources */,
 				E41C3C8826A702DA006F1AE9 /* DateFormatter+Extension.swift in Sources */,
 				E41C3C8326A702DA006F1AE9 /* Product.swift in Sources */,
 				E41C3CA926A702DB006F1AE9 /* RecentProductViewModel.swift in Sources */,
@@ -735,6 +746,7 @@
 				E44E9E1126BFAD5200E7082B /* SaveProductButton.swift in Sources */,
 				E4570FC326B2A4F40013F7C9 /* ViewWithContent.swift in Sources */,
 				E44E9E0B26BE8C8100E7082B /* AddCloseButton.swift in Sources */,
+				E44E9E1526C10FF600E7082B /* DoneButtonForKB.swift in Sources */,
 				E4EB3E7426BD1F4400DA752C /* TimerButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

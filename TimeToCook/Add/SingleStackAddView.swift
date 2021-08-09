@@ -21,7 +21,7 @@ final class SingleStackAddView: UIStackView {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.setContentHuggingPriority(.init(250), for: .horizontal)
+        textField.setContentHuggingPriority(UILayoutPriority(249), for: .horizontal)
         return textField
     }()
     
@@ -43,7 +43,7 @@ final class SingleStackAddView: UIStackView {
         addArrangedSubview(label)
         addArrangedSubview(textField)
         setupTextField()
-        setContentHuggingPriority(.init(250), for: .horizontal)
+        setupConstraints()
     }
     
     required init(coder: NSCoder) {
@@ -52,6 +52,12 @@ final class SingleStackAddView: UIStackView {
     
     //MARK: Private Methodes
     
+   private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            textField.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            textField.trailingAnchor.constraint(equalTo: self.trailingAnchor)])
+    }
+  
     private func setupTextField() {
         guard let viewModel = viewModel else { return }
         textField.tag = viewModel.tag
@@ -63,13 +69,11 @@ final class SingleStackAddView: UIStackView {
         textField.autocapitalizationType = .words
     }
 
-    //MARK: Public Methodes
+    //MARK: Public Methods
     
     func getTF() -> UITextField {
         textField
     }
-    
-  
 }
 
 

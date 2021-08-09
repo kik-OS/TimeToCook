@@ -11,16 +11,16 @@ final class AddingNewProductViewController: UIViewController {
 
     // MARK: - UI
     
+    private lazy var contentScroll: ContentScroll = {
+        let contentScroll = ContentScroll()
+        contentScroll.backgroundColor = .white
+        return contentScroll
+    }()
+    
     private lazy var contentView: UIView = {
        let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
         return contentView
-    }()
-    
-    private lazy var contentScroll: ContentScroll = {
-       let contentScroll = ContentScroll()
-        contentScroll.backgroundColor = .white
-        return contentScroll
     }()
     
     private lazy var closeButton: AddCloseButton = {
@@ -36,6 +36,8 @@ final class AddingNewProductViewController: UIViewController {
     
     private lazy var codeLabel: UILabel = {
         let codeLabel = UILabel()
+        codeLabel.textColor = VarkaColors.mainColor
+        codeLabel.font = codeLabel.font.withSize(20)
         return codeLabel
     }()
     
@@ -75,20 +77,36 @@ final class AddingNewProductViewController: UIViewController {
         return waterRatioSV
     }()
     
-    // MARK: - Private Properties
-
-    private let pickerViewForKB = UIPickerView()
-    private let doneButtonForKB = UIBarButtonItem()
-    private let downButtonForKB = UIBarButtonItem()
-    private let upButtonForKB = UIBarButtonItem()
-    private var textFields: Set<UITextField> = []
-   
+    private lazy var pickerViewForKB: UIPickerView = {
+        let pickerViewForKB = UIPickerView()
+        return pickerViewForKB
+    }()
     
+    private lazy var doneButtonForKB: DoneButtonForKB = {
+        let doneButtonForKB = DoneButtonForKB()
+        doneButtonForKB.action = #selector(didTapOnDoneButton)
+        return doneButtonForKB
+    }()
+    
+    private lazy var downButtonForKB: DownButtonForKB = {
+        let downButtonForKB = DownButtonForKB()
+        downButtonForKB.action = #selector(didTapOnDownButton)
+        return downButtonForKB
+    }()
+    
+    private lazy var upButtonForKB: UpButtonForKB = {
+        let upButtonForKB = UpButtonForKB()
+        upButtonForKB.action = #selector(didTapOnUpButton)
+        return upButtonForKB
+    }()
+    
+    // MARK: - Private Properties
+    
+    private var singleStacks: [SingleStackAddView] = []
+   
     // MARK: - Dependences
 
     var viewModel: AddingNewProductViewModelProtocol!
-
-  
 
     // MARK: - Lifecycle methods
 
@@ -102,7 +120,7 @@ final class AddingNewProductViewController: UIViewController {
         configureGestureRecognizer()
         setupViewModelBindings()
         setupAllConstraints()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .white
     }
 
     // MARK: - Private Methodes
@@ -114,6 +132,7 @@ final class AddingNewProductViewController: UIViewController {
         setupTextFieldsStackViewConstraints()
         setupSaveProductButtonConstraints()
         setupStack()
+        setupSubStacksConstraints()
     }
     
     private func setupContentScrollConstraints() {
@@ -153,7 +172,7 @@ final class AddingNewProductViewController: UIViewController {
     private func setupTextFieldsStackViewConstraints() {
         contentView.addSubview(textFieldsStackView)
         NSLayoutConstraint.activate([
-            textFieldsStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+            textFieldsStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30),
             textFieldsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
             textFieldsStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15)])
     }
@@ -162,35 +181,38 @@ final class AddingNewProductViewController: UIViewController {
         contentView.addSubview(saveButton)
         NSLayoutConstraint.activate([
             saveButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 2/3),
-            saveButton.topAnchor.constraint(equalTo: textFieldsStackView.bottomAnchor, constant: 25),
+            saveButton.topAnchor.constraint(equalTo: textFieldsStackView.bottomAnchor, constant: 40),
             saveButton.heightAnchor.constraint(equalToConstant: 40),
             saveButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)])
     }
     
+    private func setupSubStacksConstraints() {
+        singleStacks.forEach {
+            NSLayoutConstraint.activate([
+               $0.leadingAnchor.constraint(equalTo: textFieldsStackView.leadingAnchor),
+               $0.trailingAnchor.constraint(equalTo: textFieldsStackView.trailingAnchor)])
+        }
+    }
+    
     private func setupStack() {
         textFieldsStackView.addArrangedSubview(codeLabel)
-        textFieldsStackView.addArrangedSubview(categorySV)
-        textFieldsStackView.addArrangedSubview(titleProductSV)
-        textFieldsStackView.addArrangedSubview(producerSV)
-        textFieldsStackView.addArrangedSubview(cookingTimeSV)
-        textFieldsStackView.addArrangedSubview(weightSV)
-        textFieldsStackView.addArrangedSubview(waterRatioSV)
+        singleStacks.forEach { textFieldsStackView.addArrangedSubview($0)}
     }
     
     private func setupTextFields() {
-        textFields.insert(categorySV.getTF())
-        textFields.insert(titleProductSV.getTF())
-        textFields.insert(producerSV.getTF())
-        textFields.insert(cookingTimeSV.getTF())
-        textFields.insert(weightSV.getTF())
-        textFields.insert(waterRatioSV.getTF())
+        singleStacks.append(categorySV)
+        singleStacks.append(titleProductSV)
+        singleStacks.append(producerSV)
+        singleStacks.append(cookingTimeSV)
+        singleStacks.append(weightSV)
+        singleStacks.append(waterRatioSV)
         addTargetsToTextFields()
     }
     
     private func addTargetsToTextFields() {
-        textFields.forEach {
-            $0.addTarget(self, action: #selector(textFieldsEditingDidBegin), for: .editingDidBegin)
-            $0.addTarget(self, action: #selector(textFieldsEditingChanged), for: .editingChanged)
+        singleStacks.forEach {
+            $0.getTF().addTarget(self, action: #selector(textFieldsEditingDidBegin), for: .editingDidBegin)
+            $0.getTF().addTarget(self, action: #selector(textFieldsEditingChanged), for: .editingChanged)
         }
     }
     
@@ -205,7 +227,7 @@ final class AddingNewProductViewController: UIViewController {
         }
 
         viewModel.needUpdateFirstResponder = { [unowned self] tag in
-            guard let targetTF = textFields.first(where: { $0.tag == tag}) else { return }
+            guard let targetTF = singleStacks.map({$0.getTF()}).first(where: { $0.tag == tag}) else { return }
             targetTF.becomeFirstResponder()
         }
     }
@@ -219,7 +241,6 @@ final class AddingNewProductViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
     }
-
 
    @objc private func textFieldsEditingDidBegin(_ sender: UITextField) {
         viewModel.indexOfFirstResponder = sender.tag
@@ -264,9 +285,7 @@ final class AddingNewProductViewController: UIViewController {
 //        productInfoVC.viewModel.updateProduct(product: viewModel.completedProduct)
     }
 
-    // MARK: - Private Methods
    
-
 }
 
 //MARK: - Extensions
@@ -297,13 +316,13 @@ extension AddingNewProductViewController: UITextFieldDelegate {
     @objc private func keyBoardDidShow(notification: Notification) {
         guard let userInfo = notification.userInfo else {return}
         let kbFrameSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        contentScroll.contentSize = CGSize(width: view.bounds.size.width,
-                                                     height: view.bounds.size.height + kbFrameSize.height + 40)
+        contentScroll.contentSize = CGSize(width: contentView.bounds.size.width,
+                                                     height: contentView.bounds.size.height + kbFrameSize.height + 40)
         contentScroll.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: kbFrameSize.height, right: 0)
     }
 
     @objc private func keyBoardDidHide() {
-        contentScroll.contentSize = CGSize(width: view.bounds.size.width, height: view.bounds.size.height)
+        contentScroll.contentSize = CGSize(width: contentView.bounds.size.width, height: contentView.bounds.size.height)
     }
 
     private func updateSaveButtonsState() {
@@ -318,24 +337,10 @@ extension AddingNewProductViewController: UITextFieldDelegate {
     }
 
     private func createToolBar() -> UIToolbar {
-        let keyboardToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100))
+        let keyboardToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,
+                                                      width: UIScreen.main.bounds.width,
+                                                      height: 100))
         keyboardToolbar.sizeToFit()
-
-        doneButtonForKB.tintColor = .white
-        doneButtonForKB.isEnabled = false
-        doneButtonForKB.title = Inscriptions.titleOfDoneButtonForKB
-        doneButtonForKB.style = .plain
-        doneButtonForKB.action = #selector(didTapOnDoneButton)
-
-        downButtonForKB.tintColor = .white
-        downButtonForKB.action = #selector(didTapOnDownButton)
-        downButtonForKB.image = UIImage(systemName: ImageTitles.toolBarDownButton)
-        downButtonForKB.style = .plain
-
-        upButtonForKB.tintColor = .white
-        upButtonForKB.action = #selector(didTapOnUpButton)
-        upButtonForKB.image = UIImage(systemName: ImageTitles.toolBarUpButton)
-        upButtonForKB.style = .plain
 
         let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let space = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
@@ -350,7 +355,8 @@ extension AddingNewProductViewController: UITextFieldDelegate {
 
     private func addToolBar() {
         let keyboardToolbar = createToolBar()
-        textFields.forEach { textField in
+        singleStacks.forEach { stack in
+            let textField = stack.getTF()
             textField.delegate = self
             textField.inputAccessoryView = keyboardToolbar
         }

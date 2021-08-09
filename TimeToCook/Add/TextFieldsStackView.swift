@@ -18,8 +18,7 @@ final class TextFieldStackView: UIStackView {
         distribution = UIStackView.Distribution.fill
         contentMode = .scaleToFill
         alignment = UIStackView.Alignment.leading
-        spacing = 8
-
+        spacing = 15
     }
     
     required init(coder: NSCoder) {
