@@ -79,7 +79,7 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
     
     @objc private func timerBarButtonTapped(_ sender: UIBarButtonItem) {
         let timerViewModel = viewModel.getTimerViewModel()
-        let timerVC = TimerViewController(nibName: nil, bundle: nil, viewModel: timerViewModel)
+        let timerVC = TimerViewController(viewModel: timerViewModel)
         timerVC.modalPresentationStyle = .overCurrentContext
         present(timerVC, animated: true)
     }

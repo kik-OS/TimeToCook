@@ -395,7 +395,7 @@ final class ProductInfoViewController: UIViewController {
     
     @objc private func setTimerButtonTapped() {
         let timerViewModel = viewModel.getTimerViewModel()
-        let timerVC = TimerViewController(nibName: nil, bundle: nil, viewModel: timerViewModel)
+        let timerVC = TimerViewController(viewModel: timerViewModel)
         timerVC.modalPresentationStyle = .overCurrentContext
         
         Notifications.shared.checkNotificationSettings { [weak self] in
