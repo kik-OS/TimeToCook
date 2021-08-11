@@ -83,7 +83,6 @@ final class ProductInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationBar()
         addVerticalGradientLayer()
         setupAllConstraints()
         setupViewModelBindingsForAnimation()
@@ -388,14 +387,7 @@ final class ProductInfoViewController: UIViewController {
         gradient.endPoint = CGPoint(x: 0, y: 1)
         view.layer.insertSublayer(gradient, at: 0)
     }
-    
-    //NavigationBar
-    private func setupNavigationBar() {
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = true
-    }
-    
+        
     @objc private func startCookButtonTapped() {
         viewModel.buttonStartCookTapped.toggle()
         viewModel.checkCurrentStateAndUpdateView()
@@ -403,7 +395,7 @@ final class ProductInfoViewController: UIViewController {
     
     @objc private func setTimerButtonTapped() {
         let timerViewModel = viewModel.getTimerViewModel()
-        let timerVC = TimerViewController(nibName: nil, bundle: nil, viewModel: timerViewModel)
+        let timerVC = TimerViewController(viewModel: timerViewModel)
         timerVC.modalPresentationStyle = .overCurrentContext
         
         Notifications.shared.checkNotificationSettings { [weak self] in
