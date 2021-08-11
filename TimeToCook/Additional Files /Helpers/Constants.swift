@@ -19,10 +19,6 @@ enum DataConstants {
                                 "Чечевица красная", "Чечевица зелёная", "Другое"]
 }
 
-enum PopOverTableSize: Int {
-    case width = 150
-    case height = 160
-}
 
 enum PickerViewForKBType {
     case category

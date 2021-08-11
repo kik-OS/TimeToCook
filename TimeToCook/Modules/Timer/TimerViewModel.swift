@@ -1,8 +1,8 @@
 //
 //  TimerViewModel.swift
-//  VarkaAPP
+//  TimeToCook
 //
-//  Created by Никита Гвоздиков on 16.03.2021.
+//  Created by Никита Гвоздиков on 11.08.2021.
 //
 
 import Foundation
@@ -69,7 +69,7 @@ final class TimerViewModel: TimerViewModelProtocol {
     
     private var timerManager: TimerManagerProtocol = TimerManager.shared
         
-    // MARK: - Initializers
+    // MARK: - Init
     
     init(minutes: Int = 0) {
         self.minutes = minutes
