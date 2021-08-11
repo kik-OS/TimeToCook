@@ -8,8 +8,8 @@
 import Foundation
 
 protocol RecentProductViewModelProtocol {
-    func getProductInfoViewModel(product: Product?) -> ProductInfoViewModelProtocol
     func getRecentProductCollectionViewViewModel() -> RecentProductCollectionViewViewModelProtocol
+    func checkCurrentState(isHidden: Bool) -> String
 }
 
 final class RecentProductViewModel: RecentProductViewModelProtocol {
@@ -17,7 +17,10 @@ final class RecentProductViewModel: RecentProductViewModelProtocol {
         RecentProductCollectionViewViewModel()
     }
     
-    func getProductInfoViewModel(product: Product?) -> ProductInfoViewModelProtocol {
-        ProductInfoViewModel(product: product)
+    
+    func checkCurrentState(isHidden: Bool) -> String {
+        isHidden ? "Недавние Продукты" : "В недавних продуктах ничего не найдено. Попробуйте что-нибудь отсканировать."
     }
+
+    
 }

@@ -41,7 +41,6 @@
 		E41C3CA526A702DB006F1AE9 /* RecentProductCollectionViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C6826A702DA006F1AE9 /* RecentProductCollectionViewViewModel.swift */; };
 		E41C3CA626A702DB006F1AE9 /* RecentProductCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C6A26A702DA006F1AE9 /* RecentProductCollectionViewCellViewModel.swift */; };
 		E41C3CA726A702DB006F1AE9 /* RecentProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C6B26A702DA006F1AE9 /* RecentProductCollectionViewCell.swift */; };
-		E41C3CA826A702DB006F1AE9 /* RecentProductsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E41C3C6D26A702DA006F1AE9 /* RecentProductsViewController.xib */; };
 		E41C3CA926A702DB006F1AE9 /* RecentProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C6E26A702DA006F1AE9 /* RecentProductViewModel.swift */; };
 		E41C3CAA26A702DB006F1AE9 /* RecentProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C6F26A702DA006F1AE9 /* RecentProductsViewController.swift */; };
 		E41C3CB126A702DB006F1AE9 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C7A26A702DA006F1AE9 /* StorageManager.swift */; };
@@ -86,6 +85,7 @@
 		E4B971BD26C3A4C4003DFACA /* TimerBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971BC26C3A4C4003DFACA /* TimerBackgroundView.swift */; };
 		E4B971BF26C3A80A003DFACA /* TimerStopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971BE26C3A80A003DFACA /* TimerStopButton.swift */; };
 		E4C1A11426C14979008C1D17 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C1A11326C14979008C1D17 /* CustomNavigationController.swift */; };
+		E4C783A826C3E80E00C95626 /* RecentProductLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C783A726C3E80E00C95626 /* RecentProductLabel.swift */; };
 		E4EB3E6D26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E6C26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift */; };
 		E4EB3E6F26BC346D00DA752C /* InstructionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E6E26BC346D00DA752C /* InstructionCollectionViewCell.swift */; };
 		E4EB3E7126BC3DB800DA752C /* InstructionCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E7026BC3DB800DA752C /* InstructionCollectionView.swift */; };
@@ -131,7 +131,6 @@
 		E41C3C6826A702DA006F1AE9 /* RecentProductCollectionViewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentProductCollectionViewViewModel.swift; sourceTree = "<group>"; };
 		E41C3C6A26A702DA006F1AE9 /* RecentProductCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentProductCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		E41C3C6B26A702DA006F1AE9 /* RecentProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentProductCollectionViewCell.swift; sourceTree = "<group>"; };
-		E41C3C6D26A702DA006F1AE9 /* RecentProductsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentProductsViewController.xib; sourceTree = "<group>"; };
 		E41C3C6E26A702DA006F1AE9 /* RecentProductViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentProductViewModel.swift; sourceTree = "<group>"; };
 		E41C3C6F26A702DA006F1AE9 /* RecentProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentProductsViewController.swift; sourceTree = "<group>"; };
 		E41C3C7A26A702DA006F1AE9 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
@@ -178,6 +177,7 @@
 		E4B971BC26C3A4C4003DFACA /* TimerBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerBackgroundView.swift; sourceTree = "<group>"; };
 		E4B971BE26C3A80A003DFACA /* TimerStopButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStopButton.swift; sourceTree = "<group>"; };
 		E4C1A11326C14979008C1D17 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
+		E4C783A726C3E80E00C95626 /* RecentProductLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentProductLabel.swift; sourceTree = "<group>"; };
 		E4EB3E6C26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		E4EB3E6E26BC346D00DA752C /* InstructionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionCollectionViewCell.swift; sourceTree = "<group>"; };
 		E4EB3E7026BC3DB800DA752C /* InstructionCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionCollectionView.swift; sourceTree = "<group>"; };
@@ -367,9 +367,9 @@
 		E41C3C6526A702DA006F1AE9 /* RecentProducts */ = {
 			isa = PBXGroup;
 			children = (
-				E41C3C6626A702DA006F1AE9 /* RecentProductsCollectionView */,
-				E41C3C6926A702DA006F1AE9 /* RecentProductViewCell */,
-				E41C3C6C26A702DA006F1AE9 /* RecentProductsViewController */,
+				E41C3C6F26A702DA006F1AE9 /* RecentProductsViewController.swift */,
+				E41C3C6E26A702DA006F1AE9 /* RecentProductViewModel.swift */,
+				E4C783A626C3E7D800C95626 /* SubViews */,
 			);
 			path = RecentProducts;
 			sourceTree = "<group>";
@@ -390,16 +390,6 @@
 				E41C3C6B26A702DA006F1AE9 /* RecentProductCollectionViewCell.swift */,
 			);
 			path = RecentProductViewCell;
-			sourceTree = "<group>";
-		};
-		E41C3C6C26A702DA006F1AE9 /* RecentProductsViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E41C3C6D26A702DA006F1AE9 /* RecentProductsViewController.xib */,
-				E41C3C6E26A702DA006F1AE9 /* RecentProductViewModel.swift */,
-				E41C3C6F26A702DA006F1AE9 /* RecentProductsViewController.swift */,
-			);
-			path = RecentProductsViewController;
 			sourceTree = "<group>";
 		};
 		E41C3C7826A702DA006F1AE9 /* Services */ = {
@@ -547,6 +537,16 @@
 			path = SubViews;
 			sourceTree = "<group>";
 		};
+		E4C783A626C3E7D800C95626 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				E41C3C6626A702DA006F1AE9 /* RecentProductsCollectionView */,
+				E41C3C6926A702DA006F1AE9 /* RecentProductViewCell */,
+				E4C783A726C3E80E00C95626 /* RecentProductLabel.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
 		E4EB3E7226BD082300DA752C /* InstructionCollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -622,7 +622,6 @@
 				E41C3C9426A702DB006F1AE9 /* not.wav in Resources */,
 				E41C3C9126A702DB006F1AE9 /* timer.png in Resources */,
 				E41C3C9226A702DB006F1AE9 /* Assets.xcassets in Resources */,
-				E41C3CA826A702DB006F1AE9 /* RecentProductsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -712,6 +711,7 @@
 				E41C3C9C26A702DB006F1AE9 /* TimerStartButton.swift in Sources */,
 				E4570FC126B2A3C80013F7C9 /* PlateImageView.swift in Sources */,
 				E49CB14226B9811900B99038 /* SingleStackView.swift in Sources */,
+				E4C783A826C3E80E00C95626 /* RecentProductLabel.swift in Sources */,
 				E41C3CC026A85FC4006F1AE9 /* FlashButton.swift in Sources */,
 				E41C3CBB26A7048A006F1AE9 /* BarcodeScanner.swift in Sources */,
 				E41C3CA626A702DB006F1AE9 /* RecentProductCollectionViewCellViewModel.swift in Sources */,
