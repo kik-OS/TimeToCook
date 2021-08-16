@@ -10,7 +10,11 @@ import AVFoundation
 
 final class FlashButton: UIButton {
     
+    //MARK: Properties
+    
     private var flashIsOn = false
+    
+    //MARK: Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,6 +28,8 @@ final class FlashButton: UIButton {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK: Private Methodes 
     
     @objc private func flash() {
         flashIsOn.toggle()
@@ -61,5 +67,4 @@ final class FlashButton: UIButton {
     private func changeTintColor() {
         tintColor = flashIsOn ? .yellow : .white
     }
-    
 }

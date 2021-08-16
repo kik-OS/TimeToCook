@@ -11,6 +11,10 @@ final class RecentProductCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
+    static let reuseID = "RecentProductCollectionViewCell"
+    
+    // MARK: - Dependences
+    
     var viewModel: RecentProductCollectionViewCellViewModelProtocol! {
         didSet {
             mainImageView.image = UIImage(named: viewModel.productImage)
@@ -22,9 +26,9 @@ final class RecentProductCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    static let reuseID = "RecentProductCollectionViewCell"
+    // MARK: - UI
     
-    let mainImageView: UIImageView = {
+   private lazy var mainImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
@@ -32,12 +36,11 @@ final class RecentProductCollectionViewCell: UICollectionViewCell {
         imageView.layer.shadowOpacity = 0.2
         imageView.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         imageView.layer.shadowOffset = CGSize(width: 4, height: 4)
-        
         imageView.clipsToBounds = false
         return imageView
     }()
     
-    let nameLabel: UILabel = {
+    private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Avenir Next Regular", size: 20)
         label.textColor = VarkaColors.mainColor
@@ -46,7 +49,7 @@ final class RecentProductCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    let barcodeLabel: UILabel = {
+    private lazy var barcodeLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Avenir Next Regular", size: 15)
         label.textColor = .systemGray
@@ -55,7 +58,7 @@ final class RecentProductCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    let producerLabel: UILabel = {
+    private lazy var producerLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Avenir Next Regular", size: 15)
         label.textColor = .systemGray
@@ -64,7 +67,7 @@ final class RecentProductCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    let weightLabel: UILabel = {
+    private lazy var weightLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Avenir Next Regular", size: 15)
         label.textColor = .systemGray
@@ -73,7 +76,7 @@ final class RecentProductCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    let cookingTimeLabel: UILabel = {
+    private lazy var cookingTimeLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Avenir Next Regular", size: 15)
         label.textColor = .systemGray

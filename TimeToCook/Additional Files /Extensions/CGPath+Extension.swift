@@ -2,7 +2,7 @@
 //  CGPath+Extension.swift
 //  VarkaAPP
 //
-//  Created by Никита Гвоздиков on 12.03.2021.
+//  Created by Никита Гвоздиков on 16.08.2021.
 //
 
 import UIKit

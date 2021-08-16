@@ -9,6 +9,8 @@ import UIKit
 
 final class CameraOverlay: UIView {
     
+    //MARK: Init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         

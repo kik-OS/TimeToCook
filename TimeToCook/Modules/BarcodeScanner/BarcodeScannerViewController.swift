@@ -12,8 +12,12 @@ import AVFoundation
 
 final class BarcodeScannerViewController: UIViewController {
     
+    //MARK: Properties
+    
     private var scanner: BarcodeScanner?
     weak var delegate: CustomTabBarController?
+    
+    //MARK: UI
     
     private lazy var flashButton: UIButton = {
         let flashButton = FlashButton(frame: CGRect(x: view.frame.width - 80,
@@ -43,6 +47,7 @@ final class BarcodeScannerViewController: UIViewController {
         return line
     }()
     
+    //MARK: Life Cicle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +63,8 @@ final class BarcodeScannerViewController: UIViewController {
         scanningLineAnimate()
     }
     
+    //MARK: Private Methodes
+    
     private func scanningLineAnimate() {
         UIView.animate(withDuration: 1, delay: 0, options: [.repeat, .autoreverse]) {
             self.view.layoutIfNeeded()
@@ -69,6 +76,8 @@ final class BarcodeScannerViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 }
+
+//MARK: Extension
 
 extension BarcodeScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     public func metadataOutput(_ output: AVCaptureMetadataOutput,
