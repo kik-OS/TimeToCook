@@ -11,7 +11,7 @@ final class RecentProductCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    static let reuseID = "RecentProductCollectionViewCell"
+    static let reuseID = Inscriptions.recentProductCollectionViewCellId
     
     // MARK: - Dependences
     
@@ -28,15 +28,8 @@ final class RecentProductCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI
     
-   private lazy var mainImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
-        imageView.layer.shadowRadius = 5
-        imageView.layer.shadowOpacity = 0.2
-        imageView.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-        imageView.layer.shadowOffset = CGSize(width: 4, height: 4)
-        imageView.clipsToBounds = false
+   private lazy var mainImageView: MainImageRPCell = {
+        let imageView = MainImageRPCell()
         return imageView
     }()
     
@@ -49,40 +42,24 @@ final class RecentProductCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private lazy var barcodeLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Avenir Next Regular", size: 15)
-        label.textColor = .systemGray
-        label.numberOfLines = 1
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var barcodeLabel: SmallLabelCell = {
+        let label = SmallLabelCell()
         return label
     }()
     
-    private lazy var producerLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Avenir Next Regular", size: 15)
-        label.textColor = .systemGray
-        label.numberOfLines = 1
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var producerLabel: SmallLabelCell = {
+        let label = SmallLabelCell()
         return label
     }()
     
-    private lazy var weightLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Avenir Next Regular", size: 15)
-        label.textColor = .systemGray
-        label.numberOfLines = 1
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var weightLabel: SmallLabelCell = {
+        let label = SmallLabelCell()
         return label
     }()
     
-    private lazy var cookingTimeLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Avenir Next Regular", size: 15)
-        label.textColor = .systemGray
-        label.numberOfLines = 1
+    private lazy var cookingTimeLabel: SmallLabelCell = {
+        let label = SmallLabelCell()
         label.textAlignment = .right
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -90,21 +67,15 @@ final class RecentProductCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(mainImageView)
-        addSubview(nameLabel)
-        addSubview(producerLabel)
-        addSubview(cookingTimeLabel)
-        addSubview(barcodeLabel)
-        addSubview(weightLabel)
         backgroundColor = .white
-        configureConstraints()
+        setupAllConstraint()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Methods
+    // MARK: - Private Methods
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -116,27 +87,61 @@ final class RecentProductCollectionViewCell: UICollectionViewCell {
         clipsToBounds = false
     }
     
-    private func configureConstraints() {
+    private func setupAllConstraint() {
+        setupMainImageViewConstraint()
+        setupNameLabelConstraints()
+        setupBarcodeLabelConstraints()
+        setupProducerLabelConstraints()
+        setupWeightLabelConstraints()
+        setupCookingTimeLabelConstraints()
+    }
+    
+    private func setupMainImageViewConstraint() {
+        addSubview(mainImageView)
         NSLayoutConstraint.activate([
             mainImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             mainImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             mainImageView.topAnchor.constraint(equalTo: topAnchor, constant: -25),
-            mainImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1/1.7),
+            mainImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1/1.7)])
+    }
+    
+    private func setupNameLabelConstraints() {
+        addSubview(nameLabel)
+        NSLayoutConstraint.activate([
             nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            nameLabel.topAnchor.constraint(equalTo: mainImageView.bottomAnchor, constant: 12),
+            nameLabel.topAnchor.constraint(equalTo: mainImageView.bottomAnchor, constant: 12)])
+    }
+    
+    private func setupBarcodeLabelConstraints() {
+        addSubview(barcodeLabel)
+        NSLayoutConstraint.activate([
             barcodeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             barcodeLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
-            barcodeLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/2, constant: 10),
+            barcodeLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/2, constant: 10)])
+    }
+    
+    private func setupProducerLabelConstraints() {
+        addSubview(producerLabel)
+        NSLayoutConstraint.activate([
             producerLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             producerLabel.topAnchor.constraint(equalTo: barcodeLabel.bottomAnchor, constant: 4),
-            producerLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/2, constant: 10),
+            producerLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/2, constant: 10)])
+    }
+    
+    private func setupWeightLabelConstraints() {
+        addSubview(weightLabel)
+        NSLayoutConstraint.activate([
             weightLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             weightLabel.topAnchor.constraint(equalTo: producerLabel.bottomAnchor, constant: 4),
-            weightLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/2, constant: 10),
+            weightLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/2, constant: 10)])
+    }
+    
+    private func setupCookingTimeLabelConstraints() {
+        addSubview(cookingTimeLabel)
+        NSLayoutConstraint.activate([
             cookingTimeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             cookingTimeLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
-            cookingTimeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
-        ])
+            cookingTimeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)])
     }
 }

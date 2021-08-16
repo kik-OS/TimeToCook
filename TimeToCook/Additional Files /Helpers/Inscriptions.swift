@@ -36,4 +36,5 @@ enum Inscriptions {
     static let variantsOfWaterRatio = ["🍚 1 : 1💧", "🍚 1 : 2💧", "🍚 1 : 3💧", "🍚 1 : 4💧", "🍚 1 : 5💧"]
     static let titleOfDoneButtonForKB = "Сохранить"
     static let messageOfStillEmptyView = "Здесь пока ничего нет. Попробуйте что-нибудь отсканировать или выбрать из недавних продуктов"
+    static let recentProductCollectionViewCellId = "RecentProductCollectionViewCell"
 }
