@@ -1,6 +1,6 @@
 //
 //  StartTimerButton.swift
-//  VarkaAPP
+//  TimeToCook
 //
 //  Created by Никита Гвоздиков on 11.08.2021.
 //

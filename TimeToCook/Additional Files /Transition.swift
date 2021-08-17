@@ -1,8 +1,8 @@
 //
 //  Transition.swift
-//  VarkaAPP
+//  TimeToCook
 //
-//  Created by Никита Гвоздиков on 06.04.2021.
+//  Created by Никита Гвоздиков on 06.08.2021.
 //
 
 import UIKit

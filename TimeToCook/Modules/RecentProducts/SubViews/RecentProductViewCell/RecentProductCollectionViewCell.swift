@@ -1,8 +1,8 @@
 //
 //  RecentProductCollectionViewCell.swift
-//  VarkaAPP
+//  TimeToCook
 //
-//  Created by Никита Гвоздиков on 10.03.2021.
+//  Created by Никита Гвоздиков on 10.08.2021.
 //
 
 import UIKit

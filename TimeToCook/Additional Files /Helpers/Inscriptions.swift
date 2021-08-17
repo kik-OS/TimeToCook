@@ -1,8 +1,8 @@
 //
 //  Inscriptions.swift
-//  VarkaAPP
+//  TimeToCook
 //
-//  Created by Никита Гвоздиков on 16.03.2021.
+//  Created by Никита Гвоздиков on 01.07.2021.
 //
 
 enum Inscriptions {
@@ -37,4 +37,6 @@ enum Inscriptions {
     static let titleOfDoneButtonForKB = "Сохранить"
     static let messageOfStillEmptyView = "Здесь пока ничего нет. Попробуйте что-нибудь отсканировать или выбрать из недавних продуктов"
     static let recentProductCollectionViewCellId = "RecentProductCollectionViewCell"
+    static let messageRecentProductNotFound = "В недавних продуктах ничего не найдено. Попробуйте что-нибудь отсканировать."
+    static let recentProductTitle = "Недавние продукты"
 }

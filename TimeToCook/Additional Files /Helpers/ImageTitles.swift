@@ -1,8 +1,8 @@
 //
 //  ImageTitles.swift
-//  VarkaAPP
+//  TimeToCook
 //
-//  Created by Никита Гвоздиков on 16.03.2021.
+//  Created by Никита Гвоздиков on 16.08.2021.
 //
 
 enum ImageTitles {

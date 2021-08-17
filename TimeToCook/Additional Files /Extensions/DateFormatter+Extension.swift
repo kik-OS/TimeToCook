@@ -1,8 +1,8 @@
 //
 //  DateFormatter+Extension.swift
-//  VarkaAPP
+//  TimeToCook
 //
-//  Created by Никита Гвоздиков on 11.03.2021.
+//  Created by Никита Гвоздиков on 11.07.2021.
 //
 
 import Foundation

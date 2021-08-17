@@ -1,8 +1,8 @@
 //
 //  RecentProductCollectionViewCellViewModel.swift
-//  VarkaAPP
+//  TimeToCook
 //
-//  Created by Никита Гвоздиков on 11.03.2021.
+//  Created by Никита Гвоздиков on 11.08.2021.
 //
 
 import Foundation
@@ -18,6 +18,11 @@ protocol RecentProductCollectionViewCellViewModelProtocol {
 }
 
 final class RecentProductCollectionViewCellViewModel: RecentProductCollectionViewCellViewModelProtocol {
+    
+    // MARK: - Properties
+    
+    private let product: ProductCD
+    
     var productWeight: String {
         "\(product.weight) грамм"
     }
@@ -25,8 +30,6 @@ final class RecentProductCollectionViewCellViewModel: RecentProductCollectionVie
     var productBarcode: String {
         product.code ?? ""
     }
-    
-    // MARK: - Properties
     
     var productTitle: String? {
         product.title
@@ -44,11 +47,9 @@ final class RecentProductCollectionViewCellViewModel: RecentProductCollectionVie
         "\(product.cookingTime)мин.⏱"
     }
     
-    private let product: ProductCD
-    
     // MARK: - Initializer
     
-    required init(product: ProductCD) {
+    init(product: ProductCD) {
         self.product = product
     }
 }

@@ -1,8 +1,8 @@
 //
 //  RecentProductsViewController.swift
-//  VarkaAPP
+//  TimeToCook
 //
-//  Created by Никита Гвоздиков on 05.03.2021.
+//  Created by Никита Гвоздиков on 05.08.2021.
 //
 
 import UIKit
@@ -32,6 +32,10 @@ final class RecentProductsViewController: UIViewController {
         let recentProductCollectionView = RecentProductCollectionView()
         return recentProductCollectionView
     }()
+    
+    // MARK: - Dependences
+    
+    var viewModel: RecentProductViewModelProtocol?
     
     //MARK: Constraints
     
@@ -69,15 +73,11 @@ final class RecentProductsViewController: UIViewController {
                                                                 constant: view.frame.height / 5)])
     }
     
-    // MARK: - Dependences
-    
-    var viewModel: RecentProductViewModelProtocol!
-    
     // MARK: - Lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        recentProductCollectionView.viewModel = viewModel.getRecentProductCollectionViewViewModel()
+        recentProductCollectionView.viewModel = viewModel?.getRecentProductCollectionViewViewModel()
         recentProductCollectionView.viewModel.delegate = self
         addVerticalGradientLayer()
         setupAllConstraints()
@@ -85,12 +85,14 @@ final class RecentProductsViewController: UIViewController {
   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        recentProductCollectionView.setContentOffset(CGPoint(x: -ConstantsCollectionView.leftDistanceToView,
+                                                                   y: 0), animated: false)
         recentProductCollectionView.viewModel.fetchProductFromCoreData { [ weak self] in
             self?.recentProductCollectionView.reloadData()
             guard let isHidden = self?.recentProductCollectionView.viewModel.contentIsEmpty() else { return }
             self?.recentProductCollectionView.isHidden = isHidden
             self?.emptyPlateImage.isHidden = !isHidden
-            self?.recentProductLabel.text = self?.viewModel.checkCurrentState(isHidden: !isHidden)
+            self?.recentProductLabel.text = self?.viewModel?.checkCurrentState(isHidden: !isHidden)
         }
     }
     

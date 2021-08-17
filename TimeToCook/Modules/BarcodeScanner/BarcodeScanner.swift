@@ -1,6 +1,6 @@
 //
 //  Scan2.swift
-//  VarkaAPP
+//  TimeToCook
 //
 //  Created by Никита Гвоздиков on 19.07.2021.
 //

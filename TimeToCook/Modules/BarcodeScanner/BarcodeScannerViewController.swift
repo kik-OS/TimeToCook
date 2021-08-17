@@ -1,6 +1,6 @@
 //
 //  Scan2View.swift
-//  VarkaAPP
+//  TimeToCook
 //
 //  Created by Никита Гвоздиков on 19.07.2021.
 //
@@ -47,7 +47,7 @@ final class BarcodeScannerViewController: UIViewController {
         return line
     }()
     
-    //MARK: Life Cicle
+    //MARK: Life Circle
     
     override func viewDidLoad() {
         super.viewDidLoad()

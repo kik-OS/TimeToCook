@@ -1,8 +1,8 @@
 //
 //  TimerManager.swift
-//  VarkaAPP
+//  TimeToCook
 //
-//  Created by Никита Гвоздиков on 29.03.2021.
+//  Created by Никита Гвоздиков on 29.08.2021.
 //
 
 import UIKit
