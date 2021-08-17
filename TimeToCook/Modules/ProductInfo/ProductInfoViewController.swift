@@ -381,7 +381,7 @@ final class ProductInfoViewController: UIViewController {
     private func addVerticalGradientLayer() {
         let gradient = CAGradientLayer()
         gradient.frame = view.bounds
-        gradient.colors = [#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).cgColor, #colorLiteral(red: 0.8979474902, green: 0.9020553231, blue: 0.8977640867, alpha: 1).cgColor]
+        gradient.colors = [#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).cgColor, #colorLiteral(red: 0.938239575, green: 0.938239575, blue: 0.938239575, alpha: 1).cgColor]
         gradient.locations = [0.0, 1.0]
         gradient.startPoint = CGPoint(x: 0, y: 0)
         gradient.endPoint = CGPoint(x: 0, y: 1)

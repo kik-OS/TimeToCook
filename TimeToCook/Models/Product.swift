@@ -1,8 +1,8 @@
 //
 //  Product.swift
-//  VarkaAPP
+//  TimeToCook
 //
-//  Created by Никита Гвоздиков on 05.03.2021.
+//  Created by Никита Гвоздиков on 05.06.2021.
 //
 
 import Firebase

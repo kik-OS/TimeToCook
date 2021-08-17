@@ -1,6 +1,6 @@
 //
 //  Scan2.swift
-//  VarkaAPP
+//  TimeToCook
 //
 //  Created by Никита Гвоздиков on 19.07.2021.
 //
@@ -16,15 +16,22 @@ protocol BarcodeScannerDelegate: AnyObject {
 }
 
 final class BarcodeScanner {
+    
+    //MARK: Properties
+    
     public weak var delegate: BarcodeScannerDelegate?
     private var captureSession: AVCaptureSession?
     private var overlayLayer: CALayer?
+    
+    //MARK: Init
     
     init(withDelegate delegate: BarcodeScannerDelegate, overlayLayer: CALayer) {
         self.overlayLayer = overlayLayer
         self.delegate = delegate
         scannerSetup()
     }
+    
+    //MARK: Private Methodes
     
     private func scannerSetup() {
         guard let captureSession = createCaptureSession() else { return }
@@ -33,7 +40,7 @@ final class BarcodeScanner {
         
         let cameraView = delegate.cameraView()
         let previewLayer = createPreviewLayer(withCaptureSession: captureSession,
-                                                   view: cameraView)
+                                              view: cameraView)
         cameraView.layer.addSublayer(previewLayer)
     }
     
@@ -63,8 +70,6 @@ final class BarcodeScanner {
         return nil
     }
     
-    
-    
     private func createPreviewLayer(withCaptureSession captureSession: AVCaptureSession,
                                     view: UIView) -> AVCaptureVideoPreviewLayer {
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
@@ -79,6 +84,18 @@ final class BarcodeScanner {
          .code93, .ean13, .ean8, .interleaved2of5,
          .itf14, .pdf417, .upce]
     }
+    
+    private func toggleCaptureSessionRunningState() {
+        guard let captureSession = captureSession else { return }
+        
+        if !captureSession.isRunning {
+            captureSession.startRunning()
+        } else {
+            captureSession.stopRunning()
+        }
+    }
+    
+    //MARK: Public Methods
     
     public func metadataOutput(_ output: AVCaptureMetadataOutput,
                                didOutput metadataObjects: [AVMetadataObject],
@@ -101,13 +118,4 @@ final class BarcodeScanner {
         toggleCaptureSessionRunningState()
     }
     
-    private func toggleCaptureSessionRunningState() {
-        guard let captureSession = captureSession else { return }
-        
-        if !captureSession.isRunning {
-            captureSession.startRunning()
-        } else {
-            captureSession.stopRunning()
-        }
-    }
 }

@@ -1,8 +1,8 @@
 //
 //  FirebaseService.swift
-//  VarkaAPP
+//  TimeToCook
 //
-//  Created by Никита Гвоздиков on 06.03.2021.
+//  Created by Никита Гвоздиков on 06.07.2021.
 //
 
 import FirebaseDatabase

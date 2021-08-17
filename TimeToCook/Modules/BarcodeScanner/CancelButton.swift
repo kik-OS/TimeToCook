@@ -9,11 +9,13 @@ import UIKit
 
 final class CancelCameraButton: UIButton {
     
-   override init(frame: CGRect) {
-    super.init(frame: frame)
-    setTitle("Отменить", for: .normal)
-    backgroundColor = .black.withAlphaComponent(0.3)
-    layer.cornerRadius = 20
+    //MARK: Init
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setTitle("Отменить", for: .normal)
+        backgroundColor = .black.withAlphaComponent(0.3)
+        layer.cornerRadius = 20
     }
     
     required init?(coder: NSCoder) {

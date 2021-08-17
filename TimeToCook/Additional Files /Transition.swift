@@ -1,15 +1,15 @@
 //
 //  Transition.swift
-//  VarkaAPP
+//  TimeToCook
 //
-//  Created by Никита Гвоздиков on 06.04.2021.
+//  Created by Никита Гвоздиков on 06.08.2021.
 //
 
 import UIKit
 
 class TabBarTransition: NSObject, UIViewControllerAnimatedTransitioning {
     let viewControllers: [UIViewController]?
-    let transitionDuration: Double = 0.5
+    let transitionDuration: Double = 0.3
 
         init(viewControllers: [UIViewController]?) {
             self.viewControllers = viewControllers

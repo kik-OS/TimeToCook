@@ -1,8 +1,8 @@
 //
 //  FirebaseServiceError.swift
-//  VarkaAPP
+//  TimeToCook
 //
-//  Created by Никита Гвоздиков on 17.03.2021.
+//  Created by Никита Гвоздиков on 17.07.2021.
 //
 
 import Foundation

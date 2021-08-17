@@ -1,8 +1,8 @@
 //
 //  Notifications.swift
-//  VarkaAPP
+//  TimeToCook
 //
-//  Created by Никита Гвоздиков on 18.03.2021.
+//  Created by Никита Гвоздиков on 18.08.2021.
 //
 
 import UIKit

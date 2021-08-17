@@ -1,8 +1,8 @@
 //
 //  UIButton+Extension.swift
-//  VarkaAPP
+//  TimeToCook
 //
-//  Created by Никита Гвоздиков on 18.05.2021.
+//  Created by Никита Гвоздиков on 18.07.2021.
 //
 
 

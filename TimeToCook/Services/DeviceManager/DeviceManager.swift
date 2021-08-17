@@ -1,8 +1,8 @@
 //
 //  DeviceManager.swift
-//  VarkaAPP
+//  TimeToCook
 //
-//  Created by Никита Гвоздиков on 04.04.2021.
+//  Created by Никита Гвоздиков on 04.07.2021.
 //
 
 import UIKit
@@ -10,7 +10,7 @@ import UIKit
 struct DeviceManager {
     
     static func checkSquareScreen() -> Bool {
-        let notSquareScreenDevices : [DeviceModel] = [.iPhoneX, .iPhoneXS, .iPhoneXSMax,
+        let notSquareScreenDevices: [DeviceModel] = [.iPhoneX, .iPhoneXS, .iPhoneXSMax,
                                                 .iPhoneXR, .iPhone11, .iPhone11Pro,
                                                 .iPhone11ProMax, .iPhone12, .iPhone12Mini,
                                                 .iPhone12Pro, .iPhone12ProMax]
