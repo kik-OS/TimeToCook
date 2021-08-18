@@ -7,7 +7,7 @@
 
 import Firebase
 
-struct Product {
+struct Product: Equatable {
     
     // MARK: - Properties
     

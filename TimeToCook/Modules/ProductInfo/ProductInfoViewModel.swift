@@ -38,11 +38,11 @@ final class ProductInfoViewModel: ProductInfoViewModelProtocol {
     var needUpdateViewForFirstStep: (() -> Void)?
     var needUpdateViewForSecondStep: (() -> Void)?
     var needUpdateViewForThirdStep: (() -> Void)?
-    var buttonStartCookTapped: Bool = false
+    var buttonStartCookTapped = false
     var previousOffset: CGFloat = 0
-    var currentPage: Int = 0
+    var currentPage = 0
     
-    var product: Product? = nil {
+    var product: Product? {
         didSet {
             buttonStartCookTapped = false
         }

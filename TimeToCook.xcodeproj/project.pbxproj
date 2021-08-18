@@ -72,6 +72,7 @@
 		E4570FC526B3F02E0013F7C9 /* StillEmptyLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC426B3F02E0013F7C9 /* StillEmptyLabels.swift */; };
 		E4570FC726B47B500013F7C9 /* MascotImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC626B47B500013F7C9 /* MascotImageView.swift */; };
 		E4570FC926B47C2D0013F7C9 /* StillEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC826B47C2D0013F7C9 /* StillEmptyView.swift */; };
+		E474E17926CBE7C400ED18F9 /* TimeToCookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474E17826CBE7C400ED18F9 /* TimeToCookTests.swift */; };
 		E47E0C7826BBBC300060BE3A /* StartCookButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47E0C7726BBBC300060BE3A /* StartCookButton.swift */; };
 		E49CB14026B97CF900B99038 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB13F26B97CF900B99038 /* ProductView.swift */; };
 		E49CB14226B9811900B99038 /* SingleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB14126B9811900B99038 /* SingleStackView.swift */; };
@@ -94,6 +95,16 @@
 		E4EB3E7626BD550C00DA752C /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E7526BD550C00DA752C /* CloseButton.swift */; };
 		E4F14A3626B556C1008312DA /* ProductInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F14A3526B556C1008312DA /* ProductInfoViewModel.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E474E17B26CBE7C400ED18F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E44BBF6026A6FEB4003D403C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E44BBF6726A6FEB4003D403C;
+			remoteInfo = TimeToCook;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		8D0B3FC85A15F2368FBCE490 /* Pods-TimeToCook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeToCook.debug.xcconfig"; path = "Target Support Files/Pods-TimeToCook/Pods-TimeToCook.debug.xcconfig"; sourceTree = "<group>"; };
@@ -165,6 +176,9 @@
 		E4570FC426B3F02E0013F7C9 /* StillEmptyLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StillEmptyLabels.swift; sourceTree = "<group>"; };
 		E4570FC626B47B500013F7C9 /* MascotImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MascotImageView.swift; sourceTree = "<group>"; };
 		E4570FC826B47C2D0013F7C9 /* StillEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StillEmptyView.swift; sourceTree = "<group>"; };
+		E474E17626CBE7C400ED18F9 /* TimeToCookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeToCookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E474E17826CBE7C400ED18F9 /* TimeToCookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeToCookTests.swift; sourceTree = "<group>"; };
+		E474E17A26CBE7C400ED18F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E47E0C7726BBBC300060BE3A /* StartCookButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCookButton.swift; sourceTree = "<group>"; };
 		E49CB13F26B97CF900B99038 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		E49CB14126B9811900B99038 /* SingleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStackView.swift; sourceTree = "<group>"; };
@@ -194,6 +208,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				46F38C47D263775B008B3C70 /* Pods_TimeToCook.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E474E17326CBE7C400ED18F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,6 +486,7 @@
 			isa = PBXGroup;
 			children = (
 				E44BBF6A26A6FEB4003D403C /* TimeToCook */,
+				E474E17726CBE7C400ED18F9 /* TimeToCookTests */,
 				E44BBF6926A6FEB4003D403C /* Products */,
 				9EC58EA1B2C6568C40217FAE /* Pods */,
 				7EF10C2A690AF61983A49C92 /* Frameworks */,
@@ -475,6 +497,7 @@
 			isa = PBXGroup;
 			children = (
 				E44BBF6826A6FEB4003D403C /* TimeToCook.app */,
+				E474E17626CBE7C400ED18F9 /* TimeToCookTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -520,6 +543,15 @@
 				E4EB3E7526BD550C00DA752C /* CloseButton.swift */,
 			);
 			path = SubViews;
+			sourceTree = "<group>";
+		};
+		E474E17726CBE7C400ED18F9 /* TimeToCookTests */ = {
+			isa = PBXGroup;
+			children = (
+				E474E17826CBE7C400ED18F9 /* TimeToCookTests.swift */,
+				E474E17A26CBE7C400ED18F9 /* Info.plist */,
+			);
+			path = TimeToCookTests;
 			sourceTree = "<group>";
 		};
 		E4C1A11226C12EF2008C1D17 /* SubViews */ = {
@@ -582,6 +614,24 @@
 			productReference = E44BBF6826A6FEB4003D403C /* TimeToCook.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E474E17526CBE7C400ED18F9 /* TimeToCookTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E474E17F26CBE7C400ED18F9 /* Build configuration list for PBXNativeTarget "TimeToCookTests" */;
+			buildPhases = (
+				E474E17226CBE7C400ED18F9 /* Sources */,
+				E474E17326CBE7C400ED18F9 /* Frameworks */,
+				E474E17426CBE7C400ED18F9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E474E17C26CBE7C400ED18F9 /* PBXTargetDependency */,
+			);
+			name = TimeToCookTests;
+			productName = TimeToCookTests;
+			productReference = E474E17626CBE7C400ED18F9 /* TimeToCookTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -593,6 +643,10 @@
 				TargetAttributes = {
 					E44BBF6726A6FEB4003D403C = {
 						CreatedOnToolsVersion = 12.5;
+					};
+					E474E17526CBE7C400ED18F9 = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = E44BBF6726A6FEB4003D403C;
 					};
 				};
 			};
@@ -610,6 +664,7 @@
 			projectRoot = "";
 			targets = (
 				E44BBF6726A6FEB4003D403C /* TimeToCook */,
+				E474E17526CBE7C400ED18F9 /* TimeToCookTests */,
 			);
 		};
 /* End PBXProject section */
@@ -625,6 +680,13 @@
 				E41C3C9426A702DB006F1AE9 /* not.wav in Resources */,
 				E41C3C9126A702DB006F1AE9 /* timer.png in Resources */,
 				E41C3C9226A702DB006F1AE9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E474E17426CBE7C400ED18F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -759,7 +821,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E474E17226CBE7C400ED18F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E474E17926CBE7C400ED18F9 /* TimeToCookTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E474E17C26CBE7C400ED18F9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E44BBF6726A6FEB4003D403C /* TimeToCook */;
+			targetProxy = E474E17B26CBE7C400ED18F9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E41C3C4E26A702D9006F1AE9 /* LaunchScreen.storyboard */ = {
@@ -931,6 +1009,52 @@
 			};
 			name = Release;
 		};
+		E474E17D26CBE7C400ED18F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 58287L88KM;
+				HEADER_SEARCH_PATHS = "\"${SRCROOT}/Pods/Firebase/CoreOnly/Sources\"";
+				INFOPLIST_FILE = TimeToCookTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "kiko-ssss.TimeToCookTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TimeToCook.app/TimeToCook";
+				TVOS_DEPLOYMENT_TARGET = 13.0;
+			};
+			name = Debug;
+		};
+		E474E17E26CBE7C400ED18F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 58287L88KM;
+				HEADER_SEARCH_PATHS = "\"${SRCROOT}/Pods/Firebase/CoreOnly/Sources\"";
+				INFOPLIST_FILE = TimeToCookTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "kiko-ssss.TimeToCookTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TimeToCook.app/TimeToCook";
+				TVOS_DEPLOYMENT_TARGET = 13.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -948,6 +1072,15 @@
 			buildConfigurations = (
 				E44BBF8026A6FEB7003D403C /* Debug */,
 				E44BBF8126A6FEB7003D403C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E474E17F26CBE7C400ED18F9 /* Build configuration list for PBXNativeTarget "TimeToCookTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E474E17D26CBE7C400ED18F9 /* Debug */,
+				E474E17E26CBE7C400ED18F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
