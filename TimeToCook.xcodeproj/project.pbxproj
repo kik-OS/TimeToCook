@@ -86,6 +86,15 @@
 		E4B971BB26C2BFD6003DFACA /* TimerContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971BA26C2BFD6003DFACA /* TimerContentView.swift */; };
 		E4B971BD26C3A4C4003DFACA /* TimerBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971BC26C3A4C4003DFACA /* TimerBackgroundView.swift */; };
 		E4B971BF26C3A80A003DFACA /* TimerStopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971BE26C3A80A003DFACA /* TimerStopButton.swift */; };
+		E4BFBCDA26CE5693007A6CF6 /* Pods_TimeToCook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4BFBCD926CE5693007A6CF6 /* Pods_TimeToCook.framework */; };
+		E4BFBCDB26CE573C007A6CF6 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3526A702D6006F1AE9 /* Product.swift */; };
+		E4BFBCDC26CE5762007A6CF6 /* ProductInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F14A3526B556C1008312DA /* ProductInfoViewModel.swift */; };
+		E4BFBCDD26CE576F007A6CF6 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C5C26A702DA006F1AE9 /* TimerViewModel.swift */; };
+		E4BFBCDE26CE5780007A6CF6 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3F26A702D7006F1AE9 /* Notifications.swift */; };
+		E4BFBCDF26CE578F007A6CF6 /* Inscriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C4426A702D7006F1AE9 /* Inscriptions.swift */; };
+		E4BFBCE026CE579E007A6CF6 /* ImageTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C4526A702D7006F1AE9 /* ImageTitles.swift */; };
+		E4BFBCE126CE57AC007A6CF6 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C8126A702DA006F1AE9 /* TimerManager.swift */; };
+		E4BFBCE226CE57BA007A6CF6 /* InstructionCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E6C26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift */; };
 		E4C1A11426C14979008C1D17 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C1A11326C14979008C1D17 /* CustomNavigationController.swift */; };
 		E4C783A826C3E80E00C95626 /* RecentProductLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C783A726C3E80E00C95626 /* RecentProductLabel.swift */; };
 		E4EB3E6D26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E6C26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift */; };
@@ -192,6 +201,7 @@
 		E4B971BA26C2BFD6003DFACA /* TimerContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerContentView.swift; sourceTree = "<group>"; };
 		E4B971BC26C3A4C4003DFACA /* TimerBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerBackgroundView.swift; sourceTree = "<group>"; };
 		E4B971BE26C3A80A003DFACA /* TimerStopButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStopButton.swift; sourceTree = "<group>"; };
+		E4BFBCD926CE5693007A6CF6 /* Pods_TimeToCook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_TimeToCook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4C1A11326C14979008C1D17 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		E4C783A726C3E80E00C95626 /* RecentProductLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentProductLabel.swift; sourceTree = "<group>"; };
 		E4EB3E6C26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
@@ -215,6 +225,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4BFBCDA26CE5693007A6CF6 /* Pods_TimeToCook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +235,7 @@
 		7EF10C2A690AF61983A49C92 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E4BFBCD926CE5693007A6CF6 /* Pods_TimeToCook.framework */,
 				B6F0E980080CE5202A460A30 /* Pods_TimeToCook.framework */,
 			);
 			name = Frameworks;
@@ -646,7 +658,6 @@
 					};
 					E474E17526CBE7C400ED18F9 = {
 						CreatedOnToolsVersion = 12.5;
-						TestTargetID = E44BBF6726A6FEB4003D403C;
 					};
 				};
 			};
@@ -825,7 +836,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4BFBCDF26CE578F007A6CF6 /* Inscriptions.swift in Sources */,
+				E4BFBCE126CE57AC007A6CF6 /* TimerManager.swift in Sources */,
+				E4BFBCDE26CE5780007A6CF6 /* Notifications.swift in Sources */,
+				E4BFBCDD26CE576F007A6CF6 /* TimerViewModel.swift in Sources */,
+				E4BFBCDC26CE5762007A6CF6 /* ProductInfoViewModel.swift in Sources */,
+				E4BFBCE226CE57BA007A6CF6 /* InstructionCollectionViewCellViewModel.swift in Sources */,
 				E474E17926CBE7C400ED18F9 /* TimeToCookTests.swift in Sources */,
+				E4BFBCE026CE579E007A6CF6 /* ImageTitles.swift in Sources */,
+				E4BFBCDB26CE573C007A6CF6 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1012,7 +1031,6 @@
 		E474E17D26CBE7C400ED18F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 58287L88KM;
 				HEADER_SEARCH_PATHS = "\"${SRCROOT}/Pods/Firebase/CoreOnly/Sources\"";
@@ -1027,7 +1045,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TimeToCook.app/TimeToCook";
 				TVOS_DEPLOYMENT_TARGET = 13.0;
 			};
 			name = Debug;
@@ -1035,7 +1052,6 @@
 		E474E17E26CBE7C400ED18F9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 58287L88KM;
 				HEADER_SEARCH_PATHS = "\"${SRCROOT}/Pods/Firebase/CoreOnly/Sources\"";
@@ -1050,7 +1066,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TimeToCook.app/TimeToCook";
 				TVOS_DEPLOYMENT_TARGET = 13.0;
 			};
 			name = Release;
