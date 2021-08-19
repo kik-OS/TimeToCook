@@ -10,6 +10,18 @@ import XCTest
 
 var sut: ProductInfoViewModel?
 
+class FakeProduct: ProductProtocol {
+    var weight: Int? = 200
+    var code = "12345678"
+    var title = "Title"
+    var producer = "Producer"
+    var category = "Рис"
+    var cookingTime = 20
+    var intoBoilingWater: Bool?
+    var needStirring: Bool?
+    var waterRatio = 3.0
+}
+
 class ProductInfoViewModelTests: XCTestCase {
     
     override func setUpWithError() throws {
@@ -22,25 +34,10 @@ class ProductInfoViewModelTests: XCTestCase {
         try super.tearDownWithError()
     }
     
-    func testThatInitializationOfProductIsWorking() {
-        // arrange
-        let product = Product(code: "", title: "", producer: "",
-                              category: "", weight: 0, cookingTime: 0,
-                              intoBoilingWater: true,
-                              needStirring: true, waterRatio: 0)
-        
-        // act
-        let productInfoViewModel = ProductInfoViewModel(product: product)
-        
-        // assert
-        XCTAssertNotNil(productInfoViewModel.product)
-        XCTAssertTrue(productInfoViewModel.product == product)
-    }
-    
     func testThatButtonStartCookTappedMustBeFalseAfterUpdateProduct() {
         // arrange
         let productInfoViewModel = ProductInfoViewModel()
-        let product: Product? = nil
+        let product: ProductProtocol? = nil
         
         // act
         productInfoViewModel.buttonStartCookTapped = true
@@ -52,10 +49,7 @@ class ProductInfoViewModelTests: XCTestCase {
     
     func testThatPropertyProductImageReturnCorrectImageName() {
         // arrange
-        let product = Product(code: "", title: "", producer: "",
-                              category: "Рис", weight: 0,
-                              cookingTime: 0, intoBoilingWater: nil,
-                              needStirring: nil, waterRatio: 0)
+        let product = FakeProduct()
         
         // act
         let productInfoViewModel = ProductInfoViewModel(product: product)
@@ -66,10 +60,7 @@ class ProductInfoViewModelTests: XCTestCase {
     
     func testThatPropertyWeightReturnCorrectProductWeight() {
         // arrange
-        let product = Product(code: "", title: "", producer: "",
-                              category: "", weight: 200,
-                              cookingTime: 0, intoBoilingWater: nil,
-                              needStirring: nil, waterRatio: 0)
+        let product = FakeProduct()
         
         // act
         let productInfoViewModel = ProductInfoViewModel(product: product)
@@ -80,10 +71,7 @@ class ProductInfoViewModelTests: XCTestCase {
     
     func testThatPropertyCookingTimeReturnCorrectTimeOfCooking() {
         // arrange
-        let product = Product(code: "", title: "", producer: "",
-                              category: "", weight: 0,
-                              cookingTime: 20, intoBoilingWater: nil,
-                              needStirring: nil, waterRatio: 0)
+        let product = FakeProduct()
         
         // act
         let productInfoViewModel = ProductInfoViewModel(product: product)
@@ -92,4 +80,38 @@ class ProductInfoViewModelTests: XCTestCase {
         XCTAssertEqual(productInfoViewModel.cookingTime, "20 мин.")
     }
     
+    func testThatProductInfoStackIsHiddenWhenProductIsNil() {
+        // arrange
+        let product: ProductProtocol? = nil
+        
+        // act
+        let productInfoViewModel = ProductInfoViewModel(product: product)
+        
+        // assert
+        XCTAssertNil(productInfoViewModel.product)
+        XCTAssertTrue(productInfoViewModel.isHiddenProductStackView)
+    }
+    
+    func testThatInitializationOfProductIsWorking() {
+        // arrange
+        let product = FakeProduct()
+        
+        // act
+        let productInfoViewModel = ProductInfoViewModel(product: product)
+        
+        // assert
+        XCTAssertNotNil(productInfoViewModel.product)
+    }
+    
+    func testThatProductInfoViewModelReturnCorrectTimerViewModel() {
+        // arrange
+        let product = FakeProduct()
+        
+        // act
+        let productInfoViewModel = ProductInfoViewModel(product: product)
+        let timerViewModel = productInfoViewModel.getTimerViewModel()
+        
+        // assert
+        XCTAssertEqual(timerViewModel.minutes, 30)
+    }
 }

@@ -16,7 +16,7 @@ protocol InstructionCollectionViewCellViewModelProtocol {
     var instrImage: String { get }
     var isShowNextLabel: Bool { get }
     func getInstrLabel() -> String
-    init(product: Product?, indexPath: IndexPath)
+    init(product: ProductProtocol?, indexPath: IndexPath)
     
 }
 
@@ -24,7 +24,7 @@ final class InstructionCollectionViewCellViewModel: InstructionCollectionViewCel
     
     //MARK: Properties
     
-    private let product: Product?
+    private let product: ProductProtocol?
     private let indexPath: IndexPath
     
     var isShowNextLabel: Bool {
@@ -69,7 +69,7 @@ final class InstructionCollectionViewCellViewModel: InstructionCollectionViewCel
     
     // MARK: - Initializer
     
-    required init(product: Product?, indexPath: IndexPath) {
+    required init(product: ProductProtocol?, indexPath: IndexPath) {
         self.product = product
         self.indexPath = indexPath
     }

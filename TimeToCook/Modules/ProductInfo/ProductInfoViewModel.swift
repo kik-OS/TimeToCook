@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ProductInfoViewModelProtocol {
-    var product: Product? { get }
+    var product: ProductProtocol? { get }
     var weight: String { get }
     var cookingTime: String { get }
     var isHiddenProductStackView: Bool { get }
@@ -19,11 +19,11 @@ protocol ProductInfoViewModelProtocol {
     var buttonStartCookTapped: Bool { get set }
     var previousOffset: CGFloat {get set}
     var currentPage: Int {get set}
-    init(product: Product?)
+    init(product: ProductProtocol?)
     
     func getTimerViewModel() -> TimerViewModelProtocol
     func checkCurrentStateAndUpdateView()
-    func updateProduct(product: Product?)
+    func updateProduct(product: ProductProtocol?)
     func targetContentOffset(_ scrollView: UIScrollView,
                              withVelocity velocity: CGPoint,
                              collectionView: UICollectionView) -> CGPoint
@@ -42,7 +42,7 @@ final class ProductInfoViewModel: ProductInfoViewModelProtocol {
     var previousOffset: CGFloat = 0
     var currentPage = 0
     
-    var product: Product? {
+    var product: ProductProtocol? {
         didSet {
             buttonStartCookTapped = false
         }
@@ -72,7 +72,7 @@ final class ProductInfoViewModel: ProductInfoViewModelProtocol {
     
     // MARK: - Init
     
-    init(product: Product? = nil) {
+    init(product: ProductProtocol? = nil) {
         self.product = product
     }
     
@@ -93,7 +93,7 @@ final class ProductInfoViewModel: ProductInfoViewModelProtocol {
         }
     }
     
-    func updateProduct(product: Product?) {
+    func updateProduct(product: ProductProtocol?) {
         self.product = product
     }
     

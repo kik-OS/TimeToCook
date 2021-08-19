@@ -7,7 +7,19 @@
 
 import Firebase
 
-struct Product: Equatable {
+protocol ProductProtocol {
+    var code: String { get }
+    var title: String { get }
+    var producer: String { get }
+    var category: String { get }
+    var weight: Int? { get }
+    var cookingTime: Int { get }
+    var intoBoilingWater: Bool? { get }
+    var needStirring: Bool? { get }
+    var waterRatio: Double { get }
+}
+
+struct Product: ProductProtocol {
     
     // MARK: - Properties
     
@@ -24,8 +36,12 @@ struct Product: Equatable {
     
     // MARK: - Initializers
     
-    init(code: String, title: String, producer: String, category: String, weight: Int?,
-         cookingTime: Int, intoBoilingWater: Bool?, needStirring: Bool?, waterRatio: Double, ref: DatabaseReference? = nil) {
+    init(code: String, title: String, producer: String,
+         category: String, weight: Int?,
+         cookingTime: Int, intoBoilingWater: Bool?,
+         needStirring: Bool?, waterRatio: Double,
+         ref: DatabaseReference? = nil) {
+        
         self.code = code
         self.title = title
         self.producer = producer
@@ -76,23 +92,3 @@ struct Product: Equatable {
     }
 }
 
-extension Product {
-    
-    static func getProducts() -> [Product] {
-        [Product(
-            code: "1234567890000", title: "Рис круглозёрный", producer: "Агро-Альянс",
-            category: "Бакалея", weight: 800, cookingTime: 10,
-            intoBoilingWater: true, needStirring: false, waterRatio: 3
-        ),
-        Product(
-            code: "0987654321098", title: "Гречка", producer: "Агро-Альянс",
-            category: "Бакалея", weight: 900, cookingTime: 7,
-            intoBoilingWater: false, needStirring: false, waterRatio: 2.2
-        ),
-        Product(
-            code: "AB1234567890D", title: "Пельмени", producer: "Братцы-вареники",
-            category: "Полуфабрикаты", weight: 1000, cookingTime: 6,
-            intoBoilingWater: true, needStirring: true, waterRatio: 1
-        )]
-    }
-}
