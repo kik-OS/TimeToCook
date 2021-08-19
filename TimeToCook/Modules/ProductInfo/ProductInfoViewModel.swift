@@ -19,6 +19,7 @@ protocol ProductInfoViewModelProtocol {
     var buttonStartCookTapped: Bool { get set }
     var previousOffset: CGFloat {get set}
     var currentPage: Int {get set}
+    
     init(product: ProductProtocol?)
     
     func getTimerViewModel() -> TimerViewModelProtocol
@@ -66,9 +67,8 @@ final class ProductInfoViewModel: ProductInfoViewModelProtocol {
     }
     
     var isHiddenProductStackView: Bool {
-        return product == nil
+        product == nil
     }
-    
     
     // MARK: - Init
     

@@ -103,7 +103,7 @@ class ProductInfoViewModelTests: XCTestCase {
         XCTAssertNotNil(productInfoViewModel.product)
     }
     
-    func testThatProductInfoViewModelReturnCorrectTimerViewModel() {
+    func testThatTimerViewModelReturnCorrectTimeAfterInitByProductInfoVM() {
         // arrange
         let product = FakeProduct()
         
@@ -112,6 +112,6 @@ class ProductInfoViewModelTests: XCTestCase {
         let timerViewModel = productInfoViewModel.getTimerViewModel()
         
         // assert
-        XCTAssertEqual(timerViewModel.minutes, 30)
+        XCTAssertEqual(timerViewModel.minutes, 20)
     }
 }

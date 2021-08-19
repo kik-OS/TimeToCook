@@ -210,7 +210,8 @@ final class ProductInfoViewController: UIViewController {
         plateImageView.alpha = 1
         UIView.animate(withDuration: 1, delay: 0.3, usingSpringWithDamping: 2,
                        initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                        self.plateImageViewLeadingConstraint?.constant = -self.plateImageView.frame.width * 0.8
+                        self.plateImageViewLeadingConstraint?.constant =
+                            -self.plateImageView.frame.width * 0.8
                         self.view.layoutIfNeeded() })
         
         UIView.animate(withDuration: 0.3,
@@ -241,7 +242,9 @@ final class ProductInfoViewController: UIViewController {
     
     private func appearProductViewAnimation() {
         UIView.animate(
-            withDuration: 0.5, delay: 0.8, usingSpringWithDamping: 0.55, initialSpringVelocity: 3,
+            withDuration: 0.5, delay: 0.8,
+            usingSpringWithDamping: 0.55,
+            initialSpringVelocity: 3,
             options: .curveEaseOut, animations: {
                 self.productNameLabel.transform = .identity
                 self.productNameLabel.alpha = 1
@@ -259,7 +262,9 @@ final class ProductInfoViewController: UIViewController {
     
     private func appearStartCookButtonAnimation() {
         UIView.animate(
-            withDuration: 0.5, delay: 1, usingSpringWithDamping: 0.55, initialSpringVelocity: 3,
+            withDuration: 0.5, delay: 1,
+            usingSpringWithDamping: 0.55,
+            initialSpringVelocity: 3,
             options: .curveEaseOut, animations: {
                 self.startCookButton.transform = .identity
                 self.startCookButton.alpha = 1
@@ -274,7 +279,9 @@ final class ProductInfoViewController: UIViewController {
     private func appearCollectionViewAnimation() {
         collectionView.reloadData()
         UIView.animate(
-            withDuration: 0.5, delay: 0.5, usingSpringWithDamping: 0.55, initialSpringVelocity: 3,
+            withDuration: 0.5, delay: 0.5,
+            usingSpringWithDamping: 0.55,
+            initialSpringVelocity: 3,
             options: .curveEaseOut, animations: {
                 self.collectionView.transform = .identity
                 self.collectionView.alpha = 1
@@ -298,7 +305,9 @@ final class ProductInfoViewController: UIViewController {
     
     private func appearTimerButtonAnimation() {
         UIView.animate(
-            withDuration: 0.5, delay: 0.5, usingSpringWithDamping: 0.55, initialSpringVelocity: 3,
+            withDuration: 0.5, delay: 0.5,
+            usingSpringWithDamping: 0.55,
+            initialSpringVelocity: 3,
             options: .curveEaseOut, animations: {
                 self.timerButton.transform = .identity
                 self.timerButton.alpha = 1
@@ -312,7 +321,9 @@ final class ProductInfoViewController: UIViewController {
     
     private func appearCloseButtonAnimation() {
         UIView.animate(
-            withDuration: 0.5, delay: 0.8, usingSpringWithDamping: 0.55, initialSpringVelocity: 3,
+            withDuration: 0.5, delay: 0.8,
+            usingSpringWithDamping: 0.55,
+            initialSpringVelocity: 3,
             options: .curveEaseOut, animations: {
                 self.closeButton.transform = .identity
                 self.closeButton.alpha = 1
