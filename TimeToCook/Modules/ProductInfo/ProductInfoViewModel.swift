@@ -111,12 +111,11 @@ final class ProductInfoViewModel: ProductInfoViewModelProtocol {
         let additional = (flowLayout.itemSize.width + flowLayout.minimumLineSpacing) - flowLayout.headerReferenceSize.width
         let updatedOffset = (flowLayout.itemSize.width + flowLayout.minimumLineSpacing) * CGFloat(currentPage) - additional
         previousOffset = updatedOffset
-        
         return CGPoint(x: updatedOffset, y: 0)
     }
     
     func cellViewModel(at indexPath: IndexPath) -> InstructionCollectionViewCellViewModelProtocol? {
-        return InstructionCollectionViewCellViewModel(product: product, indexPath: indexPath)
+        InstructionCollectionViewCellViewModel(product: product, indexPath: indexPath)
     }
     
     func resetCollectionViewLayout() {

@@ -39,4 +39,11 @@ enum Inscriptions {
     static let recentProductCollectionViewCellId = "RecentProductCollectionViewCell"
     static let messageRecentProductNotFound = "В недавних продуктах ничего не найдено. Попробуйте что-нибудь отсканировать."
     static let recentProductTitle = "Недавние продукты"
+    static let instructionOfCookingFirstStep = "Подготовьте продукты, начинаем готовить"
+    static let instructionOfCookingSecondStep = "Наполните кастрюлю водой, в соотношении с продуктом"
+    static let instructionOfCookingThirdStep = "Дождитесь закипания воды"
+    static let instructionOfCookingFourthStep = "Опустите продукт в кипящую воду. Нажмите на таймер 👇🏻"
+    static let instructionOfCookingFifthStep = "Слейте воду"
+    static let instructionOfCookingSixthStep = "Добавьте по вкусу соль, перец, масло. Приятного аппетита!"
+    
 }

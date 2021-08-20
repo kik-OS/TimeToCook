@@ -15,9 +15,8 @@ protocol InstructionCollectionViewCellViewModelProtocol {
     var numberOfCard: String { get }
     var instrImage: String { get }
     var isShowNextLabel: Bool { get }
-    func getInstrLabel() -> String
     init(product: ProductProtocol?, indexPath: IndexPath)
-    
+    func getInstrLabel() -> String
 }
 
 final class InstructionCollectionViewCellViewModel: InstructionCollectionViewCellViewModelProtocol {
@@ -28,14 +27,9 @@ final class InstructionCollectionViewCellViewModel: InstructionCollectionViewCel
     private let indexPath: IndexPath
     
     var isShowNextLabel: Bool {
-        switch indexPath.row {
-        case 6:
-           return true
-        default :
-            return false
-        }
+        indexPath.row == 6
     }
-    
+
     var instrImage: String {
         "instr\(indexPath.row)"
     }
@@ -49,19 +43,19 @@ final class InstructionCollectionViewCellViewModel: InstructionCollectionViewCel
         
         switch indexPath.row {
         case 0:
-            return "Подготовьте продукты, начинаем готовить"
+            return Inscriptions.instructionOfCookingFirstStep
         case 1:
-            return "Наполните кастрюлю водой, в соотношении с продуктом \(Int(product.waterRatio)):1"
+            return "\(Inscriptions.instructionOfCookingSecondStep) \(Int(product.waterRatio)):1"
         case 2:
-            return "Дождитесь закипания воды"
+            return Inscriptions.instructionOfCookingThirdStep
         case 3:
-            return "Опустите продукт в кипящую воду. Нажмите на таймер 👇🏻"
+            return Inscriptions.instructionOfCookingFourthStep
         case 4:
             return "Необходимо варить \(product.cookingTime)мин., периодически помешивая"
         case 5:
-            return "Слейте воду"
+            return Inscriptions.instructionOfCookingFifthStep
         case 6:
-            return "Добавьте по вкусу соль, перец, масло. Приятного аппетита!"
+            return Inscriptions.instructionOfCookingSixthStep
         default:
             return ""
         }
