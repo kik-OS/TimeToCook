@@ -95,6 +95,7 @@
 		E4BFBCE026CE579E007A6CF6 /* ImageTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C4526A702D7006F1AE9 /* ImageTitles.swift */; };
 		E4BFBCE126CE57AC007A6CF6 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C8126A702DA006F1AE9 /* TimerManager.swift */; };
 		E4BFBCE226CE57BA007A6CF6 /* InstructionCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E6C26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift */; };
+		E4BFBCE726CFA350007A6CF6 /* ProductFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BFBCE626CFA350007A6CF6 /* ProductFake.swift */; };
 		E4C1A11426C14979008C1D17 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C1A11326C14979008C1D17 /* CustomNavigationController.swift */; };
 		E4C783A826C3E80E00C95626 /* RecentProductLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C783A726C3E80E00C95626 /* RecentProductLabel.swift */; };
 		E4EB3E6D26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E6C26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift */; };
@@ -202,6 +203,7 @@
 		E4B971BC26C3A4C4003DFACA /* TimerBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerBackgroundView.swift; sourceTree = "<group>"; };
 		E4B971BE26C3A80A003DFACA /* TimerStopButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStopButton.swift; sourceTree = "<group>"; };
 		E4BFBCD926CE5693007A6CF6 /* Pods_TimeToCook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_TimeToCook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4BFBCE626CFA350007A6CF6 /* ProductFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductFake.swift; sourceTree = "<group>"; };
 		E4C1A11326C14979008C1D17 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		E4C783A726C3E80E00C95626 /* RecentProductLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentProductLabel.swift; sourceTree = "<group>"; };
 		E4EB3E6C26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
@@ -562,6 +564,7 @@
 			children = (
 				E474E17826CBE7C400ED18F9 /* TimeToCookTests.swift */,
 				E474E17A26CBE7C400ED18F9 /* Info.plist */,
+				E4BFBCE626CFA350007A6CF6 /* ProductFake.swift */,
 			);
 			path = TimeToCookTests;
 			sourceTree = "<group>";
@@ -838,6 +841,7 @@
 			files = (
 				E4BFBCDF26CE578F007A6CF6 /* Inscriptions.swift in Sources */,
 				E4BFBCE126CE57AC007A6CF6 /* TimerManager.swift in Sources */,
+				E4BFBCE726CFA350007A6CF6 /* ProductFake.swift in Sources */,
 				E4BFBCDE26CE5780007A6CF6 /* Notifications.swift in Sources */,
 				E4BFBCDD26CE576F007A6CF6 /* TimerViewModel.swift in Sources */,
 				E4BFBCDC26CE5762007A6CF6 /* ProductInfoViewModel.swift in Sources */,
