@@ -25,7 +25,7 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
     // MARK: - Initializers
     
     init() {
-        viewModel = CustomTabBarViewModel()
+        viewModel = CustomTabBarViewModel(firebaseService: FirebaseService.shared)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -109,8 +109,7 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
             middleButton.centerYAnchor.constraint(equalTo: tabBar.topAnchor,
                                                   constant: CGFloat(viewModel.constantForMiddleButton)),
             middleButton.widthAnchor.constraint(equalToConstant: CGFloat(viewModel.sizeForMiddleButton)),
-            middleButton.heightAnchor.constraint(equalToConstant: CGFloat(viewModel.sizeForMiddleButton))
-        ])
+            middleButton.heightAnchor.constraint(equalToConstant: CGFloat(viewModel.sizeForMiddleButton))])
     }
     
     private func setupViewModelBindings() {

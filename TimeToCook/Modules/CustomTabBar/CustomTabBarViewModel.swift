@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 protocol CustomTabBarViewModelProtocol: AnyObject {
     /// Вызывается в случае успешного получения продукта из базы. В параметр передаётся ProductInfoViewModel с полученным из базы продуктом.
     var productDidReceive: ((_ product: Product) -> Void)? { get set }
@@ -28,7 +26,6 @@ protocol CustomTabBarViewModelProtocol: AnyObject {
 
 final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
     
-    
     // MARK: - Properties
     
     var productDidReceive: ((_ product: Product) -> Void)?
@@ -41,18 +38,20 @@ final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
         DeviceManager.checkSquareScreen() ? 68 : 72
     }
     
-    private let firebaseService: FirebaseServiceProtocol = FirebaseService.shared
+    private let firebaseService: FirebaseServiceProtocol?
+//        = FirebaseService.shared
     
     // MARK: - Initializers
     
-    init() {
+    init(firebaseService: FirebaseServiceProtocol) {
+        self.firebaseService = firebaseService
         TimerManager.shared.barDelegate = self
     }
     
     // MARK: - Public methods
     
     func findProduct(byCode code: String) {
-        firebaseService.fetchProduct(byCode: code) { [weak self] result in
+        firebaseService?.fetchProduct(byCode: code) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
@@ -75,7 +74,7 @@ final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
     }
     
     func getAddingNewProductViewModel(withCode code: String) -> AddingNewProductViewModelProtocol {
-        AddingNewProductViewModel(code: code)
+        AddingNewProductViewModel(code: code, firebaseService: FirebaseService.shared)
     }
     
     func getTimerViewModel() -> TimerViewModelProtocol {

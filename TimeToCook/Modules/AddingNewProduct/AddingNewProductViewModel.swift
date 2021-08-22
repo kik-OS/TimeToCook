@@ -28,7 +28,7 @@ protocol AddingNewProductViewModelProtocol: AnyObject {
     var stateForUpButton: Bool { get }
     var stateForDownButton: Bool { get }
   
-    init(code: String)
+    init(code: String, firebaseService: FirebaseServiceProtocol)
     
     func validation() -> Bool
     func calculateWaterRatio(row: Int)
@@ -42,13 +42,6 @@ protocol AddingNewProductViewModelProtocol: AnyObject {
 }
 
 final class AddingNewProductViewModel: AddingNewProductViewModelProtocol {
-    
-    // MARK: - Initializers
-    
-    init(code: String) {
-        self.codeLabelText = code
-        getCategories()
-    }
     
     // MARK: - Properties
     
@@ -87,7 +80,17 @@ final class AddingNewProductViewModel: AddingNewProductViewModelProtocol {
         }
     }
     
-    private let firebaseService: FirebaseServiceProtocol = FirebaseService.shared
+    // MARK: - Initializers
+    
+    init(code: String, firebaseService: FirebaseServiceProtocol) {
+        self.firebaseService = firebaseService
+        self.codeLabelText = code
+        getCategories()
+    }
+    
+    //MARK: Dependences
+    
+    private var firebaseService: FirebaseServiceProtocol?
     
     // MARK: - Methods
     
@@ -125,14 +128,14 @@ final class AddingNewProductViewModel: AddingNewProductViewModelProtocol {
     }
     
     func getCategories() {
-        firebaseService.fetchCategories { categories in
+        firebaseService?.fetchCategories { categories in
             self.categories = categories
         }
     }
     
     func createProductInFB() {
         guard let product = completedProduct else { return }
-        firebaseService.saveProduct(product)
+        firebaseService?.saveProduct(product)
     }
     
     func calculationOfLowerResponder() -> Int {

@@ -181,5 +181,4 @@ class ProductInfoViewModelTests: XCTestCase {
         XCTAssertNotNil(cellViewModel?.isShowNextLabel)
         XCTAssertFalse(cellViewModel?.isShowNextLabel ?? true)
     }
-    
 }
