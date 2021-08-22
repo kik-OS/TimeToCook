@@ -25,7 +25,8 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
     // MARK: - Initializers
     
     init() {
-        viewModel = CustomTabBarViewModel(firebaseService: FirebaseService.shared)
+        viewModel = CustomTabBarViewModel(firebaseService: FirebaseService.shared,
+                                          storageManager: StorageManager.shared)
         super.init(nibName: nil, bundle: nil)
     }
     

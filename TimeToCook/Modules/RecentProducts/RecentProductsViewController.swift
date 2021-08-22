@@ -8,7 +8,7 @@
 import UIKit
 
 protocol RecentProductCollectionViewDelegate {
-    func presentInfoAboutProduct(product: Product)
+    func presentInfoAboutProduct(product: ProductProtocol)
 }
 
 final class RecentProductsViewController: UIViewController {
@@ -110,7 +110,7 @@ final class RecentProductsViewController: UIViewController {
 }
 
 extension RecentProductsViewController: RecentProductCollectionViewDelegate {
-    func presentInfoAboutProduct(product: Product) {
+    func presentInfoAboutProduct(product: ProductProtocol) {
         guard let productInfoVC = tabBarController?.viewControllers?.first as? ProductInfoViewController else { return }
         productInfoVC.viewModel.updateProduct(product: product)
         tabBarController?.selectedViewController = tabBarController?.viewControllers?.first

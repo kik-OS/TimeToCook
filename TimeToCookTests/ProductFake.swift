@@ -18,4 +18,10 @@ class ProductFake: ProductProtocol {
     var needStirring: Bool?
     var waterRatio = 3.0
     func convertToDictionary() -> Any {""}
+    
+    init() {}
+    
+    required init(code: String) {
+        self.code = code
+    }
 }

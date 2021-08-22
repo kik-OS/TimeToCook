@@ -7,7 +7,14 @@
 
 import CoreData
 
-final class StorageManager {
+protocol StorageManagerProtocol {
+    func fetchData() -> [ProductCD]
+    func saveProductCD(product: ProductProtocol)
+    func convertFromProductCDToProduct(productCD: ProductCD) -> ProductProtocol?
+    func deleteProductCD(_ productCD: ProductCD)
+}
+
+final class StorageManager: StorageManagerProtocol {
     
     // MARK: - Static properties
     
@@ -66,7 +73,7 @@ final class StorageManager {
         saveContext()
     }
     
-    func convertFromProductCDToProduct(productCD: ProductCD) -> Product? {
+    func convertFromProductCDToProduct(productCD: ProductCD) -> ProductProtocol? {
         guard let code = productCD.code,
               let title = productCD.title,
               let producer = productCD.producer,

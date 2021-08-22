@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CustomTabBarViewModelProtocol: AnyObject {
-    /// Вызывается в случае успешного получения продукта из базы. В параметр передаётся ProductInfoViewModel с полученным из базы продуктом.
+    /// Вызывается в случае успешного получения продукта из базы. В параметр передаётся полученный из базы продукт.
     var productDidReceive: ((_ product: ProductProtocol) -> Void)? { get set }
     /// Вызывается для предложения добавить товар. В параметр передаётся бар-код, полученный от сканера.
     var addingNewProductOffer: ((_ code: String) -> Void)? { get set }
@@ -38,13 +38,16 @@ final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
         DeviceManager.checkSquareScreen() ? 68 : 72
     }
     
+    // MARK: Dependences
+    
     private let firebaseService: FirebaseServiceProtocol?
-//        = FirebaseService.shared
+    private let storageManager: StorageManagerProtocol?
     
     // MARK: - Initializers
     
-    init(firebaseService: FirebaseServiceProtocol) {
+    init(firebaseService: FirebaseServiceProtocol, storageManager: StorageManagerProtocol) {
         self.firebaseService = firebaseService
+        self.storageManager = storageManager
         TimerManager.shared.barDelegate = self
     }
     
@@ -84,7 +87,9 @@ final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
     // MARK: - Private methods
     
     private func createProductInCoreData(product: ProductProtocol) {
-        StorageManager.shared.saveProductCD(product: product)
+//        StorageManager.shared.saveProductCD(product: product)
+    
+        storageManager?.saveProductCD(product: product)
     }
 }
 
