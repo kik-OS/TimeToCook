@@ -9,7 +9,7 @@ import Foundation
 
 protocol CustomTabBarViewModelProtocol: AnyObject {
     /// Вызывается в случае успешного получения продукта из базы. В параметр передаётся ProductInfoViewModel с полученным из базы продуктом.
-    var productDidReceive: ((_ product: Product) -> Void)? { get set }
+    var productDidReceive: ((_ product: ProductProtocol) -> Void)? { get set }
     /// Вызывается для предложения добавить товар. В параметр передаётся бар-код, полученный от сканера.
     var addingNewProductOffer: ((_ code: String) -> Void)? { get set }
     /// Вызывается при каждом шаге таймера.
@@ -18,17 +18,17 @@ protocol CustomTabBarViewModelProtocol: AnyObject {
     var sizeForMiddleButton: Float { get }
     
     func findProduct(byCode code: String)
-    func getProductInfoViewModel(product: Product?) -> ProductInfoViewModelProtocol
+    func getProductInfoViewModel(product: ProductProtocol?) -> ProductInfoViewModelProtocol
     func getRecentProductViewModel() -> RecentProductViewModelProtocol
     func getAddingNewProductViewModel(withCode code: String) -> AddingNewProductViewModelProtocol
     func getTimerViewModel() -> TimerViewModelProtocol
 }
 
 final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
-    
+ 
     // MARK: - Properties
     
-    var productDidReceive: ((_ product: Product) -> Void)?
+    var productDidReceive: ((_ product: ProductProtocol) -> Void)?
     var addingNewProductOffer: ((_ code: String) -> Void)?
     var timerDidStep: ((_ time: String) -> Void)?
     var constantForMiddleButton: Float {
@@ -65,7 +65,7 @@ final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
         }
     }
     
-    func getProductInfoViewModel(product: Product?) -> ProductInfoViewModelProtocol {
+    func getProductInfoViewModel(product: ProductProtocol?) -> ProductInfoViewModelProtocol {
         ProductInfoViewModel(product: product)
     }
     
@@ -83,7 +83,7 @@ final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
     
     // MARK: - Private methods
     
-    private func createProductInCoreData(product: Product) {
+    private func createProductInCoreData(product: ProductProtocol) {
         StorageManager.shared.saveProductCD(product: product)
     }
 }

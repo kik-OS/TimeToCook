@@ -17,6 +17,7 @@ protocol ProductProtocol {
     var intoBoilingWater: Bool? { get }
     var needStirring: Bool? { get }
     var waterRatio: Double { get }
+    func convertToDictionary() -> Any
 }
 
 struct Product: ProductProtocol {

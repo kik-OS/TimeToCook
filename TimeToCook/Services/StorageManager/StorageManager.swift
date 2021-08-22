@@ -46,7 +46,7 @@ final class StorageManager {
         }
     }
     
-    func saveProductCD(product: Product) {
+    func saveProductCD(product: ProductProtocol) {
         fetchData().forEach { if $0.code == product.code {deleteProductCD($0)} }
         let productCD = ProductCD(context: viewContext)
         productCD.code = product.code

@@ -9,7 +9,7 @@ import Foundation
 
 class ProductFake: ProductProtocol {
     var weight: Int? = 200
-    var code = "12345678"
+    var code = UUID().uuidString
     var title = "Title"
     var producer = "Producer"
     var category = "Рис"
@@ -17,4 +17,5 @@ class ProductFake: ProductProtocol {
     var intoBoilingWater: Bool?
     var needStirring: Bool?
     var waterRatio = 3.0
+    func convertToDictionary() -> Any {""}
 }

@@ -11,7 +11,7 @@ protocol AddNewProductViewControllerDelegate: AnyObject {
     func productWasAdded(product: Product?)
 }
 
-protocol BarcodeScannerViewControllerDelegate {
+protocol BarcodeScannerViewControllerDelegate: AnyObject {
     func scanner(barcode: String)
 }
 

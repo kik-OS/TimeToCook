@@ -10,11 +10,11 @@ import FirebaseDatabase
 // MARK: - Protocols
 
 protocol FirebaseServiceProtocol {
-    func saveProduct(_ product: Product)
-    func saveProducts(_ products: [Product])
+    func saveProduct(_ product: ProductProtocol)
+    func saveProducts(_ products: [ProductProtocol])
     func fetchProduct(byCode code: String,
-                      completion: @escaping (Result<Product, FirebaseServiceError>) -> Void)
-    func fetchProducts(completion: @escaping (Result<[Product], Error>) -> Void)
+                      completion: @escaping (Result<ProductProtocol, FirebaseServiceError>) -> Void)
+    func fetchProducts(completion: @escaping (Result<[ProductProtocol], FirebaseServiceError>) -> Void)
     func removeProduct(byCode code: String)
     func saveCategories(_ categories: [Category])
     func fetchCategories(completion: @escaping ([Category]) -> Void)
@@ -37,18 +37,19 @@ final class FirebaseService: FirebaseServiceProtocol {
     
     // MARK: - Public methods
     
-    func saveProduct(_ product: Product) {
+    func saveProduct(_ product: ProductProtocol) {
         productsRef.child(product.code).setValue(product.convertToDictionary())
     }
     
-    func saveProducts(_ products: [Product]) {
+    func saveProducts(_ products: [ProductProtocol]) {
         products.forEach {
             productsRef.child($0.code).setValue($0.convertToDictionary())
         }
     }
     
     func fetchProduct(byCode code: String,
-                      completion: @escaping (Result<Product, FirebaseServiceError>) -> Void) {
+                      completion: @escaping (Result<ProductProtocol,
+                                                    FirebaseServiceError>) -> Void) {
         productsRef.child(code).observe(.value) { snapshot in
             guard snapshot.exists() else {
                 completion(.failure(.productNotFound))
@@ -62,9 +63,14 @@ final class FirebaseService: FirebaseServiceProtocol {
         }
     }
     
-    func fetchProducts(completion: @escaping (Result<[Product], Error>) -> Void) {
+    func fetchProducts(completion: @escaping (Result<[ProductProtocol],
+                                                     FirebaseServiceError>) -> Void) {
         productsRef.observe(.value) { snapshot in
-            let products = snapshot.children.compactMap { Product(snapshot: $0 as! DataSnapshot) }
+            guard snapshot.exists() else {
+                completion(.failure(.productsNotFound))
+                return
+            }
+            let products = snapshot.children.compactMap { Product(snapshot: $0 as? DataSnapshot ?? DataSnapshot()) }
             completion(.success(products))
         }
     }
@@ -81,7 +87,7 @@ final class FirebaseService: FirebaseServiceProtocol {
     
     func fetchCategories(completion: @escaping ([Category]) -> Void) {
         categoriesRef.observe(.value) { snapshot in
-            let categories = snapshot.children.compactMap { Category(snapshot: $0 as! DataSnapshot) }
+            let categories = snapshot.children.compactMap { Category(snapshot: $0 as? DataSnapshot ?? DataSnapshot()) }
             completion(categories)
         }
     }
