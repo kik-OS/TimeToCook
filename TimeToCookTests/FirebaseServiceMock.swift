@@ -24,7 +24,7 @@ extension FirebaseServiceMock: FirebaseServiceProtocol {
 
     func fetchProduct(byCode code: String,
                       completion: @escaping (Result<ProductProtocol, FirebaseServiceError>) -> Void) {
-        guard let product = storage.first(where: {$0.code == code}) else {
+        guard let product = storage.first(where: { $0.code == code }) else {
             completion(.failure(.modelInitializingError))
             return
         }
@@ -33,7 +33,7 @@ extension FirebaseServiceMock: FirebaseServiceProtocol {
 
     func fetchProducts(completion: @escaping (Result<[ProductProtocol], FirebaseServiceError>) -> Void) {
 
-        guard storage.count > 0 else {
+        guard !storage.isEmpty else {
             completion(.failure(.productsNotFound))
             return }
         let products = storage
@@ -41,7 +41,7 @@ extension FirebaseServiceMock: FirebaseServiceProtocol {
     }
 
     func removeProduct(byCode code: String) {
-        storage.removeAll(where: {$0.code == code})
+        storage.removeAll(where: { $0.code == code })
     }
 
     func saveCategories(_ categories: [Category]) {}

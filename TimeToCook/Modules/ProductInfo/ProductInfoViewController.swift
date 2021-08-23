@@ -83,7 +83,7 @@ final class ProductInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addVerticalGradientLayer()
+        view.addVerticalGradientLayer()
         setupAllConstraints()
         setupViewModelBindingsForAnimation()
     }
@@ -264,34 +264,9 @@ final class ProductInfoViewController: UIViewController {
         self.productNameLabel.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
     }
 
-    private func appearStartCookButtonAnimation() {
-        UIView.animate(
-            withDuration: 0.5, delay: 1,
-            usingSpringWithDamping: 0.55,
-            initialSpringVelocity: 3,
-            options: .curveEaseOut, animations: {
-                self.startCookButton.transform = .identity
-                self.startCookButton.alpha = 1
-            }
-        )
-    }
-
     private func disappearStartCookButtonAnimation() {
         self.startCookButton.alpha = 0
         self.startCookButton.transform = CGAffineTransform(scaleX: 0.4, y: 0.4)
-    }
-
-    private func appearCollectionViewAnimation() {
-        collectionView.reloadData()
-        UIView.animate(
-            withDuration: 0.5, delay: 0.5,
-            usingSpringWithDamping: 0.55,
-            initialSpringVelocity: 3,
-            options: .curveEaseOut, animations: {
-                self.collectionView.transform = .identity
-                self.collectionView.alpha = 1
-            }
-        )
     }
 
     private func disappearCollectionViewAnimation() {
@@ -299,43 +274,9 @@ final class ProductInfoViewController: UIViewController {
         collectionView.transform = CGAffineTransform(scaleX: 0.4, y: 0.4)
     }
 
-    private func collectionViewLayoutAnimation(velocity: CGPoint, point: CGPoint ) {
-        UIView.animate(withDuration: 0.3, delay: 0,
-                       usingSpringWithDamping: 1,
-                       initialSpringVelocity: velocity.x,
-                       options: .allowUserInteraction, animations: {
-                        self.collectionView.setContentOffset(point, animated: true)
-                       }
-        )
-    }
-
-    private func appearTimerButtonAnimation() {
-        UIView.animate(
-            withDuration: 0.5, delay: 0.5,
-            usingSpringWithDamping: 0.55,
-            initialSpringVelocity: 3,
-            options: .curveEaseOut, animations: {
-                self.timerButton.transform = .identity
-                self.timerButton.alpha = 1
-            }
-        )
-    }
-
     private func disappearTimerButtonAnimation() {
         self.timerButton.alpha = 0
         self.timerButton.transform = CGAffineTransform(scaleX: 0.4, y: 0.4)
-    }
-
-    private func appearCloseButtonAnimation() {
-        UIView.animate(
-            withDuration: 0.5, delay: 0.8,
-            usingSpringWithDamping: 0.55,
-            initialSpringVelocity: 3,
-            options: .curveEaseOut, animations: {
-                self.closeButton.transform = .identity
-                self.closeButton.alpha = 1
-            }
-        )
     }
 
     private func disappearCloseButtonAnimation() {
@@ -354,12 +295,12 @@ final class ProductInfoViewController: UIViewController {
 
         viewModel.needUpdateViewForSecondStep = { [weak self] in
             self?.stillEmpty.alpha = 0
-            self?.appearCloseButtonAnimation()
+            self?.closeButton.appearCloseButtonAnimation()
             self?.appearContentViewAnimation()
             self?.appearPlateAnimation()
             self?.updateProductInfo()
             self?.appearProductViewAnimation()
-            self?.appearStartCookButtonAnimation()
+            self?.startCookButton.appearStartCookButtonAnimation()
             self?.startCookButton.startState()
             self?.disappearCollectionViewAnimation()
             self?.disappearTimerButtonAnimation()
@@ -371,9 +312,9 @@ final class ProductInfoViewController: UIViewController {
             self?.disappearProductViewAnimation()
             self?.startCookButton.stopState()
             self?.appearContentViewAnimation()
-            self?.appearStartCookButtonAnimation()
-            self?.appearCollectionViewAnimation()
-            self?.appearTimerButtonAnimation()
+            self?.startCookButton.appearStartCookButtonAnimation()
+            self?.collectionView.appearCollectionViewAnimation()
+            self?.timerButton.appearTimerButtonAnimation()
             self?.viewModel.resetCollectionViewLayout()
             self?.collectionView.createLayout()
         }
@@ -394,17 +335,6 @@ final class ProductInfoViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.createLayout()
-    }
-
-    // Gradient
-    private func addVerticalGradientLayer() {
-        let gradient = CAGradientLayer()
-        gradient.frame = view.bounds
-        gradient.colors = [#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).cgColor, #colorLiteral(red: 0.938239575, green: 0.938239575, blue: 0.938239575, alpha: 1).cgColor]
-        gradient.locations = [0.0, 1.0]
-        gradient.startPoint = CGPoint(x: 0, y: 0)
-        gradient.endPoint = CGPoint(x: 0, y: 1)
-        view.layer.insertSublayer(gradient, at: 0)
     }
 
     @objc private func startCookButtonTapped() {
@@ -447,7 +377,7 @@ extension ProductInfoViewController: UICollectionViewDelegate {
                                                   withVelocity: velocity,
                                                   collectionView: collectionView)
         targetContentOffset.pointee = point
-        collectionViewLayoutAnimation(velocity: velocity, point: point)
+        collectionView.collectionViewLayoutAnimation(velocity: velocity, point: point)
     }
 }
 

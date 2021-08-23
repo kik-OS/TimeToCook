@@ -64,7 +64,7 @@ final class BarcodeScanner {
                 return captureSession
             }
         } catch {
-            // TODO
+            // todo
         }
         return nil
     }
