@@ -28,7 +28,7 @@ final class FirebaseService: FirebaseServiceProtocol {
     
     // MARK: - Properties
     
-    private let productsRef =  Database.database().reference().child("products")
+    private let productsRef = Database.database().reference().child("products")
     private let categoriesRef = Database.database().reference().child("categories")
     
     // MARK: - Initializers
@@ -48,8 +48,8 @@ final class FirebaseService: FirebaseServiceProtocol {
     }
     
     func fetchProduct(byCode code: String,
-                      completion: @escaping (Result<ProductProtocol,
-                                                    FirebaseServiceError>) -> Void) {
+                      completion: @escaping (Result <ProductProtocol,
+                                                    FirebaseServiceError> ) -> Void) {
         productsRef.child(code).observe(.value) { snapshot in
             guard snapshot.exists() else {
                 completion(.failure(.productNotFound))
@@ -63,8 +63,8 @@ final class FirebaseService: FirebaseServiceProtocol {
         }
     }
     
-    func fetchProducts(completion: @escaping (Result<[ProductProtocol],
-                                                     FirebaseServiceError>) -> Void) {
+    func fetchProducts(completion: @escaping (Result <[ProductProtocol],
+                                                     FirebaseServiceError> ) -> Void) {
         productsRef.observe(.value) { snapshot in
             guard snapshot.exists() else {
                 completion(.failure(.productsNotFound))

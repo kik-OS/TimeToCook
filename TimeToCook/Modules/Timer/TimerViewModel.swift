@@ -81,8 +81,7 @@ final class TimerViewModel: TimerViewModelProtocol {
     func updateTimeTo(minutes: Int) {
         self.minutes = minutes
     }
-    
-    
+        
     func startTimer() {
         timerManager.start(forMinutes: minutes)
         Notifications.shared.showTimerNotification(throughMinutes: Double(minutes))

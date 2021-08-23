@@ -7,10 +7,6 @@
 
 import Foundation
 
-
-import Foundation
-
-
 protocol InstructionCollectionViewCellViewModelProtocol {
     var numberOfCard: String { get }
     var instrImage: String { get }
@@ -21,7 +17,7 @@ protocol InstructionCollectionViewCellViewModelProtocol {
 
 final class InstructionCollectionViewCellViewModel: InstructionCollectionViewCellViewModelProtocol {
     
-    //MARK: Properties
+    // MARK: Properties
     
     private let product: ProductProtocol?
     private let indexPath: IndexPath
@@ -39,7 +35,7 @@ final class InstructionCollectionViewCellViewModel: InstructionCollectionViewCel
     }
     
     func getInstrLabel() -> String {
-        guard let product = product else {return ""}
+        guard let product = product else { return "" }
         
         switch indexPath.row {
         case 0:

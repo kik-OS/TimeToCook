@@ -40,9 +40,9 @@ struct Category {
         guard let snapshotValue = snapshot.value as? [String: AnyObject],
               let stringDate = snapshotValue["date"] as? String else { return nil }
         
-        id = snapshotValue["id"] as! Int
-        name = snapshotValue["name"] as! String
-        imageName = snapshotValue["imageName"] as! String
+        id = snapshotValue["id"] as? Int ?? Int()
+        name = snapshotValue["name"] as? String ?? String()
+        imageName = snapshotValue["imageName"] as? String ?? String()
         date = DateFormatter.firebaseDateFormatter.date(from: stringDate) ?? Date()
     }
     

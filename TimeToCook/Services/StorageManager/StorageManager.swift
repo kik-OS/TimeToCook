@@ -24,7 +24,7 @@ final class StorageManager: StorageManagerProtocol {
     
     private let persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "TimeToCook")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { _, error in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
@@ -54,7 +54,7 @@ final class StorageManager: StorageManagerProtocol {
     }
     
     func saveProductCD(product: ProductProtocol) {
-        fetchData().forEach { if $0.code == product.code {deleteProductCD($0)} }
+        fetchData().forEach { if $0.code == product.code { deleteProductCD($0) } }
         let productCD = ProductCD(context: viewContext)
         productCD.code = product.code
         productCD.title = product.title

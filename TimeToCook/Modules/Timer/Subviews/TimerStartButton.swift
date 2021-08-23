@@ -9,7 +9,7 @@ import UIKit
 
 final class TimerStartButton: UIButton {
     
-    //MARK: Init
+    // MARK: Init
     
     init() {
         super.init(frame: .zero)
@@ -23,7 +23,7 @@ final class TimerStartButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: Override
+    // MARK: Override
     
     override func layoutSubviews() {
         super.layoutSubviews()

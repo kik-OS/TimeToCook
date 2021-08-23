@@ -72,7 +72,7 @@ final class AddingNewProductViewModel: AddingNewProductViewModelProtocol {
     var dataForPickerView: [String] {
         switch indexOfFirstResponder {
         case 0:
-            return categories.map{$0.name}
+            return categories.map { $0.name }
         case 5:
             return listOfWaterRatio
         default:
@@ -88,7 +88,7 @@ final class AddingNewProductViewModel: AddingNewProductViewModelProtocol {
         getCategories()
     }
     
-    //MARK: Dependences
+    // MARK: Dependences
     
     private var firebaseService: FirebaseServiceProtocol?
     
@@ -105,7 +105,7 @@ final class AddingNewProductViewModel: AddingNewProductViewModelProtocol {
               let productProducer = textFromProducerTF,
               let productCookingTime = textFromCookingTimeTF,
               let productWeight = textFromWeightTF,
-              let _ = textFromWaterRatioTF else { return false }
+              textFromWaterRatioTF != nil else { return false }
         
         guard !productTitle.isEmpty,
               !productProducer.isEmpty,
@@ -187,7 +187,7 @@ final class AddingNewProductViewModel: AddingNewProductViewModelProtocol {
         switch type {
         case .down:
             needUpdateFirstResponder?(calculationOfLowerResponder())
-        case .up:
+        case .upward:
             needUpdateFirstResponder?(calculationOfUpperResponder())
         }
     }

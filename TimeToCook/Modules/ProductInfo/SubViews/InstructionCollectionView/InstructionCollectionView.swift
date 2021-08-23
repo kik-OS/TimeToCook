@@ -9,11 +9,11 @@ import UIKit
 
 final class InstructionCollectionView: UICollectionView {
     
-    //MARK: Properties
+    // MARK: Properties
     
     private var width: CGFloat
     
-    //MARK: Init
+    // MARK: Init
     
     init(width: CGFloat) {
         self.width = width
@@ -33,7 +33,7 @@ final class InstructionCollectionView: UICollectionView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: Methods
+    // MARK: Methods
     
     func createLayout() {
         let layout = UICollectionViewFlowLayout()

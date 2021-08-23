@@ -48,19 +48,25 @@ final class RecentProductCollectionView: UICollectionView {
 
 // MARK: - Extension
 
-extension RecentProductCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension RecentProductCollectionView: UICollectionViewDelegate,
+                                       UICollectionViewDataSource,
+                                       UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
          viewModel.numberOfItemsInSection
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = dequeueReusableCell(withReuseIdentifier: RecentProductCollectionViewCell.reuseID, for: indexPath) as! RecentProductCollectionViewCell
-        cell.viewModel = viewModel.cellViewModel(at: indexPath)
-        return cell
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = dequeueReusableCell(withReuseIdentifier: RecentProductCollectionViewCell.reuseID,
+                                       for: indexPath) as? RecentProductCollectionViewCell
+        cell?.viewModel = viewModel.cellViewModel(at: indexPath)
+        return cell ?? UICollectionViewCell()
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: frame.width * 0.7, height: frame.height * 0.8)
     }
     

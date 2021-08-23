@@ -81,7 +81,6 @@ final class TimerManager: TimerManagerProtocol {
             : nil
     }
     
-    
     func readSavedTime() {
         guard let savedTime = savedTime else { return }
         
@@ -96,7 +95,7 @@ final class TimerManager: TimerManagerProtocol {
         } else if isActive {
             let delta = Int(elapsedTimeAccurately.rounded()) - elapsedTimeByTimer
             if delta > 1 {
-                timerTime = timerTime - delta
+                timerTime -= delta
             }
         }
     }

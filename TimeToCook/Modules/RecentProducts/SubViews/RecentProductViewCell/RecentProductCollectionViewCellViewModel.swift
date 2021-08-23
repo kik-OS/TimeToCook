@@ -11,7 +11,7 @@ protocol RecentProductCollectionViewCellViewModelProtocol {
     var productTitle: String? { get }
     var productProducer: String? { get }
     var productImage: String { get }
-    var productCookingTime: String?  { get }
+    var productCookingTime: String? { get }
     var productBarcode: String { get }
     var productWeight: String { get }
     init(product: ProductCD)

@@ -120,6 +120,7 @@
 		E4554BD926D0E44500819A09 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C7D26A702DA006F1AE9 /* FirebaseService.swift */; };
 		E4554BDB26D232E200819A09 /* FirebaseServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4554BDA26D232E200819A09 /* FirebaseServiceMock.swift */; };
 		E4554BDD26D23DAC00819A09 /* StorageManagerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4554BDC26D23DAC00819A09 /* StorageManagerSpy.swift */; };
+		E4554C1526D298EB00819A09 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E4554C1426D298EB00819A09 /* .swiftlint.yml */; };
 		E4570FC126B2A3C80013F7C9 /* PlateImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC026B2A3C80013F7C9 /* PlateImageView.swift */; };
 		E4570FC326B2A4F40013F7C9 /* ViewWithContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC226B2A4F40013F7C9 /* ViewWithContent.swift */; };
 		E4570FC526B3F02E0013F7C9 /* StillEmptyLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC426B3F02E0013F7C9 /* StillEmptyLabels.swift */; };
@@ -239,6 +240,7 @@
 		E4554BA226D0CFC500819A09 /* CustomTabBarViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewModelTest.swift; sourceTree = "<group>"; };
 		E4554BDA26D232E200819A09 /* FirebaseServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseServiceMock.swift; sourceTree = "<group>"; };
 		E4554BDC26D23DAC00819A09 /* StorageManagerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManagerSpy.swift; sourceTree = "<group>"; };
+		E4554C1426D298EB00819A09 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		E4570FC026B2A3C80013F7C9 /* PlateImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateImageView.swift; sourceTree = "<group>"; };
 		E4570FC226B2A4F40013F7C9 /* ViewWithContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithContent.swift; sourceTree = "<group>"; };
 		E4570FC426B3F02E0013F7C9 /* StillEmptyLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StillEmptyLabels.swift; sourceTree = "<group>"; };
@@ -579,6 +581,7 @@
 		E44BBF6A26A6FEB4003D403C /* TimeToCook */ = {
 			isa = PBXGroup;
 			children = (
+				E4554C1426D298EB00819A09 /* .swiftlint.yml */,
 				E41C3CBC26A754E0006F1AE9 /* Supporting Files */,
 				E41C3C3626A702D6006F1AE9 /* Additional Files  */,
 				E41C3C3326A702D6006F1AE9 /* Models */,
@@ -682,6 +685,7 @@
 				E44BBF6526A6FEB4003D403C /* Frameworks */,
 				E44BBF6626A6FEB4003D403C /* Resources */,
 				C181BEEB0534293A4191A0D1 /* [CP] Embed Pods Frameworks */,
+				E4554C1326D297C900819A09 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -756,6 +760,7 @@
 				E41C3C9526A702DB006F1AE9 /* LaunchScreen.storyboard in Resources */,
 				E41C3C9326A702DB006F1AE9 /* nom.wav in Resources */,
 				E41C3C3226A701C8006F1AE9 /* GoogleService-Info.plist in Resources */,
+				E4554C1526D298EB00819A09 /* .swiftlint.yml in Resources */,
 				E41C3C9426A702DB006F1AE9 /* not.wav in Resources */,
 				E41C3C9126A702DB006F1AE9 /* timer.png in Resources */,
 				E41C3C9226A702DB006F1AE9 /* Assets.xcassets in Resources */,
@@ -849,6 +854,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TimeToCook/Pods-TimeToCook-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		E4554C1326D297C900819A09 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

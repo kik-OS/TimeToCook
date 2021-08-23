@@ -25,14 +25,14 @@ struct TimeDiagram: View {
                     .stroke(style: .init(lineWidth: 20, lineCap: .round,
                                          lineJoin: .round, miterLimit: 0,
                                          dash: [], dashPhase: 0))
-                    .foregroundColor(Color.init(.systemGray4))
+                    .foregroundColor(Color(.systemGray4))
                 
                 Circle()
                     .trim(from: 0.4, to: toValue)
                     .stroke(style: .init(lineWidth: 20, lineCap: .round,
                                          lineJoin: .round, miterLimit: 0,
                                          dash: [], dashPhase: 0))
-                    .foregroundColor(Color.init(VarkaColors.mainColor))
+                    .foregroundColor(Color(VarkaColors.mainColor))
             }
             .rotationEffect(.degrees(18))
             .scaleEffect(0.8)

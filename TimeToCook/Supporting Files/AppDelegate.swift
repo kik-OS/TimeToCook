@@ -32,7 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: Scene lifecycle methods
     
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+    func application(_ application: UIApplication,
+                     configurationForConnecting connectingSceneSession: UISceneSession,
+                     options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
     
@@ -44,8 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Anonymously sign in error:", error.localizedDescription)
                 return
             }
-            if let _ = authDataResult {
-//                print("Anonymously sign in is successful!")
+            if authDataResult != nil {
+                print("Anonymously sign in is successful!")
             }
         }
     }

@@ -182,11 +182,10 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
     }
     
     func tabBarController(_ tabBarController: UITabBarController,
-                          animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+                          animationControllerForTransitionFrom fromVC: UIViewController,
+                          to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return TabBarTransition(viewControllers: tabBarController.viewControllers)
     }
-    
-    
 }
 
 // MARK: - Extensions

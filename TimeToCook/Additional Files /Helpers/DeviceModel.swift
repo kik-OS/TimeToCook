@@ -5,7 +5,7 @@
 //  Created by Никита Гвоздиков on 04.07.2021.
 //
 
-enum DeviceModel  {
+enum DeviceModel {
     case simulator
     case iPhone4
     case iPhone4S

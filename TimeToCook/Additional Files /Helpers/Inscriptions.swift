@@ -12,6 +12,7 @@ enum Inscriptions {
     static let tabBarItemLeftTitle = "Как варить"
     static let tabBarItemRightTitle = "Недавние"
     static let barCodeAlertTitle = "Хьюстон, у нас проблемы"
+    // swiftlint:disable:next line_length
     static let barCodeAlertMessage = "Кажется, данного продукта еще нет в базе, вы можете нам помочь и добавить его вручную"
     static let barCodeAlertButtonOkTitle = "Добавить"
     static let barCodeAlertButtonCancelTitle = "Потом"
@@ -26,17 +27,21 @@ enum Inscriptions {
     static let titleTurnOffTimerButton = "Выключить"
     static let identifierOfAddedProductNotification = "productWasAdded"
     static let titleOfAddedProductNotification = "Новый продукт добавлен в базу"
+    // swiftlint:disable:next line_length
     static let bodyOfAddedProductNotification = "Ура! Вы добавили новый продукт в базу и помогли нам стать лучше, спасибо!"
     static let titleNotificationsAreNotAvailableAlert = "Внимание!"
+    // swiftlint:disable:next line_length
     static let messageNotificationsAreNotAvailableAlert = "Уведомления выключены. Пожалуйста, включите их, или мы не сможем сообщить о готовности продукта"
-    static let okActionNotificationsAreNotAvailableAlert = "Включить уведомления"
-    static let cancelActionNotificationsAreNotAvailableAlert = "Не хочу"
+    static let okActionNotAvailableAlert = "Включить уведомления"
+    static let cancelActionNAreNotAvailableAlert = "Не хочу"
     static let categoryIdentifierTimerNotification = "timerActions"
     static let IncorrectValidationAlertTitle = "Упс..."
     static let variantsOfWaterRatio = ["🍚 1 : 1💧", "🍚 1 : 2💧", "🍚 1 : 3💧", "🍚 1 : 4💧", "🍚 1 : 5💧"]
     static let titleOfDoneButtonForKB = "Сохранить"
+    // swiftlint:disable:next line_length
     static let messageOfStillEmptyView = "Здесь пока ничего нет. Попробуйте что-нибудь отсканировать или выбрать из недавних продуктов"
     static let recentProductCollectionViewCellId = "RecentProductCollectionViewCell"
+    // swiftlint:disable:next line_length
     static let messageRecentProductNotFound = "В недавних продуктах ничего не найдено. Попробуйте что-нибудь отсканировать."
     static let recentProductTitle = "Недавние продукты"
     static let instructionOfCookingFirstStep = "Подготовьте продукты, начинаем готовить"
@@ -45,5 +50,4 @@ enum Inscriptions {
     static let instructionOfCookingFourthStep = "Опустите продукт в кипящую воду. Нажмите на таймер 👇🏻"
     static let instructionOfCookingFifthStep = "Слейте воду"
     static let instructionOfCookingSixthStep = "Добавьте по вкусу соль, перец, масло. Приятного аппетита!"
-    
 }

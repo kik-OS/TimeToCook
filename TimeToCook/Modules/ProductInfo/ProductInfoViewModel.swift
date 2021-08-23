@@ -17,8 +17,8 @@ protocol ProductInfoViewModelProtocol {
     var needUpdateViewForSecondStep: (() -> Void)? { get set }
     var needUpdateViewForThirdStep: (() -> Void)? { get set }
     var buttonStartCookTapped: Bool { get set }
-    var previousOffset: CGFloat {get set}
-    var currentPage: Int {get set}
+    var previousOffset: CGFloat { get set }
+    var currentPage: Int { get set }
     
     init(product: ProductProtocol?)
     
@@ -81,8 +81,7 @@ final class ProductInfoViewModel: ProductInfoViewModelProtocol {
     func getTimerViewModel() -> TimerViewModelProtocol {
         TimerViewModel(minutes: product?.cookingTime ?? 0)
     }
-    
-    
+        
     func checkCurrentStateAndUpdateView() {
         if product == nil {
             needUpdateViewForFirstStep?()
@@ -101,15 +100,21 @@ final class ProductInfoViewModel: ProductInfoViewModelProtocol {
                              withVelocity velocity: CGPoint,
                              collectionView: UICollectionView) -> CGPoint {
         
-        guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return .zero }
+        guard let flowLayout = collectionView.collectionViewLayout
+                as? UICollectionViewFlowLayout else { return .zero }
         if previousOffset > collectionView.contentOffset.x && velocity.x < 0 {
             currentPage -= 1
         } else if previousOffset < collectionView.contentOffset.x && velocity.x > 0 {
             currentPage += 1
         }
         
-        let additional = (flowLayout.itemSize.width + flowLayout.minimumLineSpacing) - flowLayout.headerReferenceSize.width
-        let updatedOffset = (flowLayout.itemSize.width + flowLayout.minimumLineSpacing) * CGFloat(currentPage) - additional
+        let additional = (flowLayout.itemSize.width
+                            + flowLayout.minimumLineSpacing)
+            - flowLayout.headerReferenceSize.width
+        let updatedOffset = (flowLayout.itemSize.width
+                                + flowLayout.minimumLineSpacing)
+            * CGFloat(currentPage)
+            - additional
         previousOffset = updatedOffset
         return CGPoint(x: updatedOffset, y: 0)
     }
@@ -123,5 +128,3 @@ final class ProductInfoViewModel: ProductInfoViewModelProtocol {
         previousOffset = 0
     }
 }
-
-

@@ -8,7 +8,7 @@
 import UIKit
 
 extension CGPath {
-    
+    // swiftlint:disable:next function_body_length
     static func createTabBarPath(frame: CGRect, screenIsSquare: Bool ) -> CGPath {
         
         let path = UIBezierPath()
@@ -50,10 +50,10 @@ extension CGPath {
                               controlPoint: CGPoint(x: (frame.width / 2) + 44, y: 0))
             path.addLine(to: CGPoint(x: frame.width - sideIndent - 10, y: 0))
             path.addQuadCurve(to: CGPoint(x: frame.width - sideIndent, y: 10),
-                              controlPoint: CGPoint(x: frame.width -  sideIndent, y: 0))
-            path.addLine(to: CGPoint(x: frame.width -  sideIndent, y: frame.height - 50))
+                              controlPoint: CGPoint(x: frame.width - sideIndent, y: 0))
+            path.addLine(to: CGPoint(x: frame.width - sideIndent, y: frame.height - 50))
             path.addQuadCurve(to: CGPoint(x: frame.width - 50, y: frame.height - sideIndent),
-                              controlPoint: CGPoint(x: frame.width -  sideIndent,
+                              controlPoint: CGPoint(x: frame.width - sideIndent,
                                                     y: frame.height - sideIndent))
             path.close()
         }

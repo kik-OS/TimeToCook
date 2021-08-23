@@ -5,7 +5,6 @@
 //  Created by Никита Гвоздиков on 19.07.2021.
 //
 
-
 import UIKit
 import AVFoundation
 
@@ -17,13 +16,13 @@ protocol BarcodeScannerDelegate: AnyObject {
 
 final class BarcodeScanner {
     
-    //MARK: Properties
+    // MARK: Properties
     
     public weak var delegate: BarcodeScannerDelegate?
     private var captureSession: AVCaptureSession?
     private var overlayLayer: CALayer?
     
-    //MARK: Init
+    // MARK: Init
     
     init(withDelegate delegate: BarcodeScannerDelegate, overlayLayer: CALayer) {
         self.overlayLayer = overlayLayer
@@ -31,7 +30,7 @@ final class BarcodeScanner {
         scannerSetup()
     }
     
-    //MARK: Private Methodes
+    // MARK: Private Methodes
     
     private func scannerSetup() {
         guard let captureSession = createCaptureSession() else { return }
@@ -65,7 +64,7 @@ final class BarcodeScanner {
                 return captureSession
             }
         } catch {
-            //TODO
+            // TODO
         }
         return nil
     }
@@ -95,7 +94,7 @@ final class BarcodeScanner {
         }
     }
     
-    //MARK: Public Methods
+    // MARK: Public Methods
     
     public func metadataOutput(_ output: AVCaptureMetadataOutput,
                                didOutput metadataObjects: [AVMetadataObject],

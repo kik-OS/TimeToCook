@@ -14,6 +14,7 @@ struct DeviceManager {
                                                 .iPhoneXR, .iPhone11, .iPhone11Pro,
                                                 .iPhone11ProMax, .iPhone12, .iPhone12Mini,
                                                 .iPhone12Pro, .iPhone12ProMax]
-        return !notSquareScreenDevices.contains(UIDevice().typeOfCurrentModel)
+        let type = UIDevice.current.typeOfCurrentModel
+        return !notSquareScreenDevices.contains(type)
     }
 }

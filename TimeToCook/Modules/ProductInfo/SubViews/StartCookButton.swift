@@ -9,7 +9,7 @@ import UIKit
 
 final class StartCookButton: UIButton {
     
-    //MARK: Init
+    // MARK: Init
     
     init() {
         super.init(frame: .zero)
@@ -31,7 +31,7 @@ final class StartCookButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: Methods
+    // MARK: Methods
     
     func startState() {
         setTitle("Начать готовку", for: .normal)

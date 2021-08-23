@@ -9,7 +9,7 @@ import UIKit
 
 final class DoneButtonForKB: UIBarButtonItem {
     
-    //MARK: Init
+    // MARK: Init
     
     override init() {
         super.init()

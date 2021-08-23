@@ -5,7 +5,6 @@
 //  Created by Никита Гвоздиков on 18.07.2021.
 //
 
-
 import UIKit
 
 extension UIButton {
@@ -21,6 +20,4 @@ extension UIButton {
         pulse.damping = 0.5
         layer.add(pulse, forKey: nil)
     }
-    
-   
 }

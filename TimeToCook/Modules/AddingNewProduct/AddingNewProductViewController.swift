@@ -181,7 +181,7 @@ final class AddingNewProductViewController: UIViewController {
     private func setupSaveProductButtonConstraints() {
         contentView.addSubview(saveButton)
         NSLayoutConstraint.activate([
-            saveButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 2/3),
+            saveButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 2 / 3),
             saveButton.topAnchor.constraint(greaterThanOrEqualTo: textFieldsStackView.bottomAnchor, constant: 40),
             saveButton.heightAnchor.constraint(equalToConstant: 40),
             saveButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
@@ -198,7 +198,7 @@ final class AddingNewProductViewController: UIViewController {
     
     private func setupStack() {
         textFieldsStackView.addArrangedSubview(codeLabel)
-        singleStacks.forEach { textFieldsStackView.addArrangedSubview($0)}
+        singleStacks.forEach { textFieldsStackView.addArrangedSubview($0) }
     }
     
     private func setupTextFields() {
@@ -229,7 +229,7 @@ final class AddingNewProductViewController: UIViewController {
         }
 
         viewModel?.needUpdateFirstResponder = { [unowned self] tag in
-            guard let targetTF = singleStacks.map({$0.getTF()}).first(where: { $0.tag == tag}) else { return }
+            guard let targetTF = singleStacks.map({ $0.getTF() }).first(where: { $0.tag == tag }) else { return }
             targetTF.becomeFirstResponder()
         }
     }
@@ -240,14 +240,17 @@ final class AddingNewProductViewController: UIViewController {
     }
 
     private func configureObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardDidShow),
+                                               name: UIResponder.keyboardDidShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardDidHide),
+                                               name: UIResponder.keyboardDidHideNotification,
+                                               object: nil)
     }
 
-
-   @objc private func textFieldsEditingDidBegin(_ sender: UITextField) {
-    viewModel?.indexOfFirstResponder = sender.tag
-    viewModel?.updatePickerViewIfNeeded(index: sender.tag) { [weak self] in
+    @objc private func textFieldsEditingDidBegin(_ sender: UITextField) {
+        viewModel?.indexOfFirstResponder = sender.tag
+        viewModel?.updatePickerViewIfNeeded(index: sender.tag) { [weak self] in
             self?.pickerViewForKB.reloadAllComponents()
         }
         updateUpAndDownButtonsState()
@@ -281,7 +284,7 @@ final class AddingNewProductViewController: UIViewController {
     }
 }
 
-//MARK: - Extensions
+// MARK: - Extensions
 
 extension AddingNewProductViewController: UITextFieldDelegate {
 
@@ -299,7 +302,7 @@ extension AddingNewProductViewController: UITextFieldDelegate {
     }
 
     @objc private func didTapOnUpButton() {
-        viewModel?.didTapChangeResponderButton(type: .up)
+        viewModel?.didTapChangeResponderButton(type: .upward)
     }
 
     @objc private func didTapOnDownButton() {
@@ -307,7 +310,7 @@ extension AddingNewProductViewController: UITextFieldDelegate {
     }
 
     @objc private func keyBoardDidShow(notification: Notification) {
-        guard let userInfo = notification.userInfo else {return}
+        guard let userInfo = notification.userInfo else { return }
         let kbFrameSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
         contentScroll.contentSize = CGSize(width: contentView.bounds.size.width,
                                            height: contentView.bounds.size.height + (kbFrameSize ?? CGRect()).height)
@@ -315,7 +318,8 @@ extension AddingNewProductViewController: UITextFieldDelegate {
 
     @objc private func keyBoardDidHide() {
         UIView.animate(withDuration: 0.5) {
-            self.contentScroll.contentSize = CGSize(width: self.contentView.bounds.size.width, height: self.contentView.bounds.size.height)
+            self.contentScroll.contentSize = CGSize(width: self.contentView.bounds.size.width,
+                                                    height: self.contentView.bounds.size.height)
         }
     }
 

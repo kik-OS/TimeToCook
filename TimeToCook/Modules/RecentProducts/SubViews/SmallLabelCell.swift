@@ -9,7 +9,7 @@ import UIKit
 
 final class SmallLabelCell: UILabel {
     
-    //MARK: Init
+    // MARK: Init
     
     init() {
         super.init(frame: .zero)

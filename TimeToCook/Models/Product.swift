@@ -92,4 +92,3 @@ struct Product: ProductProtocol {
          "ref": ref as Any]
     }
 }
-

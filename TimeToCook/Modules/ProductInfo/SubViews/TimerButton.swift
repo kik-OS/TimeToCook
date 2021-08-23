@@ -9,7 +9,7 @@ import UIKit
 
 final class TimerButton: UIButton {
     
-    //MARK: Init
+    // MARK: Init
     
     init() {
         super.init(frame: .zero)
@@ -32,4 +32,3 @@ final class TimerButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 }
-

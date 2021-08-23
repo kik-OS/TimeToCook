@@ -11,7 +11,11 @@ struct ConstantsCollectionView {
     static let leftDistanceToView: CGFloat = 40
     static let rightDistanceToView: CGFloat = 40
     static let productsCollectionMinimumLineSpacing: CGFloat = 20
-    static let productsCollectionItemWidth = (UIScreen.main.bounds.width - ConstantsCollectionView.leftDistanceToView - ConstantsCollectionView.rightDistanceToView - (ConstantsCollectionView.productsCollectionMinimumLineSpacing / 2)) / 2
+    static let productsCollectionItemWidth = (UIScreen.main.bounds.width
+                                                - ConstantsCollectionView.leftDistanceToView
+                                                - ConstantsCollectionView.rightDistanceToView
+                                                - (ConstantsCollectionView.productsCollectionMinimumLineSpacing
+                                                    / 2)) / 2
 }
 
 enum DataConstants {
@@ -19,14 +23,13 @@ enum DataConstants {
                                 "Чечевица красная", "Чечевица зелёная", "Другое"]
 }
 
-
 enum PickerViewForKBType {
     case category
     case waterRatio
 }
 
 enum ToolBarButtonsForKBType {
-    case up
+    case upward
     case down
 }
 

@@ -9,7 +9,7 @@ import UIKit
 
 final class TimerContentView: UIView {
     
-    //MARK: Init
+    // MARK: Init
     
     init() {
         super.init(frame: .zero)

@@ -9,7 +9,7 @@ import UIKit
 
 final class SaveProductButton: UIButton {
     
-    //MARK: Init
+    // MARK: Init
     
     init() {
         super.init(frame: .zero)

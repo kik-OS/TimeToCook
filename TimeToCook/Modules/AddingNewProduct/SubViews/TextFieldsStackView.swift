@@ -9,7 +9,7 @@ import UIKit
 
 final class TextFieldStackView: UIStackView {
     
-    //MARK: UI
+    // MARK: UI
     
     init() {
         super.init(frame: .zero)

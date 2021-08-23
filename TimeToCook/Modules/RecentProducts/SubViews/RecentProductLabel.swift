@@ -9,7 +9,7 @@ import UIKit
 
 final class RecentProductLabel: UILabel {
     
-    //MARK: Init
+    // MARK: Init
     
     init() {
         super.init(frame: .zero)
