@@ -16,12 +16,18 @@ protocol BarcodeScannerViewControllerDelegate: AnyObject {
 }
 
 final class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
+
+    // MARK: UI
+
+    private lazy var middleButton: TabBarMiddleButton = {
+        let middleButton = TabBarMiddleButton()
+        return middleButton
+    }()
     
-    // MARK: - Properties
+    // MARK: - Dependences
     
     var viewModel: CustomTabBarViewModelProtocol
-    private let middleButton = UIButton.setupMiddleButtonTabBar()
-    
+
     // MARK: - Initializers
     
     init() {

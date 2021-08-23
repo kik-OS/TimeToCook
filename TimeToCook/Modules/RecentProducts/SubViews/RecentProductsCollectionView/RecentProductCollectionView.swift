@@ -11,9 +11,9 @@ final class RecentProductCollectionView: UICollectionView {
     
     // MARK: - Dependences
     
-    var viewModel: RecentProductCollectionViewViewModelProtocol! {
+    var viewModel: RecentProductCollectionViewViewModelProtocol? {
         didSet {
-            viewModel.fetchProductFromCoreData { [weak self] in
+            viewModel?.fetchProductFromCoreData { [weak self] in
                 self?.reloadData()
             }
         }
@@ -53,14 +53,14 @@ extension RecentProductCollectionView: UICollectionViewDelegate,
                                        UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-         viewModel.numberOfItemsInSection
+        viewModel?.numberOfItemsInSection ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = dequeueReusableCell(withReuseIdentifier: RecentProductCollectionViewCell.reuseID,
                                        for: indexPath) as? RecentProductCollectionViewCell
-        cell?.viewModel = viewModel.cellViewModel(at: indexPath)
+        cell?.viewModel = viewModel?.cellViewModel(at: indexPath)
         return cell ?? UICollectionViewCell()
     }
     
@@ -71,7 +71,7 @@ extension RecentProductCollectionView: UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.didSelectItemAt(indexPath: indexPath)
+        viewModel?.didSelectItemAt(indexPath: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {

@@ -15,14 +15,14 @@ final class RecentProductCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Dependences
     
-    var viewModel: RecentProductCollectionViewCellViewModelProtocol! {
+    var viewModel: RecentProductCollectionViewCellViewModelProtocol? {
         didSet {
-            mainImageView.image = UIImage(named: viewModel.productImage)
-            nameLabel.text = viewModel.productTitle
-            producerLabel.text = viewModel.productProducer
-            cookingTimeLabel.text = viewModel.productCookingTime
-            barcodeLabel.text = viewModel.productBarcode
-            weightLabel.text = viewModel.productWeight
+            mainImageView.image = UIImage(named: viewModel?.productImage ?? "")
+            nameLabel.text = viewModel?.productTitle
+            producerLabel.text = viewModel?.productProducer
+            cookingTimeLabel.text = viewModel?.productCookingTime
+            barcodeLabel.text = viewModel?.productBarcode
+            weightLabel.text = viewModel?.productWeight
         }
     }
     

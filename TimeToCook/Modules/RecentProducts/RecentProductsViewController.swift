@@ -79,7 +79,7 @@ final class RecentProductsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         recentProductCollectionView.viewModel = viewModel?.getRecentProductCollectionViewViewModel()
-        recentProductCollectionView.viewModel.delegate = self
+        recentProductCollectionView.viewModel?.delegate = self
         addVerticalGradientLayer()
         setupAllConstraints()
     }
@@ -88,9 +88,9 @@ final class RecentProductsViewController: UIViewController {
         super.viewWillAppear(animated)
         recentProductCollectionView.setContentOffset(CGPoint(x: -ConstantsCollectionView.leftDistanceToView,
                                                                    y: -20), animated: false)
-        recentProductCollectionView.viewModel.fetchProductFromCoreData { [ weak self] in
+        recentProductCollectionView.viewModel?.fetchProductFromCoreData { [ weak self] in
             self?.recentProductCollectionView.reloadData()
-            guard let isHidden = self?.recentProductCollectionView.viewModel.contentIsEmpty() else { return }
+            guard let isHidden = self?.recentProductCollectionView.viewModel?.contentIsEmpty() else { return }
             self?.recentProductCollectionView.isHidden = isHidden
             self?.emptyPlateImage.isHidden = !isHidden
             self?.recentProductLabel.text = self?.viewModel?.checkCurrentState(isHidden: !isHidden)

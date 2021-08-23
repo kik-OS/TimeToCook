@@ -87,8 +87,6 @@ final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
     // MARK: - Private methods
     
     private func createProductInCoreData(product: ProductProtocol) {
-//        StorageManager.shared.saveProductCD(product: product)
-    
         storageManager?.saveProductCD(product: product)
     }
 }

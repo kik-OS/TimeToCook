@@ -50,4 +50,7 @@ enum Inscriptions {
     static let instructionOfCookingFourthStep = "Опустите продукт в кипящую воду. Нажмите на таймер 👇🏻"
     static let instructionOfCookingFifthStep = "Слейте воду"
     static let instructionOfCookingSixthStep = "Добавьте по вкусу соль, перец, масло. Приятного аппетита!"
+    static let productNotFoundError = "По данному коду продукт в базе не найден"
+    static let modelInitializingError = "Ошибка при инициализации продукта"
+    static let productsNotFoundError = "Ни одного продукта не добавлено в базу"
 }
