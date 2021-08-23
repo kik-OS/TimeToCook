@@ -152,6 +152,7 @@
 		E4C1A11426C14979008C1D17 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C1A11326C14979008C1D17 /* CustomNavigationController.swift */; };
 		E4C783A826C3E80E00C95626 /* RecentProductLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C783A726C3E80E00C95626 /* RecentProductLabel.swift */; };
 		E4CEEC6026D3C22A00E5AE67 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEEC5F26D3C22A00E5AE67 /* UICollectionView+Extension.swift */; };
+		E4CEEC6126D3CC1100E5AE67 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEEC5F26D3C22A00E5AE67 /* UICollectionView+Extension.swift */; };
 		E4EB3E6D26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E6C26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift */; };
 		E4EB3E6F26BC346D00DA752C /* InstructionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E6E26BC346D00DA752C /* InstructionCollectionViewCell.swift */; };
 		E4EB3E7126BC3DB800DA752C /* InstructionCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E7026BC3DB800DA752C /* InstructionCollectionView.swift */; };
@@ -973,6 +974,7 @@
 				E4554BA626D0D0A400819A09 /* RecentProductCollectionViewViewModel.swift in Sources */,
 				E4554BD626D0D45B00819A09 /* FirebaseServiceError.swift in Sources */,
 				E4554BB126D0D16000819A09 /* SmallLabelCell.swift in Sources */,
+				E4CEEC6126D3CC1100E5AE67 /* UICollectionView+Extension.swift in Sources */,
 				E4BFBCDF26CE578F007A6CF6 /* Inscriptions.swift in Sources */,
 				E4554BB926D0D2AE00819A09 /* PlateImageView.swift in Sources */,
 				E4BFBCE126CE57AC007A6CF6 /* TimerManager.swift in Sources */,

@@ -20,7 +20,7 @@ protocol CustomTabBarViewModelProtocol: AnyObject {
     func findProduct(byCode code: String)
     func getProductInfoViewModel(product: ProductProtocol?) -> ProductInfoViewModelProtocol
     func getRecentProductViewModel() -> RecentProductViewModelProtocol
-    func getAddingNewProductViewModel(withCode code: String) -> AddingNewProductViewModelProtocol
+    func getAddingNewProductViewModel(withCode code: String) -> AddingNewProductViewModelProtocol?
     func getTimerViewModel() -> TimerViewModelProtocol
 }
 
@@ -76,8 +76,9 @@ final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
         RecentProductViewModel()
     }
     
-    func getAddingNewProductViewModel(withCode code: String) -> AddingNewProductViewModelProtocol {
-        AddingNewProductViewModel(code: code, firebaseService: FirebaseService.shared)
+    func getAddingNewProductViewModel(withCode code: String) -> AddingNewProductViewModelProtocol? {
+        guard let firebaseService = firebaseService else { return nil }
+        return AddingNewProductViewModel(code: code, firebaseService: firebaseService)
     }
     
     func getTimerViewModel() -> TimerViewModelProtocol {

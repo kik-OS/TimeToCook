@@ -9,7 +9,7 @@ import UIKit
 
 extension UICollectionView {
     
-    func appearCollectionViewAnimation() {
+   func appearCollectionViewAnimation() {
         reloadData()
         UIView.animate(
             withDuration: 0.5, delay: 0.5,
@@ -22,7 +22,7 @@ extension UICollectionView {
         )
     }
 
-    func collectionViewLayoutAnimation(velocity: CGPoint, point: CGPoint ) {
+  func collectionViewLayoutAnimation(velocity: CGPoint, point: CGPoint ) {
         UIView.animate(withDuration: 0.3, delay: 0,
                        usingSpringWithDamping: 1,
                        initialSpringVelocity: velocity.x,
