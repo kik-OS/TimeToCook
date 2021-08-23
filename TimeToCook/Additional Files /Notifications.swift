@@ -82,7 +82,6 @@ final class Notifications: NSObject, UNUserNotificationCenterDelegate {
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: numberOfSeconds, repeats: false)
         let identifier = Inscriptions.identifierOfTimerNotification
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-        
         let snoozeOneMinuteAction = UNNotificationAction(identifier: Inscriptions.identifierSnoozeOneMinuteButton,
                                                          title: Inscriptions.titleSnoozeOneMinuteButton,
                                                          options: [])
@@ -92,7 +91,6 @@ final class Notifications: NSObject, UNUserNotificationCenterDelegate {
         let turnOffAction = UNNotificationAction(identifier: Inscriptions.identifierTurnOffTimerButton,
                                                  title: Inscriptions.titleTurnOffTimerButton,
                                                  options: [.destructive])
-        
         let category = UNNotificationCategory(identifier: Inscriptions.categoryIdentifierTimerNotification,
                                               actions: [snoozeOneMinuteAction, snoozeFiveMinuteAction, turnOffAction],
                                               intentIdentifiers: [], options: [])
@@ -110,11 +108,11 @@ final class Notifications: NSObject, UNUserNotificationCenterDelegate {
         
         notificationCenter.add(request)
     }
-    
+
     func cancelTimerNotification() {
         notificationCenter.removeAllPendingNotificationRequests()
     }
-    
+
     static func notificationsAreNotAvailableAlert() -> UIAlertController {
         let alert = UIAlertController(title: Inscriptions.titleNotificationsAreNotAvailableAlert,
                                       message: Inscriptions.messageNotificationsAreNotAvailableAlert,
@@ -131,7 +129,6 @@ final class Notifications: NSObject, UNUserNotificationCenterDelegate {
                                          style: .default)
         alert.addAction(settingsAction)
         alert.addAction(cancelAction)
-        
         return alert
     }
     

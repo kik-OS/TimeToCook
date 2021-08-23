@@ -8,9 +8,9 @@
 import UIKit
 
 final class SaveProductButton: UIButton {
-    
+
     // MARK: Init
-    
+
     init() {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false

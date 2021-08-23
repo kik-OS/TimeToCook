@@ -10,7 +10,7 @@ import Foundation
 protocol RecentProductCollectionViewViewModelProtocol: AnyObject {
     var numberOfItemsInSection: Int { get }
     var productsCD: [ProductCD] { get }
-    var delegate: RecentProductCollectionViewDelegate! { get set }
+    var delegate: RecentProductCollectionViewDelegate? { get set }
     func fetchProductFromCoreData(completion: @escaping() -> Void)
     func cellViewModel(at indexPath: IndexPath) -> RecentProductCollectionViewCellViewModelProtocol?
     func didSelectItemAt(indexPath: IndexPath)
@@ -25,13 +25,13 @@ final class RecentProductCollectionViewViewModel: RecentProductCollectionViewVie
     func didSelectItemAt(indexPath: IndexPath) {
         guard let product = StorageManager.shared.convertFromProductCDToProduct(
                 productCD: productsCD[indexPath.row]) else { return }
-        delegate.presentInfoAboutProduct(product: product)
+        delegate?.presentInfoAboutProduct(product: product)
     }
     
     // MARK: - Properties
     
+    weak var delegate: RecentProductCollectionViewDelegate?
     var productsCD: [ProductCD] = []
-    var delegate: RecentProductCollectionViewDelegate!
     var numberOfItemsInSection: Int {
         productsCD.count
     }

@@ -21,9 +21,9 @@ protocol ProductProtocol {
 }
 
 struct Product: ProductProtocol {
-    
+
     // MARK: - Properties
-    
+
     let code: String
     let title: String
     let producer: String
@@ -34,15 +34,15 @@ struct Product: ProductProtocol {
     let needStirring: Bool?
     let waterRatio: Double
     let ref: DatabaseReference?
-    
+
     // MARK: - Initializers
-    
+
     init(code: String, title: String, producer: String,
          category: String, weight: Int?,
          cookingTime: Int, intoBoilingWater: Bool?,
          needStirring: Bool?, waterRatio: Double,
          ref: DatabaseReference? = nil) {
-        
+
         self.code = code
         self.title = title
         self.producer = producer
@@ -54,7 +54,7 @@ struct Product: ProductProtocol {
         self.waterRatio = waterRatio
         self.ref = ref
     }
-    
+
     init?(snapshot: DataSnapshot) {
         guard let snapshotValue = snapshot.value as? [String: AnyObject],
               let code = snapshotValue["code"] as? String,
@@ -64,7 +64,7 @@ struct Product: ProductProtocol {
               let cookingTime = snapshotValue["cookingTime"] as? Int,
               let waterRatio = snapshotValue["waterRatio"] as? Double
               else { return nil }
-        
+
         self.code = code
         self.title = title
         self.producer = producer
@@ -76,7 +76,7 @@ struct Product: ProductProtocol {
         self.waterRatio = waterRatio
         self.ref = snapshot.ref
     }
-    
+
     // MARK: - Public methods
     
     func convertToDictionary() -> Any {

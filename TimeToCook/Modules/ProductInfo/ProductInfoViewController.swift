@@ -122,7 +122,7 @@ final class ProductInfoViewController: UIViewController {
              viewWithContent.widthAnchor.constraint(equalTo: view.widthAnchor),
              viewWithContent.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 2 / 3)])
     }
-    
+
     private func setupPlateImageViewConstraints() {
         view.addSubview(plateImageView)
         plateImageViewLeadingConstraint = plateImageView.leadingAnchor.constraint(equalTo: view.trailingAnchor)
@@ -141,7 +141,7 @@ final class ProductInfoViewController: UIViewController {
             stillEmpty.topAnchor.constraint(equalTo: viewWithContent.topAnchor, constant: 30),
             stillEmpty.heightAnchor.constraint(equalTo: viewWithContent.heightAnchor, multiplier: 2 / 3)])
     }
-    
+
     private func setupProductNameLabelConstraints() {
         viewWithContent.addSubview(productNameLabel)
         NSLayoutConstraint.activate([
@@ -175,7 +175,7 @@ final class ProductInfoViewController: UIViewController {
             timerButton.bottomAnchor.constraint(equalTo: startCookButton.topAnchor, constant: -15),
             timerButton.widthAnchor.constraint(equalTo: viewWithContent.widthAnchor, multiplier: 2 / 3)])
     }
-    
+
     private func setupCollectionViewConstraints() {
         viewWithContent.addSubview(collectionView)
         NSLayoutConstraint.activate([
@@ -184,7 +184,7 @@ final class ProductInfoViewController: UIViewController {
             collectionView.topAnchor.constraint(equalTo: viewWithContent.topAnchor, constant: 15),
             collectionView.bottomAnchor.constraint(equalTo: timerButton.topAnchor, constant: -35)])
     }
-    
+
     private func setupCloseButtonConstraints() {
         viewWithContent.addSubview(closeButton)
         NSLayoutConstraint.activate([
@@ -205,7 +205,7 @@ final class ProductInfoViewController: UIViewController {
         disappearTimerButtonAnimation()
         disappearCloseButtonAnimation()
     }
-    
+
     private func appearPlateAnimation() {
         plateImageView.alpha = 1
         UIView.animate(withDuration: 1, delay: 0.3, usingSpringWithDamping: 2,
@@ -213,14 +213,14 @@ final class ProductInfoViewController: UIViewController {
                         self.plateImageViewLeadingConstraint?.constant =
                             -self.plateImageView.frame.width * 0.8
                         self.view.layoutIfNeeded() })
-        
+
         UIView.animate(withDuration: 0.3,
             animations: { self.plateImageView.transform = CGAffineTransform(scaleX: 0.7, y: 0.7) },
             completion: { _ in UIView.animate(withDuration: 0.4) {
                     self.plateImageView.transform = CGAffineTransform.identity
             }})
         }
-    
+
     private func disappearPlateAnimation() {
         UIView.animate(withDuration: 0.1) {
             self.plateImageView.alpha = 0
@@ -228,21 +228,21 @@ final class ProductInfoViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
     }
-    
+
     private func appearContentViewAnimation() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 2,
                        initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                         self.contentViewBottomConstraint?.constant = 0
                         self.view.layoutIfNeeded() })
     }
-    
+
     private func disappearContentViewAnimation() {
         UIView.animate(withDuration: 0.2) {
             self.contentViewBottomConstraint?.constant = self.view.frame.height * 2 / 3
             self.view.layoutIfNeeded()
         }
     }
-    
+
     private func appearProductViewAnimation() {
         UIView.animate(
             withDuration: 0.5, delay: 0.8,
@@ -256,14 +256,14 @@ final class ProductInfoViewController: UIViewController {
             }
         )
     }
-    
+
     private func disappearProductViewAnimation() {
         self.productView.alpha = 0
         self.productView.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
         self.productNameLabel.alpha = 0
         self.productNameLabel.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
     }
-    
+
     private func appearStartCookButtonAnimation() {
         UIView.animate(
             withDuration: 0.5, delay: 1,
@@ -275,12 +275,12 @@ final class ProductInfoViewController: UIViewController {
             }
         )
     }
-    
+
     private func disappearStartCookButtonAnimation() {
         self.startCookButton.alpha = 0
         self.startCookButton.transform = CGAffineTransform(scaleX: 0.4, y: 0.4)
     }
-    
+
     private func appearCollectionViewAnimation() {
         collectionView.reloadData()
         UIView.animate(
@@ -293,7 +293,7 @@ final class ProductInfoViewController: UIViewController {
             }
         )
     }
-    
+
     private func disappearCollectionViewAnimation() {
         collectionView.alpha = 0
         collectionView.transform = CGAffineTransform(scaleX: 0.4, y: 0.4)
@@ -308,7 +308,7 @@ final class ProductInfoViewController: UIViewController {
                        }
         )
     }
-    
+
     private func appearTimerButtonAnimation() {
         UIView.animate(
             withDuration: 0.5, delay: 0.5,
@@ -320,12 +320,12 @@ final class ProductInfoViewController: UIViewController {
             }
         )
     }
-    
+
     private func disappearTimerButtonAnimation() {
         self.timerButton.alpha = 0
         self.timerButton.transform = CGAffineTransform(scaleX: 0.4, y: 0.4)
     }
-    
+
     private func appearCloseButtonAnimation() {
         UIView.animate(
             withDuration: 0.5, delay: 0.8,
@@ -337,21 +337,21 @@ final class ProductInfoViewController: UIViewController {
             }
         )
     }
-    
+
     private func disappearCloseButtonAnimation() {
         closeButton.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
         UIView.animate(withDuration: 0.5) {
             self.closeButton.alpha = 0
         }
     }
-    
+
     // MARK: Private Methodes
-    
+
     private func setupViewModelBindingsForAnimation() {
         viewModel.needUpdateViewForFirstStep = { [weak self] in
             self?.appearContentViewAnimation()
         }
-        
+
         viewModel.needUpdateViewForSecondStep = { [weak self] in
             self?.stillEmpty.alpha = 0
             self?.appearCloseButtonAnimation()
@@ -364,7 +364,7 @@ final class ProductInfoViewController: UIViewController {
             self?.disappearCollectionViewAnimation()
             self?.disappearTimerButtonAnimation()
         }
-        
+
         viewModel.needUpdateViewForThirdStep = { [weak self] in
             self?.closeButton.alpha = 0
             self?.disappearPlateAnimation()
@@ -378,7 +378,7 @@ final class ProductInfoViewController: UIViewController {
             self?.collectionView.createLayout()
         }
     }
-    
+
     private func updateProductInfo() {
         plateImageView.image = UIImage(named: viewModel.productImage)
         productView.setBarcode(barcode: viewModel.product?.code ?? "")
@@ -388,14 +388,14 @@ final class ProductInfoViewController: UIViewController {
         productView.setTime(time: viewModel.cookingTime)
         productNameLabel.setName(name: viewModel.product?.title ?? "")
     }
-    
+
     // CollectionView
     private func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.createLayout()
     }
-    
+
     // Gradient
     private func addVerticalGradientLayer() {
         let gradient = CAGradientLayer()
@@ -411,12 +411,12 @@ final class ProductInfoViewController: UIViewController {
         viewModel.buttonStartCookTapped.toggle()
         viewModel.checkCurrentStateAndUpdateView()
     }
-    
+
     @objc private func setTimerButtonTapped() {
         let timerViewModel = viewModel.getTimerViewModel()
         let timerVC = TimerViewController(viewModel: timerViewModel)
         timerVC.modalPresentationStyle = .overCurrentContext
-        
+
         Notifications.shared.checkNotificationSettings { [weak self] in
             let alert = Notifications.notificationsAreNotAvailableAlert()
             self?.present(alert, animated: true)
@@ -424,7 +424,7 @@ final class ProductInfoViewController: UIViewController {
         timerButton.layer.removeAllAnimations()
         present(timerVC, animated: true)
     }
-    
+
     @objc private func closeButtonTapped() {
         disappearAnimations()
         viewModel.updateProduct(product: nil)
@@ -439,10 +439,10 @@ final class ProductInfoViewController: UIViewController {
 // MARK: UICollectionViewDelegate
 
 extension ProductInfoViewController: UICollectionViewDelegate {
-    
+
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint,
                                    targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
+
         let point = viewModel.targetContentOffset(scrollView,
                                                   withVelocity: velocity,
                                                   collectionView: collectionView)
@@ -456,7 +456,6 @@ extension ProductInfoViewController: UICollectionViewDelegate {
 extension ProductInfoViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int { 7 }
-    
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "instructionCell",
