@@ -9,7 +9,7 @@ import UIKit
 
 final class StillEmptyView: UIStackView {
     
-    //MARK: UI
+    // MARK: UI
 
     private lazy var stillEmptyLabels: StillEmptyLabels = {
         let stillEmptyLabels = StillEmptyLabels()
@@ -21,7 +21,7 @@ final class StillEmptyView: UIStackView {
         return mascotImageView
     }()
     
-    //MARK: Init
+    // MARK: Init
 
     init() {
         super.init(frame: .zero)
@@ -37,6 +37,3 @@ final class StillEmptyView: UIStackView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-
-

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ProductInfoViewModelProtocol {
-    var product: Product? { get }
+    var product: ProductProtocol? { get }
     var weight: String { get }
     var cookingTime: String { get }
     var isHiddenProductStackView: Bool { get }
@@ -17,13 +17,14 @@ protocol ProductInfoViewModelProtocol {
     var needUpdateViewForSecondStep: (() -> Void)? { get set }
     var needUpdateViewForThirdStep: (() -> Void)? { get set }
     var buttonStartCookTapped: Bool { get set }
-    var previousOffset: CGFloat {get set}
-    var currentPage: Int {get set}
-    init(product: Product?)
+    var previousOffset: CGFloat { get set }
+    var currentPage: Int { get set }
+    
+    init(product: ProductProtocol?)
     
     func getTimerViewModel() -> TimerViewModelProtocol
     func checkCurrentStateAndUpdateView()
-    func updateProduct(product: Product?)
+    func updateProduct(product: ProductProtocol?)
     func targetContentOffset(_ scrollView: UIScrollView,
                              withVelocity velocity: CGPoint,
                              collectionView: UICollectionView) -> CGPoint
@@ -38,11 +39,11 @@ final class ProductInfoViewModel: ProductInfoViewModelProtocol {
     var needUpdateViewForFirstStep: (() -> Void)?
     var needUpdateViewForSecondStep: (() -> Void)?
     var needUpdateViewForThirdStep: (() -> Void)?
-    var buttonStartCookTapped: Bool = false
+    var buttonStartCookTapped = false
     var previousOffset: CGFloat = 0
-    var currentPage: Int = 0
+    var currentPage = 0
     
-    var product: Product? = nil {
+    var product: ProductProtocol? {
         didSet {
             buttonStartCookTapped = false
         }
@@ -66,13 +67,12 @@ final class ProductInfoViewModel: ProductInfoViewModelProtocol {
     }
     
     var isHiddenProductStackView: Bool {
-        return product == nil
+        product == nil
     }
-    
     
     // MARK: - Init
     
-    init(product: Product? = nil) {
+    init(product: ProductProtocol? = nil) {
         self.product = product
     }
     
@@ -81,8 +81,7 @@ final class ProductInfoViewModel: ProductInfoViewModelProtocol {
     func getTimerViewModel() -> TimerViewModelProtocol {
         TimerViewModel(minutes: product?.cookingTime ?? 0)
     }
-    
-    
+        
     func checkCurrentStateAndUpdateView() {
         if product == nil {
             needUpdateViewForFirstStep?()
@@ -93,7 +92,7 @@ final class ProductInfoViewModel: ProductInfoViewModelProtocol {
         }
     }
     
-    func updateProduct(product: Product?) {
+    func updateProduct(product: ProductProtocol?) {
         self.product = product
     }
     
@@ -101,22 +100,27 @@ final class ProductInfoViewModel: ProductInfoViewModelProtocol {
                              withVelocity velocity: CGPoint,
                              collectionView: UICollectionView) -> CGPoint {
         
-        guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return .zero }
+        guard let flowLayout = collectionView.collectionViewLayout
+                as? UICollectionViewFlowLayout else { return .zero }
         if previousOffset > collectionView.contentOffset.x && velocity.x < 0 {
             currentPage -= 1
         } else if previousOffset < collectionView.contentOffset.x && velocity.x > 0 {
             currentPage += 1
         }
         
-        let additional = (flowLayout.itemSize.width + flowLayout.minimumLineSpacing) - flowLayout.headerReferenceSize.width
-        let updatedOffset = (flowLayout.itemSize.width + flowLayout.minimumLineSpacing) * CGFloat(currentPage) - additional
+        let additional = (flowLayout.itemSize.width
+                            + flowLayout.minimumLineSpacing)
+            - flowLayout.headerReferenceSize.width
+        let updatedOffset = (flowLayout.itemSize.width
+                                + flowLayout.minimumLineSpacing)
+            * CGFloat(currentPage)
+            - additional
         previousOffset = updatedOffset
-        
         return CGPoint(x: updatedOffset, y: 0)
     }
     
     func cellViewModel(at indexPath: IndexPath) -> InstructionCollectionViewCellViewModelProtocol? {
-        return InstructionCollectionViewCellViewModel(product: product, indexPath: indexPath)
+        InstructionCollectionViewCellViewModel(product: product, indexPath: indexPath)
     }
     
     func resetCollectionViewLayout() {
@@ -124,5 +128,3 @@ final class ProductInfoViewModel: ProductInfoViewModelProtocol {
         previousOffset = 0
     }
 }
-
-

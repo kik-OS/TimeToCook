@@ -8,6 +8,7 @@
 import Foundation
 
 protocol AddingNewProductViewModelProtocol: AnyObject {
+    
     var codeLabelText: String? { get set }
     var textFromCategoryTF: String? { get set }
     var textFromTitleProductTF: String? { get set }
@@ -28,7 +29,7 @@ protocol AddingNewProductViewModelProtocol: AnyObject {
     var stateForUpButton: Bool { get }
     var stateForDownButton: Bool { get }
   
-    init(code: String)
+    init(code: String, firebaseService: FirebaseServiceProtocol)
     
     func validation() -> Bool
     func calculateWaterRatio(row: Int)
@@ -42,13 +43,6 @@ protocol AddingNewProductViewModelProtocol: AnyObject {
 }
 
 final class AddingNewProductViewModel: AddingNewProductViewModelProtocol {
-    
-    // MARK: - Initializers
-    
-    init(code: String) {
-        self.codeLabelText = code
-        getCategories()
-    }
     
     // MARK: - Properties
     
@@ -79,7 +73,7 @@ final class AddingNewProductViewModel: AddingNewProductViewModelProtocol {
     var dataForPickerView: [String] {
         switch indexOfFirstResponder {
         case 0:
-            return categories.map{$0.name}
+            return categories.map { $0.name }
         case 5:
             return listOfWaterRatio
         default:
@@ -87,7 +81,17 @@ final class AddingNewProductViewModel: AddingNewProductViewModelProtocol {
         }
     }
     
-    private let firebaseService: FirebaseServiceProtocol = FirebaseService.shared
+    // MARK: - Initializers
+    
+    init(code: String, firebaseService: FirebaseServiceProtocol) {
+        self.firebaseService = firebaseService
+        self.codeLabelText = code
+        getCategories()
+    }
+    
+    // MARK: Dependences
+    
+    private var firebaseService: FirebaseServiceProtocol?
     
     // MARK: - Methods
     
@@ -102,7 +106,7 @@ final class AddingNewProductViewModel: AddingNewProductViewModelProtocol {
               let productProducer = textFromProducerTF,
               let productCookingTime = textFromCookingTimeTF,
               let productWeight = textFromWeightTF,
-              let _ = textFromWaterRatioTF else { return false }
+              textFromWaterRatioTF != nil else { return false }
         
         guard !productTitle.isEmpty,
               !productProducer.isEmpty,
@@ -125,14 +129,14 @@ final class AddingNewProductViewModel: AddingNewProductViewModelProtocol {
     }
     
     func getCategories() {
-        firebaseService.fetchCategories { categories in
+        firebaseService?.fetchCategories { categories in
             self.categories = categories
         }
     }
     
     func createProductInFB() {
         guard let product = completedProduct else { return }
-        firebaseService.saveProduct(product)
+        firebaseService?.saveProduct(product)
     }
     
     func calculationOfLowerResponder() -> Int {
@@ -184,7 +188,7 @@ final class AddingNewProductViewModel: AddingNewProductViewModelProtocol {
         switch type {
         case .down:
             needUpdateFirstResponder?(calculationOfLowerResponder())
-        case .up:
+        case .upward:
             needUpdateFirstResponder?(calculationOfUpperResponder())
         }
     }

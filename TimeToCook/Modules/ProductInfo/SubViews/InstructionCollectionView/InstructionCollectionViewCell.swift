@@ -5,12 +5,11 @@
 //  Created by Никита Гвоздиков on 05.08.2021.
 //
 
-
 import UIKit
 
 final class InstructionCollectionViewCell: UICollectionViewCell {
     
-    //MARK: UI
+    // MARK: UI
     
     private lazy var numberOfCardLabel: UILabel = {
         let numberOfCardLabel = UILabel()
@@ -52,7 +51,7 @@ final class InstructionCollectionViewCell: UICollectionViewCell {
         return instructionImage
     }()
     
-    //MARK: Dependences
+    // MARK: Dependences
     
     private var viewModel: InstructionCollectionViewCellViewModelProtocol? {
         didSet {
@@ -63,7 +62,7 @@ final class InstructionCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    //MARK: Init
+    // MARK: Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -85,7 +84,7 @@ final class InstructionCollectionViewCell: UICollectionViewCell {
         clipsToBounds = false
     }
     
-    //MARK: Private Methodes
+    // MARK: Private Methodes
     
     private func setupAllConstraints() {
         contentView.addSubview(instructionImage)
@@ -103,7 +102,7 @@ final class InstructionCollectionViewCell: UICollectionViewCell {
             instructionImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             instructionImage.topAnchor.constraint(equalTo: contentView.topAnchor),
             instructionImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            instructionImage.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1/3)])
+            instructionImage.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1 / 3)])
     }
     
     private func setupNumberOfCardLabelConstraints() {
@@ -127,7 +126,7 @@ final class InstructionCollectionViewCell: UICollectionViewCell {
             nextLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)])
     }
     
-    //MARK: Methods
+    // MARK: Methods
     
     func setViewModel(viewModel: InstructionCollectionViewCellViewModelProtocol?) {
         self.viewModel = viewModel

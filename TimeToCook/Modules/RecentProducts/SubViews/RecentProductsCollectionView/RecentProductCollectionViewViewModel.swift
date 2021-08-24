@@ -10,7 +10,7 @@ import Foundation
 protocol RecentProductCollectionViewViewModelProtocol: AnyObject {
     var numberOfItemsInSection: Int { get }
     var productsCD: [ProductCD] { get }
-    var delegate: RecentProductCollectionViewDelegate! { get set }
+    var delegate: RecentProductCollectionViewDelegate? { get set }
     func fetchProductFromCoreData(completion: @escaping() -> Void)
     func cellViewModel(at indexPath: IndexPath) -> RecentProductCollectionViewCellViewModelProtocol?
     func didSelectItemAt(indexPath: IndexPath)
@@ -23,14 +23,15 @@ final class RecentProductCollectionViewViewModel: RecentProductCollectionViewVie
     }
     
     func didSelectItemAt(indexPath: IndexPath) {
-        guard let product = StorageManager.shared.convertFromProductCDToProduct(productCD: productsCD[indexPath.row]) else { return }
-        delegate.presentInfoAboutProduct(product: product)
+        guard let product = StorageManager.shared.convertFromProductCDToProduct(
+                productCD: productsCD[indexPath.row]) else { return }
+        delegate?.presentInfoAboutProduct(product: product)
     }
     
     // MARK: - Properties
     
+    weak var delegate: RecentProductCollectionViewDelegate?
     var productsCD: [ProductCD] = []
-    var delegate: RecentProductCollectionViewDelegate!
     var numberOfItemsInSection: Int {
         productsCD.count
     }
@@ -38,7 +39,7 @@ final class RecentProductCollectionViewViewModel: RecentProductCollectionViewVie
     // MARK: - Methods
     
     func fetchProductFromCoreData(completion: @escaping() -> Void) {
-        productsCD = StorageManager.shared.fetchData().sorted(by: {$0.date ?? Date() > $1.date ?? Date()})
+        productsCD = StorageManager.shared.fetchData().sorted(by: { $0.date ?? Date() > $1.date ?? Date() })
         DispatchQueue.main.async {
             completion()
         }

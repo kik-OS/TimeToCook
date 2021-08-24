@@ -26,7 +26,6 @@ final class CustomTabBar: UITabBar {
             layer.insertSublayer(shapeLayer, at: 0)
         }
         self.shapeLayer = shapeLayer
-        
     }
     
     override func draw(_ rect: CGRect) {

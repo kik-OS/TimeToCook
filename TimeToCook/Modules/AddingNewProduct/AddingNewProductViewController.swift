@@ -10,100 +10,100 @@ import UIKit
 final class AddingNewProductViewController: UIViewController {
 
     // MARK: - UI
-    
+
     private lazy var contentScroll: ContentScroll = {
         let contentScroll = ContentScroll()
         contentScroll.backgroundColor = .white
         return contentScroll
     }()
-    
+
     private lazy var contentView: UIView = {
        let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
         return contentView
     }()
-    
+
     private lazy var closeButton: CloseButtonAdd = {
         let closeButton = CloseButtonAdd()
         closeButton.addTarget(self, action: #selector(closeButtonPressed), for: .touchUpInside)
         return closeButton
     }()
-    
+
     private lazy var textFieldsStackView: TextFieldStackView = {
         let textFieldsStackView = TextFieldStackView()
         return textFieldsStackView
     }()
-    
+
     private lazy var codeLabel: UILabel = {
         let codeLabel = UILabel()
         codeLabel.textColor = VarkaColors.mainColor
         codeLabel.font = codeLabel.font.withSize(22)
         return codeLabel
     }()
-    
+
     private lazy var saveButton: SaveProductButton = {
         let saveButton = SaveProductButton()
         saveButton.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
         return saveButton
     }()
-    
+
     private lazy var categorySV: SingleStackAddView = {
         let categorySV = SingleStackAddView(viewModel: SingleStackAddViewModel(textFieldType: .category))
         return categorySV
     }()
-    
+
     private lazy var titleProductSV: SingleStackAddView = {
         let titleProductSV = SingleStackAddView(viewModel: SingleStackAddViewModel(textFieldType: .productLabel))
         return titleProductSV
     }()
-    
+
     private lazy var producerSV: SingleStackAddView = {
         let producerSV = SingleStackAddView(viewModel: SingleStackAddViewModel(textFieldType: .producer))
         return producerSV
     }()
-    
+
     private lazy var cookingTimeSV: SingleStackAddView = {
         let cookingTimeSV = SingleStackAddView(viewModel: SingleStackAddViewModel(textFieldType: .time))
         return cookingTimeSV
     }()
-    
+
     private lazy var weightSV: SingleStackAddView = {
         let weightSV = SingleStackAddView(viewModel: SingleStackAddViewModel(textFieldType: .weight))
         return weightSV
     }()
-    
+
     private lazy var waterRatioSV: SingleStackAddView = {
         let waterRatioSV = SingleStackAddView(viewModel: SingleStackAddViewModel(textFieldType: .waterRatio))
         return waterRatioSV
     }()
-    
+
     private lazy var pickerViewForKB: UIPickerView = {
         let pickerViewForKB = UIPickerView()
         return pickerViewForKB
     }()
-    
+
     private lazy var doneButtonForKB: DoneButtonForKB = {
         let doneButtonForKB = DoneButtonForKB()
         doneButtonForKB.action = #selector(didTapOnDoneButton)
         return doneButtonForKB
     }()
-    
+
     private lazy var downButtonForKB: DownButtonForKB = {
         let downButtonForKB = DownButtonForKB()
         downButtonForKB.action = #selector(didTapOnDownButton)
         return downButtonForKB
     }()
-    
+
     private lazy var upButtonForKB: UpButtonForKB = {
         let upButtonForKB = UpButtonForKB()
         upButtonForKB.action = #selector(didTapOnUpButton)
         return upButtonForKB
     }()
-    
+
     // MARK: - Private Properties
-    
+
     private var singleStacks: [SingleStackAddView] = []
-   
+
     // MARK: - Dependences
 
     var viewModel: AddingNewProductViewModelProtocol?
@@ -125,7 +125,7 @@ final class AddingNewProductViewController: UIViewController {
     }
 
     // MARK: - Private Methodes
-    
+
     private func setupAllConstraints() {
         setupContentScrollConstraints()
         setupContentViewConstraints()
@@ -135,7 +135,7 @@ final class AddingNewProductViewController: UIViewController {
         setupStack()
         setupSubStacksConstraints()
     }
-    
+
     private func setupContentScrollConstraints() {
         view.addSubview(contentScroll)
         NSLayoutConstraint.activate([
@@ -144,7 +144,7 @@ final class AddingNewProductViewController: UIViewController {
             contentScroll.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             contentScroll.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)])
     }
-    
+
     private func setupContentViewConstraints() {
         contentScroll.addSubview(contentView)
         NSLayoutConstraint.activate([
@@ -152,7 +152,7 @@ final class AddingNewProductViewController: UIViewController {
             contentView.bottomAnchor.constraint(equalTo: contentScroll.contentLayoutGuide.bottomAnchor),
             contentView.leadingAnchor.constraint(equalTo: contentScroll.contentLayoutGuide.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: contentScroll.contentLayoutGuide.trailingAnchor)])
-        
+
         let contentViewCenterY = contentView.centerYAnchor.constraint(equalTo: contentScroll.centerYAnchor)
         contentViewCenterY.priority = .defaultLow
         let contentViewHeight = contentView.heightAnchor.constraint(greaterThanOrEqualTo: contentView.heightAnchor)
@@ -160,7 +160,7 @@ final class AddingNewProductViewController: UIViewController {
         NSLayoutConstraint.activate([contentView.centerXAnchor.constraint(equalTo: contentScroll.centerXAnchor),
             contentViewCenterY, contentViewHeight])
     }
-    
+
     private func setupCloseButtonConstraints() {
        contentScroll.addSubview(closeButton)
         NSLayoutConstraint.activate([
@@ -169,7 +169,7 @@ final class AddingNewProductViewController: UIViewController {
             closeButton.widthAnchor.constraint(equalToConstant: 20),
             closeButton.heightAnchor.constraint(equalTo: closeButton.widthAnchor)])
     }
-    
+
     private func setupTextFieldsStackViewConstraints() {
         contentView.addSubview(textFieldsStackView)
         NSLayoutConstraint.activate([
@@ -177,17 +177,17 @@ final class AddingNewProductViewController: UIViewController {
             textFieldsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
             textFieldsStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15)])
     }
-    
+
     private func setupSaveProductButtonConstraints() {
         contentView.addSubview(saveButton)
         NSLayoutConstraint.activate([
-            saveButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 2/3),
+            saveButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 2 / 3),
             saveButton.topAnchor.constraint(greaterThanOrEqualTo: textFieldsStackView.bottomAnchor, constant: 40),
             saveButton.heightAnchor.constraint(equalToConstant: 40),
             saveButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             saveButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30)])
     }
-    
+
     private func setupSubStacksConstraints() {
         singleStacks.forEach {
             NSLayoutConstraint.activate([
@@ -195,12 +195,12 @@ final class AddingNewProductViewController: UIViewController {
                $0.trailingAnchor.constraint(equalTo: textFieldsStackView.trailingAnchor)])
         }
     }
-    
+
     private func setupStack() {
         textFieldsStackView.addArrangedSubview(codeLabel)
-        singleStacks.forEach { textFieldsStackView.addArrangedSubview($0)}
+        singleStacks.forEach { textFieldsStackView.addArrangedSubview($0) }
     }
-    
+
     private func setupTextFields() {
         singleStacks.append(categorySV)
         singleStacks.append(titleProductSV)
@@ -210,14 +210,14 @@ final class AddingNewProductViewController: UIViewController {
         singleStacks.append(waterRatioSV)
         addTargetsToTextFields()
     }
-    
+
     private func addTargetsToTextFields() {
         singleStacks.forEach {
             $0.getTF().addTarget(self, action: #selector(textFieldsEditingDidBegin), for: .editingDidBegin)
             $0.getTF().addTarget(self, action: #selector(textFieldsEditingChanged), for: .editingChanged)
         }
     }
-    
+
     private func setupViewModelBindings() {
         viewModel?.needUpdateTextFieldWithPickerView = { [unowned self] type, text in
             switch type {
@@ -229,7 +229,7 @@ final class AddingNewProductViewController: UIViewController {
         }
 
         viewModel?.needUpdateFirstResponder = { [unowned self] tag in
-            guard let targetTF = singleStacks.map({$0.getTF()}).first(where: { $0.tag == tag}) else { return }
+            guard let targetTF = singleStacks.map({ $0.getTF() }).first(where: { $0.tag == tag }) else { return }
             targetTF.becomeFirstResponder()
         }
     }
@@ -240,14 +240,17 @@ final class AddingNewProductViewController: UIViewController {
     }
 
     private func configureObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardDidShow),
+                                               name: UIResponder.keyboardDidShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardDidHide),
+                                               name: UIResponder.keyboardDidHideNotification,
+                                               object: nil)
     }
 
-
-   @objc private func textFieldsEditingDidBegin(_ sender: UITextField) {
-    viewModel?.indexOfFirstResponder = sender.tag
-    viewModel?.updatePickerViewIfNeeded(index: sender.tag) { [weak self] in
+    @objc private func textFieldsEditingDidBegin(_ sender: UITextField) {
+        viewModel?.indexOfFirstResponder = sender.tag
+        viewModel?.updatePickerViewIfNeeded(index: sender.tag) { [weak self] in
             self?.pickerViewForKB.reloadAllComponents()
         }
         updateUpAndDownButtonsState()
@@ -268,7 +271,7 @@ final class AddingNewProductViewController: UIViewController {
         }
         updateSaveButtonsState()
     }
-        
+    
     @objc private func closeButtonPressed() {
          dismiss(animated: true)
      }
@@ -281,7 +284,7 @@ final class AddingNewProductViewController: UIViewController {
     }
 }
 
-//MARK: - Extensions
+// MARK: - Extensions
 
 extension AddingNewProductViewController: UITextFieldDelegate {
 
@@ -299,7 +302,7 @@ extension AddingNewProductViewController: UITextFieldDelegate {
     }
 
     @objc private func didTapOnUpButton() {
-        viewModel?.didTapChangeResponderButton(type: .up)
+        viewModel?.didTapChangeResponderButton(type: .upward)
     }
 
     @objc private func didTapOnDownButton() {
@@ -307,7 +310,7 @@ extension AddingNewProductViewController: UITextFieldDelegate {
     }
 
     @objc private func keyBoardDidShow(notification: Notification) {
-        guard let userInfo = notification.userInfo else {return}
+        guard let userInfo = notification.userInfo else { return }
         let kbFrameSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
         contentScroll.contentSize = CGSize(width: contentView.bounds.size.width,
                                            height: contentView.bounds.size.height + (kbFrameSize ?? CGRect()).height)
@@ -315,7 +318,8 @@ extension AddingNewProductViewController: UITextFieldDelegate {
 
     @objc private func keyBoardDidHide() {
         UIView.animate(withDuration: 0.5) {
-            self.contentScroll.contentSize = CGSize(width: self.contentView.bounds.size.width, height: self.contentView.bounds.size.height)
+            self.contentScroll.contentSize = CGSize(width: self.contentView.bounds.size.width,
+                                                    height: self.contentView.bounds.size.height)
         }
     }
 

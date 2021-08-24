@@ -11,9 +11,9 @@ final class RecentProductCollectionView: UICollectionView {
     
     // MARK: - Dependences
     
-    var viewModel: RecentProductCollectionViewViewModelProtocol! {
+    var viewModel: RecentProductCollectionViewViewModelProtocol? {
         didSet {
-            viewModel.fetchProductFromCoreData { [weak self] in
+            viewModel?.fetchProductFromCoreData { [weak self] in
                 self?.reloadData()
             }
         }
@@ -48,24 +48,30 @@ final class RecentProductCollectionView: UICollectionView {
 
 // MARK: - Extension
 
-extension RecentProductCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension RecentProductCollectionView: UICollectionViewDelegate,
+                                       UICollectionViewDataSource,
+                                       UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-         viewModel.numberOfItemsInSection
+        viewModel?.numberOfItemsInSection ?? 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = dequeueReusableCell(withReuseIdentifier: RecentProductCollectionViewCell.reuseID, for: indexPath) as! RecentProductCollectionViewCell
-        cell.viewModel = viewModel.cellViewModel(at: indexPath)
-        return cell
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = dequeueReusableCell(withReuseIdentifier: RecentProductCollectionViewCell.reuseID,
+                                       for: indexPath) as? RecentProductCollectionViewCell
+        cell?.viewModel = viewModel?.cellViewModel(at: indexPath)
+        return cell ?? UICollectionViewCell()
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: frame.width * 0.7, height: frame.height * 0.8)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.didSelectItemAt(indexPath: indexPath)
+        viewModel?.didSelectItemAt(indexPath: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {

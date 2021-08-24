@@ -7,7 +7,14 @@
 
 import CoreData
 
-final class StorageManager {
+protocol StorageManagerProtocol {
+    func fetchData() -> [ProductCD]
+    func saveProductCD(product: ProductProtocol)
+    func convertFromProductCDToProduct(productCD: ProductCD) -> ProductProtocol?
+    func deleteProductCD(_ productCD: ProductCD)
+}
+
+final class StorageManager: StorageManagerProtocol {
     
     // MARK: - Static properties
     
@@ -17,7 +24,7 @@ final class StorageManager {
     
     private let persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "TimeToCook")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { _, error in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
@@ -46,8 +53,8 @@ final class StorageManager {
         }
     }
     
-    func saveProductCD(product: Product) {
-        fetchData().forEach { if $0.code == product.code {deleteProductCD($0)} }
+    func saveProductCD(product: ProductProtocol) {
+        fetchData().forEach { if $0.code == product.code { deleteProductCD($0) } }
         let productCD = ProductCD(context: viewContext)
         productCD.code = product.code
         productCD.title = product.title
@@ -66,7 +73,7 @@ final class StorageManager {
         saveContext()
     }
     
-    func convertFromProductCDToProduct(productCD: ProductCD) -> Product? {
+    func convertFromProductCDToProduct(productCD: ProductCD) -> ProductProtocol? {
         guard let code = productCD.code,
               let title = productCD.title,
               let producer = productCD.producer,

@@ -9,7 +9,7 @@ import UIKit
 
 final class StillEmptyLabels: UIView {
     
-    //MARK: UI
+    // MARK: UI
     
     private lazy var title: UILabel = {
         let title = UILabel()
@@ -33,7 +33,7 @@ final class StillEmptyLabels: UIView {
         return message
     }()
     
-    //MARK: Init
+    // MARK: Init
     
     init() {
         super.init(frame: .zero)
@@ -53,7 +53,7 @@ final class StillEmptyLabels: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: Private Methodes 
+    // MARK: Private Methodes
     
     private func setupConstraints() {
         addSubview(title)

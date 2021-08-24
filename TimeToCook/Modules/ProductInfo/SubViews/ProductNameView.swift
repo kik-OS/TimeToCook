@@ -9,7 +9,7 @@ import UIKit
 
 final class ProductNameLabel: UILabel {
     
-    //MARK: Init
+    // MARK: Init
     
     init() {
         super.init(frame: .zero)
@@ -28,7 +28,7 @@ final class ProductNameLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: Methods
+    // MARK: Methods
     
     func setName(name: String) {
         text = name

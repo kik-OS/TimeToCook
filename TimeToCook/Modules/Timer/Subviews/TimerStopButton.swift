@@ -9,7 +9,7 @@ import UIKit
 
 final class TimerStopButton: UIButton {
     
-    //MARK: Init
+    // MARK: Init
     
     init() {
         super.init(frame: .zero)
@@ -24,7 +24,7 @@ final class TimerStopButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: Override
+    // MARK: Override
     
     override func layoutSubviews() {
         super.layoutSubviews()

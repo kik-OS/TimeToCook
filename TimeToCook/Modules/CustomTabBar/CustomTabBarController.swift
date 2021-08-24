@@ -11,21 +11,28 @@ protocol AddNewProductViewControllerDelegate: AnyObject {
     func productWasAdded(product: Product?)
 }
 
-protocol BarcodeScannerViewControllerDelegate {
+protocol BarcodeScannerViewControllerDelegate: AnyObject {
     func scanner(barcode: String)
 }
 
 final class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
+
+    // MARK: UI
+
+    private lazy var middleButton: TabBarMiddleButton = {
+        let middleButton = TabBarMiddleButton()
+        return middleButton
+    }()
     
-    // MARK: - Properties
+    // MARK: - Dependences
     
     var viewModel: CustomTabBarViewModelProtocol
-    private let middleButton = UIButton.setupMiddleButtonTabBar()
-    
+
     // MARK: - Initializers
     
     init() {
-        viewModel = CustomTabBarViewModel()
+        viewModel = CustomTabBarViewModel(firebaseService: FirebaseService.shared,
+                                          storageManager: StorageManager.shared)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -109,8 +116,7 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
             middleButton.centerYAnchor.constraint(equalTo: tabBar.topAnchor,
                                                   constant: CGFloat(viewModel.constantForMiddleButton)),
             middleButton.widthAnchor.constraint(equalToConstant: CGFloat(viewModel.sizeForMiddleButton)),
-            middleButton.heightAnchor.constraint(equalToConstant: CGFloat(viewModel.sizeForMiddleButton))
-        ])
+            middleButton.heightAnchor.constraint(equalToConstant: CGFloat(viewModel.sizeForMiddleButton))])
     }
     
     private func setupViewModelBindings() {
@@ -182,11 +188,10 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
     }
     
     func tabBarController(_ tabBarController: UITabBarController,
-                          animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+                          animationControllerForTransitionFrom fromVC: UIViewController,
+                          to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return TabBarTransition(viewControllers: tabBarController.viewControllers)
     }
-    
-    
 }
 
 // MARK: - Extensions

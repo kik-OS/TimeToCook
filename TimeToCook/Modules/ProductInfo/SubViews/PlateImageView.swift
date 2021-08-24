@@ -9,7 +9,7 @@ import UIKit
 
 final class PlateImageView: UIImageView {
     
-    //MARK: Init
+    // MARK: Init
     
     init() {
         super.init(frame: .zero)
@@ -28,7 +28,7 @@ final class PlateImageView: UIImageView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: Methods
+    // MARK: Methods
     
     func setImage(image: UIImage?) {
         self.image = image

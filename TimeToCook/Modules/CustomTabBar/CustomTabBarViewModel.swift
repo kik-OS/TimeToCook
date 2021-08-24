@@ -7,11 +7,9 @@
 
 import Foundation
 
-
-
 protocol CustomTabBarViewModelProtocol: AnyObject {
-    /// Вызывается в случае успешного получения продукта из базы. В параметр передаётся ProductInfoViewModel с полученным из базы продуктом.
-    var productDidReceive: ((_ product: Product) -> Void)? { get set }
+    /// Вызывается в случае успешного получения продукта из базы. В параметр передаётся полученный из базы продукт.
+    var productDidReceive: ((_ product: ProductProtocol) -> Void)? { get set }
     /// Вызывается для предложения добавить товар. В параметр передаётся бар-код, полученный от сканера.
     var addingNewProductOffer: ((_ code: String) -> Void)? { get set }
     /// Вызывается при каждом шаге таймера.
@@ -20,18 +18,17 @@ protocol CustomTabBarViewModelProtocol: AnyObject {
     var sizeForMiddleButton: Float { get }
     
     func findProduct(byCode code: String)
-    func getProductInfoViewModel(product: Product?) -> ProductInfoViewModelProtocol
+    func getProductInfoViewModel(product: ProductProtocol?) -> ProductInfoViewModelProtocol
     func getRecentProductViewModel() -> RecentProductViewModelProtocol
-    func getAddingNewProductViewModel(withCode code: String) -> AddingNewProductViewModelProtocol
+    func getAddingNewProductViewModel(withCode code: String) -> AddingNewProductViewModelProtocol?
     func getTimerViewModel() -> TimerViewModelProtocol
 }
 
 final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
-    
-    
+ 
     // MARK: - Properties
     
-    var productDidReceive: ((_ product: Product) -> Void)?
+    var productDidReceive: ((_ product: ProductProtocol) -> Void)?
     var addingNewProductOffer: ((_ code: String) -> Void)?
     var timerDidStep: ((_ time: String) -> Void)?
     var constantForMiddleButton: Float {
@@ -41,18 +38,23 @@ final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
         DeviceManager.checkSquareScreen() ? 68 : 72
     }
     
-    private let firebaseService: FirebaseServiceProtocol = FirebaseService.shared
+    // MARK: Dependences
+    
+    private let firebaseService: FirebaseServiceProtocol?
+    private let storageManager: StorageManagerProtocol?
     
     // MARK: - Initializers
     
-    init() {
+    init(firebaseService: FirebaseServiceProtocol, storageManager: StorageManagerProtocol) {
+        self.firebaseService = firebaseService
+        self.storageManager = storageManager
         TimerManager.shared.barDelegate = self
     }
     
     // MARK: - Public methods
     
     func findProduct(byCode code: String) {
-        firebaseService.fetchProduct(byCode: code) { [weak self] result in
+        firebaseService?.fetchProduct(byCode: code) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
@@ -66,7 +68,7 @@ final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
         }
     }
     
-    func getProductInfoViewModel(product: Product?) -> ProductInfoViewModelProtocol {
+    func getProductInfoViewModel(product: ProductProtocol?) -> ProductInfoViewModelProtocol {
         ProductInfoViewModel(product: product)
     }
     
@@ -74,8 +76,9 @@ final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
         RecentProductViewModel()
     }
     
-    func getAddingNewProductViewModel(withCode code: String) -> AddingNewProductViewModelProtocol {
-        AddingNewProductViewModel(code: code)
+    func getAddingNewProductViewModel(withCode code: String) -> AddingNewProductViewModelProtocol? {
+        guard let firebaseService = firebaseService else { return nil }
+        return AddingNewProductViewModel(code: code, firebaseService: firebaseService)
     }
     
     func getTimerViewModel() -> TimerViewModelProtocol {
@@ -84,8 +87,8 @@ final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
     
     // MARK: - Private methods
     
-    private func createProductInCoreData(product: Product) {
-        StorageManager.shared.saveProductCD(product: product)
+    private func createProductInCoreData(product: ProductProtocol) {
+        storageManager?.saveProductCD(product: product)
     }
 }
 

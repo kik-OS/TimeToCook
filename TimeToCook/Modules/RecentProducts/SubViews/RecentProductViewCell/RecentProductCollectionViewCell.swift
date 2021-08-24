@@ -15,14 +15,14 @@ final class RecentProductCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Dependences
     
-    var viewModel: RecentProductCollectionViewCellViewModelProtocol! {
+    var viewModel: RecentProductCollectionViewCellViewModelProtocol? {
         didSet {
-            mainImageView.image = UIImage(named: viewModel.productImage)
-            nameLabel.text = viewModel.productTitle
-            producerLabel.text = viewModel.productProducer
-            cookingTimeLabel.text = viewModel.productCookingTime
-            barcodeLabel.text = viewModel.productBarcode
-            weightLabel.text = viewModel.productWeight
+            mainImageView.image = UIImage(named: viewModel?.productImage ?? "")
+            nameLabel.text = viewModel?.productTitle
+            producerLabel.text = viewModel?.productProducer
+            cookingTimeLabel.text = viewModel?.productCookingTime
+            barcodeLabel.text = viewModel?.productBarcode
+            weightLabel.text = viewModel?.productWeight
         }
     }
     
@@ -102,7 +102,7 @@ final class RecentProductCollectionViewCell: UICollectionViewCell {
             mainImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             mainImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             mainImageView.topAnchor.constraint(equalTo: topAnchor, constant: -25),
-            mainImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1/1.7)])
+            mainImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1 / 1.7)])
     }
     
     private func setupNameLabelConstraints() {
@@ -118,7 +118,7 @@ final class RecentProductCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             barcodeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             barcodeLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
-            barcodeLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/2, constant: 10)])
+            barcodeLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1 / 2, constant: 10)])
     }
     
     private func setupProducerLabelConstraints() {
@@ -126,7 +126,7 @@ final class RecentProductCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             producerLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             producerLabel.topAnchor.constraint(equalTo: barcodeLabel.bottomAnchor, constant: 4),
-            producerLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/2, constant: 10)])
+            producerLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1 / 2, constant: 10)])
     }
     
     private func setupWeightLabelConstraints() {
@@ -134,7 +134,7 @@ final class RecentProductCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             weightLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             weightLabel.topAnchor.constraint(equalTo: producerLabel.bottomAnchor, constant: 4),
-            weightLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/2, constant: 10)])
+            weightLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1 / 2, constant: 10)])
     }
     
     private func setupCookingTimeLabelConstraints() {

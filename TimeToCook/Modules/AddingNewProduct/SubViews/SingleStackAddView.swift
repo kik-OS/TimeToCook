@@ -9,7 +9,7 @@ import UIKit
 
 final class SingleStackAddView: UIStackView {
     
-    //MARK: UI
+    // MARK: UI
     
     private lazy var label: UILabel = {
         let label = UILabel()
@@ -25,11 +25,11 @@ final class SingleStackAddView: UIStackView {
         return textField
     }()
     
-    //MARK: Dependences
+    // MARK: Dependences
     
     private var viewModel: SingleStackAddViewModelProtocol?
     
-    //MARK: Init
+    // MARK: Init
     
     init(viewModel: SingleStackAddViewModelProtocol) {
         super.init(frame: .zero)
@@ -50,7 +50,7 @@ final class SingleStackAddView: UIStackView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: Private Methodes
+    // MARK: Private Methodes
     
    private func setupConstraints() {
         NSLayoutConstraint.activate([
@@ -69,12 +69,9 @@ final class SingleStackAddView: UIStackView {
         textField.autocapitalizationType = .words
     }
 
-    //MARK: Public Methods
+    // MARK: Public Methods
     
     func getTF() -> UITextField {
         textField
     }
 }
-
-
-

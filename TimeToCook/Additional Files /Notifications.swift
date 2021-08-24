@@ -27,7 +27,7 @@ final class Notifications: NSObject, UNUserNotificationCenterDelegate {
     
     /// Вызывается для проверки настроек уведомлений у пользователя. Если уведомления выключены, вызывается замыкание.
     func checkNotificationSettings(completion: @escaping () -> Void) {
-        notificationCenter.getNotificationSettings { (settings) in
+        notificationCenter.getNotificationSettings { settings in
             if settings.authorizationStatus == .denied ||
                 settings.authorizationStatus == .notDetermined {
                 DispatchQueue.main.async {
@@ -38,28 +38,32 @@ final class Notifications: NSObject, UNUserNotificationCenterDelegate {
     }
     
     func cleanBadgesAtStarting() {
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(applicationDidBecomeActive),
+                                               name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler:
+                                    @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.badge, .sound, .alert])
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
         
         switch response.actionIdentifier {
         case Inscriptions.identifierSnoozeOneMinuteButton:
             showTimerNotification(throughMinutes: 1)
         case Inscriptions.identifierSnoozeFiveMinuteButton:
             showTimerNotification(throughMinutes: 5)
-        case Inscriptions.identifierTurnOffTimerButton:
-            print("turned off the timer")
         default:
             break
         }
         completionHandler()
     }
-    
     
     func showTimerNotification(throughMinutes: Double) {
         
@@ -78,7 +82,6 @@ final class Notifications: NSObject, UNUserNotificationCenterDelegate {
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: numberOfSeconds, repeats: false)
         let identifier = Inscriptions.identifierOfTimerNotification
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-        
         let snoozeOneMinuteAction = UNNotificationAction(identifier: Inscriptions.identifierSnoozeOneMinuteButton,
                                                          title: Inscriptions.titleSnoozeOneMinuteButton,
                                                          options: [])
@@ -86,9 +89,8 @@ final class Notifications: NSObject, UNUserNotificationCenterDelegate {
                                                           title: Inscriptions.titleSnoozeFiveMinuteButton,
                                                           options: [])
         let turnOffAction = UNNotificationAction(identifier: Inscriptions.identifierTurnOffTimerButton,
-                                                 title:Inscriptions.titleTurnOffTimerButton,
+                                                 title: Inscriptions.titleTurnOffTimerButton,
                                                  options: [.destructive])
-        
         let category = UNNotificationCategory(identifier: Inscriptions.categoryIdentifierTimerNotification,
                                               actions: [snoozeOneMinuteAction, snoozeFiveMinuteAction, turnOffAction],
                                               intentIdentifiers: [], options: [])
@@ -106,28 +108,27 @@ final class Notifications: NSObject, UNUserNotificationCenterDelegate {
         
         notificationCenter.add(request)
     }
-    
+
     func cancelTimerNotification() {
         notificationCenter.removeAllPendingNotificationRequests()
     }
-    
+
     static func notificationsAreNotAvailableAlert() -> UIAlertController {
         let alert = UIAlertController(title: Inscriptions.titleNotificationsAreNotAvailableAlert,
                                       message: Inscriptions.messageNotificationsAreNotAvailableAlert,
                                       preferredStyle: .actionSheet)
         
-        let settingsAction = UIAlertAction(title: Inscriptions.okActionNotificationsAreNotAvailableAlert,
+        let settingsAction = UIAlertAction(title: Inscriptions.okActionNotAvailableAlert,
                                            style: .destructive) { _ in
             guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else { return }
             if UIApplication.shared.canOpenURL(settingsUrl) {
                 UIApplication.shared.open(settingsUrl)
             }
         }
-        let cancelAction = UIAlertAction(title: Inscriptions.cancelActionNotificationsAreNotAvailableAlert,
+        let cancelAction = UIAlertAction(title: Inscriptions.cancelActionNAreNotAvailableAlert,
                                          style: .default)
         alert.addAction(settingsAction)
         alert.addAction(cancelAction)
-        
         return alert
     }
     

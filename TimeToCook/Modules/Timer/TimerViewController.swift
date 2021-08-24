@@ -9,7 +9,7 @@ import SwiftUI
 
 final class TimerViewController: UIViewController {
     
-    //MARK: UI
+    // MARK: UI
     
     private lazy var contentView: TimerContentView = {
         let contentView = TimerContentView()
@@ -55,7 +55,7 @@ final class TimerViewController: UIViewController {
     
     private lazy var closeButton: CloseButtonAdd = {
         let closeButton = CloseButtonAdd()
-        closeButton.addTarget(self, action: #selector(closeButtonTapped), for:.touchUpInside)
+        closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         return closeButton
     }()
     
@@ -70,8 +70,7 @@ final class TimerViewController: UIViewController {
         stopButton.addTarget(self, action: #selector(stopButtonTapped), for: .touchUpInside)
         return stopButton
     }()
-    
-    
+
     // MARK: - Dependences
     
     var viewModel: TimerViewModelProtocol
@@ -96,7 +95,7 @@ final class TimerViewController: UIViewController {
         setupAllConstraints()
     }
     
-    //MARK: Constraints
+    // MARK: Constraints
     
     private func setupAllConstraints() {
         setupBackgroundViewConstraints()
@@ -171,7 +170,7 @@ final class TimerViewController: UIViewController {
             startButton.topAnchor.constraint(equalTo: pickerStackView.bottomAnchor, constant: 15),
             startButton.heightAnchor.constraint(equalToConstant: 40),
             startButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -40),
-            startButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 2/3),
+            startButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 2 / 3),
             startButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)])
     }
     
@@ -181,7 +180,7 @@ final class TimerViewController: UIViewController {
             stopButton.topAnchor.constraint(equalTo: pickerStackView.bottomAnchor, constant: 15),
             stopButton.heightAnchor.constraint(equalToConstant: 40),
             stopButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -40),
-            stopButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 2/3),
+            stopButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 2 / 3),
             stopButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)])
     }
     
@@ -232,14 +231,15 @@ final class TimerViewController: UIViewController {
     }
     
     private func showDiagram() {
-        pickerStackView.disappear() { [weak self] in
+        pickerStackView.disappear { [weak self] in
             self?.setTimeDiagramView()
             self?.diagramStackView.appear()
+
         }
     }
     
     private func hideDiagram() {
-        diagramStackView.disappear() { [weak self] in
+        diagramStackView.disappear { [weak self] in
             self?.pickerStackView.appear()
         }
     }

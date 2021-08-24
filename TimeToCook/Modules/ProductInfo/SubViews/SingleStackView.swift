@@ -61,4 +61,3 @@ final class SingleStackView: UIStackView {
         self.label.text = label
     }
 }
-

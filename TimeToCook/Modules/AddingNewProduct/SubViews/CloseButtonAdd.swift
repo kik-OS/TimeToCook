@@ -8,9 +8,9 @@
 import UIKit
 
 final class CloseButtonAdd: UIButton {
-    
-    //MARK: Init
-    
+
+    // MARK: Init
+
     init() {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
@@ -22,4 +22,3 @@ final class CloseButtonAdd: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 }
-

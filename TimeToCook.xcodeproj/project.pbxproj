@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F78B122D721EF93695E7A63 /* Pods_TimeToCookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E164AEEAAEA273934D2CA3D /* Pods_TimeToCookTests.framework */; };
+		2F26661B4FA92DE49714460C /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		46F38C47D263775B008B3C70 /* Pods_TimeToCook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6F0E980080CE5202A460A30 /* Pods_TimeToCook.framework */; };
 		E41C3C3226A701C8006F1AE9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E41C3C3126A701C8006F1AE9 /* GoogleService-Info.plist */; };
 		E41C3C8226A702DA006F1AE9 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3426A702D6006F1AE9 /* Category.swift */; };
@@ -53,6 +55,7 @@
 		E41C3CC426A87304006F1AE9 /* CameraOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3CC326A87304006F1AE9 /* CameraOverlay.swift */; };
 		E41C3CC626A9A977006F1AE9 /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3CC526A9A977006F1AE9 /* CancelButton.swift */; };
 		E41C3CE926A9E091006F1AE9 /* ProductInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3CE826A9E091006F1AE9 /* ProductInfoViewController.swift */; };
+		E42A3C3A26D505F000794AD2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42A3C3926D505F000794AD2 /* Coordinator.swift */; };
 		E44BBF6C26A6FEB4003D403C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44BBF6B26A6FEB4003D403C /* AppDelegate.swift */; };
 		E44BBF6E26A6FEB4003D403C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44BBF6D26A6FEB4003D403C /* SceneDelegate.swift */; };
 		E44BBF7626A6FEB4003D403C /* TimeToCook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E44BBF7426A6FEB4003D403C /* TimeToCook.xcdatamodeld */; };
@@ -67,11 +70,64 @@
 		E44E9E1526C10FF600E7082B /* DoneButtonForKB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E9E1426C10FF600E7082B /* DoneButtonForKB.swift */; };
 		E44E9E1726C110A200E7082B /* DownButtonForKB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E9E1626C110A200E7082B /* DownButtonForKB.swift */; };
 		E44E9E1926C1110D00E7082B /* UpButtonForKB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E9E1826C1110D00E7082B /* UpButtonForKB.swift */; };
+		E4554BA326D0CFC500819A09 /* CustomTabBarViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4554BA226D0CFC500819A09 /* CustomTabBarViewModelTest.swift */; };
+		E4554BA426D0D07E00819A09 /* CustomTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C5F26A702DA006F1AE9 /* CustomTabBarViewModel.swift */; };
+		E4554BA526D0D09600819A09 /* RecentProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C6E26A702DA006F1AE9 /* RecentProductViewModel.swift */; };
+		E4554BA626D0D0A400819A09 /* RecentProductCollectionViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C6826A702DA006F1AE9 /* RecentProductCollectionViewViewModel.swift */; };
+		E4554BA726D0D0C200819A09 /* RecentProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C6F26A702DA006F1AE9 /* RecentProductsViewController.swift */; };
+		E4554BA826D0D0CE00819A09 /* RecentProductCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C6726A702DA006F1AE9 /* RecentProductCollectionView.swift */; };
+		E4554BA926D0D0DF00819A09 /* RecentProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C6B26A702DA006F1AE9 /* RecentProductCollectionViewCell.swift */; };
+		E4554BAA26D0D0ED00819A09 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C4226A702D7006F1AE9 /* Constants.swift */; };
+		E4554BAB26D0D0FC00819A09 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C7A26A702DA006F1AE9 /* StorageManager.swift */; };
+		E4554BAC26D0D10C00819A09 /* AddingNewProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E9E0526BE817400E7082B /* AddingNewProductViewModel.swift */; };
+		E4554BAD26D0D12800819A09 /* RecentProductCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C6A26A702DA006F1AE9 /* RecentProductCollectionViewCellViewModel.swift */; };
+		E4554BAE26D0D13800819A09 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C7F26A702DA006F1AE9 /* DeviceManager.swift */; };
+		E4554BAF26D0D14A00819A09 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3926A702D6006F1AE9 /* Int+Extension.swift */; };
+		E4554BB126D0D16000819A09 /* SmallLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B94E3426CA8B92003A71DF /* SmallLabelCell.swift */; };
+		E4554BB226D0D21B00819A09 /* MainImageRPCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B94E3626CA9573003A71DF /* MainImageRPCell.swift */; };
+		E4554BB326D0D24000819A09 /* ProductInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3CE826A9E091006F1AE9 /* ProductInfoViewController.swift */; };
+		E4554BB426D0D25700819A09 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB13F26B97CF900B99038 /* ProductView.swift */; };
+		E4554BB526D0D26C00819A09 /* SingleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB14126B9811900B99038 /* SingleStackView.swift */; };
+		E4554BB626D0D27B00819A09 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB14326BADC9300B99038 /* UIFont+Extension.swift */; };
+		E4554BB726D0D28E00819A09 /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C4326A702D7006F1AE9 /* DeviceModel.swift */; };
+		E4554BB826D0D29E00819A09 /* ViewWithContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC226B2A4F40013F7C9 /* ViewWithContent.swift */; };
+		E4554BB926D0D2AE00819A09 /* PlateImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC026B2A3C80013F7C9 /* PlateImageView.swift */; };
+		E4554BBA26D0D2BF00819A09 /* ProductNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB14726BAE52D00B99038 /* ProductNameView.swift */; };
+		E4554BBB26D0D2C600819A09 /* StartCookButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47E0C7726BBBC300060BE3A /* StartCookButton.swift */; };
+		E4554BBC26D0D2CC00819A09 /* InstructionCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E7026BC3DB800DA752C /* InstructionCollectionView.swift */; };
+		E4554BBD26D0D2DF00819A09 /* InstructionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E6E26BC346D00DA752C /* InstructionCollectionViewCell.swift */; };
+		E4554BBE26D0D2FB00819A09 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3426A702D6006F1AE9 /* Category.swift */; };
+		E4554BBF26D0D30B00819A09 /* StillEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC826B47C2D0013F7C9 /* StillEmptyView.swift */; };
+		E4554BC026D0D31200819A09 /* TimerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E7326BD1F4400DA752C /* TimerButton.swift */; };
+		E4554BC126D0D31900819A09 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E7526BD550C00DA752C /* CloseButton.swift */; };
+		E4554BC226D0D32500819A09 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971B226C26E6C003DFACA /* TimerViewController.swift */; };
+		E4554BC326D0D33C00819A09 /* TimerContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971BA26C2BFD6003DFACA /* TimerContentView.swift */; };
+		E4554BC426D0D34100819A09 /* TimerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971B826C2BEEF003DFACA /* TimerLabel.swift */; };
+		E4554BC526D0D34700819A09 /* TimerStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971B626C2BAE2003DFACA /* TimerStackView.swift */; };
+		E4554BC626D0D34D00819A09 /* TimerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C5A26A702DA006F1AE9 /* TimerPickerView.swift */; };
+		E4554BC726D0D35D00819A09 /* TimerBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971BC26C3A4C4003DFACA /* TimerBackgroundView.swift */; };
+		E4554BC826D0D36200819A09 /* CloseButtonAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E9E0A26BE8C8100E7082B /* CloseButtonAdd.swift */; };
+		E4554BC926D0D36700819A09 /* TimerStartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C5B26A702DA006F1AE9 /* TimerStartButton.swift */; };
+		E4554BCA26D0D36D00819A09 /* TimerStopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971BE26C3A80A003DFACA /* TimerStopButton.swift */; };
+		E4554BCC26D0D39D00819A09 /* RecentProductLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C783A726C3E80E00C95626 /* RecentProductLabel.swift */; };
+		E4554BCD26D0D3AD00819A09 /* StillEmptyLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC426B3F02E0013F7C9 /* StillEmptyLabels.swift */; };
+		E4554BCE26D0D3B400819A09 /* MascotImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC626B47B500013F7C9 /* MascotImageView.swift */; };
+		E4554BCF26D0D3CE00819A09 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3B26A702D6006F1AE9 /* UIView+Extension.swift */; };
+		E4554BD026D0D3E600819A09 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3826A702D6006F1AE9 /* UIDevice+Extension.swift */; };
+		E4554BD126D0D3F600819A09 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3C26A702D6006F1AE9 /* DateFormatter+Extension.swift */; };
+		E4554BD226D0D40B00819A09 /* TimeDiagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C5926A702DA006F1AE9 /* TimeDiagram.swift */; };
+		E4554BD626D0D45B00819A09 /* FirebaseServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C7C26A702DA006F1AE9 /* FirebaseServiceError.swift */; };
+		E4554BD826D0E3ED00819A09 /* TimeToCook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E44BBF7426A6FEB4003D403C /* TimeToCook.xcdatamodeld */; };
+		E4554BD926D0E44500819A09 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C7D26A702DA006F1AE9 /* FirebaseService.swift */; };
+		E4554BDB26D232E200819A09 /* FirebaseServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4554BDA26D232E200819A09 /* FirebaseServiceMock.swift */; };
+		E4554BDD26D23DAC00819A09 /* StorageManagerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4554BDC26D23DAC00819A09 /* StorageManagerSpy.swift */; };
+		E4554C1526D298EB00819A09 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E4554C1426D298EB00819A09 /* .swiftlint.yml */; };
 		E4570FC126B2A3C80013F7C9 /* PlateImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC026B2A3C80013F7C9 /* PlateImageView.swift */; };
 		E4570FC326B2A4F40013F7C9 /* ViewWithContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC226B2A4F40013F7C9 /* ViewWithContent.swift */; };
 		E4570FC526B3F02E0013F7C9 /* StillEmptyLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC426B3F02E0013F7C9 /* StillEmptyLabels.swift */; };
 		E4570FC726B47B500013F7C9 /* MascotImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC626B47B500013F7C9 /* MascotImageView.swift */; };
 		E4570FC926B47C2D0013F7C9 /* StillEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC826B47C2D0013F7C9 /* StillEmptyView.swift */; };
+		E474E17926CBE7C400ED18F9 /* ProductInfoViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E474E17826CBE7C400ED18F9 /* ProductInfoViewModelTest.swift */; };
 		E47E0C7826BBBC300060BE3A /* StartCookButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47E0C7726BBBC300060BE3A /* StartCookButton.swift */; };
 		E49CB14026B97CF900B99038 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB13F26B97CF900B99038 /* ProductView.swift */; };
 		E49CB14226B9811900B99038 /* SingleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB14126B9811900B99038 /* SingleStackView.swift */; };
@@ -85,8 +141,19 @@
 		E4B971BB26C2BFD6003DFACA /* TimerContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971BA26C2BFD6003DFACA /* TimerContentView.swift */; };
 		E4B971BD26C3A4C4003DFACA /* TimerBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971BC26C3A4C4003DFACA /* TimerBackgroundView.swift */; };
 		E4B971BF26C3A80A003DFACA /* TimerStopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971BE26C3A80A003DFACA /* TimerStopButton.swift */; };
+		E4BFBCDB26CE573C007A6CF6 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3526A702D6006F1AE9 /* Product.swift */; };
+		E4BFBCDC26CE5762007A6CF6 /* ProductInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F14A3526B556C1008312DA /* ProductInfoViewModel.swift */; };
+		E4BFBCDD26CE576F007A6CF6 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C5C26A702DA006F1AE9 /* TimerViewModel.swift */; };
+		E4BFBCDE26CE5780007A6CF6 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3F26A702D7006F1AE9 /* Notifications.swift */; };
+		E4BFBCDF26CE578F007A6CF6 /* Inscriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C4426A702D7006F1AE9 /* Inscriptions.swift */; };
+		E4BFBCE026CE579E007A6CF6 /* ImageTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C4526A702D7006F1AE9 /* ImageTitles.swift */; };
+		E4BFBCE126CE57AC007A6CF6 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C8126A702DA006F1AE9 /* TimerManager.swift */; };
+		E4BFBCE226CE57BA007A6CF6 /* InstructionCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E6C26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift */; };
+		E4BFBCE726CFA350007A6CF6 /* ProductFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BFBCE626CFA350007A6CF6 /* ProductFake.swift */; };
 		E4C1A11426C14979008C1D17 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C1A11326C14979008C1D17 /* CustomNavigationController.swift */; };
 		E4C783A826C3E80E00C95626 /* RecentProductLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C783A726C3E80E00C95626 /* RecentProductLabel.swift */; };
+		E4CEEC6026D3C22A00E5AE67 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEEC5F26D3C22A00E5AE67 /* UICollectionView+Extension.swift */; };
+		E4CEEC6126D3CC1100E5AE67 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEEC5F26D3C22A00E5AE67 /* UICollectionView+Extension.swift */; };
 		E4EB3E6D26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E6C26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift */; };
 		E4EB3E6F26BC346D00DA752C /* InstructionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E6E26BC346D00DA752C /* InstructionCollectionViewCell.swift */; };
 		E4EB3E7126BC3DB800DA752C /* InstructionCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E7026BC3DB800DA752C /* InstructionCollectionView.swift */; };
@@ -95,8 +162,21 @@
 		E4F14A3626B556C1008312DA /* ProductInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F14A3526B556C1008312DA /* ProductInfoViewModel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		E474E17B26CBE7C400ED18F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E44BBF6026A6FEB4003D403C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E44BBF6726A6FEB4003D403C;
+			remoteInfo = TimeToCook;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		1C9FB8E93906E7CE47F4B6C6 /* Pods-TimeToCookTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeToCookTests.debug.xcconfig"; path = "Target Support Files/Pods-TimeToCookTests/Pods-TimeToCookTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3E164AEEAAEA273934D2CA3D /* Pods_TimeToCookTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimeToCookTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D0B3FC85A15F2368FBCE490 /* Pods-TimeToCook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeToCook.debug.xcconfig"; path = "Target Support Files/Pods-TimeToCook/Pods-TimeToCook.debug.xcconfig"; sourceTree = "<group>"; };
+		A8D3FD782664781008386729 /* Pods-TimeToCookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeToCookTests.release.xcconfig"; path = "Target Support Files/Pods-TimeToCookTests/Pods-TimeToCookTests.release.xcconfig"; sourceTree = "<group>"; };
 		B2994C0D2BE04616AC33466F /* Pods-TimeToCook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeToCook.release.xcconfig"; path = "Target Support Files/Pods-TimeToCook/Pods-TimeToCook.release.xcconfig"; sourceTree = "<group>"; };
 		B6F0E980080CE5202A460A30 /* Pods_TimeToCook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimeToCook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E41C3C3126A701C8006F1AE9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -144,6 +224,7 @@
 		E41C3CC326A87304006F1AE9 /* CameraOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraOverlay.swift; sourceTree = "<group>"; };
 		E41C3CC526A9A977006F1AE9 /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
 		E41C3CE826A9E091006F1AE9 /* ProductInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoViewController.swift; sourceTree = "<group>"; };
+		E42A3C3926D505F000794AD2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		E44BBF6826A6FEB4003D403C /* TimeToCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeToCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44BBF6B26A6FEB4003D403C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E44BBF6D26A6FEB4003D403C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -160,11 +241,18 @@
 		E44E9E1426C10FF600E7082B /* DoneButtonForKB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneButtonForKB.swift; sourceTree = "<group>"; };
 		E44E9E1626C110A200E7082B /* DownButtonForKB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownButtonForKB.swift; sourceTree = "<group>"; };
 		E44E9E1826C1110D00E7082B /* UpButtonForKB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpButtonForKB.swift; sourceTree = "<group>"; };
+		E4554BA226D0CFC500819A09 /* CustomTabBarViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewModelTest.swift; sourceTree = "<group>"; };
+		E4554BDA26D232E200819A09 /* FirebaseServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseServiceMock.swift; sourceTree = "<group>"; };
+		E4554BDC26D23DAC00819A09 /* StorageManagerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManagerSpy.swift; sourceTree = "<group>"; };
+		E4554C1426D298EB00819A09 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		E4570FC026B2A3C80013F7C9 /* PlateImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateImageView.swift; sourceTree = "<group>"; };
 		E4570FC226B2A4F40013F7C9 /* ViewWithContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithContent.swift; sourceTree = "<group>"; };
 		E4570FC426B3F02E0013F7C9 /* StillEmptyLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StillEmptyLabels.swift; sourceTree = "<group>"; };
 		E4570FC626B47B500013F7C9 /* MascotImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MascotImageView.swift; sourceTree = "<group>"; };
 		E4570FC826B47C2D0013F7C9 /* StillEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StillEmptyView.swift; sourceTree = "<group>"; };
+		E474E17626CBE7C400ED18F9 /* TimeToCookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeToCookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E474E17826CBE7C400ED18F9 /* ProductInfoViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoViewModelTest.swift; sourceTree = "<group>"; };
+		E474E17A26CBE7C400ED18F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E47E0C7726BBBC300060BE3A /* StartCookButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCookButton.swift; sourceTree = "<group>"; };
 		E49CB13F26B97CF900B99038 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		E49CB14126B9811900B99038 /* SingleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStackView.swift; sourceTree = "<group>"; };
@@ -178,8 +266,10 @@
 		E4B971BA26C2BFD6003DFACA /* TimerContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerContentView.swift; sourceTree = "<group>"; };
 		E4B971BC26C3A4C4003DFACA /* TimerBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerBackgroundView.swift; sourceTree = "<group>"; };
 		E4B971BE26C3A80A003DFACA /* TimerStopButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStopButton.swift; sourceTree = "<group>"; };
+		E4BFBCE626CFA350007A6CF6 /* ProductFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductFake.swift; sourceTree = "<group>"; };
 		E4C1A11326C14979008C1D17 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		E4C783A726C3E80E00C95626 /* RecentProductLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentProductLabel.swift; sourceTree = "<group>"; };
+		E4CEEC5F26D3C22A00E5AE67 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		E4EB3E6C26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		E4EB3E6E26BC346D00DA752C /* InstructionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionCollectionViewCell.swift; sourceTree = "<group>"; };
 		E4EB3E7026BC3DB800DA752C /* InstructionCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionCollectionView.swift; sourceTree = "<group>"; };
@@ -194,6 +284,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				46F38C47D263775B008B3C70 /* Pods_TimeToCook.framework in Frameworks */,
+				2F26661B4FA92DE49714460C /* (null) in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E474E17326CBE7C400ED18F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F78B122D721EF93695E7A63 /* Pods_TimeToCookTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				B6F0E980080CE5202A460A30 /* Pods_TimeToCook.framework */,
+				3E164AEEAAEA273934D2CA3D /* Pods_TimeToCookTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -213,6 +313,8 @@
 			children = (
 				8D0B3FC85A15F2368FBCE490 /* Pods-TimeToCook.debug.xcconfig */,
 				B2994C0D2BE04616AC33466F /* Pods-TimeToCook.release.xcconfig */,
+				1C9FB8E93906E7CE47F4B6C6 /* Pods-TimeToCookTests.debug.xcconfig */,
+				A8D3FD782664781008386729 /* Pods-TimeToCookTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -247,6 +349,7 @@
 				E41C3C3C26A702D6006F1AE9 /* DateFormatter+Extension.swift */,
 				E41C3C3D26A702D6006F1AE9 /* CGPath+Extension.swift */,
 				E49CB14326BADC9300B99038 /* UIFont+Extension.swift */,
+				E4CEEC5F26D3C22A00E5AE67 /* UICollectionView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -465,6 +568,7 @@
 			isa = PBXGroup;
 			children = (
 				E44BBF6A26A6FEB4003D403C /* TimeToCook */,
+				E474E17726CBE7C400ED18F9 /* TimeToCookTests */,
 				E44BBF6926A6FEB4003D403C /* Products */,
 				9EC58EA1B2C6568C40217FAE /* Pods */,
 				7EF10C2A690AF61983A49C92 /* Frameworks */,
@@ -475,6 +579,7 @@
 			isa = PBXGroup;
 			children = (
 				E44BBF6826A6FEB4003D403C /* TimeToCook.app */,
+				E474E17626CBE7C400ED18F9 /* TimeToCookTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -482,6 +587,7 @@
 		E44BBF6A26A6FEB4003D403C /* TimeToCook */ = {
 			isa = PBXGroup;
 			children = (
+				E4554C1426D298EB00819A09 /* .swiftlint.yml */,
 				E41C3CBC26A754E0006F1AE9 /* Supporting Files */,
 				E41C3C3626A702D6006F1AE9 /* Additional Files  */,
 				E41C3C3326A702D6006F1AE9 /* Models */,
@@ -489,6 +595,7 @@
 				E41C3C4626A702D9006F1AE9 /* Resources */,
 				E41C3C7826A702DA006F1AE9 /* Services */,
 				E41C3C4D26A702D9006F1AE9 /* Storyboards */,
+				E42A3C3926D505F000794AD2 /* Coordinator.swift */,
 			);
 			path = TimeToCook;
 			sourceTree = "<group>";
@@ -520,6 +627,19 @@
 				E4EB3E7526BD550C00DA752C /* CloseButton.swift */,
 			);
 			path = SubViews;
+			sourceTree = "<group>";
+		};
+		E474E17726CBE7C400ED18F9 /* TimeToCookTests */ = {
+			isa = PBXGroup;
+			children = (
+				E4554BA226D0CFC500819A09 /* CustomTabBarViewModelTest.swift */,
+				E474E17826CBE7C400ED18F9 /* ProductInfoViewModelTest.swift */,
+				E474E17A26CBE7C400ED18F9 /* Info.plist */,
+				E4BFBCE626CFA350007A6CF6 /* ProductFake.swift */,
+				E4554BDA26D232E200819A09 /* FirebaseServiceMock.swift */,
+				E4554BDC26D23DAC00819A09 /* StorageManagerSpy.swift */,
+			);
+			path = TimeToCookTests;
 			sourceTree = "<group>";
 		};
 		E4C1A11226C12EF2008C1D17 /* SubViews */ = {
@@ -572,6 +692,7 @@
 				E44BBF6526A6FEB4003D403C /* Frameworks */,
 				E44BBF6626A6FEB4003D403C /* Resources */,
 				C181BEEB0534293A4191A0D1 /* [CP] Embed Pods Frameworks */,
+				E4554C1326D297C900819A09 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -581,6 +702,26 @@
 			productName = TimeToCook;
 			productReference = E44BBF6826A6FEB4003D403C /* TimeToCook.app */;
 			productType = "com.apple.product-type.application";
+		};
+		E474E17526CBE7C400ED18F9 /* TimeToCookTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E474E17F26CBE7C400ED18F9 /* Build configuration list for PBXNativeTarget "TimeToCookTests" */;
+			buildPhases = (
+				35AB4D14A945CCDFE0BB4CFE /* [CP] Check Pods Manifest.lock */,
+				E474E17226CBE7C400ED18F9 /* Sources */,
+				E474E17326CBE7C400ED18F9 /* Frameworks */,
+				E474E17426CBE7C400ED18F9 /* Resources */,
+				A92B49963E8EB45382DFFA14 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E474E17C26CBE7C400ED18F9 /* PBXTargetDependency */,
+			);
+			name = TimeToCookTests;
+			productName = TimeToCookTests;
+			productReference = E474E17626CBE7C400ED18F9 /* TimeToCookTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -592,6 +733,9 @@
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					E44BBF6726A6FEB4003D403C = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					E474E17526CBE7C400ED18F9 = {
 						CreatedOnToolsVersion = 12.5;
 					};
 				};
@@ -610,6 +754,7 @@
 			projectRoot = "";
 			targets = (
 				E44BBF6726A6FEB4003D403C /* TimeToCook */,
+				E474E17526CBE7C400ED18F9 /* TimeToCookTests */,
 			);
 		};
 /* End PBXProject section */
@@ -622,15 +767,45 @@
 				E41C3C9526A702DB006F1AE9 /* LaunchScreen.storyboard in Resources */,
 				E41C3C9326A702DB006F1AE9 /* nom.wav in Resources */,
 				E41C3C3226A701C8006F1AE9 /* GoogleService-Info.plist in Resources */,
+				E4554C1526D298EB00819A09 /* .swiftlint.yml in Resources */,
 				E41C3C9426A702DB006F1AE9 /* not.wav in Resources */,
 				E41C3C9126A702DB006F1AE9 /* timer.png in Resources */,
 				E41C3C9226A702DB006F1AE9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E474E17426CBE7C400ED18F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		35AB4D14A945CCDFE0BB4CFE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TimeToCookTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A159BAAC6FFEA659AED64EF7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -653,6 +828,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A92B49963E8EB45382DFFA14 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TimeToCookTests/Pods-TimeToCookTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TimeToCookTests/Pods-TimeToCookTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TimeToCookTests/Pods-TimeToCookTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C181BEEB0534293A4191A0D1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -669,6 +861,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TimeToCook/Pods-TimeToCook-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		E4554C1326D297C900819A09 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -712,6 +921,7 @@
 				E41C3C9A26A702DB006F1AE9 /* TimeDiagram.swift in Sources */,
 				E41C3C9026A702DB006F1AE9 /* ImageTitles.swift in Sources */,
 				E41C3C9C26A702DB006F1AE9 /* TimerStartButton.swift in Sources */,
+				E42A3C3A26D505F000794AD2 /* Coordinator.swift in Sources */,
 				E4B94E3726CA9573003A71DF /* MainImageRPCell.swift in Sources */,
 				E4570FC126B2A3C80013F7C9 /* PlateImageView.swift in Sources */,
 				E49CB14226B9811900B99038 /* SingleStackView.swift in Sources */,
@@ -748,6 +958,7 @@
 				E41C3CB426A702DB006F1AE9 /* DeviceManager.swift in Sources */,
 				E4B971BB26C2BFD6003DFACA /* TimerContentView.swift in Sources */,
 				E41C3CA126A702DB006F1AE9 /* CustomTabBar.swift in Sources */,
+				E4CEEC6026D3C22A00E5AE67 /* UICollectionView+Extension.swift in Sources */,
 				E4B94E3526CA8B92003A71DF /* SmallLabelCell.swift in Sources */,
 				E44E9E0D26BE8E5800E7082B /* SingleStackAddView.swift in Sources */,
 				E44E9E1126BFAD5200E7082B /* SaveProductButton.swift in Sources */,
@@ -759,7 +970,84 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E474E17226CBE7C400ED18F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4554BDB26D232E200819A09 /* FirebaseServiceMock.swift in Sources */,
+				E4554BA626D0D0A400819A09 /* RecentProductCollectionViewViewModel.swift in Sources */,
+				E4554BD626D0D45B00819A09 /* FirebaseServiceError.swift in Sources */,
+				E4554BB126D0D16000819A09 /* SmallLabelCell.swift in Sources */,
+				E4CEEC6126D3CC1100E5AE67 /* UICollectionView+Extension.swift in Sources */,
+				E4BFBCDF26CE578F007A6CF6 /* Inscriptions.swift in Sources */,
+				E4554BB926D0D2AE00819A09 /* PlateImageView.swift in Sources */,
+				E4BFBCE126CE57AC007A6CF6 /* TimerManager.swift in Sources */,
+				E4554BAE26D0D13800819A09 /* DeviceManager.swift in Sources */,
+				E4554BCD26D0D3AD00819A09 /* StillEmptyLabels.swift in Sources */,
+				E4554BC326D0D33C00819A09 /* TimerContentView.swift in Sources */,
+				E4554BBB26D0D2C600819A09 /* StartCookButton.swift in Sources */,
+				E4BFBCE726CFA350007A6CF6 /* ProductFake.swift in Sources */,
+				E4BFBCDE26CE5780007A6CF6 /* Notifications.swift in Sources */,
+				E4554BBA26D0D2BF00819A09 /* ProductNameView.swift in Sources */,
+				E4554BA526D0D09600819A09 /* RecentProductViewModel.swift in Sources */,
+				E4554BC926D0D36700819A09 /* TimerStartButton.swift in Sources */,
+				E4554BC726D0D35D00819A09 /* TimerBackgroundView.swift in Sources */,
+				E4554BB326D0D24000819A09 /* ProductInfoViewController.swift in Sources */,
+				E4554BC526D0D34700819A09 /* TimerStackView.swift in Sources */,
+				E4554BDD26D23DAC00819A09 /* StorageManagerSpy.swift in Sources */,
+				E4554BD826D0E3ED00819A09 /* TimeToCook.xcdatamodeld in Sources */,
+				E4BFBCDD26CE576F007A6CF6 /* TimerViewModel.swift in Sources */,
+				E4554BB426D0D25700819A09 /* ProductView.swift in Sources */,
+				E4554BAD26D0D12800819A09 /* RecentProductCollectionViewCellViewModel.swift in Sources */,
+				E4554BA426D0D07E00819A09 /* CustomTabBarViewModel.swift in Sources */,
+				E4554BA926D0D0DF00819A09 /* RecentProductCollectionViewCell.swift in Sources */,
+				E4554BAB26D0D0FC00819A09 /* StorageManager.swift in Sources */,
+				E4BFBCDC26CE5762007A6CF6 /* ProductInfoViewModel.swift in Sources */,
+				E4554BD226D0D40B00819A09 /* TimeDiagram.swift in Sources */,
+				E4554BC426D0D34100819A09 /* TimerLabel.swift in Sources */,
+				E4554BCA26D0D36D00819A09 /* TimerStopButton.swift in Sources */,
+				E4554BCC26D0D39D00819A09 /* RecentProductLabel.swift in Sources */,
+				E4554BA726D0D0C200819A09 /* RecentProductsViewController.swift in Sources */,
+				E4554BB726D0D28E00819A09 /* DeviceModel.swift in Sources */,
+				E4554BA326D0CFC500819A09 /* CustomTabBarViewModelTest.swift in Sources */,
+				E4BFBCE226CE57BA007A6CF6 /* InstructionCollectionViewCellViewModel.swift in Sources */,
+				E4554BCF26D0D3CE00819A09 /* UIView+Extension.swift in Sources */,
+				E474E17926CBE7C400ED18F9 /* ProductInfoViewModelTest.swift in Sources */,
+				E4554BB226D0D21B00819A09 /* MainImageRPCell.swift in Sources */,
+				E4554BB826D0D29E00819A09 /* ViewWithContent.swift in Sources */,
+				E4554BB626D0D27B00819A09 /* UIFont+Extension.swift in Sources */,
+				E4554BC626D0D34D00819A09 /* TimerPickerView.swift in Sources */,
+				E4554BBF26D0D30B00819A09 /* StillEmptyView.swift in Sources */,
+				E4554BAF26D0D14A00819A09 /* Int+Extension.swift in Sources */,
+				E4554BC226D0D32500819A09 /* TimerViewController.swift in Sources */,
+				E4BFBCE026CE579E007A6CF6 /* ImageTitles.swift in Sources */,
+				E4554BC126D0D31900819A09 /* CloseButton.swift in Sources */,
+				E4554BCE26D0D3B400819A09 /* MascotImageView.swift in Sources */,
+				E4554BD926D0E44500819A09 /* FirebaseService.swift in Sources */,
+				E4554BB526D0D26C00819A09 /* SingleStackView.swift in Sources */,
+				E4554BAC26D0D10C00819A09 /* AddingNewProductViewModel.swift in Sources */,
+				E4554BBC26D0D2CC00819A09 /* InstructionCollectionView.swift in Sources */,
+				E4554BC026D0D31200819A09 /* TimerButton.swift in Sources */,
+				E4BFBCDB26CE573C007A6CF6 /* Product.swift in Sources */,
+				E4554BC826D0D36200819A09 /* CloseButtonAdd.swift in Sources */,
+				E4554BD026D0D3E600819A09 /* UIDevice+Extension.swift in Sources */,
+				E4554BBE26D0D2FB00819A09 /* Category.swift in Sources */,
+				E4554BA826D0D0CE00819A09 /* RecentProductCollectionView.swift in Sources */,
+				E4554BAA26D0D0ED00819A09 /* Constants.swift in Sources */,
+				E4554BD126D0D3F600819A09 /* DateFormatter+Extension.swift in Sources */,
+				E4554BBD26D0D2DF00819A09 /* InstructionCollectionViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E474E17C26CBE7C400ED18F9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E44BBF6726A6FEB4003D403C /* TimeToCook */;
+			targetProxy = E474E17B26CBE7C400ED18F9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E41C3C4E26A702D9006F1AE9 /* LaunchScreen.storyboard */ = {
@@ -931,6 +1219,66 @@
 			};
 			name = Release;
 		};
+		E474E17D26CBE7C400ED18F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C9FB8E93906E7CE47F4B6C6 /* Pods-TimeToCookTests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 58287L88KM;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"non-recursive",
+					"$(SRCROOT)/Pods/Headers/Public",
+					recursive,
+					"$(SRCROOT)/Pods/Firebase",
+					recursive,
+					"${SRCROOT}/Pods/Firebase/CoreOnly/Sources",
+				);
+				INFOPLIST_FILE = TimeToCookTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "kiko-ssss.TimeToCookTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 13.0;
+			};
+			name = Debug;
+		};
+		E474E17E26CBE7C400ED18F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A8D3FD782664781008386729 /* Pods-TimeToCookTests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 58287L88KM;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"non-recursive",
+					"$(SRCROOT)/Pods/Headers/Public",
+					recursive,
+					"$(SRCROOT)/Pods/Firebase",
+					recursive,
+					"${SRCROOT}/Pods/Firebase/CoreOnly/Sources",
+				);
+				INFOPLIST_FILE = TimeToCookTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "kiko-ssss.TimeToCookTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 13.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -948,6 +1296,15 @@
 			buildConfigurations = (
 				E44BBF8026A6FEB7003D403C /* Debug */,
 				E44BBF8126A6FEB7003D403C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E474E17F26CBE7C400ED18F9 /* Build configuration list for PBXNativeTarget "TimeToCookTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E474E17D26CBE7C400ED18F9 /* Debug */,
+				E474E17E26CBE7C400ED18F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

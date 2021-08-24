@@ -10,13 +10,16 @@ import Foundation
 enum FirebaseServiceError: Error, LocalizedError {
     case productNotFound
     case modelInitializingError
+    case productsNotFound
     
     var errorDescription: String? {
         switch self {
         case .productNotFound:
-            return "По данному коду продукт в базе не найден"
+            return Inscriptions.productNotFoundError
         case .modelInitializingError:
-            return "Ошибка при инициализации продукта"
+            return Inscriptions.modelInitializingError
+        case .productsNotFound:
+            return Inscriptions.productsNotFoundError
         }
     }
 }

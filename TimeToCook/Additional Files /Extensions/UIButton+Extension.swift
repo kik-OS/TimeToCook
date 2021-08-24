@@ -5,7 +5,6 @@
 //  Created by Никита Гвоздиков on 18.07.2021.
 //
 
-
 import UIKit
 
 extension UIButton {
@@ -21,6 +20,13 @@ extension UIButton {
         pulse.damping = 0.5
         layer.add(pulse, forKey: nil)
     }
-    
-   
+
+    func animationForMiddleButton() {
+        let rotation = CASpringAnimation(keyPath: "transform.rotation.z")
+        rotation.toValue = NSNumber(value: Double.pi * 4)
+        rotation.duration = 6
+        rotation.mass = 1
+        layer.add(rotation, forKey: nil)
+    }
+
 }

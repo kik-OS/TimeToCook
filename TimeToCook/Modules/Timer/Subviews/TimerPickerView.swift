@@ -9,7 +9,7 @@ import UIKit
 
 final class TimerPickerView: UIPickerView {
     
-    //MARK: Init
+    // MARK: Init
     
     init() {
         super.init(frame: .zero)
@@ -19,7 +19,7 @@ final class TimerPickerView: UIPickerView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    //MARK: Override
+    // MARK: Override
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)

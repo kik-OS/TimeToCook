@@ -7,8 +7,8 @@
 
 import UIKit
 
-protocol RecentProductCollectionViewDelegate {
-    func presentInfoAboutProduct(product: Product)
+protocol RecentProductCollectionViewDelegate: AnyObject {
+    func presentInfoAboutProduct(product: ProductProtocol)
 }
 
 final class RecentProductsViewController: UIViewController {
@@ -37,7 +37,7 @@ final class RecentProductsViewController: UIViewController {
     
     var viewModel: RecentProductViewModelProtocol?
     
-    //MARK: Constraints
+    // MARK: Constraints
     
     private func setupAllConstraints() {
         setupProductLabelConstraints()
@@ -57,7 +57,7 @@ final class RecentProductsViewController: UIViewController {
         view.addSubview(emptyPlateImage)
         NSLayoutConstraint.activate([
             emptyPlateImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            emptyPlateImage.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 2/3),
+            emptyPlateImage.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 2 / 3),
             emptyPlateImage.topAnchor.constraint(equalTo: recentProductLabel.bottomAnchor, constant: 50),
             emptyPlateImage.heightAnchor.constraint(equalTo: emptyPlateImage.widthAnchor)])
     }
@@ -70,7 +70,8 @@ final class RecentProductsViewController: UIViewController {
             recentProductCollectionView.topAnchor.constraint(equalTo: recentProductLabel.bottomAnchor,
                                                              constant: 10),
             recentProductCollectionView.bottomAnchor.constraint(equalTo: view.centerYAnchor,
-                                                                constant: view.frame.height / 5)])
+                                                                constant: view.frame.height / 5)
+        ])
     }
     
     // MARK: - Lifecycle methods
@@ -78,7 +79,7 @@ final class RecentProductsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         recentProductCollectionView.viewModel = viewModel?.getRecentProductCollectionViewViewModel()
-        recentProductCollectionView.viewModel.delegate = self
+        recentProductCollectionView.viewModel?.delegate = self
         addVerticalGradientLayer()
         setupAllConstraints()
     }
@@ -86,10 +87,10 @@ final class RecentProductsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         recentProductCollectionView.setContentOffset(CGPoint(x: -ConstantsCollectionView.leftDistanceToView,
-                                                                   y: 0), animated: false)
-        recentProductCollectionView.viewModel.fetchProductFromCoreData { [ weak self] in
+                                                                   y: -20), animated: false)
+        recentProductCollectionView.viewModel?.fetchProductFromCoreData { [ weak self] in
             self?.recentProductCollectionView.reloadData()
-            guard let isHidden = self?.recentProductCollectionView.viewModel.contentIsEmpty() else { return }
+            guard let isHidden = self?.recentProductCollectionView.viewModel?.contentIsEmpty() else { return }
             self?.recentProductCollectionView.isHidden = isHidden
             self?.emptyPlateImage.isHidden = !isHidden
             self?.recentProductLabel.text = self?.viewModel?.checkCurrentState(isHidden: !isHidden)
@@ -110,7 +111,7 @@ final class RecentProductsViewController: UIViewController {
 }
 
 extension RecentProductsViewController: RecentProductCollectionViewDelegate {
-    func presentInfoAboutProduct(product: Product) {
+    func presentInfoAboutProduct(product: ProductProtocol) {
         guard let productInfoVC = tabBarController?.viewControllers?.first as? ProductInfoViewController else { return }
         productInfoVC.viewModel.updateProduct(product: product)
         tabBarController?.selectedViewController = tabBarController?.viewControllers?.first

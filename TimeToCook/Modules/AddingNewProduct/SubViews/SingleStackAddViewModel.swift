@@ -26,7 +26,6 @@ protocol SingleStackAddViewModelProtocol {
     init(textFieldType: TextFieldsType)
 }
 
-
 final class SingleStackAddViewModel: SingleStackAddViewModelProtocol {
     
     // MARK: Private Properties
@@ -81,4 +80,3 @@ final class SingleStackAddViewModel: SingleStackAddViewModelProtocol {
         }
     }
 }
-
