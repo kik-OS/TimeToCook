@@ -23,7 +23,7 @@ final class RecentProductCollectionViewViewModel: RecentProductCollectionViewVie
     }
     
     func didSelectItemAt(indexPath: IndexPath) {
-        guard let product = StorageManager.shared.convertFromProductCDToProduct(
+        guard let product = StorageService.shared.convertFromProductCDToProduct(
                 productCD: productsCD[indexPath.row]) else { return }
         delegate?.presentInfoAboutProduct(product: product)
     }
@@ -39,7 +39,7 @@ final class RecentProductCollectionViewViewModel: RecentProductCollectionViewVie
     // MARK: - Methods
     
     func fetchProductFromCoreData(completion: @escaping() -> Void) {
-        productsCD = StorageManager.shared.fetchData().sorted(by: { $0.date ?? Date() > $1.date ?? Date() })
+        productsCD = StorageService.shared.fetchData().sorted(by: { $0.date ?? Date() > $1.date ?? Date() })
         DispatchQueue.main.async {
             completion()
         }

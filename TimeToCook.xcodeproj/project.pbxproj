@@ -44,11 +44,11 @@
 		E41C3CA726A702DB006F1AE9 /* RecentProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C6B26A702DA006F1AE9 /* RecentProductCollectionViewCell.swift */; };
 		E41C3CA926A702DB006F1AE9 /* RecentProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C6E26A702DA006F1AE9 /* RecentProductViewModel.swift */; };
 		E41C3CAA26A702DB006F1AE9 /* RecentProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C6F26A702DA006F1AE9 /* RecentProductsViewController.swift */; };
-		E41C3CB126A702DB006F1AE9 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C7A26A702DA006F1AE9 /* StorageManager.swift */; };
+		E41C3CB126A702DB006F1AE9 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C7A26A702DA006F1AE9 /* StorageService.swift */; };
 		E41C3CB226A702DB006F1AE9 /* FirebaseServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C7C26A702DA006F1AE9 /* FirebaseServiceError.swift */; };
 		E41C3CB326A702DB006F1AE9 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C7D26A702DA006F1AE9 /* FirebaseService.swift */; };
-		E41C3CB426A702DB006F1AE9 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C7F26A702DA006F1AE9 /* DeviceManager.swift */; };
-		E41C3CB526A702DB006F1AE9 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C8126A702DA006F1AE9 /* TimerManager.swift */; };
+		E41C3CB426A702DB006F1AE9 /* DeviceManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C7F26A702DA006F1AE9 /* DeviceManagerService.swift */; };
+		E41C3CB526A702DB006F1AE9 /* TimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C8126A702DA006F1AE9 /* TimerService.swift */; };
 		E41C3CBA26A7048A006F1AE9 /* BarcodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3CB726A70489006F1AE9 /* BarcodeScannerViewController.swift */; };
 		E41C3CBB26A7048A006F1AE9 /* BarcodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3CB826A7048A006F1AE9 /* BarcodeScanner.swift */; };
 		E41C3CC026A85FC4006F1AE9 /* FlashButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3CBF26A85FC3006F1AE9 /* FlashButton.swift */; };
@@ -78,10 +78,10 @@
 		E4554BA826D0D0CE00819A09 /* RecentProductCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C6726A702DA006F1AE9 /* RecentProductCollectionView.swift */; };
 		E4554BA926D0D0DF00819A09 /* RecentProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C6B26A702DA006F1AE9 /* RecentProductCollectionViewCell.swift */; };
 		E4554BAA26D0D0ED00819A09 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C4226A702D7006F1AE9 /* Constants.swift */; };
-		E4554BAB26D0D0FC00819A09 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C7A26A702DA006F1AE9 /* StorageManager.swift */; };
+		E4554BAB26D0D0FC00819A09 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C7A26A702DA006F1AE9 /* StorageService.swift */; };
 		E4554BAC26D0D10C00819A09 /* AddingNewProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E9E0526BE817400E7082B /* AddingNewProductViewModel.swift */; };
 		E4554BAD26D0D12800819A09 /* RecentProductCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C6A26A702DA006F1AE9 /* RecentProductCollectionViewCellViewModel.swift */; };
-		E4554BAE26D0D13800819A09 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C7F26A702DA006F1AE9 /* DeviceManager.swift */; };
+		E4554BAE26D0D13800819A09 /* DeviceManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C7F26A702DA006F1AE9 /* DeviceManagerService.swift */; };
 		E4554BAF26D0D14A00819A09 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3926A702D6006F1AE9 /* Int+Extension.swift */; };
 		E4554BB126D0D16000819A09 /* SmallLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B94E3426CA8B92003A71DF /* SmallLabelCell.swift */; };
 		E4554BB226D0D21B00819A09 /* MainImageRPCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B94E3626CA9573003A71DF /* MainImageRPCell.swift */; };
@@ -147,7 +147,7 @@
 		E4BFBCDE26CE5780007A6CF6 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3F26A702D7006F1AE9 /* Notifications.swift */; };
 		E4BFBCDF26CE578F007A6CF6 /* Inscriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C4426A702D7006F1AE9 /* Inscriptions.swift */; };
 		E4BFBCE026CE579E007A6CF6 /* ImageTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C4526A702D7006F1AE9 /* ImageTitles.swift */; };
-		E4BFBCE126CE57AC007A6CF6 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C8126A702DA006F1AE9 /* TimerManager.swift */; };
+		E4BFBCE126CE57AC007A6CF6 /* TimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C8126A702DA006F1AE9 /* TimerService.swift */; };
 		E4BFBCE226CE57BA007A6CF6 /* InstructionCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E6C26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift */; };
 		E4BFBCE726CFA350007A6CF6 /* ProductFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BFBCE626CFA350007A6CF6 /* ProductFake.swift */; };
 		E4C1A11426C14979008C1D17 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C1A11326C14979008C1D17 /* CustomNavigationController.swift */; };
@@ -213,11 +213,11 @@
 		E41C3C6B26A702DA006F1AE9 /* RecentProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		E41C3C6E26A702DA006F1AE9 /* RecentProductViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentProductViewModel.swift; sourceTree = "<group>"; };
 		E41C3C6F26A702DA006F1AE9 /* RecentProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentProductsViewController.swift; sourceTree = "<group>"; };
-		E41C3C7A26A702DA006F1AE9 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		E41C3C7A26A702DA006F1AE9 /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		E41C3C7C26A702DA006F1AE9 /* FirebaseServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseServiceError.swift; sourceTree = "<group>"; };
 		E41C3C7D26A702DA006F1AE9 /* FirebaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
-		E41C3C7F26A702DA006F1AE9 /* DeviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
-		E41C3C8126A702DA006F1AE9 /* TimerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		E41C3C7F26A702DA006F1AE9 /* DeviceManagerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceManagerService.swift; sourceTree = "<group>"; };
+		E41C3C8126A702DA006F1AE9 /* TimerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerService.swift; sourceTree = "<group>"; };
 		E41C3CB726A70489006F1AE9 /* BarcodeScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerViewController.swift; sourceTree = "<group>"; };
 		E41C3CB826A7048A006F1AE9 /* BarcodeScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScanner.swift; sourceTree = "<group>"; };
 		E41C3CBF26A85FC3006F1AE9 /* FlashButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashButton.swift; sourceTree = "<group>"; };
@@ -510,7 +510,7 @@
 		E41C3C7926A702DA006F1AE9 /* StorageManager */ = {
 			isa = PBXGroup;
 			children = (
-				E41C3C7A26A702DA006F1AE9 /* StorageManager.swift */,
+				E41C3C7A26A702DA006F1AE9 /* StorageService.swift */,
 			);
 			path = StorageManager;
 			sourceTree = "<group>";
@@ -527,7 +527,7 @@
 		E41C3C7E26A702DA006F1AE9 /* DeviceManager */ = {
 			isa = PBXGroup;
 			children = (
-				E41C3C7F26A702DA006F1AE9 /* DeviceManager.swift */,
+				E41C3C7F26A702DA006F1AE9 /* DeviceManagerService.swift */,
 			);
 			path = DeviceManager;
 			sourceTree = "<group>";
@@ -535,7 +535,7 @@
 		E41C3C8026A702DA006F1AE9 /* TimerManager */ = {
 			isa = PBXGroup;
 			children = (
-				E41C3C8126A702DA006F1AE9 /* TimerManager.swift */,
+				E41C3C8126A702DA006F1AE9 /* TimerService.swift */,
 			);
 			path = TimerManager;
 			sourceTree = "<group>";
@@ -888,11 +888,11 @@
 			files = (
 				E47E0C7826BBBC300060BE3A /* StartCookButton.swift in Sources */,
 				E44E9E0F26BEB44900E7082B /* TextFieldsStackView.swift in Sources */,
-				E41C3CB526A702DB006F1AE9 /* TimerManager.swift in Sources */,
+				E41C3CB526A702DB006F1AE9 /* TimerService.swift in Sources */,
 				E41C3C8C26A702DA006F1AE9 /* Transition.swift in Sources */,
 				E44E9E0926BE872800E7082B /* ContentScroll.swift in Sources */,
 				E41C3CB326A702DB006F1AE9 /* FirebaseService.swift in Sources */,
-				E41C3CB126A702DB006F1AE9 /* StorageManager.swift in Sources */,
+				E41C3CB126A702DB006F1AE9 /* StorageService.swift in Sources */,
 				E41C3CA326A702DB006F1AE9 /* CustomTabBarController.swift in Sources */,
 				E41C3CC426A87304006F1AE9 /* CameraOverlay.swift in Sources */,
 				E41C3C8526A702DA006F1AE9 /* Int+Extension.swift in Sources */,
@@ -955,7 +955,7 @@
 				E44E9E0626BE817400E7082B /* AddingNewProductViewModel.swift in Sources */,
 				E4EB3E7126BC3DB800DA752C /* InstructionCollectionView.swift in Sources */,
 				E44E9E0426BE815E00E7082B /* AddingNewProductViewController.swift in Sources */,
-				E41C3CB426A702DB006F1AE9 /* DeviceManager.swift in Sources */,
+				E41C3CB426A702DB006F1AE9 /* DeviceManagerService.swift in Sources */,
 				E4B971BB26C2BFD6003DFACA /* TimerContentView.swift in Sources */,
 				E41C3CA126A702DB006F1AE9 /* CustomTabBar.swift in Sources */,
 				E4CEEC6026D3C22A00E5AE67 /* UICollectionView+Extension.swift in Sources */,
@@ -981,8 +981,8 @@
 				E4CEEC6126D3CC1100E5AE67 /* UICollectionView+Extension.swift in Sources */,
 				E4BFBCDF26CE578F007A6CF6 /* Inscriptions.swift in Sources */,
 				E4554BB926D0D2AE00819A09 /* PlateImageView.swift in Sources */,
-				E4BFBCE126CE57AC007A6CF6 /* TimerManager.swift in Sources */,
-				E4554BAE26D0D13800819A09 /* DeviceManager.swift in Sources */,
+				E4BFBCE126CE57AC007A6CF6 /* TimerService.swift in Sources */,
+				E4554BAE26D0D13800819A09 /* DeviceManagerService.swift in Sources */,
 				E4554BCD26D0D3AD00819A09 /* StillEmptyLabels.swift in Sources */,
 				E4554BC326D0D33C00819A09 /* TimerContentView.swift in Sources */,
 				E4554BBB26D0D2C600819A09 /* StartCookButton.swift in Sources */,
@@ -1001,7 +1001,7 @@
 				E4554BAD26D0D12800819A09 /* RecentProductCollectionViewCellViewModel.swift in Sources */,
 				E4554BA426D0D07E00819A09 /* CustomTabBarViewModel.swift in Sources */,
 				E4554BA926D0D0DF00819A09 /* RecentProductCollectionViewCell.swift in Sources */,
-				E4554BAB26D0D0FC00819A09 /* StorageManager.swift in Sources */,
+				E4554BAB26D0D0FC00819A09 /* StorageService.swift in Sources */,
 				E4BFBCDC26CE5762007A6CF6 /* ProductInfoViewModel.swift in Sources */,
 				E4554BD226D0D40B00819A09 /* TimeDiagram.swift in Sources */,
 				E4554BC426D0D34100819A09 /* TimerLabel.swift in Sources */,

@@ -67,7 +67,7 @@ final class TimerViewModel: TimerViewModelProtocol {
     var timerDidStop: (() -> Void)?
     var timerDidExpired: (() -> Void)?
     
-    private var timerManager: TimerManagerProtocol = TimerManager.shared
+    private var timerManager: TimerServiceProtocol = TimerService.shared
         
     // MARK: - Init
     
@@ -93,7 +93,7 @@ final class TimerViewModel: TimerViewModelProtocol {
     }
 }
 
-extension TimerViewModel: TimerManagerTimerViewDelegate {
+extension TimerViewModel: TimerServiceTimerViewDelegate {
     
     func timerDidStep(totalSeconds: Int, remainingSeconds: Int, isStopped: Bool) {
         isStopped

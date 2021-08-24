@@ -7,18 +7,18 @@
 
 import CoreData
 
-protocol StorageManagerProtocol {
+protocol StorageServiceProtocol {
     func fetchData() -> [ProductCD]
     func saveProductCD(product: ProductProtocol)
     func convertFromProductCDToProduct(productCD: ProductCD) -> ProductProtocol?
     func deleteProductCD(_ productCD: ProductCD)
 }
 
-final class StorageManager: StorageManagerProtocol {
+final class StorageService: StorageServiceProtocol {
     
     // MARK: - Static properties
     
-    static let shared = StorageManager()
+    static let shared = StorageService()
     
     // MARK: - Core Data stack
     

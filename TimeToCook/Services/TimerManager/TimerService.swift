@@ -7,19 +7,19 @@
 
 import UIKit
 
-protocol TimerManagerBarDelegate: AnyObject {
+protocol TimerServiceBarDelegate: AnyObject {
     func timerDidStep(remainingSeconds: Int, isStopped: Bool)
 }
 
-protocol TimerManagerTimerViewDelegate: AnyObject {
+protocol TimerServiceTimerViewDelegate: AnyObject {
     func timerDidStep(totalSeconds: Int, remainingSeconds: Int, isStopped: Bool)
     func timerHasExpired()
 }
 
-protocol TimerManagerProtocol {
+protocol TimerServiceProtocol {
     var isActive: Bool { get }
-    var barDelegate: TimerManagerBarDelegate? { get set }
-    var timerViewDelegate: TimerManagerTimerViewDelegate? { get set }
+    var barDelegate: TimerServiceBarDelegate? { get set }
+    var timerViewDelegate: TimerServiceTimerViewDelegate? { get set }
     
     func start(forMinutes minutes: Int)
     func stop()
@@ -28,17 +28,17 @@ protocol TimerManagerProtocol {
     func readSavedTime()
 }
 
-final class TimerManager: TimerManagerProtocol {
+final class TimerService: TimerServiceProtocol {
     
     // MARK: - Static properties
     
-    static let shared = TimerManager()
+    static let shared = TimerService()
     
     // MARK: - Properties
     
     var isActive = false
-    weak var barDelegate: TimerManagerBarDelegate?
-    weak var timerViewDelegate: TimerManagerTimerViewDelegate?
+    weak var barDelegate: TimerServiceBarDelegate?
+    weak var timerViewDelegate: TimerServiceTimerViewDelegate?
     
     private var savedTime: (timerTime: Int, time: Double)?
     private var timer = Timer()

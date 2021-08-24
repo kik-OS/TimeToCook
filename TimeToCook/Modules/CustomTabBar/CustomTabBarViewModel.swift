@@ -5,7 +5,7 @@
 //  Created by Никита Гвоздиков on 15.08.2021.
 //
 
-import Foundation
+import UIKit
 
 protocol CustomTabBarViewModelProtocol: AnyObject {
     /// Вызывается в случае успешного получения продукта из базы. В параметр передаётся полученный из базы продукт.
@@ -22,6 +22,7 @@ protocol CustomTabBarViewModelProtocol: AnyObject {
     func getRecentProductViewModel() -> RecentProductViewModelProtocol
     func getAddingNewProductViewModel(withCode code: String) -> AddingNewProductViewModelProtocol?
     func getTimerViewModel() -> TimerViewModelProtocol
+    func createCustomTabBar() -> CustomTabBar
 }
 
 final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
@@ -32,29 +33,33 @@ final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
     var addingNewProductOffer: ((_ code: String) -> Void)?
     var timerDidStep: ((_ time: String) -> Void)?
     var constantForMiddleButton: Float {
-        DeviceManager.checkSquareScreen() ? 0 : 10
+        deviceManagerService.checkSquareScreen() ? 0 : 10
     }
     var sizeForMiddleButton: Float {
-        DeviceManager.checkSquareScreen() ? 68 : 72
+        deviceManagerService.checkSquareScreen() ? 68 : 72
     }
     
     // MARK: Dependences
     
-    private let firebaseService: FirebaseServiceProtocol?
-    private let storageManager: StorageManagerProtocol?
+    private let firebaseService: FirebaseServiceProtocol
+    private let storageManager: StorageServiceProtocol
+    private let deviceManagerService: DeviceManagerServiceProtocol
     
     // MARK: - Initializers
     
-    init(firebaseService: FirebaseServiceProtocol, storageManager: StorageManagerProtocol) {
+    init(firebaseService: FirebaseServiceProtocol,
+         storageManager: StorageServiceProtocol,
+         deviceManagerService: DeviceManagerServiceProtocol) {
         self.firebaseService = firebaseService
         self.storageManager = storageManager
-        TimerManager.shared.barDelegate = self
+        self.deviceManagerService = deviceManagerService
+        TimerService.shared.barDelegate = self
     }
     
     // MARK: - Public methods
     
     func findProduct(byCode code: String) {
-        firebaseService?.fetchProduct(byCode: code) { [weak self] result in
+        firebaseService.fetchProduct(byCode: code) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
@@ -67,7 +72,11 @@ final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
             }
         }
     }
-    
+
+    func createCustomTabBar() -> CustomTabBar {
+        CustomTabBar(deviceManagerService: deviceManagerService)
+    }
+
     func getProductInfoViewModel(product: ProductProtocol?) -> ProductInfoViewModelProtocol {
         ProductInfoViewModel(product: product)
     }
@@ -77,8 +86,7 @@ final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
     }
     
     func getAddingNewProductViewModel(withCode code: String) -> AddingNewProductViewModelProtocol? {
-        guard let firebaseService = firebaseService else { return nil }
-        return AddingNewProductViewModel(code: code, firebaseService: firebaseService)
+      AddingNewProductViewModel(code: code, firebaseService: firebaseService)
     }
     
     func getTimerViewModel() -> TimerViewModelProtocol {
@@ -88,11 +96,11 @@ final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
     // MARK: - Private methods
     
     private func createProductInCoreData(product: ProductProtocol) {
-        storageManager?.saveProductCD(product: product)
+        storageManager.saveProductCD(product: product)
     }
 }
 
-extension CustomTabBarViewModel: TimerManagerBarDelegate {
+extension CustomTabBarViewModel: TimerServiceBarDelegate {
     
     func timerDidStep(remainingSeconds: Int, isStopped: Bool) {
         timerDidStep?(isStopped ? "" : remainingSeconds.getStringTimeOfTimer())

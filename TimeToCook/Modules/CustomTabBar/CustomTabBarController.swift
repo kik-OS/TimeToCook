@@ -30,9 +30,8 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
 
     // MARK: - Initializers
     
-    init() {
-        viewModel = CustomTabBarViewModel(firebaseService: FirebaseService.shared,
-                                          storageManager: StorageManager.shared)
+    init(viewModel: CustomTabBarViewModelProtocol) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -60,9 +59,11 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
     }
     
     // MARK: - Actions
-    
+
     private func loadTabBar() {
-        self.setValue(CustomTabBar(), forKey: "tabBar")
+        let tabBar = viewModel.createCustomTabBar()
+        self.setValue(tabBar, forKey: "tabBar")
+
     }
     
     private func setupNavigationBar() {
@@ -155,32 +156,32 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
     }
     
     private func createTemporaryProductForDemonstration() {
-        StorageManager.shared.saveProductCD(product: Product(code: "21121909098", title: "Макароны",
+        StorageService.shared.saveProductCD(product: Product(code: "21121909098", title: "Макароны",
                                                              producer: "Макфа", category: "Макароны",
                                                              weight: 20, cookingTime: 10,
                                                              intoBoilingWater: true,
                                                              needStirring: true, waterRatio: 3))
-        StorageManager.shared.saveProductCD(product: Product(code: "3332156464", title: "Вареники с вишней",
+        StorageService.shared.saveProductCD(product: Product(code: "3332156464", title: "Вареники с вишней",
                                                              producer: "ВкусВилл", category: "Вареники",
                                                              weight: 1000, cookingTime: 7,
                                                              intoBoilingWater: true,
                                                              needStirring: true, waterRatio: 5))
-        StorageManager.shared.saveProductCD(product: Product(code: "21121453543", title: "Гречка Русская",
+        StorageService.shared.saveProductCD(product: Product(code: "21121453543", title: "Гречка Русская",
                                                              producer: "Макфа", category: "Гречка",
                                                              weight: 500, cookingTime: 20,
                                                              intoBoilingWater: true,
                                                              needStirring: true, waterRatio: 3))
-        StorageManager.shared.saveProductCD(product: Product(code: "333219090", title: "Нут",
+        StorageService.shared.saveProductCD(product: Product(code: "333219090", title: "Нут",
                                                              producer: "Макфа", category: "Бобовые",
                                                              weight: 200, cookingTime: 40,
                                                              intoBoilingWater: true,
                                                              needStirring: true, waterRatio: 3))
-        StorageManager.shared.saveProductCD(product: Product(code: "938040340", title: "Пельмени-Экстра",
+        StorageService.shared.saveProductCD(product: Product(code: "938040340", title: "Пельмени-Экстра",
                                                              producer: "Мираторг", category: "Пельмени",
                                                              weight: 1000, cookingTime: 8,
                                                              intoBoilingWater: true,
                                                              needStirring: true, waterRatio: 3))
-        StorageManager.shared.saveProductCD(product: Product(code: "943560000", title: "Пшено",
+        StorageService.shared.saveProductCD(product: Product(code: "943560000", title: "Пшено",
                                                              producer: "Увелка", category: "Каши",
                                                              weight: 500, cookingTime: 3,
                                                              intoBoilingWater: true,

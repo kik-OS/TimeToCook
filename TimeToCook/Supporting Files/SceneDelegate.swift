@@ -21,11 +21,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func sceneWillEnterForeground(_ scene: UIScene) {
-        TimerManager.shared.readSavedTime()
+        TimerService.shared.readSavedTime()
     }
     
     func sceneDidEnterBackground(_ scene: UIScene) {
-        TimerManager.shared.saveTime()
-        StorageManager.shared.saveContext()
+        TimerService.shared.saveTime()
+        StorageService.shared.saveContext()
     }
 }
