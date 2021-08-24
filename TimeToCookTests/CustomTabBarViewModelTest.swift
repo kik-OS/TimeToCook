@@ -12,14 +12,17 @@ class CustomTabBarViewModelTest: XCTestCase {
 
     var sut: CustomTabBarViewModel?
     var firebaseServiceMock: FirebaseServiceProtocol?
-    var storageManagerDummy: StorageManagerProtocol?
+    var storageManagerDummy: StorageServiceProtocol?
+    var deviceManager: DeviceManagerService?
 
     override func setUpWithError() throws {
         try super.setUpWithError()
         firebaseServiceMock = FirebaseServiceMock()
         storageManagerDummy = StorageManagerDummy()
+        deviceManager = DeviceManagerService()
         sut = CustomTabBarViewModel(firebaseService: firebaseServiceMock!,
-                                    storageManager: storageManagerDummy!)
+                                    storageManager: storageManagerDummy!,
+                                    deviceManagerService: deviceManager!)
     }
 
     override func tearDownWithError() throws {

@@ -7,15 +7,6 @@
 
 import UIKit
 
-//protocol CoordinatorProtocol {
-////    var navigationController: UINavigationController { get set }
-//    var window: UIWindow { get }
-//    var firebaseService: FirebaseServiceProtocol { get }
-//    var storageService: StorageServiceProtocol { get }
-//    var timerService: TimerServiceProtocol { get }
-//    func start()
-//}
-
 class Coordinator {
 
     private var window: UIWindow

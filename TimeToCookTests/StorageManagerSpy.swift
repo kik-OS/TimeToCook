@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class StorageManagerDummy: StorageManagerProtocol {
+final class StorageManagerDummy: StorageServiceProtocol {
 
     func fetchData() -> [ProductCD] {
         [ProductCD()]

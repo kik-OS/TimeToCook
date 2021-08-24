@@ -56,6 +56,8 @@
 		E41C3CC626A9A977006F1AE9 /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3CC526A9A977006F1AE9 /* CancelButton.swift */; };
 		E41C3CE926A9E091006F1AE9 /* ProductInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3CE826A9E091006F1AE9 /* ProductInfoViewController.swift */; };
 		E42A3C3A26D505F000794AD2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42A3C3926D505F000794AD2 /* Coordinator.swift */; };
+		E448057526D51AF800F464DD /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C6226A702DA006F1AE9 /* CustomTabBar.swift */; };
+		E448057626D51B6300F464DD /* CGPath+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3D26A702D6006F1AE9 /* CGPath+Extension.swift */; };
 		E44BBF6C26A6FEB4003D403C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44BBF6B26A6FEB4003D403C /* AppDelegate.swift */; };
 		E44BBF6E26A6FEB4003D403C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44BBF6D26A6FEB4003D403C /* SceneDelegate.swift */; };
 		E44BBF7626A6FEB4003D403C /* TimeToCook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E44BBF7426A6FEB4003D403C /* TimeToCook.xcdatamodeld */; };
@@ -1022,6 +1024,7 @@
 				E4554BC226D0D32500819A09 /* TimerViewController.swift in Sources */,
 				E4BFBCE026CE579E007A6CF6 /* ImageTitles.swift in Sources */,
 				E4554BC126D0D31900819A09 /* CloseButton.swift in Sources */,
+				E448057626D51B6300F464DD /* CGPath+Extension.swift in Sources */,
 				E4554BCE26D0D3B400819A09 /* MascotImageView.swift in Sources */,
 				E4554BD926D0E44500819A09 /* FirebaseService.swift in Sources */,
 				E4554BB526D0D26C00819A09 /* SingleStackView.swift in Sources */,
@@ -1032,6 +1035,7 @@
 				E4554BC826D0D36200819A09 /* CloseButtonAdd.swift in Sources */,
 				E4554BD026D0D3E600819A09 /* UIDevice+Extension.swift in Sources */,
 				E4554BBE26D0D2FB00819A09 /* Category.swift in Sources */,
+				E448057526D51AF800F464DD /* CustomTabBar.swift in Sources */,
 				E4554BA826D0D0CE00819A09 /* RecentProductCollectionView.swift in Sources */,
 				E4554BAA26D0D0ED00819A09 /* Constants.swift in Sources */,
 				E4554BD126D0D3F600819A09 /* DateFormatter+Extension.swift in Sources */,
