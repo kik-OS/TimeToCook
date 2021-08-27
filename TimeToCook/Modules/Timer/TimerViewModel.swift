@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: - Protocols
+// MARK: - Protocol
 
 protocol TimerViewModelProtocol {
     var minutes: Int { get }
@@ -25,7 +25,7 @@ protocol TimerViewModelProtocol {
     /// Вызывается при истечении времени таймера.
     var timerDidExpired: (() -> Void)? { get set }
     
-    init(minutes: Int)
+    init(timerService: TimerServiceProtocol, minutes: Int)
     
     func updateTimeTo(minutes: Int)
     func startTimer()
@@ -33,47 +33,50 @@ protocol TimerViewModelProtocol {
 }
 
 final class TimerViewModel: TimerViewModelProtocol {
+
+    // MARK: - Service
     
+    private var timerService: TimerServiceProtocol
+
     // MARK: - Properties
     
     var minutes: Int
     
     var timerTime: (totalSeconds: Int, remainingSeconds: Int) {
-        timerManager.getTimerTime()
+        timerService.getTimerTime()
     }
     
     var isHiddenPickerStackView: Bool {
-        timerManager.isActive
+        timerService.isActive
     }
     
     var isHiddenDiagramStackView: Bool {
-        !timerManager.isActive
+        !timerService.isActive
     }
     
     var isEnabledStartButton: Bool {
-        !timerManager.isActive && minutes != 0
+        !timerService.isActive && minutes != 0
     }
     
     var isHiddenStartButton: Bool {
-        timerManager.isActive
+        timerService.isActive
     }
     
     var isHiddenStopButton: Bool {
-        !timerManager.isActive
+        !timerService.isActive
     }
     
     var setupPickerView: (() -> Void)?
     var timerDidStep: ((_ totalSeconds: Int, _ remainingSeconds: Int) -> Void)?
     var timerDidStop: (() -> Void)?
     var timerDidExpired: (() -> Void)?
-    
-    private var timerManager: TimerManagerProtocol = TimerManager.shared
-        
+
     // MARK: - Init
     
-    init(minutes: Int = 0) {
+    init(timerService: TimerServiceProtocol, minutes: Int = 0) {
         self.minutes = minutes
-        timerManager.timerViewDelegate = self
+        self.timerService = timerService
+        self.timerService.timerViewDelegate = self
     }
     
     // MARK: - Public methods
@@ -83,17 +86,19 @@ final class TimerViewModel: TimerViewModelProtocol {
     }
         
     func startTimer() {
-        timerManager.start(forMinutes: minutes)
+        timerService.start(forMinutes: minutes)
         Notifications.shared.showTimerNotification(throughMinutes: Double(minutes))
     }
     
     func stopTimer() {
-        timerManager.stop()
+        timerService.stop()
         Notifications.shared.cancelTimerNotification()
     }
 }
 
-extension TimerViewModel: TimerManagerTimerViewDelegate {
+// MARK: - Extensions
+
+extension TimerViewModel: TimerServiceTimerViewDelegate {
     
     func timerDidStep(totalSeconds: Int, remainingSeconds: Int, isStopped: Bool) {
         isStopped

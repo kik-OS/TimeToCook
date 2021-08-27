@@ -7,19 +7,19 @@
 
 import UIKit
 
-protocol TimerManagerBarDelegate: AnyObject {
+protocol TimerServiceBarDelegate: AnyObject {
     func timerDidStep(remainingSeconds: Int, isStopped: Bool)
 }
 
-protocol TimerManagerTimerViewDelegate: AnyObject {
+protocol TimerServiceTimerViewDelegate: AnyObject {
     func timerDidStep(totalSeconds: Int, remainingSeconds: Int, isStopped: Bool)
     func timerHasExpired()
 }
 
-protocol TimerManagerProtocol {
+protocol TimerServiceProtocol {
     var isActive: Bool { get }
-    var barDelegate: TimerManagerBarDelegate? { get set }
-    var timerViewDelegate: TimerManagerTimerViewDelegate? { get set }
+    var barDelegate: TimerServiceBarDelegate? { get set }
+    var timerViewDelegate: TimerServiceTimerViewDelegate? { get set }
     
     func start(forMinutes minutes: Int)
     func stop()
@@ -28,17 +28,13 @@ protocol TimerManagerProtocol {
     func readSavedTime()
 }
 
-final class TimerManager: TimerManagerProtocol {
-    
-    // MARK: - Static properties
-    
-    static let shared = TimerManager()
-    
+final class TimerService: TimerServiceProtocol {
+
     // MARK: - Properties
     
     var isActive = false
-    weak var barDelegate: TimerManagerBarDelegate?
-    weak var timerViewDelegate: TimerManagerTimerViewDelegate?
+    weak var barDelegate: TimerServiceBarDelegate?
+    weak var timerViewDelegate: TimerServiceTimerViewDelegate?
     
     private var savedTime: (timerTime: Int, time: Double)?
     private var timer = Timer()
@@ -46,11 +42,7 @@ final class TimerManager: TimerManagerProtocol {
     private var totalTime = 0
     /// Текущее время таймера в секундах.
     private var timerTime = 0
-    
-    // MARK: - Initializers
-    
-    private init() {}
-    
+
     // MARK: - Public methods
     
     func start(forMinutes minutes: Int) {

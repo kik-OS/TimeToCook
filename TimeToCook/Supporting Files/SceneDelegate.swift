@@ -10,22 +10,23 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
+    var coordinator: Coordinator?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
         
         if let windowScene = scene as? UIWindowScene {
-            let coordinator = Coordinator(window: UIWindow(windowScene: windowScene))
-            window = coordinator.getWindow
+            let window = UIWindow(windowScene: windowScene)
+            coordinator = Coordinator(window: window)
+            self.window = coordinator?.getWindow
         }
     }
     
     func sceneWillEnterForeground(_ scene: UIScene) {
-        TimerManager.shared.readSavedTime()
+        coordinator?.sceneWillEnterForeground()
     }
     
     func sceneDidEnterBackground(_ scene: UIScene) {
-        TimerManager.shared.saveTime()
-        StorageManager.shared.saveContext()
+        coordinator?.sceneDidEnterBackground()
     }
 }

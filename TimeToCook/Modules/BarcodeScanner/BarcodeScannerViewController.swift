@@ -3,9 +3,6 @@
 //  TimeToCook
 //
 //  Created by Никита Гвоздиков on 19.07.2021.
-//
-
-import Foundation
 
 import UIKit
 import AVFoundation
@@ -15,7 +12,7 @@ final class BarcodeScannerViewController: UIViewController {
     // MARK: Properties
     
     private var scanner: BarcodeScanner?
-    weak var delegate: CustomTabBarController?
+    weak var delegate: TabBarViewController?
     
     // MARK: UI
     

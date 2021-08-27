@@ -10,7 +10,17 @@ import UIKit
 final class CustomTabBar: UITabBar {
     
     private var shapeLayer: CALayer?
-    
+    private var deviceManagerService: DeviceServiceProtocol
+
+    init(deviceManagerService: DeviceServiceProtocol) {
+        self.deviceManagerService = deviceManagerService
+        super.init(frame: .zero)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     private func addShape(screenIsSquare: Bool) {
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = CGPath.createTabBarPath(frame: frame, screenIsSquare: screenIsSquare)
@@ -29,6 +39,6 @@ final class CustomTabBar: UITabBar {
     }
     
     override func draw(_ rect: CGRect) {
-        addShape(screenIsSquare: DeviceManager.checkSquareScreen())
+        addShape(screenIsSquare: deviceManagerService.checkSquareScreen())
     }
 }

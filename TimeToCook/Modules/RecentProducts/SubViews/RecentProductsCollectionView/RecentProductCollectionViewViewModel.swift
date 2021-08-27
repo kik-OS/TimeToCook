@@ -15,6 +15,7 @@ protocol RecentProductCollectionViewViewModelProtocol: AnyObject {
     func cellViewModel(at indexPath: IndexPath) -> RecentProductCollectionViewCellViewModelProtocol?
     func didSelectItemAt(indexPath: IndexPath)
     func contentIsEmpty() -> Bool
+    init(storageService: StorageServiceProtocol)
 }
 
 final class RecentProductCollectionViewViewModel: RecentProductCollectionViewViewModelProtocol {
@@ -23,7 +24,7 @@ final class RecentProductCollectionViewViewModel: RecentProductCollectionViewVie
     }
     
     func didSelectItemAt(indexPath: IndexPath) {
-        guard let product = StorageManager.shared.convertFromProductCDToProduct(
+        guard let product = storageService.convertFromProductCDToProduct(
                 productCD: productsCD[indexPath.row]) else { return }
         delegate?.presentInfoAboutProduct(product: product)
     }
@@ -35,11 +36,21 @@ final class RecentProductCollectionViewViewModel: RecentProductCollectionViewVie
     var numberOfItemsInSection: Int {
         productsCD.count
     }
+
+    // MARK: Dependences
+
+    private let storageService: StorageServiceProtocol
+
+    // MARK: - Init
+
+    init(storageService: StorageServiceProtocol) {
+        self.storageService = storageService
+    }
     
     // MARK: - Methods
     
     func fetchProductFromCoreData(completion: @escaping() -> Void) {
-        productsCD = StorageManager.shared.fetchData().sorted(by: { $0.date ?? Date() > $1.date ?? Date() })
+        productsCD = storageService.fetchData().sorted(by: { $0.date ?? Date() > $1.date ?? Date() })
         DispatchQueue.main.async {
             completion()
         }
