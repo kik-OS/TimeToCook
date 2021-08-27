@@ -20,7 +20,7 @@ protocol ProductInfoViewModelProtocol {
     var previousOffset: CGFloat { get set }
     var currentPage: Int { get set }
     
-    init(product: ProductProtocol?)
+    init(product: ProductProtocol?, timerService: TimerServiceProtocol)
     
     func getTimerViewModel() -> TimerViewModelProtocol
     func checkCurrentStateAndUpdateView()
@@ -69,17 +69,22 @@ final class ProductInfoViewModel: ProductInfoViewModelProtocol {
     var isHiddenProductStackView: Bool {
         product == nil
     }
+
+    let timerService: TimerServiceProtocol
     
     // MARK: - Init
     
-    init(product: ProductProtocol? = nil) {
+    init(product: ProductProtocol? = nil,
+         timerService: TimerServiceProtocol) {
+        self.timerService = timerService
         self.product = product
     }
     
     // MARK: - Public methods
     
     func getTimerViewModel() -> TimerViewModelProtocol {
-        TimerViewModel(minutes: product?.cookingTime ?? 0)
+        TimerViewModel(timerService: timerService,
+                       minutes: product?.cookingTime ?? 0)
     }
         
     func checkCurrentStateAndUpdateView() {

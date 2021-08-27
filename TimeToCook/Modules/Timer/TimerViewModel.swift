@@ -25,7 +25,7 @@ protocol TimerViewModelProtocol {
     /// Вызывается при истечении времени таймера.
     var timerDidExpired: (() -> Void)? { get set }
     
-    init(minutes: Int)
+    init(timerService: TimerServiceProtocol, minutes: Int)
     
     func updateTimeTo(minutes: Int)
     func startTimer()
@@ -39,27 +39,27 @@ final class TimerViewModel: TimerViewModelProtocol {
     var minutes: Int
     
     var timerTime: (totalSeconds: Int, remainingSeconds: Int) {
-        timerManager.getTimerTime()
+        timerService.getTimerTime()
     }
     
     var isHiddenPickerStackView: Bool {
-        timerManager.isActive
+        timerService.isActive
     }
     
     var isHiddenDiagramStackView: Bool {
-        !timerManager.isActive
+        !timerService.isActive
     }
     
     var isEnabledStartButton: Bool {
-        !timerManager.isActive && minutes != 0
+        !timerService.isActive && minutes != 0
     }
     
     var isHiddenStartButton: Bool {
-        timerManager.isActive
+        timerService.isActive
     }
     
     var isHiddenStopButton: Bool {
-        !timerManager.isActive
+        !timerService.isActive
     }
     
     var setupPickerView: (() -> Void)?
@@ -67,13 +67,14 @@ final class TimerViewModel: TimerViewModelProtocol {
     var timerDidStop: (() -> Void)?
     var timerDidExpired: (() -> Void)?
     
-    private var timerManager: TimerServiceProtocol = TimerService.shared
+    private var timerService: TimerServiceProtocol
         
     // MARK: - Init
     
-    init(minutes: Int = 0) {
+    init(timerService: TimerServiceProtocol, minutes: Int = 0) {
         self.minutes = minutes
-        timerManager.timerViewDelegate = self
+        self.timerService = timerService
+        self.timerService.timerViewDelegate = self
     }
     
     // MARK: - Public methods
@@ -83,12 +84,12 @@ final class TimerViewModel: TimerViewModelProtocol {
     }
         
     func startTimer() {
-        timerManager.start(forMinutes: minutes)
+        timerService.start(forMinutes: minutes)
         Notifications.shared.showTimerNotification(throughMinutes: Double(minutes))
     }
     
     func stopTimer() {
-        timerManager.stop()
+        timerService.stop()
         Notifications.shared.cancelTimerNotification()
     }
 }

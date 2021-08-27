@@ -33,27 +33,30 @@ final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
     var addingNewProductOffer: ((_ code: String) -> Void)?
     var timerDidStep: ((_ time: String) -> Void)?
     var constantForMiddleButton: Float {
-        deviceManagerService.checkSquareScreen() ? 0 : 10
+        deviceService.checkSquareScreen() ? 0 : 10
     }
     var sizeForMiddleButton: Float {
-        deviceManagerService.checkSquareScreen() ? 68 : 72
+        deviceService.checkSquareScreen() ? 68 : 72
     }
     
     // MARK: Dependences
     
     private let firebaseService: FirebaseServiceProtocol
-    private let storageManager: StorageServiceProtocol
-    private let deviceManagerService: DeviceManagerServiceProtocol
+    private let storageService: StorageServiceProtocol
+    private let deviceService: DeviceServiceProtocol
+    private var timerService: TimerServiceProtocol
     
     // MARK: - Initializers
     
     init(firebaseService: FirebaseServiceProtocol,
          storageManager: StorageServiceProtocol,
-         deviceManagerService: DeviceManagerServiceProtocol) {
+         deviceManagerService: DeviceServiceProtocol,
+         timerService: TimerServiceProtocol) {
         self.firebaseService = firebaseService
-        self.storageManager = storageManager
-        self.deviceManagerService = deviceManagerService
-        TimerService.shared.barDelegate = self
+        self.storageService = storageManager
+        self.deviceService = deviceManagerService
+        self.timerService = timerService
+        self.timerService.barDelegate = self
         createTemporaryProductForDemonstration()
     }
     
@@ -62,7 +65,6 @@ final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
     func findProduct(byCode code: String) {
         firebaseService.fetchProduct(byCode: code) { [weak self] result in
             guard let self = self else { return }
-            
             switch result {
             case .success(let product):
                 self.productDidReceive?(product)
@@ -75,15 +77,15 @@ final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
     }
 
     func createCustomTabBar() -> CustomTabBar {
-        CustomTabBar(deviceManagerService: deviceManagerService)
+        CustomTabBar(deviceManagerService: deviceService)
     }
 
     func getProductInfoViewModel(product: ProductProtocol?) -> ProductInfoViewModelProtocol {
-        ProductInfoViewModel(product: product)
+        ProductInfoViewModel(product: product, timerService: timerService)
     }
     
     func getRecentProductViewModel() -> RecentProductViewModelProtocol {
-        RecentProductViewModel()
+        RecentProductViewModel(storageService: storageService)
     }
     
     func getAddingNewProductViewModel(withCode code: String) -> AddingNewProductViewModelProtocol? {
@@ -91,42 +93,42 @@ final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
     }
     
     func getTimerViewModel() -> TimerViewModelProtocol {
-        TimerViewModel()
+        TimerViewModel(timerService: timerService)
     }
     
     // MARK: - Private methods
     
     private func createProductInCoreData(product: ProductProtocol) {
-        storageManager.saveProductCD(product: product)
+        storageService.saveProductCD(product: product)
     }
 
     private func createTemporaryProductForDemonstration() {
-        storageManager.saveProductCD(product: Product(code: "21121909098", title: "Макароны",
+        storageService.saveProductCD(product: Product(code: "21121909098", title: "Макароны",
                                                              producer: "Макфа", category: "Макароны",
                                                              weight: 20, cookingTime: 10,
                                                              intoBoilingWater: true,
                                                              needStirring: true, waterRatio: 3))
-        storageManager.saveProductCD(product: Product(code: "3332156464", title: "Вареники с вишней",
+        storageService.saveProductCD(product: Product(code: "3332156464", title: "Вареники с вишней",
                                                              producer: "ВкусВилл", category: "Вареники",
                                                              weight: 1000, cookingTime: 7,
                                                              intoBoilingWater: true,
                                                              needStirring: true, waterRatio: 5))
-        storageManager.saveProductCD(product: Product(code: "21121453543", title: "Гречка Русская",
+        storageService.saveProductCD(product: Product(code: "21121453543", title: "Гречка Русская",
                                                              producer: "Макфа", category: "Гречка",
                                                              weight: 500, cookingTime: 20,
                                                              intoBoilingWater: true,
                                                              needStirring: true, waterRatio: 3))
-        storageManager.saveProductCD(product: Product(code: "333219090", title: "Нут",
+        storageService.saveProductCD(product: Product(code: "333219090", title: "Нут",
                                                              producer: "Макфа", category: "Бобовые",
                                                              weight: 200, cookingTime: 40,
                                                              intoBoilingWater: true,
                                                              needStirring: true, waterRatio: 3))
-        storageManager.saveProductCD(product: Product(code: "938040340", title: "Пельмени-Экстра",
+        storageService.saveProductCD(product: Product(code: "938040340", title: "Пельмени-Экстра",
                                                              producer: "Мираторг", category: "Пельмени",
                                                              weight: 1000, cookingTime: 8,
                                                              intoBoilingWater: true,
                                                              needStirring: true, waterRatio: 3))
-        storageManager.saveProductCD(product: Product(code: "943560000", title: "Пшено",
+        storageService.saveProductCD(product: Product(code: "943560000", title: "Пшено",
                                                              producer: "Увелка", category: "Каши",
                                                              weight: 500, cookingTime: 3,
                                                              intoBoilingWater: true,

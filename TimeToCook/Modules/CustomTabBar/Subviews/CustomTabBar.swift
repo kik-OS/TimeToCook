@@ -10,9 +10,9 @@ import UIKit
 final class CustomTabBar: UITabBar {
     
     private var shapeLayer: CALayer?
-    private var deviceManagerService: DeviceManagerServiceProtocol
+    private var deviceManagerService: DeviceServiceProtocol
 
-    init(deviceManagerService: DeviceManagerServiceProtocol) {
+    init(deviceManagerService: DeviceServiceProtocol) {
         self.deviceManagerService = deviceManagerService
         super.init(frame: .zero)
     }

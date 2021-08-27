@@ -24,7 +24,7 @@ final class FirebaseService: FirebaseServiceProtocol {
     
     // MARK: - Static properties
     
-    static let shared = FirebaseService()
+//    static let shared = FirebaseService()
     
     // MARK: - Properties
     
@@ -33,7 +33,7 @@ final class FirebaseService: FirebaseServiceProtocol {
     
     // MARK: - Initializers
     
-    private init() {}
+//    private init() {}
     
     // MARK: - Public methods
     

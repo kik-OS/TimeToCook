@@ -18,12 +18,13 @@ class Coordinator {
     private var customTabBarViewModel: CustomTabBarViewModelProtocol {
         CustomTabBarViewModel(firebaseService: firebaseService,
                               storageManager: storageService,
-                              deviceManagerService: deviceManagerService)
+                              deviceManagerService: deviceManagerService,
+                              timerService: timerService)
     }
 
     init(window: UIWindow) {
         self.window = window
-        firebaseService = FirebaseService.shared
+        firebaseService = FirebaseService()
         storageService = StorageService.shared
         timerService = TimerService.shared
         deviceManagerService = DeviceManagerService()

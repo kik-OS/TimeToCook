@@ -3,7 +3,6 @@
 //  TimeToCook
 //
 //  Created by Никита Гвоздиков on 19.07.2021.
-//
 
 import UIKit
 import AVFoundation
