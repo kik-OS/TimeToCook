@@ -29,11 +29,7 @@ protocol TimerServiceProtocol {
 }
 
 final class TimerService: TimerServiceProtocol {
-    
-    // MARK: - Static properties
-    
-    static let shared = TimerService()
-    
+
     // MARK: - Properties
     
     var isActive = false
@@ -46,11 +42,7 @@ final class TimerService: TimerServiceProtocol {
     private var totalTime = 0
     /// Текущее время таймера в секундах.
     private var timerTime = 0
-    
-    // MARK: - Initializers
-    
-    private init() {}
-    
+
     // MARK: - Public methods
     
     func start(forMinutes minutes: Int) {

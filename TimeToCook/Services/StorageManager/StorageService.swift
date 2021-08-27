@@ -12,14 +12,12 @@ protocol StorageServiceProtocol {
     func saveProductCD(product: ProductProtocol)
     func convertFromProductCDToProduct(productCD: ProductCD) -> ProductProtocol?
     func deleteProductCD(_ productCD: ProductCD)
+    func saveContext()
+    func createTemporaryProductForDemonstration()
 }
 
 final class StorageService: StorageServiceProtocol {
-    
-    // MARK: - Static properties
-    
-    static let shared = StorageService()
-    
+
     // MARK: - Core Data stack
     
     private let persistentContainer: NSPersistentContainer = {
@@ -35,11 +33,7 @@ final class StorageService: StorageServiceProtocol {
     private var viewContext: NSManagedObjectContext {
         persistentContainer.viewContext
     }
-    
-    // MARK: - Initializers
-    
-    private init() {}
-    
+
     // MARK: - Public methods
     
     func fetchData() -> [ProductCD] {
@@ -101,5 +95,39 @@ final class StorageService: StorageServiceProtocol {
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
+    }
+
+    /// Метод для демонстрации работы приложения, его здесь быть не должно
+    func createTemporaryProductForDemonstration() {
+        saveProductCD(product: Product(code: "21121909098", title: "Макароны",
+                                                             producer: "Макфа", category: "Макароны",
+                                                             weight: 20, cookingTime: 10,
+                                                             intoBoilingWater: true,
+                                                             needStirring: true, waterRatio: 3))
+        saveProductCD(product: Product(code: "3332156464", title: "Вареники с вишней",
+                                                             producer: "ВкусВилл", category: "Вареники",
+                                                             weight: 1000, cookingTime: 7,
+                                                             intoBoilingWater: true,
+                                                             needStirring: true, waterRatio: 5))
+        saveProductCD(product: Product(code: "21121453543", title: "Гречка Русская",
+                                                             producer: "Макфа", category: "Гречка",
+                                                             weight: 500, cookingTime: 20,
+                                                             intoBoilingWater: true,
+                                                             needStirring: true, waterRatio: 3))
+        saveProductCD(product: Product(code: "333219090", title: "Нут",
+                                                             producer: "Макфа", category: "Бобовые",
+                                                             weight: 200, cookingTime: 40,
+                                                             intoBoilingWater: true,
+                                                             needStirring: true, waterRatio: 3))
+        saveProductCD(product: Product(code: "938040340", title: "Пельмени-Экстра",
+                                                             producer: "Мираторг", category: "Пельмени",
+                                                             weight: 1000, cookingTime: 8,
+                                                             intoBoilingWater: true,
+                                                             needStirring: true, waterRatio: 3))
+        saveProductCD(product: Product(code: "943560000", title: "Пшено",
+                                                             producer: "Увелка", category: "Каши",
+                                                             weight: 500, cookingTime: 3,
+                                                             intoBoilingWater: true,
+                                                             needStirring: true, waterRatio: 3))
     }
 }

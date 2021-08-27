@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - Protocol
+
 protocol AddingNewProductViewModelProtocol: AnyObject {
     
     var codeLabelText: String? { get set }

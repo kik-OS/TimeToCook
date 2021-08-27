@@ -8,21 +8,24 @@
 import XCTest
 @testable import TimeToCook
 
-class CustomTabBarViewModelTest: XCTestCase {
+class TabBarViewModelTest: XCTestCase {
 
-    var sut: CustomTabBarViewModel?
+    var sut: TabBarViewModel?
     var firebaseServiceMock: FirebaseServiceProtocol?
     var storageManagerDummy: StorageServiceProtocol?
-    var deviceManager: DeviceManagerService?
+    var deviceService: DeviceServiceProtocol?
+    var timerService: TimerServiceProtocol?
 
     override func setUpWithError() throws {
         try super.setUpWithError()
         firebaseServiceMock = FirebaseServiceMock()
         storageManagerDummy = StorageManagerDummy()
-        deviceManager = DeviceManagerService()
-        sut = CustomTabBarViewModel(firebaseService: firebaseServiceMock!,
+        deviceService = DeviceService()
+        timerService = TimerService()
+        sut = TabBarViewModel(firebaseService: firebaseServiceMock!,
                                     storageManager: storageManagerDummy!,
-                                    deviceManagerService: deviceManager!)
+                                    deviceService: deviceService!,
+                                    timerService: timerService!)
     }
 
     override func tearDownWithError() throws {

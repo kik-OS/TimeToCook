@@ -12,7 +12,7 @@ final class BarcodeScannerViewController: UIViewController {
     // MARK: Properties
     
     private var scanner: BarcodeScanner?
-    weak var delegate: CustomTabBarController?
+    weak var delegate: TabBarViewController?
     
     // MARK: UI
     

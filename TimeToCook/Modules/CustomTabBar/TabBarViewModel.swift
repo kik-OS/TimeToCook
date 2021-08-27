@@ -7,7 +7,9 @@
 
 import UIKit
 
-protocol CustomTabBarViewModelProtocol: AnyObject {
+// MARK: Protocol
+
+protocol TabBarViewModelProtocol: AnyObject {
     /// Вызывается в случае успешного получения продукта из базы. В параметр передаётся полученный из базы продукт.
     var productDidReceive: ((_ product: ProductProtocol) -> Void)? { get set }
     /// Вызывается для предложения добавить товар. В параметр передаётся бар-код, полученный от сканера.
@@ -16,7 +18,6 @@ protocol CustomTabBarViewModelProtocol: AnyObject {
     var timerDidStep: ((_ time: String) -> Void)? { get set }
     var constantForMiddleButton: Float { get }
     var sizeForMiddleButton: Float { get }
-    
     func findProduct(byCode code: String)
     func getProductInfoViewModel(product: ProductProtocol?) -> ProductInfoViewModelProtocol
     func getRecentProductViewModel() -> RecentProductViewModelProtocol
@@ -25,10 +26,17 @@ protocol CustomTabBarViewModelProtocol: AnyObject {
     func createCustomTabBar() -> CustomTabBar
 }
 
-final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
+final class TabBarViewModel: TabBarViewModelProtocol {
  
+    // MARK: Services
+
+    private let firebaseService: FirebaseServiceProtocol
+    private let storageService: StorageServiceProtocol
+    private let deviceService: DeviceServiceProtocol
+    private var timerService: TimerServiceProtocol
+
     // MARK: - Properties
-    
+
     var productDidReceive: ((_ product: ProductProtocol) -> Void)?
     var addingNewProductOffer: ((_ code: String) -> Void)?
     var timerDidStep: ((_ time: String) -> Void)?
@@ -38,26 +46,19 @@ final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
     var sizeForMiddleButton: Float {
         deviceService.checkSquareScreen() ? 68 : 72
     }
-    
-    // MARK: Dependences
-    
-    private let firebaseService: FirebaseServiceProtocol
-    private let storageService: StorageServiceProtocol
-    private let deviceService: DeviceServiceProtocol
-    private var timerService: TimerServiceProtocol
-    
+
     // MARK: - Initializers
     
     init(firebaseService: FirebaseServiceProtocol,
          storageManager: StorageServiceProtocol,
-         deviceManagerService: DeviceServiceProtocol,
+         deviceService: DeviceServiceProtocol,
          timerService: TimerServiceProtocol) {
         self.firebaseService = firebaseService
         self.storageService = storageManager
-        self.deviceService = deviceManagerService
+        self.deviceService = deviceService
         self.timerService = timerService
         self.timerService.barDelegate = self
-        createTemporaryProductForDemonstration()
+        storageManager.createTemporaryProductForDemonstration()
     }
     
     // MARK: - Public methods
@@ -101,42 +102,9 @@ final class CustomTabBarViewModel: CustomTabBarViewModelProtocol {
     private func createProductInCoreData(product: ProductProtocol) {
         storageService.saveProductCD(product: product)
     }
-
-    private func createTemporaryProductForDemonstration() {
-        storageService.saveProductCD(product: Product(code: "21121909098", title: "Макароны",
-                                                             producer: "Макфа", category: "Макароны",
-                                                             weight: 20, cookingTime: 10,
-                                                             intoBoilingWater: true,
-                                                             needStirring: true, waterRatio: 3))
-        storageService.saveProductCD(product: Product(code: "3332156464", title: "Вареники с вишней",
-                                                             producer: "ВкусВилл", category: "Вареники",
-                                                             weight: 1000, cookingTime: 7,
-                                                             intoBoilingWater: true,
-                                                             needStirring: true, waterRatio: 5))
-        storageService.saveProductCD(product: Product(code: "21121453543", title: "Гречка Русская",
-                                                             producer: "Макфа", category: "Гречка",
-                                                             weight: 500, cookingTime: 20,
-                                                             intoBoilingWater: true,
-                                                             needStirring: true, waterRatio: 3))
-        storageService.saveProductCD(product: Product(code: "333219090", title: "Нут",
-                                                             producer: "Макфа", category: "Бобовые",
-                                                             weight: 200, cookingTime: 40,
-                                                             intoBoilingWater: true,
-                                                             needStirring: true, waterRatio: 3))
-        storageService.saveProductCD(product: Product(code: "938040340", title: "Пельмени-Экстра",
-                                                             producer: "Мираторг", category: "Пельмени",
-                                                             weight: 1000, cookingTime: 8,
-                                                             intoBoilingWater: true,
-                                                             needStirring: true, waterRatio: 3))
-        storageService.saveProductCD(product: Product(code: "943560000", title: "Пшено",
-                                                             producer: "Увелка", category: "Каши",
-                                                             weight: 500, cookingTime: 3,
-                                                             intoBoilingWater: true,
-                                                             needStirring: true, waterRatio: 3))
-    }
 }
 
-extension CustomTabBarViewModel: TimerServiceBarDelegate {
+extension TabBarViewModel: TimerServiceBarDelegate {
     
     func timerDidStep(remainingSeconds: Int, isStopped: Bool) {
         timerDidStep?(isStopped ? "" : remainingSeconds.getStringTimeOfTimer())

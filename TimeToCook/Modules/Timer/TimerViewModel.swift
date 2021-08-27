@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: - Protocols
+// MARK: - Protocol
 
 protocol TimerViewModelProtocol {
     var minutes: Int { get }
@@ -33,7 +33,11 @@ protocol TimerViewModelProtocol {
 }
 
 final class TimerViewModel: TimerViewModelProtocol {
+
+    // MARK: - Service
     
+    private var timerService: TimerServiceProtocol
+
     // MARK: - Properties
     
     var minutes: Int
@@ -66,9 +70,7 @@ final class TimerViewModel: TimerViewModelProtocol {
     var timerDidStep: ((_ totalSeconds: Int, _ remainingSeconds: Int) -> Void)?
     var timerDidStop: (() -> Void)?
     var timerDidExpired: (() -> Void)?
-    
-    private var timerService: TimerServiceProtocol
-        
+
     // MARK: - Init
     
     init(timerService: TimerServiceProtocol, minutes: Int = 0) {
@@ -93,6 +95,8 @@ final class TimerViewModel: TimerViewModelProtocol {
         Notifications.shared.cancelTimerNotification()
     }
 }
+
+// MARK: - Extensions
 
 extension TimerViewModel: TimerServiceTimerViewDelegate {
     

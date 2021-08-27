@@ -8,6 +8,9 @@
 import UIKit
 
 final class TabBarMiddleButton: UIButton {
+
+    // MARK: Init
+    
     init() {
         super.init(frame: .zero)
         backgroundColor = VarkaColors.mainColor

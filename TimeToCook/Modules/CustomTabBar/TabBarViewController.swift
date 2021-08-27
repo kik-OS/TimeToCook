@@ -15,7 +15,7 @@ protocol BarcodeScannerViewControllerDelegate: AnyObject {
     func scanner(barcode: String)
 }
 
-final class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
+final class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
     // MARK: UI
 
@@ -26,11 +26,11 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
     
     // MARK: - Dependences
     
-    var viewModel: CustomTabBarViewModelProtocol
+    var viewModel: TabBarViewModelProtocol
 
     // MARK: - Initializers
     
-    init(viewModel: CustomTabBarViewModelProtocol) {
+    init(viewModel: TabBarViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -163,13 +163,13 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
 
 // MARK: - Extensions
 
-extension CustomTabBarController: BarcodeScannerViewControllerDelegate {
+extension TabBarViewController: BarcodeScannerViewControllerDelegate {
     func scanner(barcode: String) {
         viewModel.findProduct(byCode: barcode)
     }
 }
 
-extension CustomTabBarController: AddNewProductViewControllerDelegate {
+extension TabBarViewController: AddNewProductViewControllerDelegate {
     func productWasAdded(product: Product?) {
         guard let productInfoVC = viewControllers?.first as? ProductInfoViewController else { return }
         productInfoVC.viewModel.updateProduct(product: product)

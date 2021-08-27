@@ -25,7 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notifications.notificationCenter.delegate = notifications
         notifications.requestAuthorization()
         notifications.cleanBadgesAtStarting()
-        
         authenticateAnonymously()
         return true
     }

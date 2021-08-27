@@ -8,6 +8,9 @@
 import Foundation
 
 final class StorageManagerDummy: StorageServiceProtocol {
+    func createTemporaryProductForDemonstration() {
+
+    }
 
     func fetchData() -> [ProductCD] {
         [ProductCD()]
@@ -20,5 +23,8 @@ final class StorageManagerDummy: StorageServiceProtocol {
     }
 
     func deleteProductCD(_ productCD: ProductCD) {
+    }
+
+    func saveContext() {
     }
 }

@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - Protocol
+
 protocol ProductInfoViewModelProtocol {
     var product: ProductProtocol? { get }
     var weight: String { get }
@@ -19,59 +21,61 @@ protocol ProductInfoViewModelProtocol {
     var buttonStartCookTapped: Bool { get set }
     var previousOffset: CGFloat { get set }
     var currentPage: Int { get set }
-    
+
     init(product: ProductProtocol?, timerService: TimerServiceProtocol)
     
     func getTimerViewModel() -> TimerViewModelProtocol
     func checkCurrentStateAndUpdateView()
     func updateProduct(product: ProductProtocol?)
+    func cellViewModel(at indexPath: IndexPath) -> InstructionCollectionViewCellViewModelProtocol?
+    func resetCollectionViewLayout()
     func targetContentOffset(_ scrollView: UIScrollView,
                              withVelocity velocity: CGPoint,
                              collectionView: UICollectionView) -> CGPoint
-    func cellViewModel(at indexPath: IndexPath) -> InstructionCollectionViewCellViewModelProtocol?
-    func resetCollectionViewLayout()
 }
 
 final class ProductInfoViewModel: ProductInfoViewModelProtocol {
-    
+
+    // MARK: - Services
+
+    private let timerService: TimerServiceProtocol
+
     // MARK: - Properties
-    
+
     var needUpdateViewForFirstStep: (() -> Void)?
     var needUpdateViewForSecondStep: (() -> Void)?
     var needUpdateViewForThirdStep: (() -> Void)?
     var buttonStartCookTapped = false
     var previousOffset: CGFloat = 0
     var currentPage = 0
-    
+
     var product: ProductProtocol? {
         didSet {
             buttonStartCookTapped = false
         }
     }
-    
+
     var productImage: String {
         let productImage = product?.category ?? ""
         return "\(productImage).png"
     }
-    
+
     var weight: String {
         guard let weight = product?.weight else {
             return "Н/Д"
         }
         return "\(weight) г."
     }
-    
+
     var cookingTime: String {
         let cookingTime = (product?.cookingTime ?? 0)
         return "\(cookingTime) мин."
     }
-    
+
     var isHiddenProductStackView: Bool {
         product == nil
     }
 
-    let timerService: TimerServiceProtocol
-    
     // MARK: - Init
     
     init(product: ProductProtocol? = nil,

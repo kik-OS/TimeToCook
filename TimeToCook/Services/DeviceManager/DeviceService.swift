@@ -11,7 +11,7 @@ protocol DeviceServiceProtocol {
     func checkSquareScreen() -> Bool
 }
 
-struct DeviceManagerService: DeviceServiceProtocol {
+struct DeviceService: DeviceServiceProtocol {
     
     let notSquareScreenDevices: [DeviceModel] = [.iPhoneX, .iPhoneXS, .iPhoneXSMax,
                                                  .iPhoneXR, .iPhone11, .iPhone11Pro,
