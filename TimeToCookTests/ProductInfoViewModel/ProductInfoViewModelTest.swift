@@ -10,17 +10,21 @@ import XCTest
 
 var sut: ProductInfoViewModel?
 var timerService: TimerServiceProtocol?
+var notificationService: NotificationServiceProtocol?
 
 class ProductInfoViewModelTests: XCTestCase {
 
     override func setUpWithError() throws {
         try super.setUpWithError()
         timerService = TimerService()
-        sut = ProductInfoViewModel(timerService: timerService!)
+        notificationService = NotificationServiceDummy()
+        sut = ProductInfoViewModel(timerService: timerService!,
+                                   notificationService: notificationService!)
     }
 
     override func tearDownWithError() throws {
         timerService = nil
+        notificationService = nil
         sut = nil
         try super.tearDownWithError()
     }
@@ -98,7 +102,9 @@ class ProductInfoViewModelTests: XCTestCase {
         let product = ProductFake()
 
         // act
-        sut = ProductInfoViewModel(product: product, timerService: timerService!)
+        sut = ProductInfoViewModel(product: product,
+                                   timerService: timerService!,
+                                   notificationService: notificationService!)
 
         // assert
         XCTAssertNotNil(sut?.product)

@@ -157,6 +157,7 @@
 		E4CEEC6026D3C22A00E5AE67 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEEC5F26D3C22A00E5AE67 /* UICollectionView+Extension.swift */; };
 		E4CEEC6126D3CC1100E5AE67 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEEC5F26D3C22A00E5AE67 /* UICollectionView+Extension.swift */; };
 		E4D4236726DB7AC200C63BC6 /* TimerViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D4236626DB7AC200C63BC6 /* TimerViewModelTest.swift */; };
+		E4D4236A26DB986D00C63BC6 /* NotificationServiceDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D4236926DB986D00C63BC6 /* NotificationServiceDummy.swift */; };
 		E4EB3E6D26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E6C26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift */; };
 		E4EB3E6F26BC346D00DA752C /* InstructionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E6E26BC346D00DA752C /* InstructionCollectionViewCell.swift */; };
 		E4EB3E7126BC3DB800DA752C /* InstructionCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E7026BC3DB800DA752C /* InstructionCollectionView.swift */; };
@@ -274,6 +275,7 @@
 		E4C783A726C3E80E00C95626 /* RecentProductLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentProductLabel.swift; sourceTree = "<group>"; };
 		E4CEEC5F26D3C22A00E5AE67 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		E4D4236626DB7AC200C63BC6 /* TimerViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModelTest.swift; sourceTree = "<group>"; };
+		E4D4236926DB986D00C63BC6 /* NotificationServiceDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationServiceDummy.swift; sourceTree = "<group>"; };
 		E4EB3E6C26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		E4EB3E6E26BC346D00DA752C /* InstructionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionCollectionViewCell.swift; sourceTree = "<group>"; };
 		E4EB3E7026BC3DB800DA752C /* InstructionCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionCollectionView.swift; sourceTree = "<group>"; };
@@ -703,6 +705,7 @@
 			isa = PBXGroup;
 			children = (
 				E4D4236626DB7AC200C63BC6 /* TimerViewModelTest.swift */,
+				E4D4236926DB986D00C63BC6 /* NotificationServiceDummy.swift */,
 			);
 			path = TimerViewModel;
 			sourceTree = "<group>";
@@ -1050,6 +1053,7 @@
 				E4554BAB26D0D0FC00819A09 /* StorageService.swift in Sources */,
 				E4BFBCDC26CE5762007A6CF6 /* ProductInfoViewModel.swift in Sources */,
 				E4554BD226D0D40B00819A09 /* TimeDiagram.swift in Sources */,
+				E4D4236A26DB986D00C63BC6 /* NotificationServiceDummy.swift in Sources */,
 				E4554BC426D0D34100819A09 /* TimerLabel.swift in Sources */,
 				E4554BCA26D0D36D00819A09 /* TimerStopButton.swift in Sources */,
 				E4554BCC26D0D39D00819A09 /* RecentProductLabel.swift in Sources */,
@@ -1160,7 +1164,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1215,7 +1219,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

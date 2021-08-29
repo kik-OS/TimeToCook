@@ -14,16 +14,20 @@ class TimerViewModelTest: XCTestCase {
 
     var sut: TimerViewModelProtocol?
     var timerService: TimerServiceProtocol?
+    var notificationService: NotificationServiceProtocol?
 
     override func setUpWithError() throws {
         try super.setUpWithError()
         timerService = TimerService()
-        sut = TimerViewModel(timerService: timerService!)
+        notificationService = NotificationServiceDummy()
+        sut = TimerViewModel(timerService: timerService!,
+                             notificationService: notificationService!)
     }
 
     override func tearDownWithError() throws {
         sut = nil
         timerService = nil
+        notificationService = nil
         try super.tearDownWithError()
     }
 

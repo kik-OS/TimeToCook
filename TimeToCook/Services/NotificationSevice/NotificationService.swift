@@ -19,13 +19,14 @@ protocol NotificationServiceProtocol {
 final class NotificationService: NSObject, UNUserNotificationCenterDelegate, NotificationServiceProtocol {
 
     // MARK: - Properties
-    
-//    static let shared = NotificationService()
-    let notificationCenter = UNUserNotificationCenter.current()
+
+    let notificationCenter: UNUserNotificationCenter
     
     // MARK: - Initializer
     
-    override init() {}
+    override init() {
+        notificationCenter = UNUserNotificationCenter.current()
+    }
     
     // MARK: - Public methods
     

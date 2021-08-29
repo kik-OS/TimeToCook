@@ -23,7 +23,7 @@ class TabBarViewModelTest: XCTestCase {
         storageManagerDummy = StorageManagerDummy()
         deviceService = DeviceService()
         timerService = TimerService()
-        notificationService = NotificationService()
+        notificationService = NotificationServiceDummy()
         sut = TabBarViewModel(notificationService: notificationService!,
                               firebaseService: firebaseServiceMock!,
                               storageManager: storageManagerDummy!,
