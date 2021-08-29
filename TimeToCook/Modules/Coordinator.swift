@@ -14,9 +14,11 @@ class Coordinator {
     private var storageService: StorageServiceProtocol
     private var timerService: TimerServiceProtocol
     private var deviceService: DeviceServiceProtocol
+    private var notificationService: NotificationService
 
     private var customTabBarViewModel: TabBarViewModelProtocol {
-        TabBarViewModel(firebaseService: firebaseService,
+        TabBarViewModel(notificationService: notificationService,
+                        firebaseService: firebaseService,
                         storageManager: storageService,
                         deviceService: deviceService,
                         timerService: timerService)
@@ -28,6 +30,11 @@ class Coordinator {
         storageService = StorageService()
         timerService = TimerService()
         deviceService = DeviceService()
+        notificationService = NotificationService()
+
+        notificationService.notificationCenter.delegate = notificationService
+        notificationService.requestAuthorization()
+        notificationService.cleanBadgesAtStarting()
         start()
     }
 

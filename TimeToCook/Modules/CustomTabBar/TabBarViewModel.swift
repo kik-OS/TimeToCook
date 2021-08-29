@@ -21,7 +21,7 @@ protocol TabBarViewModelProtocol: AnyObject {
     func findProduct(byCode code: String)
     func getProductInfoViewModel(product: ProductProtocol?) -> ProductInfoViewModelProtocol
     func getRecentProductViewModel() -> RecentProductViewModelProtocol
-    func getAddingNewProductViewModel(withCode code: String) -> AddingNewProductViewModelProtocol?
+    func getAddingNewProductViewModel(withCode code: String) -> AddingNewProductViewModelProtocol
     func getTimerViewModel() -> TimerViewModelProtocol
     func createCustomTabBar() -> CustomTabBar
 }
@@ -30,6 +30,7 @@ final class TabBarViewModel: TabBarViewModelProtocol {
  
     // MARK: Services
 
+    private var notificationService: NotificationServiceProtocol
     private let firebaseService: FirebaseServiceProtocol
     private let storageService: StorageServiceProtocol
     private let deviceService: DeviceServiceProtocol
@@ -49,10 +50,12 @@ final class TabBarViewModel: TabBarViewModelProtocol {
 
     // MARK: - Initializers
     
-    init(firebaseService: FirebaseServiceProtocol,
+    init(notificationService: NotificationServiceProtocol,
+         firebaseService: FirebaseServiceProtocol,
          storageManager: StorageServiceProtocol,
          deviceService: DeviceServiceProtocol,
          timerService: TimerServiceProtocol) {
+        self.notificationService = notificationService
         self.firebaseService = firebaseService
         self.storageService = storageManager
         self.deviceService = deviceService
@@ -82,19 +85,24 @@ final class TabBarViewModel: TabBarViewModelProtocol {
     }
 
     func getProductInfoViewModel(product: ProductProtocol?) -> ProductInfoViewModelProtocol {
-        ProductInfoViewModel(product: product, timerService: timerService)
+        ProductInfoViewModel(product: product,
+                             timerService: timerService,
+                             notificationService: notificationService)
     }
     
     func getRecentProductViewModel() -> RecentProductViewModelProtocol {
         RecentProductViewModel(storageService: storageService)
     }
     
-    func getAddingNewProductViewModel(withCode code: String) -> AddingNewProductViewModelProtocol? {
-      AddingNewProductViewModel(code: code, firebaseService: firebaseService)
+    func getAddingNewProductViewModel(withCode code: String) -> AddingNewProductViewModelProtocol {
+        AddingNewProductViewModel(code: code,
+                                  firebaseService: firebaseService,
+                                  notificationService: notificationService)
     }
     
     func getTimerViewModel() -> TimerViewModelProtocol {
-        TimerViewModel(timerService: timerService)
+        TimerViewModel(timerService: timerService,
+                       notificationService: notificationService)
     }
     
     // MARK: - Private methods

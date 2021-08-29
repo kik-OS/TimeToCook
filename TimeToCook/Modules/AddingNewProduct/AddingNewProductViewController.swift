@@ -106,15 +106,26 @@ final class AddingNewProductViewController: UIViewController {
 
     // MARK: - Dependences
 
-    var viewModel: AddingNewProductViewModelProtocol?
+    var viewModel: AddingNewProductViewModelProtocol
     weak var delegate: AddNewProductViewControllerDelegate?
+
+    // MARK: - Init
+
+    init(viewModel: AddingNewProductViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     // MARK: - Lifecycle methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTextFields()
-        codeLabel.text = viewModel?.codeLabelText
+        codeLabel.text = viewModel.codeLabelText
         addToolBar()
         initializePickerView()
         configureObservers()
@@ -219,7 +230,7 @@ final class AddingNewProductViewController: UIViewController {
     }
 
     private func setupViewModelBindings() {
-        viewModel?.needUpdateTextFieldWithPickerView = { [unowned self] type, text in
+        viewModel.needUpdateTextFieldWithPickerView = { [unowned self] type, text in
             switch type {
             case .category:
                 categorySV.getTF().text = text
@@ -228,7 +239,7 @@ final class AddingNewProductViewController: UIViewController {
             }
         }
 
-        viewModel?.needUpdateFirstResponder = { [unowned self] tag in
+        viewModel.needUpdateFirstResponder = { [unowned self] tag in
             guard let targetTF = singleStacks.map({ $0.getTF() }).first(where: { $0.tag == tag }) else { return }
             targetTF.becomeFirstResponder()
         }
@@ -249,8 +260,8 @@ final class AddingNewProductViewController: UIViewController {
     }
 
     @objc private func textFieldsEditingDidBegin(_ sender: UITextField) {
-        viewModel?.indexOfFirstResponder = sender.tag
-        viewModel?.updatePickerViewIfNeeded(index: sender.tag) { [weak self] in
+        viewModel.indexOfFirstResponder = sender.tag
+        viewModel.updatePickerViewIfNeeded(index: sender.tag) { [weak self] in
             self?.pickerViewForKB.reloadAllComponents()
         }
         updateUpAndDownButtonsState()
@@ -259,13 +270,13 @@ final class AddingNewProductViewController: UIViewController {
     @objc private func textFieldsEditingChanged(_ sender: UITextField) {
         switch sender {
         case titleProductSV.getTF():
-            viewModel?.textFromTitleProductTF = sender.text
+            viewModel.textFromTitleProductTF = sender.text
         case producerSV.getTF():
-            viewModel?.textFromProducerTF = sender.text
+            viewModel.textFromProducerTF = sender.text
         case cookingTimeSV.getTF():
-            viewModel?.textFromCookingTimeTF = sender.text
+            viewModel.textFromCookingTimeTF = sender.text
         case weightSV.getTF():
-            viewModel?.textFromWeightTF = sender.text
+            viewModel.textFromWeightTF = sender.text
         default:
             break
         }
@@ -277,9 +288,9 @@ final class AddingNewProductViewController: UIViewController {
      }
 
     @objc private func saveButtonPressed() {
-        viewModel?.createProductInFB()
-        Notifications.shared.showProductWasAddedNotification()
-        delegate?.productWasAdded(product: viewModel?.completedProduct)
+        viewModel.createProductInFB()
+        viewModel.showProductWasAddedNotification()
+        delegate?.productWasAdded(product: viewModel.completedProduct)
         dismiss(animated: true)
     }
 }
@@ -289,7 +300,7 @@ final class AddingNewProductViewController: UIViewController {
 extension AddingNewProductViewController: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        viewModel?.didTapChangeResponderButton(type: .down)
+        viewModel.didTapChangeResponderButton(type: .down)
         return true
     }
 
@@ -302,11 +313,11 @@ extension AddingNewProductViewController: UITextFieldDelegate {
     }
 
     @objc private func didTapOnUpButton() {
-        viewModel?.didTapChangeResponderButton(type: .upward)
+        viewModel.didTapChangeResponderButton(type: .upward)
     }
 
     @objc private func didTapOnDownButton() {
-        viewModel?.didTapChangeResponderButton(type: .down)
+        viewModel.didTapChangeResponderButton(type: .down)
     }
 
     @objc private func keyBoardDidShow(notification: Notification) {
@@ -324,13 +335,13 @@ extension AddingNewProductViewController: UITextFieldDelegate {
     }
 
     private func updateSaveButtonsState() {
-        let state = viewModel?.validation()
-        saveButton.isEnabled = state ?? false
-        doneButtonForKB.isEnabled = state ?? false
+        let state = viewModel.validation()
+        saveButton.isEnabled = state
+        doneButtonForKB.isEnabled = state
     }
 
     private func updateUpAndDownButtonsState() {
-        guard let viewModel = viewModel else { return }
+//        guard let viewModel = viewModel else { return }
         upButtonForKB.isEnabled = viewModel.stateForUpButton
         downButtonForKB.isEnabled = viewModel.stateForDownButton
     }
@@ -377,17 +388,17 @@ extension AddingNewProductViewController: UIPickerViewDelegate, UIPickerViewData
 
     func pickerView( _ pickerView: UIPickerView,
                      numberOfRowsInComponent component: Int) -> Int {
-        viewModel?.numberOfRowsInPickerView ?? 0
+        viewModel.numberOfRowsInPickerView
     }
 
     func pickerView( _ pickerView: UIPickerView, titleForRow row: Int,
                      forComponent component: Int) -> String? {
-        viewModel?.dataForPickerView[row]
+        viewModel.dataForPickerView[row]
     }
 
     func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int,
                      inComponent component: Int) {
-        viewModel?.pickerViewDidSelectAt(row: row)
+        viewModel.pickerViewDidSelectAt(row: row)
         updateSaveButtonsState()
     }
 }

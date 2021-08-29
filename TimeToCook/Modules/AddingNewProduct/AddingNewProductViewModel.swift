@@ -31,7 +31,9 @@ protocol AddingNewProductViewModelProtocol: AnyObject {
     var stateForUpButton: Bool { get }
     var stateForDownButton: Bool { get }
   
-    init(code: String, firebaseService: FirebaseServiceProtocol)
+    init(code: String,
+         firebaseService: FirebaseServiceProtocol,
+         notificationService: NotificationServiceProtocol)
     
     func validation() -> Bool
     func calculateWaterRatio(row: Int)
@@ -42,6 +44,7 @@ protocol AddingNewProductViewModelProtocol: AnyObject {
     func updatePickerViewIfNeeded(index: Int, completion: @escaping () -> Void)
     func pickerViewDidSelectAt(row: Int)
     func didTapChangeResponderButton(type: ToolBarButtonsForKBType)
+    func showProductWasAddedNotification()
 }
 
 final class AddingNewProductViewModel: AddingNewProductViewModelProtocol {
@@ -85,15 +88,19 @@ final class AddingNewProductViewModel: AddingNewProductViewModelProtocol {
     
     // MARK: - Initializers
     
-    init(code: String, firebaseService: FirebaseServiceProtocol) {
+    init(code: String,
+         firebaseService: FirebaseServiceProtocol,
+         notificationService: NotificationServiceProtocol) {
         self.firebaseService = firebaseService
+        self.notificationService = notificationService
         self.codeLabelText = code
         getCategories()
     }
     
     // MARK: Dependences
     
-    private var firebaseService: FirebaseServiceProtocol?
+    private var firebaseService: FirebaseServiceProtocol
+    private var notificationService: NotificationServiceProtocol
     
     // MARK: - Methods
     
@@ -131,14 +138,14 @@ final class AddingNewProductViewModel: AddingNewProductViewModelProtocol {
     }
     
     func getCategories() {
-        firebaseService?.fetchCategories { categories in
+        firebaseService.fetchCategories { categories in
             self.categories = categories
         }
     }
     
     func createProductInFB() {
         guard let product = completedProduct else { return }
-        firebaseService?.saveProduct(product)
+        firebaseService.saveProduct(product)
     }
     
     func calculationOfLowerResponder() -> Int {
@@ -193,5 +200,9 @@ final class AddingNewProductViewModel: AddingNewProductViewModelProtocol {
         case .upward:
             needUpdateFirstResponder?(calculationOfUpperResponder())
         }
+    }
+
+    func showProductWasAddedNotification() {
+        notificationService.showProductWasAddedNotification()
     }
 }

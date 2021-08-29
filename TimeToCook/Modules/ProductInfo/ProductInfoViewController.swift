@@ -346,9 +346,8 @@ final class ProductInfoViewController: UIViewController {
         let timerViewModel = viewModel.getTimerViewModel()
         let timerVC = TimerViewController(viewModel: timerViewModel)
         timerVC.modalPresentationStyle = .overCurrentContext
-
-        Notifications.shared.checkNotificationSettings { [weak self] in
-            let alert = Notifications.notificationsAreNotAvailableAlert()
+        viewModel.getNotificationService.checkNotificationSettings { [weak self] in
+            let alert = NotificationService.notificationsAreNotAvailableAlert()
             self?.present(alert, animated: true)
         }
         timerButton.layer.removeAllAnimations()

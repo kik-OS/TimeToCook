@@ -8,16 +8,24 @@
 import UIKit
 import UserNotifications
 
-final class Notifications: NSObject, UNUserNotificationCenterDelegate {
-    
+protocol NotificationServiceProtocol {
+    func checkNotificationSettings(completion: @escaping () -> Void)
+    func cleanBadgesAtStarting()
+    func showTimerNotification(throughMinutes: Double)
+    func showProductWasAddedNotification()
+    func cancelTimerNotification()
+}
+
+final class NotificationService: NSObject, UNUserNotificationCenterDelegate, NotificationServiceProtocol {
+
     // MARK: - Properties
     
-    static let shared = Notifications()
+//    static let shared = NotificationService()
     let notificationCenter = UNUserNotificationCenter.current()
     
     // MARK: - Initializer
     
-     override init() {}
+    override init() {}
     
     // MARK: - Public methods
     
@@ -71,7 +79,7 @@ final class Notifications: NSObject, UNUserNotificationCenterDelegate {
         let content = UNMutableNotificationContent()
         content.title = Inscriptions.titleOfTimerNotification
         content.body = Inscriptions.bodyOfTimerNotification
-//        content.sound = UNNotificationSound.default
+        //        content.sound = UNNotificationSound.default
         content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "not.wav"))
         content.badge = 1
         content.categoryIdentifier = Inscriptions.categoryIdentifierTimerNotification
@@ -135,15 +143,15 @@ final class Notifications: NSObject, UNUserNotificationCenterDelegate {
     // MARK: - Private methods
     
     private func createUNNotificationAttachment() -> UNNotificationAttachment? {
-         if let path = Bundle.main.path(forResource: ImageTitles.timerNotificationContent.title,
-                                        ofType: ImageTitles.timerNotificationContent.type) {
-             do {
-                 return try UNNotificationAttachment(identifier: ImageTitles.timerNotificationContent.title,
-                                                     url: URL(fileURLWithPath: path))
-             } catch { }
-         }
-         return nil
-     }
+        if let path = Bundle.main.path(forResource: ImageTitles.timerNotificationContent.title,
+                                       ofType: ImageTitles.timerNotificationContent.type) {
+            do {
+                return try UNNotificationAttachment(identifier: ImageTitles.timerNotificationContent.title,
+                                                    url: URL(fileURLWithPath: path))
+            } catch { }
+        }
+        return nil
+    }
     
     @objc private func applicationDidBecomeActive(notification: NSNotification) {
         UIApplication.shared.applicationIconBadgeNumber = 0

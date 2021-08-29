@@ -8,9 +8,13 @@
 import UIKit
 
 final class CustomTabBar: UITabBar {
+
+    // MARK: Properties
     
     private var shapeLayer: CALayer?
     private var deviceManagerService: DeviceServiceProtocol
+
+    // MARK: Init
 
     init(deviceManagerService: DeviceServiceProtocol) {
         self.deviceManagerService = deviceManagerService
@@ -20,6 +24,8 @@ final class CustomTabBar: UITabBar {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: Methods
 
     private func addShape(screenIsSquare: Bool) {
         let shapeLayer = CAShapeLayer()

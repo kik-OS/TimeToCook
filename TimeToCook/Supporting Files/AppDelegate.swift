@@ -11,21 +11,13 @@ import UserNotifications
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    // MARK: - Properties
-    
-    private let notifications = Notifications()
-    
+
     // MARK: - App lifecycle methods
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         FirebaseConfiguration.shared.setLoggerLevel(.min)
-        notifications.notificationCenter.delegate = notifications
-        notifications.requestAuthorization()
-        notifications.cleanBadgesAtStarting()
-        authenticateAnonymously()
         return true
     }
     

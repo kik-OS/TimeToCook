@@ -21,8 +21,11 @@ protocol ProductInfoViewModelProtocol {
     var buttonStartCookTapped: Bool { get set }
     var previousOffset: CGFloat { get set }
     var currentPage: Int { get set }
+    var getNotificationService: NotificationServiceProtocol { get }
 
-    init(product: ProductProtocol?, timerService: TimerServiceProtocol)
+    init(product: ProductProtocol?,
+         timerService: TimerServiceProtocol,
+         notificationService: NotificationServiceProtocol)
     
     func getTimerViewModel() -> TimerViewModelProtocol
     func checkCurrentStateAndUpdateView()
@@ -39,6 +42,7 @@ final class ProductInfoViewModel: ProductInfoViewModelProtocol {
     // MARK: - Services
 
     private let timerService: TimerServiceProtocol
+    private let notificationService: NotificationServiceProtocol
 
     // MARK: - Properties
 
@@ -76,11 +80,17 @@ final class ProductInfoViewModel: ProductInfoViewModelProtocol {
         product == nil
     }
 
+    var getNotificationService: NotificationServiceProtocol {
+        notificationService
+    }
+
     // MARK: - Init
     
     init(product: ProductProtocol? = nil,
-         timerService: TimerServiceProtocol) {
+         timerService: TimerServiceProtocol,
+         notificationService: NotificationServiceProtocol) {
         self.timerService = timerService
+        self.notificationService = notificationService
         self.product = product
     }
     
@@ -88,6 +98,7 @@ final class ProductInfoViewModel: ProductInfoViewModelProtocol {
     
     func getTimerViewModel() -> TimerViewModelProtocol {
         TimerViewModel(timerService: timerService,
+                       notificationService: notificationService,
                        minutes: product?.cookingTime ?? 0)
     }
         

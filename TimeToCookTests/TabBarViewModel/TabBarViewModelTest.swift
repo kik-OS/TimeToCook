@@ -10,11 +10,12 @@ import XCTest
 
 class TabBarViewModelTest: XCTestCase {
 
-    var sut: TabBarViewModel?
+    var sut: TabBarViewModelProtocol?
     var firebaseServiceMock: FirebaseServiceProtocol?
     var storageManagerDummy: StorageServiceProtocol?
     var deviceService: DeviceServiceProtocol?
     var timerService: TimerServiceProtocol?
+    var notificationService: NotificationServiceProtocol?
 
     override func setUpWithError() throws {
         try super.setUpWithError()
@@ -22,16 +23,20 @@ class TabBarViewModelTest: XCTestCase {
         storageManagerDummy = StorageManagerDummy()
         deviceService = DeviceService()
         timerService = TimerService()
-        sut = TabBarViewModel(firebaseService: firebaseServiceMock!,
-                                    storageManager: storageManagerDummy!,
-                                    deviceService: deviceService!,
-                                    timerService: timerService!)
+        notificationService = NotificationService()
+        sut = TabBarViewModel(notificationService: notificationService!,
+                              firebaseService: firebaseServiceMock!,
+                              storageManager: storageManagerDummy!,
+                              deviceService: deviceService!,
+                              timerService: timerService!)
     }
 
     override func tearDownWithError() throws {
         sut = nil
         firebaseServiceMock = nil
         storageManagerDummy = nil
+        deviceService = nil
+        timerService = nil
         try super.tearDownWithError()
     }
 
@@ -81,5 +86,42 @@ class TabBarViewModelTest: XCTestCase {
         // assert
         XCTAssertNotNil(addingNewProductVM?.codeLabelText)
         XCTAssertEqual(addingNewProductVM?.codeLabelText, productCode)
+    }
+
+    func testThatGetProductInfoViewModelReturnCorrectResult() {
+        // arrange
+        let product = ProductFake()
+
+        // act
+        let productInfoVM = sut?.getProductInfoViewModel(product: product)
+
+        // assert
+        XCTAssertEqual(product.code, productInfoVM?.product?.code)
+        XCTAssertNotNil(productInfoVM?.product)
+
+    }
+
+    func testThatConstantForMiddleButtonIsComputedCorrectly() {
+        // arrange
+        let currentDevice: DeviceModel = .iPhone8
+        let constant: Float = 10
+
+        // act
+        deviceService?.currentType = currentDevice
+
+        // assert
+        XCTAssertEqual(sut?.constantForMiddleButton, constant)
+    }
+
+    func testThatSizeForMiddleButtonIsComputedCorrectly() {
+        // arrange
+        let currentDevice: DeviceModel = .iPhone11
+        let constant: Float = 72
+
+        // act
+        deviceService?.currentType = currentDevice
+
+        // assert
+        XCTAssertEqual(sut?.sizeForMiddleButton, constant)
     }
 }

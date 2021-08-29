@@ -25,7 +25,9 @@ protocol TimerViewModelProtocol {
     /// Вызывается при истечении времени таймера.
     var timerDidExpired: (() -> Void)? { get set }
     
-    init(timerService: TimerServiceProtocol, minutes: Int)
+    init(timerService: TimerServiceProtocol,
+         notificationService: NotificationServiceProtocol,
+         minutes: Int)
     
     func updateTimeTo(minutes: Int)
     func startTimer()
@@ -34,9 +36,10 @@ protocol TimerViewModelProtocol {
 
 final class TimerViewModel: TimerViewModelProtocol {
 
-    // MARK: - Service
+    // MARK: - Services
     
     private var timerService: TimerServiceProtocol
+    private var notificationService: NotificationServiceProtocol
 
     // MARK: - Properties
     
@@ -73,9 +76,12 @@ final class TimerViewModel: TimerViewModelProtocol {
 
     // MARK: - Init
     
-    init(timerService: TimerServiceProtocol, minutes: Int = 0) {
+    init(timerService: TimerServiceProtocol,
+         notificationService: NotificationServiceProtocol,
+         minutes: Int = 0) {
         self.minutes = minutes
         self.timerService = timerService
+        self.notificationService = notificationService
         self.timerService.timerViewDelegate = self
     }
     
@@ -87,12 +93,12 @@ final class TimerViewModel: TimerViewModelProtocol {
         
     func startTimer() {
         timerService.start(forMinutes: minutes)
-        Notifications.shared.showTimerNotification(throughMinutes: Double(minutes))
+        notificationService.showTimerNotification(throughMinutes: Double(minutes))
     }
     
     func stopTimer() {
         timerService.stop()
-        Notifications.shared.cancelTimerNotification()
+        notificationService.cancelTimerNotification()
     }
 }
 

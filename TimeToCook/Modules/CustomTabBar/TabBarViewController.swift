@@ -128,8 +128,8 @@ final class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         
         viewModel.addingNewProductOffer = { [unowned self] code in
             let alertController = offerToAddingProductAlertController {
-                let addNewProductVC = AddingNewProductViewController()
-                addNewProductVC.viewModel = self.viewModel.getAddingNewProductViewModel(withCode: code)
+                let addingNewProductViewModel = self.viewModel.getAddingNewProductViewModel(withCode: code)
+                let addNewProductVC = AddingNewProductViewController(viewModel: addingNewProductViewModel)
                 addNewProductVC.delegate = self
                 addNewProductVC.modalPresentationStyle = .fullScreen
                 self.present(addNewProductVC, animated: true)
