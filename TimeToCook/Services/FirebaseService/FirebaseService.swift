@@ -21,19 +21,11 @@ protocol FirebaseServiceProtocol {
 }
 
 final class FirebaseService: FirebaseServiceProtocol {
-    
-    // MARK: - Static properties
-    
-//    static let shared = FirebaseService()
-    
+
     // MARK: - Properties
     
     private let productsRef = Database.database().reference().child("products")
     private let categoriesRef = Database.database().reference().child("categories")
-    
-    // MARK: - Initializers
-    
-//    private init() {}
     
     // MARK: - Public methods
     

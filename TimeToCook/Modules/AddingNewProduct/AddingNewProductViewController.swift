@@ -106,7 +106,7 @@ final class AddingNewProductViewController: UIViewController {
 
     // MARK: - Dependences
 
-    var viewModel: AddingNewProductViewModelProtocol
+    private var viewModel: AddingNewProductViewModelProtocol
     weak var delegate: AddNewProductViewControllerDelegate?
 
     // MARK: - Init
@@ -350,7 +350,6 @@ extension AddingNewProductViewController: UITextFieldDelegate {
                                                       width: UIScreen.main.bounds.width,
                                                       height: 100))
         keyboardToolbar.sizeToFit()
-
         let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let space = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         space.width = 14
