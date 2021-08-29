@@ -120,6 +120,8 @@ final class TimerService: TimerServiceProtocol {
     
     private func updateTimers(remainingTime: Int, isStopped: Bool) {
         barDelegate?.timerDidStep(remainingSeconds: remainingTime, isStopped: isStopped)
-        timerViewDelegate?.timerDidStep(totalSeconds: totalTime, remainingSeconds: remainingTime, isStopped: isStopped)
+        timerViewDelegate?.timerDidStep(totalSeconds: totalTime,
+                                        remainingSeconds: remainingTime,
+                                        isStopped: isStopped)
     }
 }

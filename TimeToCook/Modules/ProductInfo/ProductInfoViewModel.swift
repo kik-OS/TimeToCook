@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - Protocol
 
-protocol ProductInfoViewModelProtocol {
+protocol ProductInfoViewModelProtocol: AnyObject {
     var product: ProductProtocol? { get }
     var weight: String { get }
     var cookingTime: String { get }

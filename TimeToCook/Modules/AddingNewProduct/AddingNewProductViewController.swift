@@ -341,7 +341,6 @@ extension AddingNewProductViewController: UITextFieldDelegate {
     }
 
     private func updateUpAndDownButtonsState() {
-//        guard let viewModel = viewModel else { return }
         upButtonForKB.isEnabled = viewModel.stateForUpButton
         downButtonForKB.isEnabled = viewModel.stateForDownButton
     }
@@ -355,7 +354,6 @@ extension AddingNewProductViewController: UITextFieldDelegate {
         let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let space = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         space.width = 14
-
         keyboardToolbar.items = [downButtonForKB, space, upButtonForKB, flexBarButton, doneButtonForKB]
         keyboardToolbar.backgroundColor = VarkaColors.mainColor
         keyboardToolbar.barTintColor = VarkaColors.mainColor
@@ -382,9 +380,7 @@ extension AddingNewProductViewController: UIPickerViewDelegate, UIPickerViewData
         pickerViewForKB.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
 
     func pickerView( _ pickerView: UIPickerView,
                      numberOfRowsInComponent component: Int) -> Int {
