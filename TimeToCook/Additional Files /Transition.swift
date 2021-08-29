@@ -43,7 +43,7 @@ class TabBarTransition: NSObject, UIViewControllerAnimatedTransitioning {
         DispatchQueue.main.async {
             transitionContext.containerView.addSubview(toView)
             UIView.animate(withDuration: self.transitionDuration,
-                           delay: 0,
+                           delay: 0.3,
                            options: [.curveEaseOut, .transitionCrossDissolve, .preferredFramesPerSecond60],
                            animations: {
                             fromView.frame = fromFrameEnd

@@ -574,7 +574,7 @@
 			children = (
 				E4554C1426D298EB00819A09 /* .swiftlint.yml */,
 				E44BBF6A26A6FEB4003D403C /* TimeToCook */,
-				E474E17726CBE7C400ED18F9 /* TimeToCookTests */,
+				E474E17726CBE7C400ED18F9 /* TimeToCookUnitTests */,
 				E44BBF6926A6FEB4003D403C /* Products */,
 				9EC58EA1B2C6568C40217FAE /* Pods */,
 				7EF10C2A690AF61983A49C92 /* Frameworks */,
@@ -633,7 +633,7 @@
 			path = SubViews;
 			sourceTree = "<group>";
 		};
-		E474E17726CBE7C400ED18F9 /* TimeToCookTests */ = {
+		E474E17726CBE7C400ED18F9 /* TimeToCookUnitTests */ = {
 			isa = PBXGroup;
 			children = (
 				E4D4236526DB79D500C63BC6 /* TimerViewModel */,
@@ -641,7 +641,7 @@
 				E4B09A5326D9077E0091561C /* TabBarViewModel */,
 				E474E17A26CBE7C400ED18F9 /* Info.plist */,
 			);
-			path = TimeToCookTests;
+			path = TimeToCookUnitTests;
 			sourceTree = "<group>";
 		};
 		E4B09A5326D9077E0091561C /* TabBarViewModel */ = {

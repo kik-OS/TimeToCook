@@ -96,6 +96,12 @@ final class RecentProductsViewController: UIViewController {
             self?.recentProductLabel.text = self?.viewModel?.checkCurrentState(isHidden: !isHidden)
         }
     }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        recentProductCollectionView.setContentOffset(CGPoint(x: -ConstantsCollectionView.leftDistanceToView,
+                                                                   y: -20), animated: true)
+    }
     
     // MARK: - Private methods
     
