@@ -109,4 +109,67 @@ class AddingNewProductViewModelTest: XCTestCase {
         // assert
         XCTAssertNotNil(resultFromFB?.get)
     }
+
+    func testThatCalculationOfUpperResponderIsWorkingCorrectly() {
+        // arrange
+        let currentResponder = 2
+
+        // act
+        sut?.indexOfFirstResponder = currentResponder
+        let upperResponder = sut?.calculationOfUpperResponder()
+
+        // assert
+        XCTAssertNotEqual(sut?.indexOfFirstResponder, 0)
+        XCTAssertEqual(upperResponder, 1)
+    }
+
+    func testThatCalculationOfLowerResponderIsWorkingCorrectly() {
+        // arrange
+        let currentResponder = 2
+
+        // act
+        sut?.indexOfFirstResponder = currentResponder
+        let lowerResponder = sut?.calculationOfLowerResponder()
+
+        // assert
+        XCTAssertNotEqual(sut?.indexOfFirstResponder, 0)
+        XCTAssertEqual(lowerResponder, 3)
+    }
+
+    func testThatCalculationWaterRatioIsWorkingCorrectly() {
+        // arrange
+        let row = 2
+
+        // act
+        sut?.calculateWaterRatio(row: row)
+        let waterRatio = sut?.waterRatio
+
+        // assert
+        XCTAssertEqual(waterRatio, 3.0)
+    }
+
+    func testThatPickerViewDidSelectAtIsWorkingForZeroIndex() {
+        // arrange
+        let row = 0
+        let categories: [Category]?
+        // act
+        sut?.getCategories()
+        categories = sut?.categories
+        sut?.pickerViewDidSelectAt(row: row)
+
+        // assert
+        XCTAssertEqual(categories?.first?.name, sut?.textFromCategoryTF)
+    }
+
+    func testThatPickerViewDidSelectAtIsWorkingForLastIndex() {
+        // arrange
+        let row = 4
+        let listOfWaterRatio = sut?.listOfWaterRatio
+        // act
+        sut?.indexOfFirstResponder = 5
+        sut?.pickerViewDidSelectAt(row: row)
+
+        // assert
+        XCTAssertEqual(listOfWaterRatio![row], sut?.textFromWaterRatioTF)
+    }
 }

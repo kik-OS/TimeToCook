@@ -45,6 +45,7 @@ extension FirebaseServiceMock: FirebaseServiceProtocol {
     }
     
     func saveCategories(_ categories: [Category]) {}
+    
     func fetchCategories(completion: @escaping ([Category]) -> Void) {
         let categories = [Category(name: "Вареники")]
         completion(categories)

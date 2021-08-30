@@ -136,6 +136,7 @@
 		E49CB14226B9811900B99038 /* SingleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB14126B9811900B99038 /* SingleStackView.swift */; };
 		E49CB14426BADC9300B99038 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB14326BADC9300B99038 /* UIFont+Extension.swift */; };
 		E49CB14826BAE52D00B99038 /* ProductNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB14726BAE52D00B99038 /* ProductNameView.swift */; };
+		E4B12DCF26DCD50000C27056 /* RecentProductCollectionViewViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B12DCE26DCD50000C27056 /* RecentProductCollectionViewViewModelTest.swift */; };
 		E4B94E3526CA8B92003A71DF /* SmallLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B94E3426CA8B92003A71DF /* SmallLabelCell.swift */; };
 		E4B94E3726CA9573003A71DF /* MainImageRPCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B94E3626CA9573003A71DF /* MainImageRPCell.swift */; };
 		E4B971B326C26E6C003DFACA /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971B226C26E6C003DFACA /* TimerViewController.swift */; };
@@ -264,6 +265,7 @@
 		E49CB14126B9811900B99038 /* SingleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStackView.swift; sourceTree = "<group>"; };
 		E49CB14326BADC9300B99038 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		E49CB14726BAE52D00B99038 /* ProductNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductNameView.swift; sourceTree = "<group>"; };
+		E4B12DCE26DCD50000C27056 /* RecentProductCollectionViewViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentProductCollectionViewViewModelTest.swift; sourceTree = "<group>"; };
 		E4B94E3426CA8B92003A71DF /* SmallLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallLabelCell.swift; sourceTree = "<group>"; };
 		E4B94E3626CA9573003A71DF /* MainImageRPCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainImageRPCell.swift; sourceTree = "<group>"; };
 		E4B971B226C26E6C003DFACA /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
@@ -657,6 +659,7 @@
 		E474E17726CBE7C400ED18F9 /* TimeToCookTests */ = {
 			isa = PBXGroup;
 			children = (
+				E4B12DCD26DCD4C300C27056 /* RecentProducts */,
 				E40F5EB326DBCFD90000C9CD /* AddingNewProductViewModel */,
 				E4D4236526DB79D500C63BC6 /* TimerViewModel */,
 				E4B09A5426D907AF0091561C /* ProductInfoViewModel */,
@@ -693,6 +696,14 @@
 				E41C3CBF26A85FC3006F1AE9 /* FlashButton.swift */,
 			);
 			path = SubViews;
+			sourceTree = "<group>";
+		};
+		E4B12DCD26DCD4C300C27056 /* RecentProducts */ = {
+			isa = PBXGroup;
+			children = (
+				E4B12DCE26DCD50000C27056 /* RecentProductCollectionViewViewModelTest.swift */,
+			);
+			path = RecentProducts;
 			sourceTree = "<group>";
 		};
 		E4C1A11226C12EF2008C1D17 /* SubViews */ = {
@@ -1053,6 +1064,7 @@
 				E4554BCD26D0D3AD00819A09 /* StillEmptyLabels.swift in Sources */,
 				E4554BC326D0D33C00819A09 /* TimerContentView.swift in Sources */,
 				E4554BBB26D0D2C600819A09 /* StartCookButton.swift in Sources */,
+				E4B12DCF26DCD50000C27056 /* RecentProductCollectionViewViewModelTest.swift in Sources */,
 				E4BFBCE726CFA350007A6CF6 /* ProductFake.swift in Sources */,
 				E4BFBCDE26CE5780007A6CF6 /* NotificationService.swift in Sources */,
 				E4554BBA26D0D2BF00819A09 /* ProductNameView.swift in Sources */,

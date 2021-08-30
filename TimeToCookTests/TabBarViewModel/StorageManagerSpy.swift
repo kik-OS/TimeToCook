@@ -7,9 +7,9 @@
 
 import Foundation
 
-final class StorageManagerDummy: StorageServiceProtocol {
-    func createTemporaryProductForDemonstration() {
+final class StorageServiceDummy: StorageServiceProtocol {
 
+    func createTemporaryProductForDemonstration() {
     }
 
     func fetchData() -> [ProductCD] {
