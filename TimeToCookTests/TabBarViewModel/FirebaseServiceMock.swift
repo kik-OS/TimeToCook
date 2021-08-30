@@ -9,7 +9,7 @@ import Foundation
 
 class FirebaseServiceMock {
 
-    var storage: [ProductProtocol] = Array(repeating: ProductFake(), count: 5)
+    var storage: [ProductProtocol] = Array(repeating: ProductStub(), count: 5)
 }
 
 extension FirebaseServiceMock: FirebaseServiceProtocol {

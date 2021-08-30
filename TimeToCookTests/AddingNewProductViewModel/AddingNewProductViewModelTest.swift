@@ -36,7 +36,7 @@ class AddingNewProductViewModelTest: XCTestCase {
 
     func testThatValidationIsWorkingIfOneOfTextFieldIsNil() {
         // arrange
-        let product = ProductFake()
+        let product = ProductStub()
 
         // act
         sut?.textFromProducerTF = product.producer
@@ -51,7 +51,7 @@ class AddingNewProductViewModelTest: XCTestCase {
 
     func testThatValidationIsTrueIfAllConditionAreWell() {
         // arrange
-        let product = ProductFake()
+        let product = ProductStub()
 
         // act
         sut?.textFromProducerTF = product.producer
@@ -86,7 +86,7 @@ class AddingNewProductViewModelTest: XCTestCase {
 
     func testThatCreateProductInFBIsWorkCorrectly() {
         // arrange
-        let product = ProductFake()
+        let product = ProductStub()
         var resultFromFB: Result<ProductProtocol, FirebaseServiceError>?
         let didReceiveResponse = expectation(description: #function)
 

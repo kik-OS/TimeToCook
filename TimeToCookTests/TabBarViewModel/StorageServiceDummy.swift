@@ -19,7 +19,7 @@ final class StorageServiceDummy: StorageServiceProtocol {
     }
 
     func convertFromProductCDToProduct(productCD: ProductCD) -> ProductProtocol? {
-        ProductFake()
+        ProductStub()
     }
 
     func deleteProductCD(_ productCD: ProductCD) {

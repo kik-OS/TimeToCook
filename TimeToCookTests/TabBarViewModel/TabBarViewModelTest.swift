@@ -43,7 +43,7 @@ class TabBarViewModelTest: XCTestCase {
     func testThatFunctionForFindProductIsWorkingWithFoundedProduct() {
         // arrange
         let productCode = UUID().uuidString
-        let product = ProductFake(code: productCode)
+        let product = ProductStub(code: productCode)
         var foundedProduct: ProductProtocol?
 
         sut?.productDidReceive = { product in
@@ -90,7 +90,7 @@ class TabBarViewModelTest: XCTestCase {
 
     func testThatGetProductInfoViewModelReturnCorrectResult() {
         // arrange
-        let product = ProductFake()
+        let product = ProductStub()
 
         // act
         let productInfoVM = sut?.getProductInfoViewModel(product: product)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ProductFake: ProductProtocol {
+class ProductStub: ProductProtocol {
     var weight: Int? = 200
     var code = UUID().uuidString
     var title = "Title"
