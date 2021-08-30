@@ -9,7 +9,7 @@ import Foundation
 
 class FirebaseServiceMock {
 
-    var storage: [ProductProtocol] = Array(repeating: ProductFake(), count: 5)
+    var storage: [ProductProtocol] = Array(repeating: ProductStub(), count: 5)
 }
 
 extension FirebaseServiceMock: FirebaseServiceProtocol {
@@ -43,7 +43,11 @@ extension FirebaseServiceMock: FirebaseServiceProtocol {
     func removeProduct(byCode code: String) {
         storage.removeAll(where: { $0.code == code })
     }
-
+    
     func saveCategories(_ categories: [Category]) {}
-    func fetchCategories(completion: @escaping ([Category]) -> Void) {}
+    
+    func fetchCategories(completion: @escaping ([Category]) -> Void) {
+        let categories = [Category(name: "Вареники")]
+        completion(categories)
+    }
 }

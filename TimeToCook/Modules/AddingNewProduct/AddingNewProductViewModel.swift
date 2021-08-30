@@ -97,7 +97,7 @@ final class AddingNewProductViewModel: AddingNewProductViewModelProtocol {
         getCategories()
     }
     
-    // MARK: Dependences
+    // MARK: Services
     
     private var firebaseService: FirebaseServiceProtocol
     private var notificationService: NotificationServiceProtocol

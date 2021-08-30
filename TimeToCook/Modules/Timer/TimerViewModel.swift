@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Protocol
 
-protocol TimerViewModelProtocol {
+protocol TimerViewModelProtocol: AnyObject {
     var minutes: Int { get }
     var timerTime: (totalSeconds: Int, remainingSeconds: Int) { get }
     var isHiddenPickerStackView: Bool { get }

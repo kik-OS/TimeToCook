@@ -7,16 +7,31 @@
 
 import UIKit
 
-class TabBarTransition: NSObject, UIViewControllerAnimatedTransitioning {
-    let viewControllers: [UIViewController]?
-    let transitionDuration: Double = 0.3
+final class TabBarTransition: NSObject, UIViewControllerAnimatedTransitioning {
+
+    // MARK: Properties
+
+    private let viewControllers: [UIViewController]?
+    private let transitionDuration: Double = 0.3
+
+    // MARK: Init
 
     init(viewControllers: [UIViewController]?) {
         self.viewControllers = viewControllers
     }
 
+    // MARK: Methods
+
+    private func getIndex(for viewController: UIViewController) -> Int? {
+        guard let vcs = self.viewControllers else { return nil }
+        for (index, thisVC) in vcs.enumerated() where thisVC == viewController {
+            return index
+        }
+        return nil
+    }
+
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return TimeInterval(transitionDuration)
+        TimeInterval(transitionDuration)
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -54,12 +69,5 @@ class TabBarTransition: NSObject, UIViewControllerAnimatedTransitioning {
                            })
         }
     }
-
-    func getIndex(for viewController: UIViewController) -> Int? {
-        guard let vcs = self.viewControllers else { return nil }
-        for (index, thisVC) in vcs.enumerated() where thisVC == viewController {
-            return index
-        }
-        return nil
-    }
+    
 }

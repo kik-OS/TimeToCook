@@ -8,6 +8,7 @@
 import Foundation
 
 final class NotificationServiceDummy: NotificationServiceProtocol {
+    
     func checkNotificationSettings(completion: @escaping () -> Void) {
 
     }

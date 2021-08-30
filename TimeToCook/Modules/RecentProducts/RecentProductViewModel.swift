@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol RecentProductViewModelProtocol {
+protocol RecentProductViewModelProtocol: AnyObject {
     func getRecentProductCollectionViewViewModel() -> RecentProductCollectionViewViewModelProtocol
     func checkCurrentState(isHidden: Bool) -> String
     init(storageService: StorageServiceProtocol)

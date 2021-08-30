@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol RecentProductCollectionViewCellViewModelProtocol {
+protocol RecentProductCollectionViewCellViewModelProtocol: AnyObject {
     var productTitle: String? { get }
     var productProducer: String? { get }
     var productImage: String { get }

@@ -234,7 +234,6 @@ final class TimerViewController: UIViewController {
         pickerStackView.disappear { [weak self] in
             self?.setTimeDiagramView()
             self?.diagramStackView.appear()
-
         }
     }
     

@@ -43,7 +43,7 @@ class ProductInfoViewModelTests: XCTestCase {
 
     func testThatPropertyProductImageReturnCorrectImageName() {
         // arrange
-        let product = ProductFake()
+        let product = ProductStub()
 
         // act
         sut?.updateProduct(product: product)
@@ -54,7 +54,7 @@ class ProductInfoViewModelTests: XCTestCase {
 
     func testThatPropertyWeightReturnCorrectProductWeight() {
         // arrange
-        let product = ProductFake()
+        let product = ProductStub()
         // act
         sut?.updateProduct(product: product)
 
@@ -64,7 +64,7 @@ class ProductInfoViewModelTests: XCTestCase {
 
     func testThatPropertyWeightReturnNotFoundIfProductIsNil() {
         // arrange
-        let product = ProductFake()
+        let product = ProductStub()
         sut?.updateProduct(product: product)
 
         // act
@@ -76,7 +76,7 @@ class ProductInfoViewModelTests: XCTestCase {
 
     func testThatPropertyCookingTimeReturnCorrectTimeOfCooking() {
         // arrange
-        let product = ProductFake()
+        let product = ProductStub()
 
         // act
         sut?.updateProduct(product: product)
@@ -99,7 +99,7 @@ class ProductInfoViewModelTests: XCTestCase {
 
     func testThatInitializationOfProductIsWorking() {
         // arrange
-        let product = ProductFake()
+        let product = ProductStub()
 
         // act
         sut = ProductInfoViewModel(product: product,
@@ -112,7 +112,7 @@ class ProductInfoViewModelTests: XCTestCase {
 
     func testThatTimerViewModelReturnCorrectTimeAfterInitByProductInfoVM() {
         // arrange
-        let product = ProductFake()
+        let product = ProductStub()
 
         // act
         sut?.updateProduct(product: product)
@@ -124,7 +124,7 @@ class ProductInfoViewModelTests: XCTestCase {
 
     func testThatCurrentStateIsChangeToFirstStateIfProductIsNil() {
         // arrange
-        let product = ProductFake()
+        let product = ProductStub()
         sut?.updateProduct(product: product)
         var currentState: String?
         let firstCompletion  = { currentState = "firstState" }
@@ -141,7 +141,7 @@ class ProductInfoViewModelTests: XCTestCase {
 
     func testThatCurrentStateIsChangeToSecondState() {
         // arrange
-        let product = ProductFake()
+        let product = ProductStub()
         var currentState: String?
         let secondCompletion = { currentState = "secondState" }
         sut?.needUpdateViewForSecondStep = secondCompletion
@@ -157,7 +157,7 @@ class ProductInfoViewModelTests: XCTestCase {
 
     func testThatCurrentStateIsChangeToThirdState() {
         // arrange
-        let product = ProductFake()
+        let product = ProductStub()
         sut?.updateProduct(product: product)
         var currentState: String?
         let thirdCompletion = { currentState = "thirdState" }
@@ -174,7 +174,7 @@ class ProductInfoViewModelTests: XCTestCase {
 
     func testThatFuncCellViewModelReturnCorrectInstructionCellViewModel() {
         // arrange
-        let product = ProductFake()
+        let product = ProductStub()
         sut?.updateProduct(product: product)
         let indexPath = IndexPath(row: 2, section: 0)
         let instructionText = Inscriptions.instructionOfCookingThirdStep
@@ -189,4 +189,5 @@ class ProductInfoViewModelTests: XCTestCase {
         XCTAssertNotNil(cellViewModel?.isShowNextLabel)
         XCTAssertFalse(cellViewModel?.isShowNextLabel ?? true)
     }
+
 }
