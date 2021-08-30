@@ -18,6 +18,7 @@ final class TimerStopButton: UIButton {
         translatesAutoresizingMaskIntoConstraints = false
         setTitle("Стоп", for: .normal)
         backgroundColor = VarkaColors.mainColor
+        accessibilityLabel = "stopTimer"
     }
     
     required init?(coder: NSCoder) {

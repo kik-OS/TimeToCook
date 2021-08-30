@@ -17,6 +17,7 @@ final class TimerStartButton: UIButton {
         titleLabel?.textColor = .white
         translatesAutoresizingMaskIntoConstraints = false
         setTitle("Старт", for: .normal)
+        accessibilityLabel = "startTimer"
     }
     
     required init?(coder: NSCoder) {

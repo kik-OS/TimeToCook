@@ -14,8 +14,9 @@ final class TimerPickerView: UIPickerView {
     init() {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
+        accessibilityLabel = "timePicker"
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

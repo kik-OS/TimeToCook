@@ -214,6 +214,7 @@ final class TimerViewController: UIViewController {
         let timeDiagramView = UIHostingController(rootView: TimeDiagram(
             width: 200, height: 150,
             totalSeconds: totalSeconds, remainingSeconds: remainingSeconds))
+        timeDiagramView.accessibilityLabel = "timeDiagram"
         
         diagramStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         diagramStackView.addArrangedSubview(timeDiagramView.view)
