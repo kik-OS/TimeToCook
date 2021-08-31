@@ -150,6 +150,54 @@
 		E4B971BF26C3A80A003DFACA /* TimerStopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971BE26C3A80A003DFACA /* TimerStopButton.swift */; };
 		E4BA154926DE43AC00E73B1A /* TimeToCookSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA154826DE43AC00E73B1A /* TimeToCookSnapshotTest.swift */; };
 		E4BA155226DE443200E73B1A /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = E4BA155126DE443200E73B1A /* SnapshotTesting */; };
+		E4BA155326DE4AF900E73B1A /* ProductInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3CE826A9E091006F1AE9 /* ProductInfoViewController.swift */; };
+		E4BA155426DE4B0300E73B1A /* ProductInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F14A3526B556C1008312DA /* ProductInfoViewModel.swift */; };
+		E4BA155526DE4B1500E73B1A /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3526A702D6006F1AE9 /* Product.swift */; };
+		E4BA155626DE4B2000E73B1A /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3F26A702D7006F1AE9 /* NotificationService.swift */; };
+		E4BA155726DE4B2800E73B1A /* TimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C8126A702DA006F1AE9 /* TimerService.swift */; };
+		E4BA155826DE4B3100E73B1A /* InstructionCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E6C26BC344B00DA752C /* InstructionCollectionViewCellViewModel.swift */; };
+		E4BA155926DE4B4200E73B1A /* Inscriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C4426A702D7006F1AE9 /* Inscriptions.swift */; };
+		E4BA155A26DE4B5100E73B1A /* ImageTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C4526A702D7006F1AE9 /* ImageTitles.swift */; };
+		E4BA155B26DE4B6400E73B1A /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C5C26A702DA006F1AE9 /* TimerViewModel.swift */; };
+		E4BA155C26DE4B6A00E73B1A /* StillEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC826B47C2D0013F7C9 /* StillEmptyView.swift */; };
+		E4BA155D26DE4B7400E73B1A /* ViewWithContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC226B2A4F40013F7C9 /* ViewWithContent.swift */; };
+		E4BA155E26DE4B7C00E73B1A /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB13F26B97CF900B99038 /* ProductView.swift */; };
+		E4BA155F26DE4B9200E73B1A /* SingleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB14126B9811900B99038 /* SingleStackView.swift */; };
+		E4BA156026DE4BA900E73B1A /* StillEmptyLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC426B3F02E0013F7C9 /* StillEmptyLabels.swift */; };
+		E4BA156126DE4BAE00E73B1A /* PlateImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC026B2A3C80013F7C9 /* PlateImageView.swift */; };
+		E4BA156226DE4BC400E73B1A /* MascotImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC626B47B500013F7C9 /* MascotImageView.swift */; };
+		E4BA156326DE4BD000E73B1A /* StartCookButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47E0C7726BBBC300060BE3A /* StartCookButton.swift */; };
+		E4BA156426DE4BDA00E73B1A /* InstructionCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E7026BC3DB800DA752C /* InstructionCollectionView.swift */; };
+		E4BA156526DE4BF000E73B1A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C4226A702D7006F1AE9 /* Constants.swift */; };
+		E4BA156626DE4BF500E73B1A /* InstructionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E6E26BC346D00DA752C /* InstructionCollectionViewCell.swift */; };
+		E4BA156726DE4C0D00E73B1A /* ProductNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB14726BAE52D00B99038 /* ProductNameView.swift */; };
+		E4BA156826DE4C1400E73B1A /* RecentProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C6F26A702DA006F1AE9 /* RecentProductsViewController.swift */; };
+		E4BA156926DE4C2D00E73B1A /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB14326BADC9300B99038 /* UIFont+Extension.swift */; };
+		E4BA156A26DE4C3800E73B1A /* RecentProductLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C783A726C3E80E00C95626 /* RecentProductLabel.swift */; };
+		E4BA156B26DE4C3E00E73B1A /* RecentProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C6E26A702DA006F1AE9 /* RecentProductViewModel.swift */; };
+		E4BA156C26DE4C5400E73B1A /* RecentProductCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C6726A702DA006F1AE9 /* RecentProductCollectionView.swift */; };
+		E4BA156D26DE4C5900E73B1A /* RecentProductCollectionViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C6826A702DA006F1AE9 /* RecentProductCollectionViewViewModel.swift */; };
+		E4BA156E26DE4C5E00E73B1A /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C7A26A702DA006F1AE9 /* StorageService.swift */; };
+		E4BA156F26DE4C8800E73B1A /* TimeToCook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E44BBF7426A6FEB4003D403C /* TimeToCook.xcdatamodeld */; };
+		E4BA157026DE4C9D00E73B1A /* RecentProductCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C6A26A702DA006F1AE9 /* RecentProductCollectionViewCellViewModel.swift */; };
+		E4BA157126DE4CA200E73B1A /* RecentProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C6B26A702DA006F1AE9 /* RecentProductCollectionViewCell.swift */; };
+		E4BA157226DE4CBE00E73B1A /* TimerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E7326BD1F4400DA752C /* TimerButton.swift */; };
+		E4BA157326DE4CC300E73B1A /* MainImageRPCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B94E3626CA9573003A71DF /* MainImageRPCell.swift */; };
+		E4BA157426DE4CC800E73B1A /* SmallLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B94E3426CA8B92003A71DF /* SmallLabelCell.swift */; };
+		E4BA157526DE4CDC00E73B1A /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EB3E7526BD550C00DA752C /* CloseButton.swift */; };
+		E4BA157626DE4CEA00E73B1A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3B26A702D6006F1AE9 /* UIView+Extension.swift */; };
+		E4BA157726DE4CFB00E73B1A /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEEC5F26D3C22A00E5AE67 /* UICollectionView+Extension.swift */; };
+		E4BA157826DE4D0000E73B1A /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971B226C26E6C003DFACA /* TimerViewController.swift */; };
+		E4BA157926DE4D1E00E73B1A /* TimerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971B826C2BEEF003DFACA /* TimerLabel.swift */; };
+		E4BA157A26DE4D2300E73B1A /* TimerStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971B626C2BAE2003DFACA /* TimerStackView.swift */; };
+		E4BA157B26DE4D2900E73B1A /* TimerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C5A26A702DA006F1AE9 /* TimerPickerView.swift */; };
+		E4BA157C26DE4D2F00E73B1A /* CloseButtonAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E9E0A26BE8C8100E7082B /* CloseButtonAdd.swift */; };
+		E4BA157D26DE4D3500E73B1A /* TimerStopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971BE26C3A80A003DFACA /* TimerStopButton.swift */; };
+		E4BA157E26DE4D3E00E73B1A /* TimeDiagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C5926A702DA006F1AE9 /* TimeDiagram.swift */; };
+		E4BA157F26DE4D5200E73B1A /* TimerContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971BA26C2BFD6003DFACA /* TimerContentView.swift */; };
+		E4BA158026DE4D5600E73B1A /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3926A702D6006F1AE9 /* Int+Extension.swift */; };
+		E4BA158126DE4D5A00E73B1A /* TimerBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971BC26C3A4C4003DFACA /* TimerBackgroundView.swift */; };
+		E4BA158226DE4D5F00E73B1A /* TimerStartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C5B26A702DA006F1AE9 /* TimerStartButton.swift */; };
 		E4BFBCDB26CE573C007A6CF6 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3526A702D6006F1AE9 /* Product.swift */; };
 		E4BFBCDC26CE5762007A6CF6 /* ProductInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F14A3526B556C1008312DA /* ProductInfoViewModel.swift */; };
 		E4BFBCDD26CE576F007A6CF6 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C5C26A702DA006F1AE9 /* TimerViewModel.swift */; };
@@ -1314,7 +1362,55 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4BA158126DE4D5A00E73B1A /* TimerBackgroundView.swift in Sources */,
+				E4BA157226DE4CBE00E73B1A /* TimerButton.swift in Sources */,
+				E4BA156A26DE4C3800E73B1A /* RecentProductLabel.swift in Sources */,
+				E4BA155B26DE4B6400E73B1A /* TimerViewModel.swift in Sources */,
+				E4BA157E26DE4D3E00E73B1A /* TimeDiagram.swift in Sources */,
+				E4BA157F26DE4D5200E73B1A /* TimerContentView.swift in Sources */,
+				E4BA157C26DE4D2F00E73B1A /* CloseButtonAdd.swift in Sources */,
+				E4BA157A26DE4D2300E73B1A /* TimerStackView.swift in Sources */,
+				E4BA156C26DE4C5400E73B1A /* RecentProductCollectionView.swift in Sources */,
+				E4BA156F26DE4C8800E73B1A /* TimeToCook.xcdatamodeld in Sources */,
+				E4BA157B26DE4D2900E73B1A /* TimerPickerView.swift in Sources */,
+				E4BA155C26DE4B6A00E73B1A /* StillEmptyView.swift in Sources */,
+				E4BA155D26DE4B7400E73B1A /* ViewWithContent.swift in Sources */,
+				E4BA156126DE4BAE00E73B1A /* PlateImageView.swift in Sources */,
+				E4BA155A26DE4B5100E73B1A /* ImageTitles.swift in Sources */,
+				E4BA156826DE4C1400E73B1A /* RecentProductsViewController.swift in Sources */,
+				E4BA157826DE4D0000E73B1A /* TimerViewController.swift in Sources */,
+				E4BA157126DE4CA200E73B1A /* RecentProductCollectionViewCell.swift in Sources */,
+				E4BA157426DE4CC800E73B1A /* SmallLabelCell.swift in Sources */,
+				E4BA156926DE4C2D00E73B1A /* UIFont+Extension.swift in Sources */,
+				E4BA155426DE4B0300E73B1A /* ProductInfoViewModel.swift in Sources */,
+				E4BA158226DE4D5F00E73B1A /* TimerStartButton.swift in Sources */,
+				E4BA156426DE4BDA00E73B1A /* InstructionCollectionView.swift in Sources */,
+				E4BA155E26DE4B7C00E73B1A /* ProductView.swift in Sources */,
+				E4BA157726DE4CFB00E73B1A /* UICollectionView+Extension.swift in Sources */,
+				E4BA156626DE4BF500E73B1A /* InstructionCollectionViewCell.swift in Sources */,
+				E4BA155526DE4B1500E73B1A /* Product.swift in Sources */,
+				E4BA157D26DE4D3500E73B1A /* TimerStopButton.swift in Sources */,
+				E4BA157926DE4D1E00E73B1A /* TimerLabel.swift in Sources */,
+				E4BA156D26DE4C5900E73B1A /* RecentProductCollectionViewViewModel.swift in Sources */,
+				E4BA155926DE4B4200E73B1A /* Inscriptions.swift in Sources */,
+				E4BA155326DE4AF900E73B1A /* ProductInfoViewController.swift in Sources */,
+				E4BA156E26DE4C5E00E73B1A /* StorageService.swift in Sources */,
+				E4BA155F26DE4B9200E73B1A /* SingleStackView.swift in Sources */,
+				E4BA157326DE4CC300E73B1A /* MainImageRPCell.swift in Sources */,
+				E4BA155726DE4B2800E73B1A /* TimerService.swift in Sources */,
+				E4BA156B26DE4C3E00E73B1A /* RecentProductViewModel.swift in Sources */,
+				E4BA155826DE4B3100E73B1A /* InstructionCollectionViewCellViewModel.swift in Sources */,
+				E4BA156026DE4BA900E73B1A /* StillEmptyLabels.swift in Sources */,
+				E4BA156526DE4BF000E73B1A /* Constants.swift in Sources */,
+				E4BA157026DE4C9D00E73B1A /* RecentProductCollectionViewCellViewModel.swift in Sources */,
+				E4BA158026DE4D5600E73B1A /* Int+Extension.swift in Sources */,
+				E4BA157626DE4CEA00E73B1A /* UIView+Extension.swift in Sources */,
+				E4BA157526DE4CDC00E73B1A /* CloseButton.swift in Sources */,
+				E4BA156326DE4BD000E73B1A /* StartCookButton.swift in Sources */,
+				E4BA155626DE4B2000E73B1A /* NotificationService.swift in Sources */,
+				E4BA156726DE4C0D00E73B1A /* ProductNameView.swift in Sources */,
 				E4BA154926DE43AC00E73B1A /* TimeToCookSnapshotTest.swift in Sources */,
+				E4BA156226DE4BC400E73B1A /* MascotImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
