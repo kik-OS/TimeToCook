@@ -138,6 +138,7 @@
 		E49CB14826BAE52D00B99038 /* ProductNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB14726BAE52D00B99038 /* ProductNameView.swift */; };
 		E4B12DCF26DCD50000C27056 /* RecentProductCollectionViewViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B12DCE26DCD50000C27056 /* RecentProductCollectionViewViewModelTest.swift */; };
 		E4B12DD926DD02A500C27056 /* TimeToCookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B12DD826DD02A500C27056 /* TimeToCookUITests.swift */; };
+		E4B12DE126DE126700C27056 /* DeviceServiceDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B12DE026DE126700C27056 /* DeviceServiceDummy.swift */; };
 		E4B94E3526CA8B92003A71DF /* SmallLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B94E3426CA8B92003A71DF /* SmallLabelCell.swift */; };
 		E4B94E3726CA9573003A71DF /* MainImageRPCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B94E3626CA9573003A71DF /* MainImageRPCell.swift */; };
 		E4B971B326C26E6C003DFACA /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971B226C26E6C003DFACA /* TimerViewController.swift */; };
@@ -277,6 +278,7 @@
 		E4B12DD626DD02A500C27056 /* TimeToCookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeToCookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B12DD826DD02A500C27056 /* TimeToCookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeToCookUITests.swift; sourceTree = "<group>"; };
 		E4B12DDA26DD02A500C27056 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4B12DE026DE126700C27056 /* DeviceServiceDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceServiceDummy.swift; sourceTree = "<group>"; };
 		E4B94E3426CA8B92003A71DF /* SmallLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallLabelCell.swift; sourceTree = "<group>"; };
 		E4B94E3626CA9573003A71DF /* MainImageRPCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainImageRPCell.swift; sourceTree = "<group>"; };
 		E4B971B226C26E6C003DFACA /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
@@ -695,6 +697,7 @@
 				E4554BDC26D23DAC00819A09 /* StorageServiceDummy.swift */,
 				E4554BDA26D232E200819A09 /* FirebaseServiceMock.swift */,
 				E4554BA226D0CFC500819A09 /* TabBarViewModelTest.swift */,
+				E4B12DE026DE126700C27056 /* DeviceServiceDummy.swift */,
 			);
 			path = TabBarViewModel;
 			sourceTree = "<group>";
@@ -1115,6 +1118,7 @@
 				E4554BA626D0D0A400819A09 /* RecentProductCollectionViewViewModel.swift in Sources */,
 				E4554BD626D0D45B00819A09 /* FirebaseServiceError.swift in Sources */,
 				E4554BB126D0D16000819A09 /* SmallLabelCell.swift in Sources */,
+				E4B12DE126DE126700C27056 /* DeviceServiceDummy.swift in Sources */,
 				E4CEEC6126D3CC1100E5AE67 /* UICollectionView+Extension.swift in Sources */,
 				E4BFBCDF26CE578F007A6CF6 /* Inscriptions.swift in Sources */,
 				E4554BB926D0D2AE00819A09 /* PlateImageView.swift in Sources */,
@@ -1441,7 +1445,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 58287L88KM;
 				INFOPLIST_FILE = TimeToCookUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1449,6 +1453,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "kiko-ssss.TimeToCookUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = TimeToCook;
@@ -1461,7 +1466,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 58287L88KM;
 				INFOPLIST_FILE = TimeToCookUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1469,6 +1474,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "kiko-ssss.TimeToCookUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = TimeToCook;

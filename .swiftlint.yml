@@ -6,6 +6,7 @@ disabled_rules:
     - todo
     - superfluous_disable_command
     - trailing_whitespace
+    - orphaned_doc_comment
 opt_in_rules:
     - static_operator
     - empty_count
@@ -18,7 +19,6 @@ opt_in_rules:
     - operator_usage_whitespace
     - closure_end_indentation
     - first_where
-    # - number_separator (100000  =>  100_000)
     - prohibited_super_call
     - fatal_error_message
     - unneeded_parentheses_in_closure_argument

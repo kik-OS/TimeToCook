@@ -16,6 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+        /// Отключение всей анимации для UI - тестов.
+        #if DEBUG
+        if CommandLine.arguments.contains("disableAnimations") {
+            UIView.setAnimationsEnabled(false)
+        }
+        #endif
+
         FirebaseApp.configure()
         FirebaseConfiguration.shared.setLoggerLevel(.min)
         return true

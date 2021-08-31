@@ -6,6 +6,7 @@
 //
 
 import XCTest
+
 var app: XCUIApplication!
 
 protocol Page {
@@ -19,22 +20,38 @@ class TimeToCookUITests: XCTestCase {
         try super.setUpWithError()
         continueAfterFailure = false
         app = XCUIApplication()
+        app.launchArguments.append("disableAnimations")
         app.launch()
     }
 
-func testThatSearchTextEntered() {
+    override func tearDownWithError() throws {
+        app = nil
+        try super.tearDownWithError()
+    }
+
+    func testThatStartButtonIsDisabledWhilePickerViewValueIsZero() {
         // Arrange
         let tabBarPage = TabBarPage(app: app)
+        // Act
+        let timerPage = tabBarPage
+            .tapRecentButton()
+            .tapTimerButton()
+        // Assert
+        XCTAssertFalse(timerPage.startButton.isEnabled)
+    }
 
+    func testThatStartButtonIsEnabledWhilePickerViewValueIsNotZero() {
+        // Arrange
+        let tabBarPage = TabBarPage(app: app)
         // Act
         let timerPage = tabBarPage
             .tapRecentButton()
             .tapTimerButton()
             .changeMinutes()
             .tapStartButton()
+            .tapStopButton()
         // Assert
-    XCTAssertTrue(timerPage.timeDiagram.exists)
-
+        XCTAssertTrue(timerPage.startButton.isEnabled)
     }
 }
 
@@ -53,7 +70,6 @@ class TabBarPage: Page {
         recentButton.tap()
         return RecentProductPage(app: app)
     }
-
 }
 
 class RecentProductPage: Page {
@@ -77,22 +93,25 @@ class TimerPage: Page {
 
     var app: XCUIApplication
 
-    private var startButton: XCUIElement { app.buttons["startTimer"] }
     private var stopButton: XCUIElement { app.buttons["stopTimer"] }
-//    private var pickerView: XCUIElement { app.pickerWheels["timePicker"] }
-    var timeDiagram: XCUIElement { app.otherElements["timeDiagram"] }
+    var startButton: XCUIElement { app.buttons["startTimer"] }
 
     required init(app: XCUIApplication) {
         self.app = app
     }
 
     func changeMinutes() -> Self {
-        app.pickerWheels.element.adjust(toPickerWheelValue: "1")
+        app.pickerWheels.element.adjust(toPickerWheelValue: "20")
         return self
     }
 
     func tapStartButton() -> Self {
         startButton.tap()
+        return self
+    }
+
+    func tapStopButton() -> Self {
+        stopButton.tap()
         return self
     }
 }

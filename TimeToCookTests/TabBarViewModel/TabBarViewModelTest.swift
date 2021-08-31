@@ -21,7 +21,7 @@ class TabBarViewModelTest: XCTestCase {
         try super.setUpWithError()
         firebaseServiceMock = FirebaseServiceMock()
         storageManagerDummy = StorageServiceDummy()
-        deviceService = DeviceService()
+        deviceService = DeviceServiceDummy()
         timerService = TimerService()
         notificationService = NotificationServiceDummy()
         sut = TabBarViewModel(notificationService: notificationService!,
