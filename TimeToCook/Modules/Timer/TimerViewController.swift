@@ -213,8 +213,7 @@ final class TimerViewController: UIViewController {
         let remainingSeconds = remainingSeconds ?? viewModel.timerTime.remainingSeconds
         let timeDiagramView = UIHostingController(rootView: TimeDiagram(
             width: 200, height: 150,
-            totalSeconds: totalSeconds, remainingSeconds: remainingSeconds))
-        
+            totalSeconds: totalSeconds, remainingSeconds: remainingSeconds))        
         diagramStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         diagramStackView.addArrangedSubview(timeDiagramView.view)
     }

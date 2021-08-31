@@ -71,6 +71,7 @@ final class TabBarViewController: UITabBarController, UITabBarControllerDelegate
                                           style: .plain,
                                           target: self,
                                           action: #selector(timerBarButtonTapped))
+        timerButton.accessibilityLabel = "timerNavButton"
         timerButton.tintColor = .systemGray
         navigationItem.rightBarButtonItems = [timerButton]
     }
