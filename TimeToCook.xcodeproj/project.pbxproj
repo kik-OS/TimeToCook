@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1F78B122D721EF93695E7A63 /* Pods_TimeToCookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E164AEEAAEA273934D2CA3D /* Pods_TimeToCookTests.framework */; };
 		2F26661B4FA92DE49714460C /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		46F38C47D263775B008B3C70 /* Pods_TimeToCook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6F0E980080CE5202A460A30 /* Pods_TimeToCook.framework */; };
+		A9C72F23750B51104A7FE3D6 /* Pods_TimeToCookSnapshotTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E33CA7C2C06F101BA495DF9 /* Pods_TimeToCookSnapshotTest.framework */; };
 		E40F5EB526DBD00C0000C9CD /* AddingNewProductViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40F5EB426DBD00C0000C9CD /* AddingNewProductViewModelTest.swift */; };
 		E41C3C3226A701C8006F1AE9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E41C3C3126A701C8006F1AE9 /* GoogleService-Info.plist */; };
 		E41C3C8226A702DA006F1AE9 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3426A702D6006F1AE9 /* Category.swift */; };
@@ -147,6 +148,8 @@
 		E4B971BB26C2BFD6003DFACA /* TimerContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971BA26C2BFD6003DFACA /* TimerContentView.swift */; };
 		E4B971BD26C3A4C4003DFACA /* TimerBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971BC26C3A4C4003DFACA /* TimerBackgroundView.swift */; };
 		E4B971BF26C3A80A003DFACA /* TimerStopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971BE26C3A80A003DFACA /* TimerStopButton.swift */; };
+		E4BA154926DE43AC00E73B1A /* TimeToCookSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA154826DE43AC00E73B1A /* TimeToCookSnapshotTest.swift */; };
+		E4BA155226DE443200E73B1A /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = E4BA155126DE443200E73B1A /* SnapshotTesting */; };
 		E4BFBCDB26CE573C007A6CF6 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3526A702D6006F1AE9 /* Product.swift */; };
 		E4BFBCDC26CE5762007A6CF6 /* ProductInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F14A3526B556C1008312DA /* ProductInfoViewModel.swift */; };
 		E4BFBCDD26CE576F007A6CF6 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C5C26A702DA006F1AE9 /* TimerViewModel.swift */; };
@@ -185,11 +188,21 @@
 			remoteGlobalIDString = E44BBF6726A6FEB4003D403C;
 			remoteInfo = TimeToCook;
 		};
+		E4BA154B26DE43AC00E73B1A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E44BBF6026A6FEB4003D403C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E44BBF6726A6FEB4003D403C;
+			remoteInfo = TimeToCook;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0864A0D0EC62B5B7824EC2C5 /* Pods-TimeToCookSnapshotTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeToCookSnapshotTest.release.xcconfig"; path = "Target Support Files/Pods-TimeToCookSnapshotTest/Pods-TimeToCookSnapshotTest.release.xcconfig"; sourceTree = "<group>"; };
 		1C9FB8E93906E7CE47F4B6C6 /* Pods-TimeToCookTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeToCookTests.debug.xcconfig"; path = "Target Support Files/Pods-TimeToCookTests/Pods-TimeToCookTests.debug.xcconfig"; sourceTree = "<group>"; };
+		326C10327C571A82B423EFB5 /* Pods-TimeToCookSnapshotTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeToCookSnapshotTest.debug.xcconfig"; path = "Target Support Files/Pods-TimeToCookSnapshotTest/Pods-TimeToCookSnapshotTest.debug.xcconfig"; sourceTree = "<group>"; };
 		3E164AEEAAEA273934D2CA3D /* Pods_TimeToCookTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimeToCookTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E33CA7C2C06F101BA495DF9 /* Pods_TimeToCookSnapshotTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimeToCookSnapshotTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D0B3FC85A15F2368FBCE490 /* Pods-TimeToCook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeToCook.debug.xcconfig"; path = "Target Support Files/Pods-TimeToCook/Pods-TimeToCook.debug.xcconfig"; sourceTree = "<group>"; };
 		A8D3FD782664781008386729 /* Pods-TimeToCookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeToCookTests.release.xcconfig"; path = "Target Support Files/Pods-TimeToCookTests/Pods-TimeToCookTests.release.xcconfig"; sourceTree = "<group>"; };
 		B2994C0D2BE04616AC33466F /* Pods-TimeToCook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeToCook.release.xcconfig"; path = "Target Support Files/Pods-TimeToCook/Pods-TimeToCook.release.xcconfig"; sourceTree = "<group>"; };
@@ -287,6 +300,9 @@
 		E4B971BA26C2BFD6003DFACA /* TimerContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerContentView.swift; sourceTree = "<group>"; };
 		E4B971BC26C3A4C4003DFACA /* TimerBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerBackgroundView.swift; sourceTree = "<group>"; };
 		E4B971BE26C3A80A003DFACA /* TimerStopButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStopButton.swift; sourceTree = "<group>"; };
+		E4BA154626DE43AB00E73B1A /* TimeToCookSnapshotTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeToCookSnapshotTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4BA154826DE43AC00E73B1A /* TimeToCookSnapshotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeToCookSnapshotTest.swift; sourceTree = "<group>"; };
+		E4BA154A26DE43AC00E73B1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4BFBCE626CFA350007A6CF6 /* ProductStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductStub.swift; sourceTree = "<group>"; };
 		E4C1A11326C14979008C1D17 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		E4C783A726C3E80E00C95626 /* RecentProductLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentProductLabel.swift; sourceTree = "<group>"; };
@@ -326,6 +342,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E4BA154326DE43AB00E73B1A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4BA155226DE443200E73B1A /* SnapshotTesting in Frameworks */,
+				A9C72F23750B51104A7FE3D6 /* Pods_TimeToCookSnapshotTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -334,6 +359,7 @@
 			children = (
 				B6F0E980080CE5202A460A30 /* Pods_TimeToCook.framework */,
 				3E164AEEAAEA273934D2CA3D /* Pods_TimeToCookTests.framework */,
+				4E33CA7C2C06F101BA495DF9 /* Pods_TimeToCookSnapshotTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -345,6 +371,8 @@
 				B2994C0D2BE04616AC33466F /* Pods-TimeToCook.release.xcconfig */,
 				1C9FB8E93906E7CE47F4B6C6 /* Pods-TimeToCookTests.debug.xcconfig */,
 				A8D3FD782664781008386729 /* Pods-TimeToCookTests.release.xcconfig */,
+				326C10327C571A82B423EFB5 /* Pods-TimeToCookSnapshotTest.debug.xcconfig */,
+				0864A0D0EC62B5B7824EC2C5 /* Pods-TimeToCookSnapshotTest.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -619,6 +647,7 @@
 				E44BBF6A26A6FEB4003D403C /* TimeToCook */,
 				E474E17726CBE7C400ED18F9 /* TimeToCookTests */,
 				E4B12DD726DD02A500C27056 /* TimeToCookUITests */,
+				E4BA154726DE43AC00E73B1A /* TimeToCookSnapshotTest */,
 				E44BBF6926A6FEB4003D403C /* Products */,
 				9EC58EA1B2C6568C40217FAE /* Pods */,
 				7EF10C2A690AF61983A49C92 /* Frameworks */,
@@ -631,6 +660,7 @@
 				E44BBF6826A6FEB4003D403C /* TimeToCook.app */,
 				E474E17626CBE7C400ED18F9 /* TimeToCookTests.xctest */,
 				E4B12DD626DD02A500C27056 /* TimeToCookUITests.xctest */,
+				E4BA154626DE43AB00E73B1A /* TimeToCookSnapshotTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -736,6 +766,15 @@
 				E4B12DDA26DD02A500C27056 /* Info.plist */,
 			);
 			path = TimeToCookUITests;
+			sourceTree = "<group>";
+		};
+		E4BA154726DE43AC00E73B1A /* TimeToCookSnapshotTest */ = {
+			isa = PBXGroup;
+			children = (
+				E4BA154826DE43AC00E73B1A /* TimeToCookSnapshotTest.swift */,
+				E4BA154A26DE43AC00E73B1A /* Info.plist */,
+			);
+			path = TimeToCookSnapshotTest;
 			sourceTree = "<group>";
 		};
 		E4C1A11226C12EF2008C1D17 /* SubViews */ = {
@@ -851,6 +890,29 @@
 			productReference = E4B12DD626DD02A500C27056 /* TimeToCookUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		E4BA154526DE43AB00E73B1A /* TimeToCookSnapshotTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E4BA154F26DE43AC00E73B1A /* Build configuration list for PBXNativeTarget "TimeToCookSnapshotTest" */;
+			buildPhases = (
+				6748C2E3E9BAFAEBF796C82C /* [CP] Check Pods Manifest.lock */,
+				E4BA154226DE43AB00E73B1A /* Sources */,
+				E4BA154326DE43AB00E73B1A /* Frameworks */,
+				E4BA154426DE43AB00E73B1A /* Resources */,
+				32254172BF4FA4E99771A690 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E4BA154C26DE43AC00E73B1A /* PBXTargetDependency */,
+			);
+			name = TimeToCookSnapshotTest;
+			packageProductDependencies = (
+				E4BA155126DE443200E73B1A /* SnapshotTesting */,
+			);
+			productName = TimeToCookSnapshotTest;
+			productReference = E4BA154626DE43AB00E73B1A /* TimeToCookSnapshotTest.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -870,6 +932,10 @@
 						CreatedOnToolsVersion = 12.5;
 						TestTargetID = E44BBF6726A6FEB4003D403C;
 					};
+					E4BA154526DE43AB00E73B1A = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = E44BBF6726A6FEB4003D403C;
+					};
 				};
 			};
 			buildConfigurationList = E44BBF6326A6FEB4003D403C /* Build configuration list for PBXProject "TimeToCook" */;
@@ -881,6 +947,9 @@
 				Base,
 			);
 			mainGroup = E44BBF5F26A6FEB4003D403C;
+			packageReferences = (
+				E4BA155026DE443200E73B1A /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+			);
 			productRefGroup = E44BBF6926A6FEB4003D403C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -888,6 +957,7 @@
 				E44BBF6726A6FEB4003D403C /* TimeToCook */,
 				E474E17526CBE7C400ED18F9 /* TimeToCookTests */,
 				E4B12DD526DD02A500C27056 /* TimeToCookUITests */,
+				E4BA154526DE43AB00E73B1A /* TimeToCookSnapshotTest */,
 			);
 		};
 /* End PBXProject section */
@@ -921,9 +991,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E4BA154426DE43AB00E73B1A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		32254172BF4FA4E99771A690 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TimeToCookSnapshotTest/Pods-TimeToCookSnapshotTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TimeToCookSnapshotTest/Pods-TimeToCookSnapshotTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TimeToCookSnapshotTest/Pods-TimeToCookSnapshotTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		35AB4D14A945CCDFE0BB4CFE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -940,6 +1034,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-TimeToCookTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6748C2E3E9BAFAEBF796C82C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TimeToCookSnapshotTest-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1194,6 +1310,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E4BA154226DE43AB00E73B1A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4BA154926DE43AC00E73B1A /* TimeToCookSnapshotTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1206,6 +1330,11 @@
 			isa = PBXTargetDependency;
 			target = E44BBF6726A6FEB4003D403C /* TimeToCook */;
 			targetProxy = E4B12DDB26DD02A500C27056 /* PBXContainerItemProxy */;
+		};
+		E4BA154C26DE43AC00E73B1A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E44BBF6726A6FEB4003D403C /* TimeToCook */;
+			targetProxy = E4BA154B26DE43AC00E73B1A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1481,6 +1610,48 @@
 			};
 			name = Release;
 		};
+		E4BA154D26DE43AC00E73B1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 326C10327C571A82B423EFB5 /* Pods-TimeToCookSnapshotTest.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 58287L88KM;
+				INFOPLIST_FILE = TimeToCookSnapshotTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "kiko-ssss.TimeToCookSnapshotTest";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TimeToCook;
+			};
+			name = Debug;
+		};
+		E4BA154E26DE43AC00E73B1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0864A0D0EC62B5B7824EC2C5 /* Pods-TimeToCookSnapshotTest.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 58287L88KM;
+				INFOPLIST_FILE = TimeToCookSnapshotTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "kiko-ssss.TimeToCookSnapshotTest";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TimeToCook;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1520,7 +1691,35 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		E4BA154F26DE43AC00E73B1A /* Build configuration list for PBXNativeTarget "TimeToCookSnapshotTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4BA154D26DE43AC00E73B1A /* Debug */,
+				E4BA154E26DE43AC00E73B1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E4BA155026DE443200E73B1A /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E4BA155126DE443200E73B1A /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E4BA155026DE443200E73B1A /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E44BBF7426A6FEB4003D403C /* TimeToCook.xcdatamodeld */ = {
