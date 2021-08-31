@@ -32,10 +32,12 @@ class TimeToCookUITests: XCTestCase {
     func testThatStartButtonIsDisabledWhilePickerViewValueIsZero() {
         // Arrange
         let tabBarPage = TabBarPage(app: app)
+
         // Act
         let timerPage = tabBarPage
             .tapRecentButton()
             .tapTimerButton()
+
         // Assert
         XCTAssertFalse(timerPage.startButton.isEnabled)
     }
@@ -43,6 +45,7 @@ class TimeToCookUITests: XCTestCase {
     func testThatStartButtonIsEnabledWhilePickerViewValueIsNotZero() {
         // Arrange
         let tabBarPage = TabBarPage(app: app)
+
         // Act
         let timerPage = tabBarPage
             .tapRecentButton()
@@ -50,6 +53,7 @@ class TimeToCookUITests: XCTestCase {
             .changeMinutes()
             .tapStartButton()
             .tapStopButton()
+
         // Assert
         XCTAssertTrue(timerPage.startButton.isEnabled)
     }
