@@ -14,21 +14,21 @@ protocol RecentProductCollectionViewCellViewModelProtocol: AnyObject {
     var productCookingTime: String? { get }
     var productBarcode: String { get }
     var productWeight: String { get }
-    init(product: ProductCD)
+    init(product: Product)
 }
 
 final class RecentProductCollectionViewCellViewModel: RecentProductCollectionViewCellViewModelProtocol {
     
     // MARK: - Properties
     
-    private let product: ProductCD
+    private let product: Product
     
     var productWeight: String {
-        "\(product.weight) грамм"
+        "\(product.weight ?? 200) грамм"
     }
     
     var productBarcode: String {
-        product.code ?? ""
+        product.code 
     }
     
     var productTitle: String? {
@@ -40,7 +40,7 @@ final class RecentProductCollectionViewCellViewModel: RecentProductCollectionVie
     }
     
     var productImage: String {
-        "\(product.category ?? "").png"
+        "\(product.category).png"
     }
     
     var productCookingTime: String? {
@@ -49,7 +49,7 @@ final class RecentProductCollectionViewCellViewModel: RecentProductCollectionVie
     
     // MARK: - Initializer
     
-    init(product: ProductCD) {
+    init(product: Product) {
         self.product = product
     }
 }

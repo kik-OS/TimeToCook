@@ -77,6 +77,19 @@ struct Product: ProductProtocol {
         self.ref = snapshot.ref
     }
 
+    init(width productDTO: ProductDTO) {
+        self.code = productDTO.code 
+        self.title = productDTO.title ?? ""
+        self.producer = productDTO.producer ?? ""
+        self.category = productDTO.category ?? ""
+        self.weight = productDTO.weight
+        self.cookingTime = productDTO.cookingTime
+        self.intoBoilingWater = productDTO.intoBoilingWater
+        self.needStirring = productDTO.needsStirring
+        self.waterRatio = productDTO.waterRatio
+        self.ref = nil
+    }
+
     // MARK: - Public methods
     
     func convertToDictionary() -> Any {

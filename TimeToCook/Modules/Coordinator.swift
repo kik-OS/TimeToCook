@@ -27,7 +27,7 @@ class Coordinator {
     init(window: UIWindow) {
         self.window = window
         firebaseService = FirebaseService()
-        storageService = StorageService()
+        storageService = StorageService(coreDataStack: CoreDataStack.shared)
         timerService = TimerService()
         deviceService = DeviceService()
         notificationService = NotificationService()
@@ -53,7 +53,7 @@ class Coordinator {
 
     func sceneDidEnterBackground() {
         timerService.saveTime()
-        storageService.saveContext()
+//        storageService
     }
 
 }

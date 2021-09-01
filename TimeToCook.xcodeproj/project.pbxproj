@@ -12,6 +12,14 @@
 		46F38C47D263775B008B3C70 /* Pods_TimeToCook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6F0E980080CE5202A460A30 /* Pods_TimeToCook.framework */; };
 		A9C72F23750B51104A7FE3D6 /* Pods_TimeToCookSnapshotTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E33CA7C2C06F101BA495DF9 /* Pods_TimeToCookSnapshotTest.framework */; };
 		E40F5EB526DBD00C0000C9CD /* AddingNewProductViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40F5EB426DBD00C0000C9CD /* AddingNewProductViewModelTest.swift */; };
+		E419B74626DF9002004315C3 /* MOProduct+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419B74526DF9002004315C3 /* MOProduct+CoreDataClass.swift */; };
+		E419B74726DF9002004315C3 /* MOProduct+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419B74526DF9002004315C3 /* MOProduct+CoreDataClass.swift */; };
+		E419B74826DF9002004315C3 /* MOProduct+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419B74526DF9002004315C3 /* MOProduct+CoreDataClass.swift */; };
+		E419B74926DF9002004315C3 /* MOProduct+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419B74526DF9002004315C3 /* MOProduct+CoreDataClass.swift */; };
+		E419B74B26DF900D004315C3 /* MOProduct+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419B74A26DF900D004315C3 /* MOProduct+CoreDataProperties.swift */; };
+		E419B74C26DF900D004315C3 /* MOProduct+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419B74A26DF900D004315C3 /* MOProduct+CoreDataProperties.swift */; };
+		E419B74D26DF900D004315C3 /* MOProduct+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419B74A26DF900D004315C3 /* MOProduct+CoreDataProperties.swift */; };
+		E419B74E26DF900D004315C3 /* MOProduct+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419B74A26DF900D004315C3 /* MOProduct+CoreDataProperties.swift */; };
 		E41C3C3226A701C8006F1AE9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E41C3C3126A701C8006F1AE9 /* GoogleService-Info.plist */; };
 		E41C3C8226A702DA006F1AE9 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3426A702D6006F1AE9 /* Category.swift */; };
 		E41C3C8326A702DA006F1AE9 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3526A702D6006F1AE9 /* Product.swift */; };
@@ -198,6 +206,9 @@
 		E4BA158026DE4D5600E73B1A /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3926A702D6006F1AE9 /* Int+Extension.swift */; };
 		E4BA158126DE4D5A00E73B1A /* TimerBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B971BC26C3A4C4003DFACA /* TimerBackgroundView.swift */; };
 		E4BA158226DE4D5F00E73B1A /* TimerStartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C5B26A702DA006F1AE9 /* TimerStartButton.swift */; };
+		E4BA159226DEC2B600E73B1A /* ProductDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA159126DEC2B600E73B1A /* ProductDTO.swift */; };
+		E4BA159326DEC2B600E73B1A /* ProductDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA159126DEC2B600E73B1A /* ProductDTO.swift */; };
+		E4BA159426DEC2B600E73B1A /* ProductDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA159126DEC2B600E73B1A /* ProductDTO.swift */; };
 		E4BFBCDB26CE573C007A6CF6 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3526A702D6006F1AE9 /* Product.swift */; };
 		E4BFBCDC26CE5762007A6CF6 /* ProductInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F14A3526B556C1008312DA /* ProductInfoViewModel.swift */; };
 		E4BFBCDD26CE576F007A6CF6 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C5C26A702DA006F1AE9 /* TimerViewModel.swift */; };
@@ -256,6 +267,8 @@
 		B2994C0D2BE04616AC33466F /* Pods-TimeToCook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeToCook.release.xcconfig"; path = "Target Support Files/Pods-TimeToCook/Pods-TimeToCook.release.xcconfig"; sourceTree = "<group>"; };
 		B6F0E980080CE5202A460A30 /* Pods_TimeToCook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimeToCook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E40F5EB426DBD00C0000C9CD /* AddingNewProductViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingNewProductViewModelTest.swift; sourceTree = "<group>"; };
+		E419B74526DF9002004315C3 /* MOProduct+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MOProduct+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E419B74A26DF900D004315C3 /* MOProduct+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MOProduct+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E41C3C3126A701C8006F1AE9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E41C3C3426A702D6006F1AE9 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		E41C3C3526A702D6006F1AE9 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -351,6 +364,7 @@
 		E4BA154626DE43AB00E73B1A /* TimeToCookSnapshotTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeToCookSnapshotTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4BA154826DE43AC00E73B1A /* TimeToCookSnapshotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeToCookSnapshotTest.swift; sourceTree = "<group>"; };
 		E4BA154A26DE43AC00E73B1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4BA159126DEC2B600E73B1A /* ProductDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDTO.swift; sourceTree = "<group>"; };
 		E4BFBCE626CFA350007A6CF6 /* ProductStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductStub.swift; sourceTree = "<group>"; };
 		E4C1A11326C14979008C1D17 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		E4C783A726C3E80E00C95626 /* RecentProductLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentProductLabel.swift; sourceTree = "<group>"; };
@@ -636,7 +650,11 @@
 		E41C3C7926A702DA006F1AE9 /* StorageService */ = {
 			isa = PBXGroup;
 			children = (
+				E44BBF7426A6FEB4003D403C /* TimeToCook.xcdatamodeld */,
+				E419B74A26DF900D004315C3 /* MOProduct+CoreDataProperties.swift */,
+				E419B74526DF9002004315C3 /* MOProduct+CoreDataClass.swift */,
 				E41C3C7A26A702DA006F1AE9 /* StorageService.swift */,
+				E4BA159126DEC2B600E73B1A /* ProductDTO.swift */,
 			);
 			path = StorageService;
 			sourceTree = "<group>";
@@ -672,7 +690,6 @@
 				E44BBF6B26A6FEB4003D403C /* AppDelegate.swift */,
 				E44BBF6D26A6FEB4003D403C /* SceneDelegate.swift */,
 				E44BBF7C26A6FEB7003D403C /* Info.plist */,
-				E44BBF7426A6FEB4003D403C /* TimeToCook.xcdatamodeld */,
 				E41C3C3126A701C8006F1AE9 /* GoogleService-Info.plist */,
 			);
 			path = "Supporting Files";
@@ -1209,6 +1226,7 @@
 				E4B971BD26C3A4C4003DFACA /* TimerBackgroundView.swift in Sources */,
 				E4570FC526B3F02E0013F7C9 /* StillEmptyLabels.swift in Sources */,
 				E41C3C8226A702DA006F1AE9 /* Category.swift in Sources */,
+				E4BA159226DEC2B600E73B1A /* ProductDTO.swift in Sources */,
 				E49CB14826BAE52D00B99038 /* ProductNameView.swift in Sources */,
 				E49CB14426BADC9300B99038 /* UIFont+Extension.swift in Sources */,
 				E41C3CB226A702DB006F1AE9 /* FirebaseServiceError.swift in Sources */,
@@ -1254,9 +1272,11 @@
 				E41C3C8726A702DA006F1AE9 /* UIView+Extension.swift in Sources */,
 				E44E9E1726C110A200E7082B /* DownButtonForKB.swift in Sources */,
 				E41C3C8826A702DA006F1AE9 /* DateFormatter+Extension.swift in Sources */,
+				E419B74B26DF900D004315C3 /* MOProduct+CoreDataProperties.swift in Sources */,
 				E41C3C8326A702DA006F1AE9 /* Product.swift in Sources */,
 				E41C3CA926A702DB006F1AE9 /* RecentProductViewModel.swift in Sources */,
 				E44E9E0626BE817400E7082B /* AddingNewProductViewModel.swift in Sources */,
+				E419B74626DF9002004315C3 /* MOProduct+CoreDataClass.swift in Sources */,
 				E4EB3E7126BC3DB800DA752C /* InstructionCollectionView.swift in Sources */,
 				E44E9E0426BE815E00E7082B /* AddingNewProductViewController.swift in Sources */,
 				E41C3CB426A702DB006F1AE9 /* DeviceService.swift in Sources */,
@@ -1283,6 +1303,7 @@
 				E4554BD626D0D45B00819A09 /* FirebaseServiceError.swift in Sources */,
 				E4554BB126D0D16000819A09 /* SmallLabelCell.swift in Sources */,
 				E4B12DE126DE126700C27056 /* DeviceServiceDummy.swift in Sources */,
+				E419B74C26DF900D004315C3 /* MOProduct+CoreDataProperties.swift in Sources */,
 				E4CEEC6126D3CC1100E5AE67 /* UICollectionView+Extension.swift in Sources */,
 				E4BFBCDF26CE578F007A6CF6 /* Inscriptions.swift in Sources */,
 				E4554BB926D0D2AE00819A09 /* PlateImageView.swift in Sources */,
@@ -1294,6 +1315,7 @@
 				E4B12DCF26DCD50000C27056 /* RecentProductCollectionViewViewModelTest.swift in Sources */,
 				E4BFBCE726CFA350007A6CF6 /* ProductStub.swift in Sources */,
 				E4BFBCDE26CE5780007A6CF6 /* NotificationService.swift in Sources */,
+				E419B74726DF9002004315C3 /* MOProduct+CoreDataClass.swift in Sources */,
 				E4554BBA26D0D2BF00819A09 /* ProductNameView.swift in Sources */,
 				E4554BA526D0D09600819A09 /* RecentProductViewModel.swift in Sources */,
 				E4554BC926D0D36700819A09 /* TimerStartButton.swift in Sources */,
@@ -1347,6 +1369,7 @@
 				E4554BAA26D0D0ED00819A09 /* Constants.swift in Sources */,
 				E4554BD126D0D3F600819A09 /* DateFormatter+Extension.swift in Sources */,
 				E4554BBD26D0D2DF00819A09 /* InstructionCollectionViewCell.swift in Sources */,
+				E4BA159326DEC2B600E73B1A /* ProductDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1355,6 +1378,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4B12DD926DD02A500C27056 /* TimeToCookUITests.swift in Sources */,
+				E419B74826DF9002004315C3 /* MOProduct+CoreDataClass.swift in Sources */,
+				E419B74D26DF900D004315C3 /* MOProduct+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1374,6 +1399,7 @@
 				E4BA156F26DE4C8800E73B1A /* TimeToCook.xcdatamodeld in Sources */,
 				E4BA157B26DE4D2900E73B1A /* TimerPickerView.swift in Sources */,
 				E4BA155C26DE4B6A00E73B1A /* StillEmptyView.swift in Sources */,
+				E419B74926DF9002004315C3 /* MOProduct+CoreDataClass.swift in Sources */,
 				E4BA155D26DE4B7400E73B1A /* ViewWithContent.swift in Sources */,
 				E4BA156126DE4BAE00E73B1A /* PlateImageView.swift in Sources */,
 				E4BA155A26DE4B5100E73B1A /* ImageTitles.swift in Sources */,
@@ -1381,6 +1407,8 @@
 				E4BA157826DE4D0000E73B1A /* TimerViewController.swift in Sources */,
 				E4BA157126DE4CA200E73B1A /* RecentProductCollectionViewCell.swift in Sources */,
 				E4BA157426DE4CC800E73B1A /* SmallLabelCell.swift in Sources */,
+				E4BA159426DEC2B600E73B1A /* ProductDTO.swift in Sources */,
+				E419B74E26DF900D004315C3 /* MOProduct+CoreDataProperties.swift in Sources */,
 				E4BA156926DE4C2D00E73B1A /* UIFont+Extension.swift in Sources */,
 				E4BA155426DE4B0300E73B1A /* ProductInfoViewModel.swift in Sources */,
 				E4BA158226DE4D5F00E73B1A /* TimerStartButton.swift in Sources */,
