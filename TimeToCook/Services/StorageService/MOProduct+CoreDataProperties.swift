@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension MOProduct {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<MOProduct> {
@@ -26,5 +25,5 @@ extension MOProduct {
     @NSManaged public var title: String?
     @NSManaged public var waterRatio: Double
     @NSManaged public var weight: Int64
-
+    
 }

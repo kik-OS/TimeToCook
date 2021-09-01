@@ -62,7 +62,6 @@ final class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     private func loadTabBar() {
         let tabBar = viewModel.createCustomTabBar()
         self.setValue(tabBar, forKey: "tabBar")
-
     }
     
     private func setupNavigationBar() {

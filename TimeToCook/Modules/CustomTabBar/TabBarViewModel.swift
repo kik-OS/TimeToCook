@@ -62,7 +62,6 @@ final class TabBarViewModel: TabBarViewModelProtocol {
         self.timerService = timerService
         self.timerService.barDelegate = self
         createTemporaryProductForDemonstration()
-        downloadFromCD()
     }
     
     // MARK: - Public methods
@@ -109,42 +108,31 @@ final class TabBarViewModel: TabBarViewModelProtocol {
     // MARK: - Private methods
     
     private func createProductInCoreData(product: ProductProtocol) {
-        storageService.update(product: [ProductDTO(with: product)])
-        //        storageService.saveProductCD(product: product)
+        storageService.update(product: [ProductDTO(width: product)])
     }
-
 
     /// Метод для демонстрации работы приложения, его здесь быть не должно
     func createTemporaryProductForDemonstration() {
 
-        let products: [ProductDTO] = [ProductDTO(with: Product(code: "21121909098", title: "Макароны",
+        let products: [ProductDTO] = [ProductDTO(width: Product(code: "21121909098", title: "Макароны",
                                                                producer: "Макфа", category: "Макароны",
                                                                weight: 20, cookingTime: 10,
                                                                intoBoilingWater: true,
                                                                needStirring: true, waterRatio: 3)),
-                                      ProductDTO(with: Product(code: "3332156464", title: "Вареники с вишней",
+                                      ProductDTO(width: Product(code: "3332156464", title: "Вареники с вишней",
                                                                producer: "ВкусВилл", category: "Вареники",
                                                                weight: 1000, cookingTime: 7,
                                                                intoBoilingWater: true,
                                                                needStirring: true, waterRatio: 5)),
-                                      ProductDTO(with: Product(code: "21121453543", title: "Гречка Русская",
+                                      ProductDTO(width: Product(code: "21121453543", title: "Гречка Русская",
                                                                producer: "Макфа", category: "Гречка",
                                                                weight: 500, cookingTime: 20,
                                                                intoBoilingWater: true,
                                                                needStirring: true, waterRatio: 3))]
 
         storageService.update(product: products)
-        
-
-    }
-
-    func downloadFromCD() {
-        let products = storageService.allProduct()
-        print(products)
     }
 }
-
-
 
 extension TabBarViewModel: TimerServiceBarDelegate {
     

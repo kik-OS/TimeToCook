@@ -15,6 +15,7 @@ class Coordinator {
     private var timerService: TimerServiceProtocol
     private var deviceService: DeviceServiceProtocol
     private var notificationService: NotificationService
+    private var coreDataStack: CoreDataStackProtocol
 
     private var customTabBarViewModel: TabBarViewModelProtocol {
         TabBarViewModel(notificationService: notificationService,
@@ -26,11 +27,12 @@ class Coordinator {
 
     init(window: UIWindow) {
         self.window = window
-        firebaseService = FirebaseService()
-        storageService = StorageService(coreDataStack: CoreDataStack.shared)
         timerService = TimerService()
         deviceService = DeviceService()
+        firebaseService = FirebaseService()
+        coreDataStack = CoreDataStack.shared
         notificationService = NotificationService()
+        storageService = StorageService(coreDataStack: coreDataStack)
 
         notificationService.notificationCenter.delegate = notificationService
         notificationService.requestAuthorization()
@@ -53,7 +55,6 @@ class Coordinator {
 
     func sceneDidEnterBackground() {
         timerService.saveTime()
-//        storageService
     }
 
 }

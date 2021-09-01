@@ -8,23 +8,23 @@
 import Foundation
 
 final class StorageServiceDummy: StorageServiceProtocol {
+    init(coreDataStack: CoreDataStackProtocol) {
 
-    func createTemporaryProductForDemonstration() {
     }
 
-    func fetchData() -> [ProductCD] {
-        [ProductCD()]
-    }
-    func saveProductCD(product: ProductProtocol) {
+    func update(product: [ProductDTO]) {
+
     }
 
-    func convertFromProductCDToProduct(productCD: ProductCD) -> ProductProtocol? {
-        ProductStub()
+    func delete(product: [ProductDTO]?) {
+
     }
 
-    func deleteProductCD(_ productCD: ProductCD) {
+    func deleteAll() {
+
     }
 
-    func saveContext() {
+    func fetchProducts() -> [ProductDTO] {
+        [ProductDTO]()
     }
 }

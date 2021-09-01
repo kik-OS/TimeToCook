@@ -14,14 +14,14 @@ protocol RecentProductCollectionViewCellViewModelProtocol: AnyObject {
     var productCookingTime: String? { get }
     var productBarcode: String { get }
     var productWeight: String { get }
-    init(product: Product)
+    init(product: ProductProtocol)
 }
 
 final class RecentProductCollectionViewCellViewModel: RecentProductCollectionViewCellViewModelProtocol {
     
     // MARK: - Properties
     
-    private let product: Product
+    private let product: ProductProtocol
     
     var productWeight: String {
         "\(product.weight ?? 200) грамм"
@@ -49,7 +49,7 @@ final class RecentProductCollectionViewCellViewModel: RecentProductCollectionVie
     
     // MARK: - Initializer
     
-    init(product: Product) {
+    init(product: ProductProtocol) {
         self.product = product
     }
 }
