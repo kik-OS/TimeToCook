@@ -8,12 +8,9 @@
 import Foundation
 import CoreData
 
-final class CoreDataStackStub: CoreDataStackProtocol {
-    var moduleName = ""
+final class CoreDataStackDummy: CoreDataStackProtocol {
 
-    var entityName = ""
-
+    func getEntity() -> String { "" }
     var mainContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-
     var backgroundContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
 }

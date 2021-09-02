@@ -18,7 +18,7 @@ class RecentProductCollectionViewViewModelTest: XCTestCase {
 
     override func setUpWithError() throws {
         try super.setUpWithError()
-        coreDataStack = CoreDataStackStub() 
+        coreDataStack = CoreDataStackDummy()
         storageService = StorageServiceDummy(coreDataStack: coreDataStack!)
         sut = RecentProductCollectionViewViewModel(storageService: storageService!)
     }

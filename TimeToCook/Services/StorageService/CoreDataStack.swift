@@ -11,10 +11,9 @@ import CoreData
 // MARK: Protocol
 
 protocol CoreDataStackProtocol {
-    var moduleName: String { get }
-    var entityName: String { get }
     var mainContext: NSManagedObjectContext { get }
     var backgroundContext: NSManagedObjectContext { get }
+    func getEntity() -> String
     func saveContext()
 }
 
@@ -46,6 +45,8 @@ class CoreDataStack: CoreDataStackProtocol {
     // MARK: Private Properties
 
     private var coordinator: NSPersistentStoreCoordinator
+    private let moduleName = "TimeToCook"
+    private let entityName = "MOProduct"
 
     // MARK: Properties
 
@@ -53,8 +54,6 @@ class CoreDataStack: CoreDataStackProtocol {
     let mainContext: NSManagedObjectContext
     /// Используется для записи
     let backgroundContext: NSManagedObjectContext
-    let moduleName = "TimeToCook"
-    let entityName = "MOProduct"
 
     // MARK: Computed Properties
 
@@ -96,6 +95,8 @@ class CoreDataStack: CoreDataStackProtocol {
                                                name: Notification.Name.NSManagedObjectContextDidSave,
                                                object: self.backgroundContext)
     }
+
+    func getEntity() -> String { entityName }
 }
 
 // MARK: Extension

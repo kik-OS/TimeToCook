@@ -66,7 +66,7 @@ extension StorageService: StorageServiceProtocol {
 
     func deleteAll() {
         let context = stack.backgroundContext
-        let fetchRequest = NSFetchRequest<MOProduct>(entityName: stack.entityName)
+        let fetchRequest = NSFetchRequest<MOProduct>(entityName: stack.getEntity())
         context.performAndWait {
             let product = try? fetchRequest.execute()
             product?.forEach {
@@ -79,7 +79,7 @@ extension StorageService: StorageServiceProtocol {
     func fetchProducts() -> [ProductDTO] {
         let context = stack.mainContext
         var result = [ProductDTO]()
-        let request = NSFetchRequest<MOProduct>(entityName: stack.entityName)
+        let request = NSFetchRequest<MOProduct>(entityName: stack.getEntity())
         context.performAndWait {
             guard let product = try? request.execute() else { return }
             result = product.map { ProductDTO(with: $0) }
@@ -90,7 +90,7 @@ extension StorageService: StorageServiceProtocol {
 
 private extension StorageService {
     func fetchRequest(for dto: ProductDTO) -> NSFetchRequest<MOProduct> {
-        let request = NSFetchRequest<MOProduct>(entityName: stack.entityName)
+        let request = NSFetchRequest<MOProduct>(entityName: stack.getEntity())
         request.predicate = .init(format: "code == %@", dto.code)
         return request
     }

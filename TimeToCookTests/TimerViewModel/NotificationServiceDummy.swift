@@ -9,23 +9,9 @@ import Foundation
 
 final class NotificationServiceDummy: NotificationServiceProtocol {
     
-    func checkNotificationSettings(completion: @escaping () -> Void) {
-
-    }
-
-    func cleanBadgesAtStarting() {
-
-    }
-
-    func showTimerNotification(throughMinutes: Double) {
-
-    }
-
-    func showProductWasAddedNotification() {
-
-    }
-
-    func cancelTimerNotification() {
-
-    }
+    func checkNotificationSettings(completion: @escaping () -> Void) { }
+    func cleanBadgesAtStarting() { }
+    func showTimerNotification(throughMinutes: Double) { }
+    func showProductWasAddedNotification() { }
+    func cancelTimerNotification() { }
 }
