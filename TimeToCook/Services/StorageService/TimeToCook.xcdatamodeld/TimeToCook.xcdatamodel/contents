@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="ProductCD" representedClassName="ProductCD" syncable="YES" codeGenerationType="class">
+    <entity name="MOProduct" representedClassName="MOProduct" syncable="YES">
         <attribute name="category" attributeType="String"/>
         <attribute name="code" attributeType="String"/>
         <attribute name="cookingTime" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
@@ -10,9 +10,9 @@
         <attribute name="producer" attributeType="String"/>
         <attribute name="title" attributeType="String"/>
         <attribute name="waterRatio" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="weight" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="weight" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="ProductCD" positionX="-63" positionY="-18" width="128" height="179"/>
+        <element name="MOProduct" positionX="-63" positionY="54" width="128" height="179"/>
     </elements>
 </model>

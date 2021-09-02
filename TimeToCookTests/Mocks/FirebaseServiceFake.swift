@@ -7,12 +7,12 @@
 
 import Foundation
 
-class FirebaseServiceMock {
+class FirebaseServiceFake {
 
     var storage: [ProductProtocol] = Array(repeating: ProductStub(), count: 5)
 }
 
-extension FirebaseServiceMock: FirebaseServiceProtocol {
+extension FirebaseServiceFake: FirebaseServiceProtocol {
 
     func saveProduct(_ product: ProductProtocol) {
         storage.append(product)

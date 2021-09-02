@@ -5,129 +5,107 @@
 //  Created by Никита Гвоздиков on 12.07.2021.
 //
 
+import Foundation
 import CoreData
 
+// MARK: Protocol
+
 protocol StorageServiceProtocol {
-    func fetchData() -> [ProductCD]
-    func saveProductCD(product: ProductProtocol)
-    func convertFromProductCDToProduct(productCD: ProductCD) -> ProductProtocol?
-    func deleteProductCD(_ productCD: ProductCD)
-    func saveContext()
-    func createTemporaryProductForDemonstration()
+    init(coreDataStack: CoreDataStackProtocol)
+
+    /// Обновить данные продукта или создать новый если не существует
+    func update(product: [ProductDTO])
+
+    /// Удалить конкретные продукты
+    func delete(product: [ProductDTO]?)
+
+    /// Удалить все продукты
+    func deleteAll()
+
+    /// Получить все продукты
+    func fetchProducts() -> [ProductDTO]
 }
 
-final class StorageService: StorageServiceProtocol {
+final class StorageService {
 
-    // MARK: - Core Data stack
-    
-    private let persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "TimeToCook")
-        container.loadPersistentStores(completionHandler: { _, error in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+    private let stack: CoreDataStackProtocol
+
+    init(coreDataStack: CoreDataStackProtocol) {
+        stack = coreDataStack
+    }
+}
+
+extension StorageService: StorageServiceProtocol {
+
+    func update(product: [ProductDTO]) {
+        let context = stack.backgroundContext
+        context.performAndWait {
+            product.forEach {
+                if let productCD = try? self.fetchRequest(for: $0).execute().first {
+                    productCD.update(with: $0)
+                } else {
+                    let productCD = MOProduct(context: context)
+                    productCD.update(with: $0)
+                }
             }
-        })
-        return container
-    }()
-    
-    private var viewContext: NSManagedObjectContext {
-        persistentContainer.viewContext
+            stack.saveContext()
+        }
     }
 
-    // MARK: - Public methods
-    
-    func fetchData() -> [ProductCD] {
-        let fetchRequest: NSFetchRequest<ProductCD> = ProductCD.fetchRequest()
-        
-        do {
-            return try viewContext.fetch(fetchRequest)
-        } catch let error {
-            print("Failed to fetch data", error)
-            return []
-        }
-    }
-    
-    func saveProductCD(product: ProductProtocol) {
-        fetchData().forEach { if $0.code == product.code { deleteProductCD($0) } }
-        let productCD = ProductCD(context: viewContext)
-        productCD.code = product.code
-        productCD.title = product.title
-        productCD.producer = product.producer
-        productCD.category = product.category
-        productCD.cookingTime = Int64(product.cookingTime)
-        productCD.waterRatio = product.waterRatio
-        productCD.date = Date()
-        if let productWeight = product.weight,
-           let productNeedStirring = product.needStirring,
-           let productIntoBoilingWater = product.intoBoilingWater {
-            productCD.weight = Int64(productWeight)
-            productCD.needsStirring = productNeedStirring
-            productCD.intoBoilingWater = productIntoBoilingWater
-        }
-        saveContext()
-    }
-    
-    func convertFromProductCDToProduct(productCD: ProductCD) -> ProductProtocol? {
-        guard let code = productCD.code,
-              let title = productCD.title,
-              let producer = productCD.producer,
-              let category = productCD.category else { return nil }
-        return Product(code: code, title: title, producer: producer,
-                       category: category, weight: Int(productCD.weight),
-                       cookingTime: Int(productCD.cookingTime),
-                       intoBoilingWater: true, needStirring: productCD.needsStirring,
-                       waterRatio: productCD.waterRatio)
-    }
-    
-    func deleteProductCD(_ productCD: ProductCD) {
-        viewContext.delete(productCD)
-        saveContext()
-    }
-    
-    // MARK: - Core Data Saving support
-    
-    func saveContext() {
-        if viewContext.hasChanges {
-            do {
-                try viewContext.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+    func delete(product: [ProductDTO]?) {
+        let context = stack.backgroundContext
+        context.performAndWait {
+            product?.forEach {
+                if let product = try? self.fetchRequest(for: $0).execute().first {
+                    context.delete(product)
+                }
             }
+            stack.saveContext()
         }
     }
 
-    /// Метод для демонстрации работы приложения, его здесь быть не должно
-    func createTemporaryProductForDemonstration() {
-        saveProductCD(product: Product(code: "21121909098", title: "Макароны",
-                                                             producer: "Макфа", category: "Макароны",
-                                                             weight: 20, cookingTime: 10,
-                                                             intoBoilingWater: true,
-                                                             needStirring: true, waterRatio: 3))
-        saveProductCD(product: Product(code: "3332156464", title: "Вареники с вишней",
-                                                             producer: "ВкусВилл", category: "Вареники",
-                                                             weight: 1000, cookingTime: 7,
-                                                             intoBoilingWater: true,
-                                                             needStirring: true, waterRatio: 5))
-        saveProductCD(product: Product(code: "21121453543", title: "Гречка Русская",
-                                                             producer: "Макфа", category: "Гречка",
-                                                             weight: 500, cookingTime: 20,
-                                                             intoBoilingWater: true,
-                                                             needStirring: true, waterRatio: 3))
-        saveProductCD(product: Product(code: "333219090", title: "Нут",
-                                                             producer: "Макфа", category: "Бобовые",
-                                                             weight: 200, cookingTime: 40,
-                                                             intoBoilingWater: true,
-                                                             needStirring: true, waterRatio: 3))
-        saveProductCD(product: Product(code: "938040340", title: "Пельмени-Экстра",
-                                                             producer: "Мираторг", category: "Пельмени",
-                                                             weight: 1000, cookingTime: 8,
-                                                             intoBoilingWater: true,
-                                                             needStirring: true, waterRatio: 3))
-        saveProductCD(product: Product(code: "943560000", title: "Пшено",
-                                                             producer: "Увелка", category: "Каши",
-                                                             weight: 500, cookingTime: 3,
-                                                             intoBoilingWater: true,
-                                                             needStirring: true, waterRatio: 3))
+    func deleteAll() {
+        let context = stack.backgroundContext
+        let fetchRequest = NSFetchRequest<MOProduct>(entityName: stack.getEntity())
+        context.performAndWait {
+            let product = try? fetchRequest.execute()
+            product?.forEach {
+                context.delete($0)
+            }
+            stack.saveContext()
+        }
+    }
+
+    func fetchProducts() -> [ProductDTO] {
+        let context = stack.mainContext
+        var result = [ProductDTO]()
+        let request = NSFetchRequest<MOProduct>(entityName: stack.getEntity())
+        context.performAndWait {
+            guard let product = try? request.execute() else { return }
+            result = product.map { ProductDTO(with: $0) }
+        }
+        return result
+    }
+}
+
+private extension StorageService {
+    func fetchRequest(for dto: ProductDTO) -> NSFetchRequest<MOProduct> {
+        let request = NSFetchRequest<MOProduct>(entityName: stack.getEntity())
+        request.predicate = .init(format: "code == %@", dto.code)
+        return request
+    }
+}
+
+fileprivate extension MOProduct {
+    func update(with productDTO: ProductDTO) {
+        code = productDTO.code
+        title = productDTO.title ?? ""
+        producer = productDTO.producer ?? ""
+        category = productDTO.category ?? ""
+        weight = Int64(productDTO.weight)
+        cookingTime = Int64(productDTO.cookingTime)
+        intoBoilingWater = productDTO.intoBoilingWater
+        waterRatio = productDTO.waterRatio
+        date = Date()
     }
 }

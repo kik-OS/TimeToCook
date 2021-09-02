@@ -16,14 +16,16 @@ class TabBarViewModelTest: XCTestCase {
     var deviceService: DeviceServiceProtocol?
     var timerService: TimerServiceProtocol?
     var notificationService: NotificationServiceProtocol?
+    var coreDataStack: CoreDataStackProtocol?
 
     override func setUpWithError() throws {
         try super.setUpWithError()
-        firebaseServiceMock = FirebaseServiceMock()
-        storageManagerDummy = StorageServiceDummy()
+        firebaseServiceMock = FirebaseServiceFake()
+        coreDataStack = CoreDataStackDummy()
         deviceService = DeviceServiceDummy()
         timerService = TimerService()
         notificationService = NotificationServiceDummy()
+        storageManagerDummy = StorageServiceDummy(coreDataStack: coreDataStack!)
         sut = TabBarViewModel(notificationService: notificationService!,
                               firebaseService: firebaseServiceMock!,
                               storageManager: storageManagerDummy!,
@@ -37,6 +39,7 @@ class TabBarViewModelTest: XCTestCase {
         storageManagerDummy = nil
         deviceService = nil
         timerService = nil
+        coreDataStack = nil
         try super.tearDownWithError()
     }
 

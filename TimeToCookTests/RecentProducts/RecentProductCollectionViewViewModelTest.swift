@@ -14,36 +14,39 @@ class RecentProductCollectionViewViewModelTest: XCTestCase {
 
     var sut: RecentProductCollectionViewViewModel?
     var storageService: StorageServiceProtocol?
+    var coreDataStack: CoreDataStackProtocol?
 
     override func setUpWithError() throws {
         try super.setUpWithError()
-        storageService = StorageServiceDummy()
+        coreDataStack = CoreDataStackDummy()
+        storageService = StorageServiceDummy(coreDataStack: coreDataStack!)
         sut = RecentProductCollectionViewViewModel(storageService: storageService!)
     }
 
     override func tearDownWithError() throws {
         sut = nil
+        coreDataStack = nil
         storageService = nil
         try super.tearDownWithError()
     }
 
     func testThatNumberOfItemInSectionReturnZero() {
         // arrange
-        let products = [ProductCD]()
+        let products = [Product]()
 
         // act
-        sut?.productsCD = products
+        sut?.products = products
 
         // assert
         XCTAssertEqual(sut?.numberOfItemsInSection, 0)
     }
 
-    func testThatContentIsNotEmptyIfProductCountGreaterThanZero() {
+    func testThatContentIsNotEmptyIfProductsCountGreaterThanZero() {
         // arrange
-        let products = storageService?.fetchData()
+        let products = [ProductStub()]
 
         // act
-        sut?.productsCD = products!
+        sut?.products = products
 
         // assert
         XCTAssertFalse(sut!.contentIsEmpty())

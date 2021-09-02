@@ -9,7 +9,7 @@ import Foundation
 
 protocol RecentProductCollectionViewViewModelProtocol: AnyObject {
     var numberOfItemsInSection: Int { get }
-    var productsCD: [ProductCD] { get }
+    var products: [ProductProtocol] { get }
     var delegate: RecentProductCollectionViewDelegate? { get set }
 
     init(storageService: StorageServiceProtocol)
@@ -29,10 +29,8 @@ final class RecentProductCollectionViewViewModel: RecentProductCollectionViewVie
 
     // MARK: - Properties
 
-    var productsCD: [ProductCD] = []
-    var numberOfItemsInSection: Int {
-        productsCD.count
-    }
+    var products: [ProductProtocol] = []
+    var numberOfItemsInSection: Int { products.count }
 
     // MARK: - Init
 
@@ -43,14 +41,17 @@ final class RecentProductCollectionViewViewModel: RecentProductCollectionViewVie
     // MARK: - Methods
     
     func fetchProductFromCoreData(completion: @escaping() -> Void) {
-        productsCD = storageService.fetchData().sorted(by: { $0.date ?? Date() > $1.date ?? Date() })
+        /// Сортировка массива полученных данных по дате создания
+        products = storageService.fetchProducts().sorted(by: {
+            $0.date ?? Date() > $1.date ?? Date()
+        }).map { Product(width: $0) }
         DispatchQueue.main.async {
             completion()
         }
     }
     
     func cellViewModel(at indexPath: IndexPath) -> RecentProductCollectionViewCellViewModelProtocol? {
-        let product = productsCD[indexPath.row]
+        let product = products[indexPath.row]
         return RecentProductCollectionViewCellViewModel(product: product)
     }
 
@@ -59,8 +60,7 @@ final class RecentProductCollectionViewViewModel: RecentProductCollectionViewVie
     }
 
     func didSelectItemAt(indexPath: IndexPath) {
-        guard let product = storageService.convertFromProductCDToProduct(
-                productCD: productsCD[indexPath.row]) else { return }
+        let product = products[indexPath.row]
         delegate?.presentInfoAboutProduct(product: product)
     }
 }
