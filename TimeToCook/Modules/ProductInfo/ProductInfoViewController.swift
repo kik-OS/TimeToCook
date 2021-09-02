@@ -20,6 +20,14 @@ final class ProductInfoViewController: UIViewController {
         let plateImageView = PlateImageView()
         return plateImageView
     }()
+
+    private lazy var mascotImageView: UIImageView = {
+        let mascotImageView = UIImageView(image: UIImage(named: "mascot2.png"))
+        mascotImageView.translatesAutoresizingMaskIntoConstraints = false
+        mascotImageView.contentMode = .scaleAspectFit
+        mascotImageView.alpha = 0
+        return mascotImageView
+    }()
     
     private lazy var stillEmpty: StillEmptyView = {
         let stillEmpty = StillEmptyView()
@@ -111,6 +119,7 @@ final class ProductInfoViewController: UIViewController {
         setupTimerButtonConstraints()
         setupCollectionViewConstraints()
         setupCloseButtonConstraints()
+        setupMascotImageConstraints()
     }
     
     private func setupViewWithContentConstraints() {
@@ -132,6 +141,14 @@ final class ProductInfoViewController: UIViewController {
              plateImageView.widthAnchor.constraint(equalTo: plateImageView.heightAnchor),
              plateImageView.centerYAnchor.constraint(equalTo: viewWithContent.topAnchor, constant: -20)])
     }
+
+    private func setupMascotImageConstraints() {
+        view.addSubview(mascotImageView)
+        NSLayoutConstraint.activate([
+            mascotImageView.bottomAnchor.constraint(equalTo: viewWithContent.topAnchor, constant: 10),
+            mascotImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            mascotImageView.heightAnchor.constraint(equalToConstant: 100)])
+    }
     
     private func setupStillEmptyViewConstraints() {
         viewWithContent.addSubview(stillEmpty)
@@ -149,6 +166,7 @@ final class ProductInfoViewController: UIViewController {
             productNameLabel.trailingAnchor.constraint(equalTo: viewWithContent.trailingAnchor, constant: -15),
             productNameLabel.topAnchor.constraint(equalTo: plateImageView.bottomAnchor, constant: 6)])
     }
+
     private func setupProductViewConstraints() {
         viewWithContent.addSubview(productView)
         NSLayoutConstraint.activate([
@@ -204,6 +222,7 @@ final class ProductInfoViewController: UIViewController {
         disappearCollectionViewAnimation()
         disappearTimerButtonAnimation()
         disappearCloseButtonAnimation()
+        disappearMascotAnimation()
     }
 
     private func appearPlateAnimation() {
@@ -257,6 +276,18 @@ final class ProductInfoViewController: UIViewController {
         )
     }
 
+    private func appearMascotAnimation() {
+        UIView.animate(withDuration: 0.5) {
+            self.mascotImageView.alpha = 1
+        }
+    }
+
+    private func disappearMascotAnimation() {
+        UIView.animate(withDuration: 0.2) {
+            self.mascotImageView.alpha = 0
+        }
+    }
+
     private func disappearProductViewAnimation() {
         self.productView.alpha = 0
         self.productView.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
@@ -304,6 +335,7 @@ final class ProductInfoViewController: UIViewController {
             self?.startCookButton.startState()
             self?.disappearCollectionViewAnimation()
             self?.disappearTimerButtonAnimation()
+            self?.disappearMascotAnimation()
         }
 
         viewModel.needUpdateViewForThirdStep = { [weak self] in
@@ -317,6 +349,7 @@ final class ProductInfoViewController: UIViewController {
             self?.timerButton.appearTimerButtonAnimation()
             self?.viewModel.resetCollectionViewLayout()
             self?.collectionView.createLayout()
+            self?.appearMascotAnimation()
         }
     }
 
