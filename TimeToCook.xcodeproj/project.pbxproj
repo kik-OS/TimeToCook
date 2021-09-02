@@ -24,10 +24,7 @@
 		E419B75126DF974B004315C3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419B74F26DF974B004315C3 /* CoreDataStack.swift */; };
 		E419B75226DF974B004315C3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419B74F26DF974B004315C3 /* CoreDataStack.swift */; };
 		E419B75326DF974B004315C3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419B74F26DF974B004315C3 /* CoreDataStack.swift */; };
-		E419B75F26DFD4DA004315C3 /* CoreDataStackDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419B75E26DFD4DA004315C3 /* CoreDataStackDummy.swift */; };
 		E419B76026DFD4DA004315C3 /* CoreDataStackDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419B75E26DFD4DA004315C3 /* CoreDataStackDummy.swift */; };
-		E419B76126DFD4DA004315C3 /* CoreDataStackDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419B75E26DFD4DA004315C3 /* CoreDataStackDummy.swift */; };
-		E419B76226DFD4DA004315C3 /* CoreDataStackDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419B75E26DFD4DA004315C3 /* CoreDataStackDummy.swift */; };
 		E41C3C3226A701C8006F1AE9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E41C3C3126A701C8006F1AE9 /* GoogleService-Info.plist */; };
 		E41C3C8226A702DA006F1AE9 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3426A702D6006F1AE9 /* Category.swift */; };
 		E41C3C8326A702DA006F1AE9 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3526A702D6006F1AE9 /* Product.swift */; };
@@ -141,7 +138,7 @@
 		E4554BD626D0D45B00819A09 /* FirebaseServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C7C26A702DA006F1AE9 /* FirebaseServiceError.swift */; };
 		E4554BD826D0E3ED00819A09 /* TimeToCook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E44BBF7426A6FEB4003D403C /* TimeToCook.xcdatamodeld */; };
 		E4554BD926D0E44500819A09 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C7D26A702DA006F1AE9 /* FirebaseService.swift */; };
-		E4554BDB26D232E200819A09 /* FirebaseServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4554BDA26D232E200819A09 /* FirebaseServiceMock.swift */; };
+		E4554BDB26D232E200819A09 /* FirebaseServiceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4554BDA26D232E200819A09 /* FirebaseServiceFake.swift */; };
 		E4554BDD26D23DAC00819A09 /* StorageServiceDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4554BDC26D23DAC00819A09 /* StorageServiceDummy.swift */; };
 		E4554C1526D298EB00819A09 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E4554C1426D298EB00819A09 /* .swiftlint.yml */; };
 		E4570FC126B2A3C80013F7C9 /* PlateImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4570FC026B2A3C80013F7C9 /* PlateImageView.swift */; };
@@ -346,7 +343,7 @@
 		E44E9E1626C110A200E7082B /* DownButtonForKB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownButtonForKB.swift; sourceTree = "<group>"; };
 		E44E9E1826C1110D00E7082B /* UpButtonForKB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpButtonForKB.swift; sourceTree = "<group>"; };
 		E4554BA226D0CFC500819A09 /* TabBarViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModelTest.swift; sourceTree = "<group>"; };
-		E4554BDA26D232E200819A09 /* FirebaseServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseServiceMock.swift; sourceTree = "<group>"; };
+		E4554BDA26D232E200819A09 /* FirebaseServiceFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseServiceFake.swift; sourceTree = "<group>"; };
 		E4554BDC26D23DAC00819A09 /* StorageServiceDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServiceDummy.swift; sourceTree = "<group>"; };
 		E4554C1426D298EB00819A09 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		E4570FC026B2A3C80013F7C9 /* PlateImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateImageView.swift; sourceTree = "<group>"; };
@@ -723,10 +720,23 @@
 		E436E5C126E13CDC00BE6576 /* StorageService */ = {
 			isa = PBXGroup;
 			children = (
-				E436E5C226E1417500BE6576 /* CoreDataStackMock.swift */,
 				E436E5C426E1472E00BE6576 /* StorageServiceTest.swift */,
 			);
 			path = StorageService;
+			sourceTree = "<group>";
+		};
+		E436E5C826E1510600BE6576 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				E436E5C226E1417500BE6576 /* CoreDataStackMock.swift */,
+				E4B12DE026DE126700C27056 /* DeviceServiceDummy.swift */,
+				E4554BDA26D232E200819A09 /* FirebaseServiceFake.swift */,
+				E419B75E26DFD4DA004315C3 /* CoreDataStackDummy.swift */,
+				E4D4236926DB986D00C63BC6 /* NotificationServiceDummy.swift */,
+				E4554BDC26D23DAC00819A09 /* StorageServiceDummy.swift */,
+				E4BFBCE626CFA350007A6CF6 /* ProductStub.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		E44BBF5F26A6FEB4003D403C = {
@@ -800,6 +810,7 @@
 		E474E17726CBE7C400ED18F9 /* TimeToCookTests */ = {
 			isa = PBXGroup;
 			children = (
+				E436E5C826E1510600BE6576 /* Mocks */,
 				E436E5C126E13CDC00BE6576 /* StorageService */,
 				E4B12DCD26DCD4C300C27056 /* RecentProducts */,
 				E40F5EB326DBCFD90000C9CD /* AddingNewProductViewModel */,
@@ -814,10 +825,7 @@
 		E4B09A5326D9077E0091561C /* TabBarViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				E4554BDC26D23DAC00819A09 /* StorageServiceDummy.swift */,
-				E4554BDA26D232E200819A09 /* FirebaseServiceMock.swift */,
 				E4554BA226D0CFC500819A09 /* TabBarViewModelTest.swift */,
-				E4B12DE026DE126700C27056 /* DeviceServiceDummy.swift */,
 			);
 			path = TabBarViewModel;
 			sourceTree = "<group>";
@@ -826,7 +834,6 @@
 			isa = PBXGroup;
 			children = (
 				E474E17826CBE7C400ED18F9 /* ProductInfoViewModelTest.swift */,
-				E4BFBCE626CFA350007A6CF6 /* ProductStub.swift */,
 			);
 			path = ProductInfoViewModel;
 			sourceTree = "<group>";
@@ -845,7 +852,6 @@
 			isa = PBXGroup;
 			children = (
 				E4B12DCE26DCD50000C27056 /* RecentProductCollectionViewViewModelTest.swift */,
-				E419B75E26DFD4DA004315C3 /* CoreDataStackDummy.swift */,
 			);
 			path = RecentProducts;
 			sourceTree = "<group>";
@@ -897,7 +903,6 @@
 			isa = PBXGroup;
 			children = (
 				E4D4236626DB7AC200C63BC6 /* TimerViewModelTest.swift */,
-				E4D4236926DB986D00C63BC6 /* NotificationServiceDummy.swift */,
 			);
 			path = TimerViewModel;
 			sourceTree = "<group>";
@@ -1244,7 +1249,6 @@
 				E41C3CC426A87304006F1AE9 /* CameraOverlay.swift in Sources */,
 				E41C3C8526A702DA006F1AE9 /* Int+Extension.swift in Sources */,
 				E44E9E1926C1110D00E7082B /* UpButtonForKB.swift in Sources */,
-				E419B75F26DFD4DA004315C3 /* CoreDataStackDummy.swift in Sources */,
 				E41C3C8426A702DA006F1AE9 /* UIDevice+Extension.swift in Sources */,
 				E4C1A11426C14979008C1D17 /* CustomNavigationController.swift in Sources */,
 				E41C3CC626A9A977006F1AE9 /* CancelButton.swift in Sources */,
@@ -1326,7 +1330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4554BDB26D232E200819A09 /* FirebaseServiceMock.swift in Sources */,
+				E4554BDB26D232E200819A09 /* FirebaseServiceFake.swift in Sources */,
 				E4554BA626D0D0A400819A09 /* RecentProductCollectionViewViewModel.swift in Sources */,
 				E4554BD626D0D45B00819A09 /* FirebaseServiceError.swift in Sources */,
 				E419B75126DF974B004315C3 /* CoreDataStack.swift in Sources */,
@@ -1413,7 +1417,6 @@
 				E419B74826DF9002004315C3 /* MOProduct+CoreDataClass.swift in Sources */,
 				E419B74D26DF900D004315C3 /* MOProduct+CoreDataProperties.swift in Sources */,
 				E419B75226DF974B004315C3 /* CoreDataStack.swift in Sources */,
-				E419B76126DFD4DA004315C3 /* CoreDataStackDummy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1468,7 +1471,6 @@
 				E4BA157026DE4C9D00E73B1A /* RecentProductCollectionViewCellViewModel.swift in Sources */,
 				E4BA158026DE4D5600E73B1A /* Int+Extension.swift in Sources */,
 				E4BA157626DE4CEA00E73B1A /* UIView+Extension.swift in Sources */,
-				E419B76226DFD4DA004315C3 /* CoreDataStackDummy.swift in Sources */,
 				E4BA157526DE4CDC00E73B1A /* CloseButton.swift in Sources */,
 				E4BA156326DE4BD000E73B1A /* StartCookButton.swift in Sources */,
 				E4BA155626DE4B2000E73B1A /* NotificationService.swift in Sources */,

@@ -20,7 +20,7 @@ class TabBarViewModelTest: XCTestCase {
 
     override func setUpWithError() throws {
         try super.setUpWithError()
-        firebaseServiceMock = FirebaseServiceMock()
+        firebaseServiceMock = FirebaseServiceFake()
         coreDataStack = CoreDataStackDummy()
         deviceService = DeviceServiceDummy()
         timerService = TimerService()

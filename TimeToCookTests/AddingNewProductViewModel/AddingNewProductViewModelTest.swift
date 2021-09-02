@@ -13,13 +13,13 @@ import XCTest
 class AddingNewProductViewModelTest: XCTestCase {
 
     var sut: AddingNewProductViewModelProtocol?
-    var firebaseService: FirebaseServiceMock?
+    var firebaseService: FirebaseServiceFake?
     var notificationService: NotificationServiceProtocol?
     var testCode: String? = "123456789"
 
     override func setUpWithError() throws {
         try super.setUpWithError()
-        firebaseService = FirebaseServiceMock()
+        firebaseService = FirebaseServiceFake()
         notificationService = NotificationServiceDummy()
         sut = AddingNewProductViewModel(code: testCode!,
                                         firebaseService: firebaseService!,
