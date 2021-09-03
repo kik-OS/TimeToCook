@@ -95,8 +95,8 @@ final class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     private func setupTabBarItems() {
         tabBar.tintColor = VarkaColors.mainColor
         
-        let recentProductsVC = RecentProductsViewController()
-        recentProductsVC.viewModel = viewModel.getRecentProductViewModel()
+        let recentProductViewModel = viewModel.getRecentProductViewModel()
+        let recentProductsVC = RecentProductsViewController(viewModel: recentProductViewModel)
         recentProductsVC.tabBarItem.title = Inscriptions.tabBarItemRightTitle
         recentProductsVC.tabBarItem.image = UIImage(named: ImageTitles.tabBarItemRight)
         

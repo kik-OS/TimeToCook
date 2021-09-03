@@ -61,7 +61,6 @@ final class TabBarViewModel: TabBarViewModelProtocol {
         self.deviceService = deviceService
         self.timerService = timerService
         self.timerService.barDelegate = self
-        createTemporaryProductForDemonstration()
     }
     
     // MARK: - Public methods
@@ -109,28 +108,6 @@ final class TabBarViewModel: TabBarViewModelProtocol {
     
     private func createProductInCoreData(product: ProductProtocol) {
         storageService.update(product: [ProductDTO(width: product)])
-    }
-
-    /// Метод для демонстрации работы приложения, его здесь быть не должно
-    func createTemporaryProductForDemonstration() {
-
-        let products: [ProductDTO] = [ProductDTO(width: Product(code: "21121909098", title: "Макароны",
-                                                               producer: "Макфа", category: "Макароны",
-                                                               weight: 20, cookingTime: 10,
-                                                               intoBoilingWater: true,
-                                                               needStirring: true, waterRatio: 3)),
-                                      ProductDTO(width: Product(code: "3332156464", title: "Вареники с вишней",
-                                                               producer: "ВкусВилл", category: "Вареники",
-                                                               weight: 1000, cookingTime: 7,
-                                                               intoBoilingWater: true,
-                                                               needStirring: true, waterRatio: 5)),
-                                      ProductDTO(width: Product(code: "21121453543", title: "Гречка Русская",
-                                                               producer: "Макфа", category: "Гречка",
-                                                               weight: 500, cookingTime: 20,
-                                                               intoBoilingWater: true,
-                                                               needStirring: true, waterRatio: 3))]
-
-        storageService.update(product: products)
     }
 }
 

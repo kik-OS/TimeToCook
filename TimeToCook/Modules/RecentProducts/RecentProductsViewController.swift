@@ -35,8 +35,19 @@ final class RecentProductsViewController: UIViewController {
     
     // MARK: - Dependences
     
-    var viewModel: RecentProductViewModelProtocol?
-    
+    private var viewModel: RecentProductViewModelProtocol
+
+    // MARK: - Init
+
+    init(viewModel: RecentProductViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     // MARK: Constraints
     
     private func setupAllConstraints() {
@@ -78,7 +89,7 @@ final class RecentProductsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        recentProductCollectionView.viewModel = viewModel?.getRecentProductCollectionViewViewModel()
+        recentProductCollectionView.viewModel = viewModel.getRecentProductCollectionViewViewModel()
         recentProductCollectionView.viewModel?.delegate = self
         addVerticalGradientLayer()
         setupAllConstraints()
@@ -93,7 +104,7 @@ final class RecentProductsViewController: UIViewController {
             guard let isHidden = self?.recentProductCollectionView.viewModel?.contentIsEmpty() else { return }
             self?.recentProductCollectionView.isHidden = isHidden
             self?.emptyPlateImage.isHidden = !isHidden
-            self?.recentProductLabel.text = self?.viewModel?.checkCurrentState(isHidden: !isHidden)
+            self?.recentProductLabel.text = self?.viewModel.checkCurrentState(isHidden: !isHidden)
         }
     }
 
@@ -118,7 +129,8 @@ final class RecentProductsViewController: UIViewController {
 
 extension RecentProductsViewController: RecentProductCollectionViewDelegate {
     func presentInfoAboutProduct(product: ProductProtocol) {
-        guard let productInfoVC = tabBarController?.viewControllers?.first as? ProductInfoViewController else { return }
+        guard let productInfoVC = tabBarController?.viewControllers?.first as?
+                ProductInfoViewController else { return }
         productInfoVC.viewModel.updateProduct(product: product)
         tabBarController?.selectedViewController = tabBarController?.viewControllers?.first
     }
