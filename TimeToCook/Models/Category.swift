@@ -55,9 +55,3 @@ struct Category {
          "date": DateFormatter.firebaseDateFormatter.string(from: date)]
     }
 }
-
-extension Category {
-    static func getCategories() -> [Category] {
-        DataConstants.categoryNames.map { Category(name: $0) }
-    }
-}

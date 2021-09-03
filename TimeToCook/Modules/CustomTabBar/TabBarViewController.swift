@@ -100,8 +100,8 @@ final class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         recentProductsVC.tabBarItem.title = Inscriptions.tabBarItemRightTitle
         recentProductsVC.tabBarItem.image = UIImage(named: ImageTitles.tabBarItemRight)
         
-        let productInfoViewModel2 = viewModel.getProductInfoViewModel(product: nil)
-        let newVC = ProductInfoViewController(viewModel: productInfoViewModel2)
+        let productInfoViewModel = viewModel.getProductInfoViewModel(product: nil)
+        let newVC = ProductInfoViewController(viewModel: productInfoViewModel)
         newVC.tabBarItem.title = Inscriptions.tabBarItemLeftTitle
         newVC.tabBarItem.image = UIImage(named: ImageTitles.tabBarItemLeft)
         viewControllers = [newVC, recentProductsVC]

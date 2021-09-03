@@ -18,11 +18,6 @@ struct ConstantsCollectionView {
                                                     / 2)) / 2
 }
 
-enum DataConstants {
-    static let categoryNames = ["Макароны", "Гречка", "Рис", "Пельмени", "Вареники", "Овсянка",
-                                "Чечевица красная", "Чечевица зелёная", "Другое"]
-}
-
 enum PickerViewForKBType {
     case category
     case waterRatio
