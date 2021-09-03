@@ -556,34 +556,34 @@
 			isa = PBXGroup;
 			children = (
 				E42A3C3926D505F000794AD2 /* Coordinator.swift */,
-				E4570FBE26B2A33A0013F7C9 /* ProductInfo */,
-				E41C3CC726A9AB06006F1AE9 /* BarcodeScanner */,
-				E41C3C5326A702DA006F1AE9 /* AddingNewProduct */,
-				E41C3C5626A702DA006F1AE9 /* Timer */,
+				E41C3C5626A702DA006F1AE9 /* TimerVC */,
+				E4570FBE26B2A33A0013F7C9 /* ProductInfoVC */,
+				E41C3CC726A9AB06006F1AE9 /* BarcodeScannerVC */,
+				E41C3C5326A702DA006F1AE9 /* AddingNewProductVC */,
 				E41C3C5E26A702DA006F1AE9 /* CustomTabBar */,
 				E41C3C6526A702DA006F1AE9 /* RecentProducts */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		E41C3C5326A702DA006F1AE9 /* AddingNewProduct */ = {
+		E41C3C5326A702DA006F1AE9 /* AddingNewProductVC */ = {
 			isa = PBXGroup;
 			children = (
 				E44E9E0526BE817400E7082B /* AddingNewProductViewModel.swift */,
 				E44E9E0326BE815E00E7082B /* AddingNewProductViewController.swift */,
 				E4C1A11226C12EF2008C1D17 /* SubViews */,
 			);
-			path = AddingNewProduct;
+			path = AddingNewProductVC;
 			sourceTree = "<group>";
 		};
-		E41C3C5626A702DA006F1AE9 /* Timer */ = {
+		E41C3C5626A702DA006F1AE9 /* TimerVC */ = {
 			isa = PBXGroup;
 			children = (
+				E41C3C5826A702DA006F1AE9 /* Subviews */,
 				E41C3C5C26A702DA006F1AE9 /* TimerViewModel.swift */,
 				E4B971B226C26E6C003DFACA /* TimerViewController.swift */,
-				E41C3C5826A702DA006F1AE9 /* Subviews */,
 			);
-			path = Timer;
+			path = TimerVC;
 			sourceTree = "<group>";
 		};
 		E41C3C5826A702DA006F1AE9 /* Subviews */ = {
@@ -712,14 +712,14 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E41C3CC726A9AB06006F1AE9 /* BarcodeScanner */ = {
+		E41C3CC726A9AB06006F1AE9 /* BarcodeScannerVC */ = {
 			isa = PBXGroup;
 			children = (
 				E41C3CB826A7048A006F1AE9 /* BarcodeScanner.swift */,
 				E41C3CB726A70489006F1AE9 /* BarcodeScannerViewController.swift */,
 				E4B09A5526D908D90091561C /* SubViews */,
 			);
-			path = BarcodeScanner;
+			path = BarcodeScannerVC;
 			sourceTree = "<group>";
 		};
 		E436E5C126E13CDC00BE6576 /* StorageService */ = {
@@ -783,14 +783,14 @@
 			path = TimeToCook;
 			sourceTree = "<group>";
 		};
-		E4570FBE26B2A33A0013F7C9 /* ProductInfo */ = {
+		E4570FBE26B2A33A0013F7C9 /* ProductInfoVC */ = {
 			isa = PBXGroup;
 			children = (
 				E4F14A3526B556C1008312DA /* ProductInfoViewModel.swift */,
 				E41C3CE826A9E091006F1AE9 /* ProductInfoViewController.swift */,
 				E4570FBF26B2A3530013F7C9 /* SubViews */,
 			);
-			path = ProductInfo;
+			path = ProductInfoVC;
 			sourceTree = "<group>";
 		};
 		E4570FBF26B2A3530013F7C9 /* SubViews */ = {
