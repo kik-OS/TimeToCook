@@ -26,8 +26,9 @@ protocol ProductInfoViewModelProtocol: AnyObject {
     init(product: ProductProtocol?,
          timerService: TimerServiceProtocol,
          notificationService: NotificationServiceProtocol)
-    
-    func getTimerViewModel() -> TimerViewModelProtocol
+
+    func getTimerViewController() -> TimerViewController
+    func getAlertForNotification() -> UIAlertController
     func checkCurrentStateAndUpdateView()
     func updateProduct(product: ProductProtocol?)
     func cellViewModel(at indexPath: IndexPath) -> InstructionCollectionViewCellViewModelProtocol?
@@ -95,11 +96,16 @@ final class ProductInfoViewModel: ProductInfoViewModelProtocol {
     }
     
     // MARK: - Public methods
-    
-    func getTimerViewModel() -> TimerViewModelProtocol {
-        TimerViewModel(timerService: timerService,
-                       notificationService: notificationService,
-                       minutes: product?.cookingTime ?? 0)
+
+    func getTimerViewController() -> TimerViewController {
+        let viewModel = TimerViewModel(timerService: timerService,
+                                       notificationService: notificationService,
+                                       minutes: product?.cookingTime ?? 0)
+        return TimerViewController(viewModel: viewModel)
+    }
+
+    func getAlertForNotification() -> UIAlertController {
+        notificationService.notificationsAreNotAvailableAlert()
     }
         
     func checkCurrentStateAndUpdateView() {

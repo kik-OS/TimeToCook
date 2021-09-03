@@ -73,6 +73,10 @@
 		E42A3C3A26D505F000794AD2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42A3C3926D505F000794AD2 /* Coordinator.swift */; };
 		E436E5C326E1417500BE6576 /* CoreDataStackMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E436E5C226E1417500BE6576 /* CoreDataStackMock.swift */; };
 		E436E5C526E1472E00BE6576 /* StorageServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E436E5C426E1472E00BE6576 /* StorageServiceTest.swift */; };
+		E436E5CA26E2150200BE6576 /* MascotSecondImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E436E5C926E2150200BE6576 /* MascotSecondImageView.swift */; };
+		E436E5CB26E2150200BE6576 /* MascotSecondImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E436E5C926E2150200BE6576 /* MascotSecondImageView.swift */; };
+		E436E5CC26E2150200BE6576 /* MascotSecondImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E436E5C926E2150200BE6576 /* MascotSecondImageView.swift */; };
+		E436E5CD26E2150200BE6576 /* MascotSecondImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E436E5C926E2150200BE6576 /* MascotSecondImageView.swift */; };
 		E448057526D51AF800F464DD /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C6226A702DA006F1AE9 /* CustomTabBar.swift */; };
 		E448057626D51B6300F464DD /* CGPath+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C3D26A702D6006F1AE9 /* CGPath+Extension.swift */; };
 		E44BBF6C26A6FEB4003D403C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44BBF6B26A6FEB4003D403C /* AppDelegate.swift */; };
@@ -326,6 +330,7 @@
 		E42A3C3926D505F000794AD2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		E436E5C226E1417500BE6576 /* CoreDataStackMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStackMock.swift; sourceTree = "<group>"; };
 		E436E5C426E1472E00BE6576 /* StorageServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServiceTest.swift; sourceTree = "<group>"; };
+		E436E5C926E2150200BE6576 /* MascotSecondImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MascotSecondImageView.swift; sourceTree = "<group>"; };
 		E44BBF6826A6FEB4003D403C /* TimeToCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeToCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44BBF6B26A6FEB4003D403C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E44BBF6D26A6FEB4003D403C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -803,6 +808,7 @@
 				E4EB3E7326BD1F4400DA752C /* TimerButton.swift */,
 				E4EB3E7526BD550C00DA752C /* CloseButton.swift */,
 				E4EB3E7226BD082300DA752C /* InstructionCollectionView */,
+				E436E5C926E2150200BE6576 /* MascotSecondImageView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -1303,6 +1309,7 @@
 				E41C3C8726A702DA006F1AE9 /* UIView+Extension.swift in Sources */,
 				E44E9E1726C110A200E7082B /* DownButtonForKB.swift in Sources */,
 				E41C3C8826A702DA006F1AE9 /* DateFormatter+Extension.swift in Sources */,
+				E436E5CA26E2150200BE6576 /* MascotSecondImageView.swift in Sources */,
 				E419B74B26DF900D004315C3 /* MOProduct+CoreDataProperties.swift in Sources */,
 				E41C3C8326A702DA006F1AE9 /* Product.swift in Sources */,
 				E41C3CA926A702DB006F1AE9 /* RecentProductViewModel.swift in Sources */,
@@ -1354,6 +1361,7 @@
 				E4554BBA26D0D2BF00819A09 /* ProductNameView.swift in Sources */,
 				E4554BA526D0D09600819A09 /* RecentProductViewModel.swift in Sources */,
 				E4554BC926D0D36700819A09 /* TimerStartButton.swift in Sources */,
+				E436E5CB26E2150200BE6576 /* MascotSecondImageView.swift in Sources */,
 				E4554BC726D0D35D00819A09 /* TimerBackgroundView.swift in Sources */,
 				E4554BB326D0D24000819A09 /* ProductInfoViewController.swift in Sources */,
 				E4554BC526D0D34700819A09 /* TimerStackView.swift in Sources */,
@@ -1415,6 +1423,7 @@
 			files = (
 				E4B12DD926DD02A500C27056 /* TimeToCookUITests.swift in Sources */,
 				E419B74826DF9002004315C3 /* MOProduct+CoreDataClass.swift in Sources */,
+				E436E5CC26E2150200BE6576 /* MascotSecondImageView.swift in Sources */,
 				E419B74D26DF900D004315C3 /* MOProduct+CoreDataProperties.swift in Sources */,
 				E419B75226DF974B004315C3 /* CoreDataStack.swift in Sources */,
 			);
@@ -1439,6 +1448,7 @@
 				E419B74926DF9002004315C3 /* MOProduct+CoreDataClass.swift in Sources */,
 				E4BA155D26DE4B7400E73B1A /* ViewWithContent.swift in Sources */,
 				E4BA156126DE4BAE00E73B1A /* PlateImageView.swift in Sources */,
+				E436E5CD26E2150200BE6576 /* MascotSecondImageView.swift in Sources */,
 				E419B75326DF974B004315C3 /* CoreDataStack.swift in Sources */,
 				E4BA155A26DE4B5100E73B1A /* ImageTitles.swift in Sources */,
 				E4BA156826DE4C1400E73B1A /* RecentProductsViewController.swift in Sources */,

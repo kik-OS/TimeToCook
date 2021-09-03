@@ -116,7 +116,7 @@ class ProductInfoViewModelTests: XCTestCase {
 
         // act
         sut?.updateProduct(product: product)
-        let timerViewModel = sut?.getTimerViewModel()
+        let timerViewModel = sut?.getTimerViewController().viewModel
 
         // assert
         XCTAssertEqual(timerViewModel?.minutes, 20)

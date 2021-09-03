@@ -14,6 +14,7 @@ protocol NotificationServiceProtocol {
     func showTimerNotification(throughMinutes: Double)
     func showProductWasAddedNotification()
     func cancelTimerNotification()
+    func notificationsAreNotAvailableAlert() -> UIAlertController
 }
 
 final class NotificationService: NSObject, UNUserNotificationCenterDelegate, NotificationServiceProtocol {
@@ -45,7 +46,8 @@ final class NotificationService: NSObject, UNUserNotificationCenterDelegate, Not
             }
         }
     }
-    
+
+    /// Очищение бейджей при запуске приложения
     func cleanBadgesAtStarting() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(applicationDidBecomeActive),
@@ -114,7 +116,6 @@ final class NotificationService: NSObject, UNUserNotificationCenterDelegate, Not
         content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "nom.wav"))
         let identifier = Inscriptions.identifierOfAddedProductNotification
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
-        
         notificationCenter.add(request)
     }
 
@@ -122,7 +123,7 @@ final class NotificationService: NSObject, UNUserNotificationCenterDelegate, Not
         notificationCenter.removeAllPendingNotificationRequests()
     }
 
-    static func notificationsAreNotAvailableAlert() -> UIAlertController {
+    func notificationsAreNotAvailableAlert() -> UIAlertController {
         let alert = UIAlertController(title: Inscriptions.titleNotificationsAreNotAvailableAlert,
                                       message: Inscriptions.messageNotificationsAreNotAvailableAlert,
                                       preferredStyle: .actionSheet)

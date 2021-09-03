@@ -71,7 +71,7 @@ extension UIView {
         )
     }
 
-     func addVerticalGradientLayer() {
+    func addVerticalGradientLayer() {
         let gradient = CAGradientLayer()
         gradient.frame = bounds
         gradient.colors = [#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).cgColor, #colorLiteral(red: 0.938239575, green: 0.938239575, blue: 0.938239575, alpha: 1).cgColor]
@@ -81,7 +81,7 @@ extension UIView {
         layer.insertSublayer(gradient, at: 0)
     }
 
-     func appearCloseButtonAnimation() {
+    func appearCloseButtonAnimation() {
         UIView.animate(
             withDuration: 0.5, delay: 0.8,
             usingSpringWithDamping: 0.55,
@@ -91,5 +91,11 @@ extension UIView {
                 self.alpha = 1
             }
         )
+    }
+
+    func appearMascotAnimation() {
+        UIView.animate(withDuration: 0.5) {
+            self.alpha = 1
+        }
     }
 }

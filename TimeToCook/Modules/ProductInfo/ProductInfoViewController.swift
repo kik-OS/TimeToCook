@@ -21,11 +21,8 @@ final class ProductInfoViewController: UIViewController {
         return plateImageView
     }()
 
-    private lazy var mascotImageView: UIImageView = {
-        let mascotImageView = UIImageView(image: UIImage(named: "mascot2.png"))
-        mascotImageView.translatesAutoresizingMaskIntoConstraints = false
-        mascotImageView.contentMode = .scaleAspectFit
-        mascotImageView.alpha = 0
+    private lazy var mascotImageView: MascotSecondImageView = {
+        let mascotImageView = MascotSecondImageView()
         return mascotImageView
     }()
     
@@ -225,6 +222,120 @@ final class ProductInfoViewController: UIViewController {
         disappearMascotAnimation()
     }
 
+    // MARK: Private Methodes
+
+    private func setupViewModelBindingsForAnimation() {
+        viewModel.needUpdateViewForFirstStep = { [weak self] in
+            self?.appearContentViewAnimation()
+        }
+
+        viewModel.needUpdateViewForSecondStep = { [weak self] in
+            self?.stillEmpty.alpha = 0
+            self?.closeButton.appearCloseButtonAnimation()
+            self?.appearContentViewAnimation()
+            self?.appearPlateAnimation()
+            self?.updateProductInfo()
+            self?.appearProductViewAnimation()
+            self?.startCookButton.appearStartCookButtonAnimation()
+            self?.startCookButton.startState()
+            self?.disappearCollectionViewAnimation()
+            self?.disappearTimerButtonAnimation()
+            self?.disappearMascotAnimation()
+        }
+
+        viewModel.needUpdateViewForThirdStep = { [weak self] in
+            self?.closeButton.alpha = 0
+            self?.disappearPlateAnimation()
+            self?.disappearProductViewAnimation()
+            self?.startCookButton.stopState()
+            self?.appearContentViewAnimation()
+            self?.startCookButton.appearStartCookButtonAnimation()
+            self?.collectionView.appearCollectionViewAnimation()
+            self?.timerButton.appearTimerButtonAnimation()
+            self?.viewModel.resetCollectionViewLayout()
+            self?.collectionView.createLayout()
+            self?.mascotImageView.appearMascotAnimation()
+        }
+    }
+
+    private func updateProductInfo() {
+        plateImageView.image = UIImage(named: viewModel.productImage)
+        productView.setBarcode(barcode: viewModel.product?.code ?? "")
+        productView.setCategory(category: viewModel.product?.category ?? "")
+        productView.setWeight(weight: viewModel.weight)
+        productView.setProducer(producer: viewModel.product?.producer ?? "")
+        productView.setTime(time: viewModel.cookingTime)
+        productNameLabel.setName(name: viewModel.product?.title ?? "")
+    }
+
+    // CollectionView
+    private func setupCollectionView() {
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.createLayout()
+    }
+
+    @objc private func startCookButtonTapped() {
+        viewModel.buttonStartCookTapped.toggle()
+        viewModel.checkCurrentStateAndUpdateView()
+    }
+
+    @objc private func setTimerButtonTapped() {
+        let timerVC = viewModel.getTimerViewController()
+        timerVC.modalPresentationStyle = .overCurrentContext
+        /// Если у пользователя выключены уведомления, вызывается Alert с предложением о включении
+        viewModel.getNotificationService.checkNotificationSettings { [weak self] in
+            guard let alert = self?.viewModel.getAlertForNotification() else { return }
+            self?.present(alert, animated: true)
+        }
+        timerButton.layer.removeAllAnimations()
+        present(timerVC, animated: true)
+    }
+
+    @objc private func closeButtonTapped() {
+        disappearAnimations()
+        viewModel.updateProduct(product: nil)
+        disappearCloseButtonAnimation()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+            self?.viewModel.checkCurrentStateAndUpdateView()
+            self?.stillEmpty.alpha = 1
+        }
+    }
+}
+
+// MARK: UICollectionViewDelegate
+
+extension ProductInfoViewController: UICollectionViewDelegate {
+
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint,
+                                   targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let point = viewModel.targetContentOffset(scrollView,
+                                                  withVelocity: velocity,
+                                                  collectionView: collectionView)
+        targetContentOffset.pointee = point
+        collectionView.collectionViewLayoutAnimation(velocity: velocity, point: point)
+    }
+}
+
+// MARK: UICollectionViewDataSource
+
+extension ProductInfoViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int { 7 }
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "instructionCell",
+                                                            for: indexPath) as?
+                InstructionCollectionViewCell else { return UICollectionViewCell() }
+        cell.setViewModel(viewModel: viewModel.cellViewModel(at: indexPath))
+        return cell
+    }
+}
+
+// MARK: Animations
+
+extension ProductInfoViewController {
+
     private func appearPlateAnimation() {
         plateImageView.alpha = 1
         UIView.animate(withDuration: 1, delay: 0.3, usingSpringWithDamping: 2,
@@ -272,15 +383,7 @@ final class ProductInfoViewController: UIViewController {
                 self.productNameLabel.alpha = 1
                 self.productView.transform = .identity
                 self.productView.alpha = 1
-            }
-        )
-    }
-
-    private func appearMascotAnimation() {
-        UIView.animate(withDuration: 0.5) {
-            self.mascotImageView.alpha = 1
-        }
-    }
+            })}
 
     private func disappearMascotAnimation() {
         UIView.animate(withDuration: 0.2) {
@@ -315,115 +418,5 @@ final class ProductInfoViewController: UIViewController {
         UIView.animate(withDuration: 0.5) {
             self.closeButton.alpha = 0
         }
-    }
-
-    // MARK: Private Methodes
-
-    private func setupViewModelBindingsForAnimation() {
-        viewModel.needUpdateViewForFirstStep = { [weak self] in
-            self?.appearContentViewAnimation()
-        }
-
-        viewModel.needUpdateViewForSecondStep = { [weak self] in
-            self?.stillEmpty.alpha = 0
-            self?.closeButton.appearCloseButtonAnimation()
-            self?.appearContentViewAnimation()
-            self?.appearPlateAnimation()
-            self?.updateProductInfo()
-            self?.appearProductViewAnimation()
-            self?.startCookButton.appearStartCookButtonAnimation()
-            self?.startCookButton.startState()
-            self?.disappearCollectionViewAnimation()
-            self?.disappearTimerButtonAnimation()
-            self?.disappearMascotAnimation()
-        }
-
-        viewModel.needUpdateViewForThirdStep = { [weak self] in
-            self?.closeButton.alpha = 0
-            self?.disappearPlateAnimation()
-            self?.disappearProductViewAnimation()
-            self?.startCookButton.stopState()
-            self?.appearContentViewAnimation()
-            self?.startCookButton.appearStartCookButtonAnimation()
-            self?.collectionView.appearCollectionViewAnimation()
-            self?.timerButton.appearTimerButtonAnimation()
-            self?.viewModel.resetCollectionViewLayout()
-            self?.collectionView.createLayout()
-            self?.appearMascotAnimation()
-        }
-    }
-
-    private func updateProductInfo() {
-        plateImageView.image = UIImage(named: viewModel.productImage)
-        productView.setBarcode(barcode: viewModel.product?.code ?? "")
-        productView.setCategory(category: viewModel.product?.category ?? "")
-        productView.setWeight(weight: viewModel.weight)
-        productView.setProducer(producer: viewModel.product?.producer ?? "")
-        productView.setTime(time: viewModel.cookingTime)
-        productNameLabel.setName(name: viewModel.product?.title ?? "")
-    }
-
-    // CollectionView
-    private func setupCollectionView() {
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.createLayout()
-    }
-
-    @objc private func startCookButtonTapped() {
-        viewModel.buttonStartCookTapped.toggle()
-        viewModel.checkCurrentStateAndUpdateView()
-    }
-
-    @objc private func setTimerButtonTapped() {
-        let timerViewModel = viewModel.getTimerViewModel()
-        let timerVC = TimerViewController(viewModel: timerViewModel)
-        timerVC.modalPresentationStyle = .overCurrentContext
-        viewModel.getNotificationService.checkNotificationSettings { [weak self] in
-            let alert = NotificationService.notificationsAreNotAvailableAlert()
-            self?.present(alert, animated: true)
-        }
-        timerButton.layer.removeAllAnimations()
-        present(timerVC, animated: true)
-    }
-
-    @objc private func closeButtonTapped() {
-        disappearAnimations()
-        viewModel.updateProduct(product: nil)
-        disappearCloseButtonAnimation()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
-            self?.viewModel.checkCurrentStateAndUpdateView()
-            self?.stillEmpty.alpha = 1
-        }
-    }
-}
-
-// MARK: UICollectionViewDelegate
-
-extension ProductInfoViewController: UICollectionViewDelegate {
-
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint,
-                                   targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-
-        let point = viewModel.targetContentOffset(scrollView,
-                                                  withVelocity: velocity,
-                                                  collectionView: collectionView)
-        targetContentOffset.pointee = point
-        collectionView.collectionViewLayoutAnimation(velocity: velocity, point: point)
-    }
-}
-
-// MARK: UICollectionViewDataSource
-
-extension ProductInfoViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int { 7 }
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "instructionCell",
-                                                            for: indexPath) as?
-                InstructionCollectionViewCell else { return UICollectionViewCell() }
-        cell.setViewModel(viewModel: viewModel.cellViewModel(at: indexPath))
-        return cell
     }
 }
