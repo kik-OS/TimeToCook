@@ -93,6 +93,7 @@
 		E44E9E1526C10FF600E7082B /* DoneButtonForKB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E9E1426C10FF600E7082B /* DoneButtonForKB.swift */; };
 		E44E9E1726C110A200E7082B /* DownButtonForKB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E9E1626C110A200E7082B /* DownButtonForKB.swift */; };
 		E44E9E1926C1110D00E7082B /* UpButtonForKB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E9E1826C1110D00E7082B /* UpButtonForKB.swift */; };
+		E4502A7D26E751F90015894F /* TemporaryProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4502A7C26E751F90015894F /* TemporaryProducts.swift */; };
 		E4554BA326D0CFC500819A09 /* TabBarViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4554BA226D0CFC500819A09 /* TabBarViewModelTest.swift */; };
 		E4554BA426D0D07E00819A09 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C5F26A702DA006F1AE9 /* TabBarViewModel.swift */; };
 		E4554BA526D0D09600819A09 /* RecentProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C6E26A702DA006F1AE9 /* RecentProductViewModel.swift */; };
@@ -347,6 +348,7 @@
 		E44E9E1426C10FF600E7082B /* DoneButtonForKB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneButtonForKB.swift; sourceTree = "<group>"; };
 		E44E9E1626C110A200E7082B /* DownButtonForKB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownButtonForKB.swift; sourceTree = "<group>"; };
 		E44E9E1826C1110D00E7082B /* UpButtonForKB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpButtonForKB.swift; sourceTree = "<group>"; };
+		E4502A7C26E751F90015894F /* TemporaryProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryProducts.swift; sourceTree = "<group>"; };
 		E4554BA226D0CFC500819A09 /* TabBarViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModelTest.swift; sourceTree = "<group>"; };
 		E4554BDA26D232E200819A09 /* FirebaseServiceFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseServiceFake.swift; sourceTree = "<group>"; };
 		E4554BDC26D23DAC00819A09 /* StorageServiceDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServiceDummy.swift; sourceTree = "<group>"; };
@@ -513,6 +515,7 @@
 				E41C3C4526A702D7006F1AE9 /* ImageTitles.swift */,
 				E41C3C4426A702D7006F1AE9 /* Inscriptions.swift */,
 				E41C3C4326A702D7006F1AE9 /* DeviceModel.swift */,
+				E4502A7C26E751F90015894F /* TemporaryProducts.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1249,6 +1252,7 @@
 				E41C3CB526A702DB006F1AE9 /* TimerService.swift in Sources */,
 				E41C3C8C26A702DA006F1AE9 /* TabBarTransition.swift in Sources */,
 				E44E9E0926BE872800E7082B /* ContentScroll.swift in Sources */,
+				E4502A7D26E751F90015894F /* TemporaryProducts.swift in Sources */,
 				E41C3CB326A702DB006F1AE9 /* FirebaseService.swift in Sources */,
 				E41C3CB126A702DB006F1AE9 /* StorageService.swift in Sources */,
 				E41C3CA326A702DB006F1AE9 /* TabBarViewController.swift in Sources */,
