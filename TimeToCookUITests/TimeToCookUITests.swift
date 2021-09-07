@@ -20,7 +20,7 @@ class TimeToCookUITests: XCTestCase {
         try super.setUpWithError()
         continueAfterFailure = false
         app = XCUIApplication()
-        app.launchArguments.append("disableAnimations")
+        app.launchArguments.append("-disableAnimations")
         app.launch()
     }
 

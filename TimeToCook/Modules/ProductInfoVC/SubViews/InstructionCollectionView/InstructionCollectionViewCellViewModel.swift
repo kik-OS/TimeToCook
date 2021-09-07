@@ -33,6 +33,13 @@ final class InstructionCollectionViewCellViewModel: InstructionCollectionViewCel
     var numberOfCard: String {
         "\(indexPath.row + 1)"
     }
+
+    // MARK: - Init
+
+    required init(product: ProductProtocol?, indexPath: IndexPath) {
+        self.product = product
+        self.indexPath = indexPath
+    }
     
     func getInstrLabel() -> String {
         guard let product = product else { return "" }
@@ -55,12 +62,5 @@ final class InstructionCollectionViewCellViewModel: InstructionCollectionViewCel
         default:
             return ""
         }
-    }
-    
-    // MARK: - Initializer
-    
-    required init(product: ProductProtocol?, indexPath: IndexPath) {
-        self.product = product
-        self.indexPath = indexPath
     }
 }

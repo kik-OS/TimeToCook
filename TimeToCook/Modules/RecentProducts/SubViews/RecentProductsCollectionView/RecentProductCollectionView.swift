@@ -11,9 +11,9 @@ final class RecentProductCollectionView: UICollectionView {
     
     // MARK: - Dependences
     
-    var viewModel: RecentProductCollectionViewViewModelProtocol? {
+   private var viewModel: RecentProductCollectionViewViewModelProtocol {
         didSet {
-            viewModel?.fetchProductFromCoreData { [weak self] in
+            viewModel.fetchProductFromCoreData { [weak self] in
                 self?.reloadData()
             }
         }
@@ -21,7 +21,8 @@ final class RecentProductCollectionView: UICollectionView {
     
     // MARK: - Initializer 
     
-    init() {
+    init(viewModel: RecentProductCollectionViewViewModelProtocol) {
+        self.viewModel = viewModel
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         super.init(frame: .zero, collectionViewLayout: layout)
@@ -44,6 +45,14 @@ final class RecentProductCollectionView: UICollectionView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    func setDelegate(delegate: RecentProductCollectionViewDelegate) {
+        viewModel.delegate = delegate
+    }
+
+    func getViewModel() -> RecentProductCollectionViewViewModelProtocol {
+        viewModel
+    }
 }
 
 // MARK: - Extension
@@ -53,14 +62,14 @@ extension RecentProductCollectionView: UICollectionViewDelegate,
                                        UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel?.numberOfItemsInSection ?? 0
+        viewModel.numberOfItemsInSection
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = dequeueReusableCell(withReuseIdentifier: RecentProductCollectionViewCell.reuseID,
                                        for: indexPath) as? RecentProductCollectionViewCell
-        cell?.viewModel = viewModel?.cellViewModel(at: indexPath)
+        cell?.viewModel = viewModel.cellViewModel(at: indexPath)
         return cell ?? UICollectionViewCell()
     }
     
@@ -71,7 +80,7 @@ extension RecentProductCollectionView: UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel?.didSelectItemAt(indexPath: indexPath)
+        viewModel.didSelectItemAt(indexPath: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {

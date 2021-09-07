@@ -29,7 +29,9 @@ final class RecentProductsViewController: UIViewController {
     }()
     
     private lazy var recentProductCollectionView: RecentProductCollectionView = {
-        let recentProductCollectionView = RecentProductCollectionView()
+        let viewModel = self.viewModel.getRecentProductCollectionViewViewModel()
+        let recentProductCollectionView = RecentProductCollectionView(viewModel: viewModel)
+        recentProductCollectionView.setDelegate(delegate: self)
         return recentProductCollectionView
     }()
     
@@ -61,7 +63,8 @@ final class RecentProductsViewController: UIViewController {
         NSLayoutConstraint.activate([
             recentProductLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
             recentProductLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-            recentProductLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)])
+            recentProductLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+        ])
     }
     
     private func setupEmptyPlateImageConstraints() {
@@ -70,7 +73,8 @@ final class RecentProductsViewController: UIViewController {
             emptyPlateImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             emptyPlateImage.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 2 / 3),
             emptyPlateImage.topAnchor.constraint(equalTo: recentProductLabel.bottomAnchor, constant: 50),
-            emptyPlateImage.heightAnchor.constraint(equalTo: emptyPlateImage.widthAnchor)])
+            emptyPlateImage.heightAnchor.constraint(equalTo: emptyPlateImage.widthAnchor)
+        ])
     }
     
     private func setupCollectionViewConstraints() {
@@ -89,19 +93,17 @@ final class RecentProductsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        recentProductCollectionView.viewModel = viewModel.getRecentProductCollectionViewViewModel()
-        recentProductCollectionView.viewModel?.delegate = self
-        addVerticalGradientLayer()
+        view.addVerticalGradientLayer()
         setupAllConstraints()
     }
-  
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         recentProductCollectionView.setContentOffset(CGPoint(x: -ConstantsCollectionView.leftDistanceToView,
-                                                                   y: -20), animated: false)
-        recentProductCollectionView.viewModel?.fetchProductFromCoreData { [ weak self] in
+                                                             y: -20), animated: false)
+        recentProductCollectionView.getViewModel().fetchProductFromCoreData { [ weak self] in
             self?.recentProductCollectionView.reloadData()
-            guard let isHidden = self?.recentProductCollectionView.viewModel?.contentIsEmpty() else { return }
+            guard let isHidden = self?.recentProductCollectionView.getViewModel().contentIsEmpty() else { return }
             self?.recentProductCollectionView.isHidden = isHidden
             self?.emptyPlateImage.isHidden = !isHidden
             self?.recentProductLabel.text = self?.viewModel.checkCurrentState(isHidden: !isHidden)
@@ -111,19 +113,7 @@ final class RecentProductsViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         recentProductCollectionView.setContentOffset(CGPoint(x: -ConstantsCollectionView.leftDistanceToView,
-                                                                   y: -20), animated: true)
-    }
-    
-    // MARK: - Private methods
-    
-    private func addVerticalGradientLayer() {
-        let gradient = CAGradientLayer()
-        gradient.frame = view.bounds
-        gradient.colors = [#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).cgColor, #colorLiteral(red: 0.938239575, green: 0.938239575, blue: 0.938239575, alpha: 1).cgColor]
-        gradient.locations = [0.0, 1.0]
-        gradient.startPoint = CGPoint(x: 0, y: 0)
-        gradient.endPoint = CGPoint(x: 0, y: 1)
-        view.layer.insertSublayer(gradient, at: 0)
+                                                             y: -20), animated: true)
     }
 }
 
