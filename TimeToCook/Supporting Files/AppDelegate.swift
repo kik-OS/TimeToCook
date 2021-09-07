@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         /// Отключение всей анимации для UI - тестов.
         #if DEBUG
-        if CommandLine.arguments.contains("disableAnimations") {
+        if CommandLine.arguments.contains("-disableAnimations") {
             UIView.setAnimationsEnabled(false)
         }
         #endif

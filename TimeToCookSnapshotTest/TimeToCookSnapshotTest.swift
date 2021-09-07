@@ -12,7 +12,7 @@ import SnapshotTesting
 class TimeToCookSnapshotTest: XCTestCase {
 
     var sut: TimerViewController?
-    var viewModel: TimerViewModel?
+    var viewModel: TimerViewModelProtocol?
     var timerServise: TimerServiceProtocol?
     var notificationService: NotificationServiceProtocol?
 
