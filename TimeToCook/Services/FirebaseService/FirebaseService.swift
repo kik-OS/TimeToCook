@@ -73,7 +73,7 @@ final class FirebaseService: FirebaseServiceProtocol {
     
     func saveCategories(_ categories: [Category]) {
         categories.forEach {
-            categoriesRef.child($0.name).setValue($0.convertToDictionaty())
+            categoriesRef.child($0.name).setValue($0.convertToDictionary())
         }
     }
     

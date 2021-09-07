@@ -22,7 +22,7 @@ struct Category {
 
     // MARK: - Properties
 
-    let identificator: Int
+    let identifier: Int
     let name: String
     let imageName: String
     let date: Date
@@ -30,7 +30,7 @@ struct Category {
     // MARK: - Initializers
 
     init(name: String) {
-        self.identificator = Category.getID()
+        self.identifier = Category.getID()
         self.name = name
         self.imageName = name
         self.date = Date()
@@ -40,7 +40,7 @@ struct Category {
         guard let snapshotValue = snapshot.value as? [String: AnyObject],
               let stringDate = snapshotValue["date"] as? String else { return nil }
 
-        identificator = snapshotValue["id"] as? Int ?? Int()
+        identifier = snapshotValue["id"] as? Int ?? Int()
         name = snapshotValue["name"] as? String ?? String()
         imageName = snapshotValue["imageName"] as? String ?? String()
         date = DateFormatter.firebaseDateFormatter.date(from: stringDate) ?? Date()
@@ -48,8 +48,8 @@ struct Category {
 
     // MARK: - Public methods
 
-    func convertToDictionaty() -> Any {
-        ["id": identificator,
+    func convertToDictionary() -> Any {
+        ["id": identifier,
          "name": name,
          "imageName": imageName,
          "date": DateFormatter.firebaseDateFormatter.string(from: date)]

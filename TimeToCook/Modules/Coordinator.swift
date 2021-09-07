@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Coordinator {
+final class Coordinator {
 
     private var window: UIWindow
     private var firebaseService: FirebaseServiceProtocol
@@ -33,9 +33,6 @@ class Coordinator {
         coreDataStack = CoreDataStack.shared
         notificationService = NotificationService()
         storageService = StorageService(coreDataStack: coreDataStack)
-        notificationService.notificationCenter.delegate = notificationService
-        notificationService.requestAuthorization()
-        notificationService.cleanBadgesAtStarting()
         start()
     }
 
