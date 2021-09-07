@@ -8,7 +8,7 @@
 import UIKit
 import UserNotifications
 
-protocol NotificationServiceProtocol {
+protocol NotificationServiceProtocol: AnyObject {
     func checkNotificationSettings(completion: @escaping () -> Void)
     func cleanBadgesAtStarting()
     func showTimerNotification(throughMinutes: Double)
@@ -17,43 +17,44 @@ protocol NotificationServiceProtocol {
     func notificationsAreNotAvailableAlert() -> UIAlertController
 }
 
-final class NotificationService: NSObject, UNUserNotificationCenterDelegate, NotificationServiceProtocol {
+final class NotificationService: NSObject, UNUserNotificationCenterDelegate {
 
     // MARK: - Properties
 
-    let notificationCenter: UNUserNotificationCenter
+    private var notificationCenter = UNUserNotificationCenter.current()
+
+    private lazy var timerContent: UNMutableNotificationContent = {
+        let content = UNMutableNotificationContent()
+        content.title = Inscriptions.titleOfTimerNotification
+        content.body = Inscriptions.bodyOfTimerNotification
+        content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "not.wav"))
+        content.badge = 1
+        content.categoryIdentifier = Inscriptions.categoryIdentifierTimerNotification
+        if let attachment = createUNNotificationAttachment() {
+            content.attachments = [attachment]
+        }
+        return content
+    }()
+
+    private lazy var productContent: UNMutableNotificationContent = {
+        let content = UNMutableNotificationContent()
+        content.title = Inscriptions.titleOfAddedProductNotification
+        content.body = Inscriptions.bodyOfAddedProductNotification
+        content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "nom.wav"))
+        return content
+    }()
     
-    // MARK: - Initializer
+    // MARK: - Init
     
     override init() {
-        notificationCenter = UNUserNotificationCenter.current()
-    }
-    
-    // MARK: - Public methods
-    
-    func requestAuthorization() {
-        notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { _, _ in }
-    }
-    
-    /// Вызывается для проверки настроек уведомлений у пользователя. Если уведомления выключены, вызывается замыкание.
-    func checkNotificationSettings(completion: @escaping () -> Void) {
-        notificationCenter.getNotificationSettings { settings in
-            if settings.authorizationStatus == .denied ||
-                settings.authorizationStatus == .notDetermined {
-                DispatchQueue.main.async {
-                    completion()
-                }
-            }
-        }
+        super.init()
+        notificationCenter.delegate = self
+        requestAuthorization()
+        cleanBadgesAtStarting()
     }
 
-    /// Очищение бейджей при запуске приложения
-    func cleanBadgesAtStarting() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(applicationDidBecomeActive),
-                                               name: UIApplication.didBecomeActiveNotification, object: nil)
-    }
-    
+    // MARK: - Public methods
+
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler:
@@ -75,24 +76,25 @@ final class NotificationService: NSObject, UNUserNotificationCenterDelegate, Not
         }
         completionHandler()
     }
-    
-    func showTimerNotification(throughMinutes: Double) {
-        
-        let numberOfSeconds = 60 * throughMinutes
-        let content = UNMutableNotificationContent()
-        content.title = Inscriptions.titleOfTimerNotification
-        content.body = Inscriptions.bodyOfTimerNotification
-        //        content.sound = UNNotificationSound.default
-        content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "not.wav"))
-        content.badge = 1
-        content.categoryIdentifier = Inscriptions.categoryIdentifierTimerNotification
-        if let attachment = createUNNotificationAttachment() {
-            content.attachments = [attachment]
+
+    // MARK: - Private methods
+
+    private func requestAuthorization() {
+        notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { _, _ in }
+    }
+
+    private func createUNNotificationAttachment() -> UNNotificationAttachment? {
+        if let path = Bundle.main.path(forResource: ImageTitles.timerNotificationContent.title,
+                                       ofType: ImageTitles.timerNotificationContent.type) {
+            do {
+                return try UNNotificationAttachment(identifier: ImageTitles.timerNotificationContent.title,
+                                                    url: URL(fileURLWithPath: path))
+            } catch { }
         }
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: numberOfSeconds, repeats: false)
-        let identifier = Inscriptions.identifierOfTimerNotification
-        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        return nil
+    }
+
+    private func createNotificationCategory() -> UNNotificationCategory {
         let snoozeOneMinuteAction = UNNotificationAction(identifier: Inscriptions.identifierSnoozeOneMinuteButton,
                                                          title: Inscriptions.titleSnoozeOneMinuteButton,
                                                          options: [])
@@ -105,29 +107,64 @@ final class NotificationService: NSObject, UNUserNotificationCenterDelegate, Not
         let category = UNNotificationCategory(identifier: Inscriptions.categoryIdentifierTimerNotification,
                                               actions: [snoozeOneMinuteAction, snoozeFiveMinuteAction, turnOffAction],
                                               intentIdentifiers: [], options: [])
+        return category
+    }
+    
+    @objc private func applicationDidBecomeActive(notification: NSNotification) {
+        UIApplication.shared.applicationIconBadgeNumber = 0
+    }
+}
+
+// MARK: Extension
+
+extension NotificationService: NotificationServiceProtocol {
+
+    /// Вызывается для проверки настроек уведомлений у пользователя. Если уведомления выключены, вызывается замыкание.
+    func checkNotificationSettings(completion: @escaping () -> Void) {
+        notificationCenter.getNotificationSettings { settings in
+            if settings.authorizationStatus == .denied ||
+                settings.authorizationStatus == .notDetermined {
+                DispatchQueue.main.async {
+                    completion()
+                }
+            }
+        }
+    }
+
+    /// Очищение бейджей при запуске приложения
+    func cleanBadgesAtStarting() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(applicationDidBecomeActive),
+                                               name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+
+    func showTimerNotification(throughMinutes: Double) {
+        let numberOfSeconds = 60 * throughMinutes
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: numberOfSeconds, repeats: false)
+        let identifier = Inscriptions.identifierOfTimerNotification
+        let request = UNNotificationRequest(identifier: identifier, content: timerContent, trigger: trigger)
+        let category = createNotificationCategory()
         notificationCenter.add(request)
         notificationCenter.setNotificationCategories([category])
     }
-    
+
     func showProductWasAddedNotification() {
-        let content = UNMutableNotificationContent()
-        content.title = Inscriptions.titleOfAddedProductNotification
-        content.body = Inscriptions.bodyOfAddedProductNotification
-        content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "nom.wav"))
         let identifier = Inscriptions.identifierOfAddedProductNotification
-        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
+        let request = UNNotificationRequest(identifier: identifier, content: productContent, trigger: nil)
         notificationCenter.add(request)
     }
 
+    /// Отменить отложенное уведомление
     func cancelTimerNotification() {
         notificationCenter.removeAllPendingNotificationRequests()
     }
 
+    /// Если у пользователя отключены уведомления, появляется alert с предупреждением и ссылкой на настройки
     func notificationsAreNotAvailableAlert() -> UIAlertController {
         let alert = UIAlertController(title: Inscriptions.titleNotificationsAreNotAvailableAlert,
                                       message: Inscriptions.messageNotificationsAreNotAvailableAlert,
                                       preferredStyle: .actionSheet)
-        
+
         let settingsAction = UIAlertAction(title: Inscriptions.okActionNotAvailableAlert,
                                            style: .destructive) { _ in
             guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else { return }
@@ -140,22 +177,5 @@ final class NotificationService: NSObject, UNUserNotificationCenterDelegate, Not
         alert.addAction(settingsAction)
         alert.addAction(cancelAction)
         return alert
-    }
-    
-    // MARK: - Private methods
-    
-    private func createUNNotificationAttachment() -> UNNotificationAttachment? {
-        if let path = Bundle.main.path(forResource: ImageTitles.timerNotificationContent.title,
-                                       ofType: ImageTitles.timerNotificationContent.type) {
-            do {
-                return try UNNotificationAttachment(identifier: ImageTitles.timerNotificationContent.title,
-                                                    url: URL(fileURLWithPath: path))
-            } catch { }
-        }
-        return nil
-    }
-    
-    @objc private func applicationDidBecomeActive(notification: NSNotification) {
-        UIApplication.shared.applicationIconBadgeNumber = 0
     }
 }

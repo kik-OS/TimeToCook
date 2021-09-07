@@ -55,7 +55,7 @@ final class TimerViewController: UIViewController {
     
     private lazy var closeButton: CloseButtonAdd = {
         let closeButton = CloseButtonAdd()
-        closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
+        closeButton.addTarget(self, action: #selector(dismissByTapAction), for: .touchUpInside)
         return closeButton
     }()
     
@@ -245,11 +245,7 @@ final class TimerViewController: UIViewController {
     @objc private func dismissByTapAction() {
         dismiss(animated: true)
     }
-    
-    @objc private func closeButtonTapped() {
-        dismiss(animated: true)
-    }
-    
+
     @objc private func startButtonTapped() {
         viewModel.startTimer()
         showDiagram()

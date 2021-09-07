@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol DeviceServiceProtocol {
+protocol DeviceServiceProtocol: AnyObject {
     var notSquareScreenDevices: [DeviceModel] { get }
     var currentType: DeviceModel { get set }
     func checkSquareScreen() -> Bool
 }
 
-struct DeviceService: DeviceServiceProtocol {
+class DeviceService: DeviceServiceProtocol {
 
     var currentType: DeviceModel
     let notSquareScreenDevices: [DeviceModel] = [.iPhoneX, .iPhoneXS, .iPhoneXSMax,

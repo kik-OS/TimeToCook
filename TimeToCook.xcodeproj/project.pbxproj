@@ -560,11 +560,11 @@
 			children = (
 				E42A3C3926D505F000794AD2 /* Coordinator.swift */,
 				E41C3C5626A702DA006F1AE9 /* TimerVC */,
+				E41C3C5E26A702DA006F1AE9 /* CustomTabBar */,
 				E4570FBE26B2A33A0013F7C9 /* ProductInfoVC */,
+				E41C3C6526A702DA006F1AE9 /* RecentProducts */,
 				E41C3CC726A9AB06006F1AE9 /* BarcodeScannerVC */,
 				E41C3C5326A702DA006F1AE9 /* AddingNewProductVC */,
-				E41C3C5E26A702DA006F1AE9 /* CustomTabBar */,
-				E41C3C6526A702DA006F1AE9 /* RecentProducts */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -582,9 +582,9 @@
 		E41C3C5626A702DA006F1AE9 /* TimerVC */ = {
 			isa = PBXGroup;
 			children = (
-				E41C3C5826A702DA006F1AE9 /* Subviews */,
 				E41C3C5C26A702DA006F1AE9 /* TimerViewModel.swift */,
 				E4B971B226C26E6C003DFACA /* TimerViewController.swift */,
+				E41C3C5826A702DA006F1AE9 /* Subviews */,
 			);
 			path = TimerVC;
 			sourceTree = "<group>";

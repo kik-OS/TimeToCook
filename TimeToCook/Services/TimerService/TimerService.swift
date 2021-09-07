@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - Protocols
+
 protocol TimerServiceBarDelegate: AnyObject {
     func timerDidStep(remainingSeconds: Int, isStopped: Bool)
 }
@@ -16,7 +18,7 @@ protocol TimerServiceTimerViewDelegate: AnyObject {
     func timerHasExpired()
 }
 
-protocol TimerServiceProtocol {
+protocol TimerServiceProtocol: AnyObject {
     var isActive: Bool { get }
     var barDelegate: TimerServiceBarDelegate? { get set }
     var timerViewDelegate: TimerServiceTimerViewDelegate? { get set }
@@ -37,7 +39,7 @@ final class TimerService: TimerServiceProtocol {
     weak var timerViewDelegate: TimerServiceTimerViewDelegate?
     
     private var savedTime: (timerTime: Int, time: Double)?
-    private var timer = Timer()
+    private var timer: Timer?
     /// Общее время таймера в секундах.
     private var totalTime = 0
     /// Текущее время таймера в секундах.
@@ -46,6 +48,7 @@ final class TimerService: TimerServiceProtocol {
     // MARK: - Public methods
     
     func start(forMinutes minutes: Int) {
+        timer = Timer()
         totalTime = minutes * 60
         timerTime = totalTime
         let newTimer = Timer.scheduledTimer(timeInterval: 1,
@@ -53,6 +56,8 @@ final class TimerService: TimerServiceProtocol {
                                             selector: #selector(stepTimer),
                                             userInfo: nil,
                                             repeats: true)
+        newTimer.tolerance = 0.1
+        /// Необходимо чтобы избавиться от лагов в UI при работающем таймере
         RunLoop.current.add(newTimer, forMode: .common)
         timer = newTimer
         isActive = true
@@ -60,6 +65,8 @@ final class TimerService: TimerServiceProtocol {
     
     func stop() {
         isActive = false
+        timer?.invalidate()
+        timer = nil
         updateTimers(remainingTime: timerTime, isStopped: true)
     }
     
@@ -95,12 +102,9 @@ final class TimerService: TimerServiceProtocol {
     // MARK: - Private methods
     
     @objc private func stepTimer(sender: Timer) {
-        var backgroundTask = UIApplication.shared.beginBackgroundTask()
-        
         guard isActive, timerTime >= 0 else {
             isActive = false
             sender.invalidate()
-            backgroundTask = UIBackgroundTaskIdentifier.invalid
             return
         }
         
@@ -109,13 +113,6 @@ final class TimerService: TimerServiceProtocol {
             timerViewDelegate?.timerHasExpired()
         }
         timerTime -= 1
-        
-        if backgroundTask != UIBackgroundTaskIdentifier.invalid {
-            if UIApplication.shared.applicationState == .active {
-                UIApplication.shared.endBackgroundTask(backgroundTask)
-                backgroundTask = UIBackgroundTaskIdentifier.invalid
-            }
-        }
     }
     
     private func updateTimers(remainingTime: Int, isStopped: Bool) {
