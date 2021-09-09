@@ -5,6 +5,8 @@
 //  Created by Никита Гвоздиков on 31.07.2021.
 //
 
+
+/// Намеренно добавлен UIKit для разгрузки ViewController и вынесения логики из него
 import UIKit
 
 // MARK: - Protocol
