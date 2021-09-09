@@ -30,6 +30,7 @@ extension CoreDataStackProtocol {
             do {
                 try mainContext.save()
             } catch {
+                
                 print(error.localizedDescription)
             }
         }

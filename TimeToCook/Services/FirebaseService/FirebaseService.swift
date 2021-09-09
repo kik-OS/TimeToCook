@@ -56,7 +56,7 @@ final class FirebaseService: FirebaseServiceProtocol {
     }
     
     func fetchProducts(completion: @escaping (Result <[ProductProtocol],
-                                                     FirebaseServiceError> ) -> Void) {
+                                                     FirebaseServiceError>) -> Void) {
         productsRef.observe(.value) { snapshot in
             guard snapshot.exists() else {
                 completion(.failure(.productsNotFound))
