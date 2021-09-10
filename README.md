@@ -28,7 +28,18 @@
 
 Также реализована возможность продлить готовку еще на 1 и 5 минут, непосредственно из всплывающего уведомления. 
 
-[![de.gif](https://i.postimg.cc/GhpN2r52/de.gif)](https://postimg.cc/Z01jskZt)
+![ezgif-com-gif-maker.gif](https://media.giphy.com/media/jL92SNuuolJU4SRBFW/giphy.gif?cid=790b7611816f0be15681e6c1f6b27bfae7f45b497fcc3030&rid=giphy.gif&ct=g)
+
+### Добавление нового продукта 
+Если найти продукт не удалось, появляется Alert с предложением о добавлении продукта вручную. <br> 
+На экране добавления, реализован Custom ToolBar для более удобного перемещения между TextFields. <br>
+В некоторых TextField вместо клавиатуры появляется UIPickerView, с категориями, полученными из базы.<br>
+После заполнения всех необходимых полей валидными значениями, продукт будет добавлен в общую базу, а пользователь получит уведомление.
+
+[![ezgif-com-gif-maker-2.gif](https://i.postimg.cc/dVk0LHxy/ezgif-com-gif-maker-2.gif)](https://postimg.cc/QFDDzbs8)
+
+
+
 
 
 
