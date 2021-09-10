@@ -28,7 +28,8 @@
 
 Также реализована возможность продлить готовку еще на 1 и 5 минут, непосредственно из всплывающего уведомления. 
 
-[![ezgif-com-gif-maker-1.gif](https://i.postimg.cc/26BMCxcx/ezgif-com-gif-maker-1.gif)](https://postimg.cc/34YnB2Hy)
+[![de.gif](https://i.postimg.cc/GhpN2r52/de.gif)](https://postimg.cc/Z01jskZt)
+
 
 
 
