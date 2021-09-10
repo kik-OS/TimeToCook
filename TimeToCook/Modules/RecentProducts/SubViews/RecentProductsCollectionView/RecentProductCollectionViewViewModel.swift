@@ -42,9 +42,7 @@ final class RecentProductCollectionViewViewModel: RecentProductCollectionViewVie
     
     func fetchProductFromCoreData(completion: @escaping() -> Void) {
         /// Сортировка массива полученных данных по дате создания
-        products = storageService.fetchProducts().sorted(by: {
-            $0.date ?? Date() > $1.date ?? Date()
-        }).map { Product(width: $0) }
+        products = storageService.fetchProducts().map { Product(width: $0) }
         DispatchQueue.main.async {
             completion()
         }

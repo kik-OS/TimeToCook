@@ -10,12 +10,12 @@ import UIKit
 final class Coordinator {
 
     private var window: UIWindow
-    private var firebaseService: FirebaseServiceProtocol
-    private var storageService: StorageServiceProtocol
     private var timerService: TimerServiceProtocol
     private var deviceService: DeviceServiceProtocol
-    private var notificationService: NotificationService
     private var coreDataStack: CoreDataStackProtocol
+    private var storageService: StorageServiceProtocol
+    private var firebaseService: FirebaseServiceProtocol
+    private var notificationService: NotificationServiceProtocol
 
     private var customTabBarViewModel: TabBarViewModelProtocol {
         TabBarViewModel(notificationService: notificationService,

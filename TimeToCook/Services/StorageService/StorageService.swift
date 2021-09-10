@@ -80,6 +80,8 @@ extension StorageService: StorageServiceProtocol {
         let context = stack.mainContext
         var result = [ProductDTO]()
         let request = NSFetchRequest<MOProduct>(entityName: stack.getEntity())
+        /// Сортировка массива полученных данных по дате создания
+        request.sortDescriptors = [NSSortDescriptor(key: #keyPath(MOProduct.date), ascending: false)]
         context.performAndWait {
             guard let product = try? request.execute() else { return }
             result = product.map { ProductDTO(with: $0) }
