@@ -44,9 +44,18 @@
 
 
 ## Особенности реализации 
-### Элемент, отвечающий за отображения Таймера, написан на SwiftUI
+Элемент, отвечающий за отображения Таймера, написан на **SwiftUI**
 
 [![1.jpg](https://i.postimg.cc/pXcz4zJk/1.jpg)](https://postimg.cc/7f75TCcT)
+
+На экране добавления нового продукта, реализован Custom ToolBar для более удобного перемещения между TextFields<br>
+В некоторых TextField вместо клавиатуры появляется UIPickerView, с категориями, получаемыми из базы. 
+
+[![ezgif-com-gif-maker-4.gif](https://i.postimg.cc/QNvvZ4kn/ezgif-com-gif-maker-4.gif)](https://postimg.cc/Hj46QtNQ)
+
+В зависимости от модели телефона, внешний вид TabBar будет меняться. 
+
+[![2.jpg](https://i.postimg.cc/SQ7dKgWK/2.jpg)](https://postimg.cc/WtzgW6YR)
 
 
 
