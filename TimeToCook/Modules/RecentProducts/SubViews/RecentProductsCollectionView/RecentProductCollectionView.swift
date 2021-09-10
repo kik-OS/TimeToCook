@@ -37,7 +37,6 @@ final class RecentProductCollectionView: UICollectionView {
         layout.minimumLineSpacing = ConstantsCollectionView.productsCollectionMinimumLineSpacing
         contentInset = UIEdgeInsets(top: 20, left: ConstantsCollectionView.leftDistanceToView,
                                     bottom: 0, right: ConstantsCollectionView.rightDistanceToView)
-        
         showsHorizontalScrollIndicator = false
         showsVerticalScrollIndicator = false
     }

@@ -33,12 +33,8 @@ final class RecentProductCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    private lazy var nameLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Avenir Next Regular", size: 20)
-        label.textColor = VarkaColors.mainColor
-        label.numberOfLines = 1
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var nameLabel: NameLabelCell = {
+        let label = NameLabelCell()
         return label
     }()
     
