@@ -57,6 +57,24 @@
 
 [![2.jpg](https://i.postimg.cc/SQ7dKgWK/2.jpg)](https://postimg.cc/WtzgW6YR)
 
+## Архитектура
+
+* ViewController содержит только UI и Анимации, вся логика вынесена во ViewModel.
+* ViewController держит ссылку на ViewModel, обновление происходит через DataBinding, обратная ссылка отсутствует.
+* BaseViewModel и все необходимые сервисы инициализируются сущностью Coordinator в момент запуска приложения и далее передаются от одной ViewModel к другой.
+* ViewController инициализирует следующий ViewController, запрашивая необходимую ViewModel  у своей, управляющей ViewModel. 
+
+[![My-First-Board-1.jpg](https://i.postimg.cc/1RCNHzND/My-First-Board-1.jpg)](https://postimg.cc/23W6jrG5)
+
+## Тесты
+
+* Тестовое покрытие Unit-тестами составляет 11.7%
+* Добавлен один UI-тест
+* Добавлен один Snapshot-тест
+
+[![2.jpg](https://i.postimg.cc/mgYdhnmX/2.jpg)](https://postimg.cc/qN7c51Vy)
+
+
 
 
 
