@@ -11,6 +11,10 @@
 		2F26661B4FA92DE49714460C /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		46F38C47D263775B008B3C70 /* Pods_TimeToCook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6F0E980080CE5202A460A30 /* Pods_TimeToCook.framework */; };
 		A9C72F23750B51104A7FE3D6 /* Pods_TimeToCookSnapshotTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E33CA7C2C06F101BA495DF9 /* Pods_TimeToCookSnapshotTest.framework */; };
+		E40C7B7C26EF3CCA00141D50 /* NameLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C4C1FD26EB4C4A0087EA49 /* NameLabelCell.swift */; };
+		E40C7B7D26EF3CCA00141D50 /* NameLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C4C1FD26EB4C4A0087EA49 /* NameLabelCell.swift */; };
+		E40C7B7E26EF3CCB00141D50 /* NameLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C4C1FD26EB4C4A0087EA49 /* NameLabelCell.swift */; };
+		E40C7B7F26EF3CDE00141D50 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C4226A702D7006F1AE9 /* Constants.swift */; };
 		E40F5EB526DBD00C0000C9CD /* AddingNewProductViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40F5EB426DBD00C0000C9CD /* AddingNewProductViewModelTest.swift */; };
 		E419B74626DF9002004315C3 /* MOProduct+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419B74526DF9002004315C3 /* MOProduct+CoreDataClass.swift */; };
 		E419B74726DF9002004315C3 /* MOProduct+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419B74526DF9002004315C3 /* MOProduct+CoreDataClass.swift */; };
@@ -1420,6 +1424,7 @@
 				E4554BA826D0D0CE00819A09 /* RecentProductCollectionView.swift in Sources */,
 				E4554BAA26D0D0ED00819A09 /* Constants.swift in Sources */,
 				E4554BD126D0D3F600819A09 /* DateFormatter+Extension.swift in Sources */,
+				E40C7B7C26EF3CCA00141D50 /* NameLabelCell.swift in Sources */,
 				E4554BBD26D0D2DF00819A09 /* InstructionCollectionViewCell.swift in Sources */,
 				E4BA159326DEC2B600E73B1A /* ProductDTO.swift in Sources */,
 			);
@@ -1432,6 +1437,8 @@
 				E4B12DD926DD02A500C27056 /* TimeToCookUITests.swift in Sources */,
 				E419B74826DF9002004315C3 /* MOProduct+CoreDataClass.swift in Sources */,
 				E436E5CC26E2150200BE6576 /* MascotSecondImageView.swift in Sources */,
+				E40C7B7D26EF3CCA00141D50 /* NameLabelCell.swift in Sources */,
+				E40C7B7F26EF3CDE00141D50 /* Constants.swift in Sources */,
 				E419B74D26DF900D004315C3 /* MOProduct+CoreDataProperties.swift in Sources */,
 				E419B75226DF974B004315C3 /* CoreDataStack.swift in Sources */,
 			);
@@ -1476,6 +1483,7 @@
 				E4BA157D26DE4D3500E73B1A /* TimerStopButton.swift in Sources */,
 				E4BA157926DE4D1E00E73B1A /* TimerLabel.swift in Sources */,
 				E4BA156D26DE4C5900E73B1A /* RecentProductCollectionViewViewModel.swift in Sources */,
+				E40C7B7E26EF3CCB00141D50 /* NameLabelCell.swift in Sources */,
 				E4BA155926DE4B4200E73B1A /* Inscriptions.swift in Sources */,
 				E4BA155326DE4AF900E73B1A /* ProductInfoViewController.swift in Sources */,
 				E4BA156E26DE4C5E00E73B1A /* StorageService.swift in Sources */,

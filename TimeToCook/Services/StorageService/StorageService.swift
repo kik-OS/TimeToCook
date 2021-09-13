@@ -24,6 +24,8 @@ protocol StorageServiceProtocol {
 
     /// Получить все продукты
     func fetchProducts() -> [ProductDTO]
+
+    func getMainContext() -> NSManagedObjectContext
 }
 
 final class StorageService {
@@ -36,6 +38,10 @@ final class StorageService {
 }
 
 extension StorageService: StorageServiceProtocol {
+
+    func getMainContext() -> NSManagedObjectContext {
+        stack.mainContext
+    }
 
     func update(product: [ProductDTO]) {
         let context = stack.backgroundContext

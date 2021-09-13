@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 protocol RecentProductCollectionViewViewModelProtocol: AnyObject {
     var numberOfItemsInSection: Int { get }
@@ -16,11 +17,17 @@ protocol RecentProductCollectionViewViewModelProtocol: AnyObject {
 
     func fetchProductFromCoreData(completion: @escaping() -> Void)
     func cellViewModel(at indexPath: IndexPath) -> RecentProductCollectionViewCellViewModelProtocol?
-    func didSelectItemAt(indexPath: IndexPath)
+    func didSelectItem(product: ProductDTO)
     func contentIsEmpty() -> Bool
+    func getMainContext() -> NSManagedObjectContext
 }
 
 final class RecentProductCollectionViewViewModel: RecentProductCollectionViewViewModelProtocol {
+    func didSelectItem(product: ProductDTO) {
+    delegate?.presentInfoAboutProduct(product: Product(width: product))
+
+    }
+
 
     // MARK: Dependences
 
@@ -41,7 +48,7 @@ final class RecentProductCollectionViewViewModel: RecentProductCollectionViewVie
     // MARK: - Methods
     
     func fetchProductFromCoreData(completion: @escaping() -> Void) {
-        products = storageService.fetchProducts().map { Product(width: $0) }
+//        products = storageService.fetchProducts().map { Product(width: $0) }
         DispatchQueue.main.async {
             completion()
         }
@@ -53,11 +60,16 @@ final class RecentProductCollectionViewViewModel: RecentProductCollectionViewVie
     }
 
     func contentIsEmpty() -> Bool {
-        numberOfItemsInSection == 0
+//        numberOfItemsInSection == 0
+        false
     }
 
-    func didSelectItemAt(indexPath: IndexPath) {
-        let product = products[indexPath.row]
-        delegate?.presentInfoAboutProduct(product: product)
+//    func didSelectItemAt(indexPath: IndexPath) {
+//        let product = products[indexPath.row]
+//        delegate?.presentInfoAboutProduct(product: product)
+//    }
+
+    func getMainContext() -> NSManagedObjectContext {
+        storageService.getMainContext()
     }
 }

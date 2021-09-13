@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import CoreData
 
 protocol RecentProductCollectionViewDelegate: AnyObject {
     func presentInfoAboutProduct(product: ProductProtocol)
 }
 
 final class RecentProductsViewController: UIViewController {
-    
+
     // MARK: UI
     
     private lazy var recentProductLabel: RecentProductLabel = {
@@ -29,7 +30,7 @@ final class RecentProductsViewController: UIViewController {
     }()
     
     private lazy var recentProductCollectionView: RecentProductCollectionView = {
-        let viewModel = self.viewModel.getRecentProductCollectionViewViewModel()
+        let viewModel = viewModel.getRecentProductCollectionViewViewModel()
         let recentProductCollectionView = RecentProductCollectionView(viewModel: viewModel)
         recentProductCollectionView.setDelegate(delegate: self)
         return recentProductCollectionView
@@ -102,9 +103,9 @@ final class RecentProductsViewController: UIViewController {
         recentProductCollectionView.setContentOffset(CGPoint(x: -ConstantsCollectionView.leftDistanceToView,
                                                              y: -20), animated: false)
         recentProductCollectionView.getViewModel().fetchProductFromCoreData { [ weak self] in
-            self?.recentProductCollectionView.reloadData()
+//            self?.recentProductCollectionView.reloadData()
             guard let isHidden = self?.recentProductCollectionView.getViewModel().contentIsEmpty() else { return }
-            self?.recentProductCollectionView.isHidden = isHidden
+            self?.recentProductCollectionView.isHidden = false
             self?.emptyPlateImage.isHidden = !isHidden
             self?.recentProductLabel.text = self?.viewModel.checkCurrentState(isHidden: !isHidden)
         }

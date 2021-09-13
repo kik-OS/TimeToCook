@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 final class RecentProductCollectionView: UICollectionView {
     
@@ -18,7 +19,23 @@ final class RecentProductCollectionView: UICollectionView {
             }
         }
     }
-    
+
+    private lazy var frc: NSFetchedResultsController<MOProduct> = {
+        let request = NSFetchRequest<MOProduct>(entityName: "MOProduct")
+        request.sortDescriptors = [NSSortDescriptor(key: #keyPath(MOProduct.date), ascending: false)]
+        let frc = NSFetchedResultsController(fetchRequest: request,
+                                             managedObjectContext: viewModel.getMainContext(),
+                                          sectionNameKeyPath: nil,
+                                          cacheName: nil)
+        frc.delegate = self
+
+        do {
+            try? frc.performFetch()
+        }
+
+        return frc
+    }()
+
     // MARK: - Initializer 
     
     init(viewModel: RecentProductCollectionViewViewModelProtocol) {
@@ -61,14 +78,18 @@ extension RecentProductCollectionView: UICollectionViewDelegate,
                                        UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.numberOfItemsInSection
+        guard let sections = frc.sections else { return 0 }
+        print(sections[section].numberOfObjects)
+        return sections[section].numberOfObjects
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = dequeueReusableCell(withReuseIdentifier: RecentProductCollectionViewCell.reuseID,
                                        for: indexPath) as? RecentProductCollectionViewCell
-        cell?.viewModel = viewModel.cellViewModel(at: indexPath)
+        let product = ProductDTO(with: frc.object(at: indexPath))
+        cell?.viewModel = RecentProductCollectionViewCellViewModel(product: Product(width: product))
+//        cell?.viewModel = viewModel.cellViewModel(at: indexPath)
         return cell ?? UICollectionViewCell()
     }
     
@@ -79,11 +100,20 @@ extension RecentProductCollectionView: UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.didSelectItemAt(indexPath: indexPath)
+        let product = ProductDTO(with: frc.object(at: indexPath))
+
+        viewModel.didSelectItem(product: product)
     }
     
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         true
     }
     
+}
+
+extension RecentProductCollectionView: NSFetchedResultsControllerDelegate {
+
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+       reloadData()
+    }
 }

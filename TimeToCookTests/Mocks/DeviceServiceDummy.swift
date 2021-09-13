@@ -8,8 +8,7 @@
 import Foundation
 
 final class DeviceServiceDummy: DeviceServiceProtocol {
-
+    var isSquareScreen: Bool { false }
     var notSquareScreenDevices: [DeviceModel] = []
     var currentType: DeviceModel = .iPhone11
-    func checkSquareScreen() -> Bool { false }
 }

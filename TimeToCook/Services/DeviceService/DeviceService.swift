@@ -10,7 +10,7 @@ import UIKit
 protocol DeviceServiceProtocol: AnyObject {
     var notSquareScreenDevices: [DeviceModel] { get }
     var currentType: DeviceModel { get set }
-    func checkSquareScreen() -> Bool
+    var isSquareScreen: Bool { get }
 }
 
 class DeviceService: DeviceServiceProtocol {
@@ -24,8 +24,7 @@ class DeviceService: DeviceServiceProtocol {
         currentType = UIDevice.current.typeOfCurrentModel
     }
 
-    func checkSquareScreen() -> Bool {
-        return !notSquareScreenDevices.contains(currentType)
+    var isSquareScreen: Bool {
+        !notSquareScreenDevices.contains(currentType)
     }
-
 }
