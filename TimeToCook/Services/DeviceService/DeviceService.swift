@@ -7,11 +7,15 @@
 
 import UIKit
 
+// MARK: - Protocol
+
 protocol DeviceServiceProtocol: AnyObject {
     var notSquareScreenDevices: [DeviceModel] { get }
     var currentType: DeviceModel { get set }
     var isSquareScreen: Bool { get }
 }
+
+// MARK: - Class
 
 class DeviceService: DeviceServiceProtocol {
 

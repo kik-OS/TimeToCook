@@ -563,7 +563,6 @@
 		E41C3C5226A702DA006F1AE9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				E42A3C3926D505F000794AD2 /* Coordinator.swift */,
 				E41C3C5626A702DA006F1AE9 /* TimerVC */,
 				E41C3C5E26A702DA006F1AE9 /* CustomTabBar */,
 				E4570FBE26B2A33A0013F7C9 /* ProductInfoVC */,
@@ -662,6 +661,7 @@
 		E41C3C7826A702DA006F1AE9 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E42A3C3926D505F000794AD2 /* Coordinator.swift */,
 				E41C3C8026A702DA006F1AE9 /* TimerService */,
 				E41C3C7E26A702DA006F1AE9 /* DeviceService */,
 				E41C3C7926A702DA006F1AE9 /* StorageService */,
