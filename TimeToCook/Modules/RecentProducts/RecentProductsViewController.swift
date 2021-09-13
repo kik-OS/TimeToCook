@@ -102,13 +102,13 @@ final class RecentProductsViewController: UIViewController {
         super.viewWillAppear(animated)
         recentProductCollectionView.setContentOffset(CGPoint(x: -ConstantsCollectionView.leftDistanceToView,
                                                              y: -20), animated: false)
-        recentProductCollectionView.getViewModel().fetchProductFromCoreData { [ weak self] in
-//            self?.recentProductCollectionView.reloadData()
-            guard let isHidden = self?.recentProductCollectionView.getViewModel().contentIsEmpty() else { return }
-            self?.recentProductCollectionView.isHidden = false
-            self?.emptyPlateImage.isHidden = !isHidden
-            self?.recentProductLabel.text = self?.viewModel.checkCurrentState(isHidden: !isHidden)
-        }
+
+        let isHidden = recentProductCollectionView.contentIsEmpty
+        print(isHidden)
+                    self.recentProductCollectionView.isHidden = isHidden
+                    self.emptyPlateImage.isHidden = !isHidden
+                    self.recentProductLabel.text = self.viewModel.checkCurrentState(isHidden: !isHidden)
+
     }
 
     override func viewWillDisappear(_ animated: Bool) {

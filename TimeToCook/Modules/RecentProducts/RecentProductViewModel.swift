@@ -6,20 +6,14 @@
 //
 
 import Foundation
-import CoreData
 
 protocol RecentProductViewModelProtocol: AnyObject {
     func getRecentProductCollectionViewViewModel() -> RecentProductCollectionViewViewModelProtocol
     func checkCurrentState(isHidden: Bool) -> String
-    func getMainContext() -> NSManagedObjectContext
     init(storageService: StorageServiceProtocol)
 }
 
 final class RecentProductViewModel: RecentProductViewModelProtocol {
-
-    func getMainContext() -> NSManagedObjectContext {
-        storageService.getMainContext()
-    }
 
     private let storageService: StorageServiceProtocol
 
