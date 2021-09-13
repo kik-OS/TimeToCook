@@ -8,11 +8,15 @@
 import UIKit
 import AVFoundation
 
+// MARK: Protocol
+
 protocol BarcodeScannerDelegate: AnyObject {
     func cameraView() -> UIView
     func delegateViewController() -> UIViewController
     func scanCompleted(withCode code: String)
 }
+
+// MARK: Class
 
 final class BarcodeScanner {
     

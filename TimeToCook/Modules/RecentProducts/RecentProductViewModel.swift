@@ -7,11 +7,15 @@
 
 import Foundation
 
+// MARK: Protocol
+
 protocol RecentProductViewModelProtocol: AnyObject {
     func getRecentProductCollectionViewViewModel() -> RecentProductCollectionViewViewModelProtocol
     func checkCurrentState(isHidden: Bool) -> String
     init(storageService: StorageServiceProtocol)
 }
+
+// MARK: Class
 
 final class RecentProductViewModel: RecentProductViewModelProtocol {
 
