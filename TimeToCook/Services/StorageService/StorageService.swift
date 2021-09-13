@@ -25,8 +25,11 @@ protocol StorageServiceProtocol {
     /// Получить все продукты
     func fetchProducts() -> [ProductDTO]
 
-    func getMainContext() -> NSManagedObjectContext
+    /// Получить FetchResultController
+    var productFRC: NSFetchedResultsController<MOProduct> { get }
 }
+
+// MARK: Class
 
 final class StorageService {
 
@@ -35,13 +38,24 @@ final class StorageService {
     init(coreDataStack: CoreDataStackProtocol) {
         stack = coreDataStack
     }
+
+    lazy var productFRC: NSFetchedResultsController<MOProduct> = {
+        let request = NSFetchRequest<MOProduct>(entityName: "MOProduct")
+        request.sortDescriptors = [NSSortDescriptor(key: #keyPath(MOProduct.date), ascending: false)]
+        let fetchResultController = NSFetchedResultsController(fetchRequest: request,
+                                                               managedObjectContext: stack.mainContext,
+                                                               sectionNameKeyPath: nil,
+                                                               cacheName: nil)
+        do {
+            try fetchResultController.performFetch()
+        } catch {
+            print(error.localizedDescription)
+        }
+        return fetchResultController
+    }()
 }
 
 extension StorageService: StorageServiceProtocol {
-
-    func getMainContext() -> NSManagedObjectContext {
-        stack.mainContext
-    }
 
     func update(product: [ProductDTO]) {
         let context = stack.backgroundContext

@@ -161,7 +161,6 @@
 		E49CB14226B9811900B99038 /* SingleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB14126B9811900B99038 /* SingleStackView.swift */; };
 		E49CB14426BADC9300B99038 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB14326BADC9300B99038 /* UIFont+Extension.swift */; };
 		E49CB14826BAE52D00B99038 /* ProductNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB14726BAE52D00B99038 /* ProductNameView.swift */; };
-		E4B12DCF26DCD50000C27056 /* RecentProductCollectionViewViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B12DCE26DCD50000C27056 /* RecentProductCollectionViewViewModelTest.swift */; };
 		E4B12DD926DD02A500C27056 /* TimeToCookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B12DD826DD02A500C27056 /* TimeToCookUITests.swift */; };
 		E4B12DE126DE126700C27056 /* DeviceServiceDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B12DE026DE126700C27056 /* DeviceServiceDummy.swift */; };
 		E4B94E3526CA8B92003A71DF /* SmallLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B94E3426CA8B92003A71DF /* SmallLabelCell.swift */; };
@@ -371,7 +370,6 @@
 		E49CB14126B9811900B99038 /* SingleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStackView.swift; sourceTree = "<group>"; };
 		E49CB14326BADC9300B99038 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		E49CB14726BAE52D00B99038 /* ProductNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductNameView.swift; sourceTree = "<group>"; };
-		E4B12DCE26DCD50000C27056 /* RecentProductCollectionViewViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentProductCollectionViewViewModelTest.swift; sourceTree = "<group>"; };
 		E4B12DD626DD02A500C27056 /* TimeToCookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeToCookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B12DD826DD02A500C27056 /* TimeToCookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeToCookUITests.swift; sourceTree = "<group>"; };
 		E4B12DDA26DD02A500C27056 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -829,7 +827,6 @@
 				E474E17A26CBE7C400ED18F9 /* Info.plist */,
 				E436E5C826E1510600BE6576 /* Mocks */,
 				E436E5C126E13CDC00BE6576 /* StorageService */,
-				E4B12DCD26DCD4C300C27056 /* RecentProducts */,
 				E4D4236526DB79D500C63BC6 /* TimerViewModel */,
 				E4B09A5326D9077E0091561C /* TabBarViewModel */,
 				E4B09A5426D907AF0091561C /* ProductInfoViewModel */,
@@ -862,14 +859,6 @@
 				E41C3CC326A87304006F1AE9 /* CameraOverlay.swift */,
 			);
 			path = SubViews;
-			sourceTree = "<group>";
-		};
-		E4B12DCD26DCD4C300C27056 /* RecentProducts */ = {
-			isa = PBXGroup;
-			children = (
-				E4B12DCE26DCD50000C27056 /* RecentProductCollectionViewViewModelTest.swift */,
-			);
-			path = RecentProducts;
 			sourceTree = "<group>";
 		};
 		E4B12DD726DD02A500C27056 /* TimeToCookUITests */ = {
@@ -1366,7 +1355,6 @@
 				E4554BC326D0D33C00819A09 /* TimerContentView.swift in Sources */,
 				E4554BBB26D0D2C600819A09 /* StartCookButton.swift in Sources */,
 				E436E5C326E1417500BE6576 /* CoreDataStackMock.swift in Sources */,
-				E4B12DCF26DCD50000C27056 /* RecentProductCollectionViewViewModelTest.swift in Sources */,
 				E4BFBCE726CFA350007A6CF6 /* ProductStub.swift in Sources */,
 				E4BFBCDE26CE5780007A6CF6 /* NotificationService.swift in Sources */,
 				E419B74726DF9002004315C3 /* MOProduct+CoreDataClass.swift in Sources */,

@@ -11,7 +11,7 @@ final class RecentProductCollectionView: UICollectionView {
     
     // MARK: - Dependences
     
-   private var viewModel: RecentProductCollectionViewViewModelProtocol
+    private var viewModel: RecentProductCollectionViewViewModelProtocol
 
     // MARK: - Initializer 
     
@@ -20,34 +20,42 @@ final class RecentProductCollectionView: UICollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         super.init(frame: .zero, collectionViewLayout: layout)
-        viewModel.needUpdate = { [weak self] in
-            self?.reloadData()
-        }
         backgroundColor = .clear
-        
         delegate = self
         dataSource = self
-        register(RecentProductCollectionViewCell.self,
-                 forCellWithReuseIdentifier: RecentProductCollectionViewCell.reuseID)
-        
-        translatesAutoresizingMaskIntoConstraints = false
-        layout.minimumLineSpacing = ConstantsCollectionView.productsCollectionMinimumLineSpacing
-        contentInset = UIEdgeInsets(top: 20, left: ConstantsCollectionView.leftDistanceToView,
-                                    bottom: 0, right: ConstantsCollectionView.rightDistanceToView)
         showsHorizontalScrollIndicator = false
         showsVerticalScrollIndicator = false
+        translatesAutoresizingMaskIntoConstraints = false
+        register(RecentProductCollectionViewCell.self,
+                 forCellWithReuseIdentifier: RecentProductCollectionViewCell.reuseID)
+        layout.minimumLineSpacing = ConstantsCollectionView.productsCollectionMinimumLineSpacing
+        setupContentInset()
+        setupViewModelBinding()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    var contentIsEmpty: Bool {
+        viewModel.contentIsEmpty
+    }
+
     func setDelegate(delegate: RecentProductCollectionViewDelegate) {
         viewModel.delegate = delegate
     }
 
-    var contentIsEmpty: Bool {
-        viewModel.contentIsEmpty
+    private func setupContentInset() {
+        contentInset = UIEdgeInsets(top: 20,
+                                    left: ConstantsCollectionView.leftDistanceToView,
+                                    bottom: 0,
+                                    right: ConstantsCollectionView.rightDistanceToView)
+    }
+
+    private func setupViewModelBinding() {
+        viewModel.needUpdate = { [weak self] in
+            self?.reloadData()
+        }
     }
 }
 
@@ -68,19 +76,14 @@ extension RecentProductCollectionView: UICollectionViewDelegate,
         cell?.viewModel = viewModel.cellViewModel(at: indexPath)
         return cell ?? UICollectionViewCell()
     }
-    
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.didSelectItemAt(indexPath: indexPath)
+    }
+
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: frame.width * 0.7, height: frame.height * 0.8)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.didSelectItemAt(indexPath: indexPath)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        true
-    }
-    
 }

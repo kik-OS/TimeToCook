@@ -6,11 +6,14 @@
 //
 
 import UIKit
-import CoreData
+
+// MARK: Protocol
 
 protocol RecentProductCollectionViewDelegate: AnyObject {
     func presentInfoAboutProduct(product: ProductProtocol)
 }
+
+// MARK: Class
 
 final class RecentProductsViewController: UIViewController {
 
@@ -102,13 +105,10 @@ final class RecentProductsViewController: UIViewController {
         super.viewWillAppear(animated)
         recentProductCollectionView.setContentOffset(CGPoint(x: -ConstantsCollectionView.leftDistanceToView,
                                                              y: -20), animated: false)
-
         let isHidden = recentProductCollectionView.contentIsEmpty
-        print(isHidden)
-                    self.recentProductCollectionView.isHidden = isHidden
-                    self.emptyPlateImage.isHidden = !isHidden
-                    self.recentProductLabel.text = self.viewModel.checkCurrentState(isHidden: !isHidden)
-
+        recentProductCollectionView.isHidden = isHidden
+        emptyPlateImage.isHidden = !isHidden
+        recentProductLabel.text = viewModel.checkCurrentState(isHidden: !isHidden)
     }
 
     override func viewWillDisappear(_ animated: Bool) {

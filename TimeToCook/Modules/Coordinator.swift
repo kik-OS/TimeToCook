@@ -44,9 +44,9 @@ final class Coordinator {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
 
-//        if !hasBeenLaunchdBefore() {
-//            createTemporaryProductForDemonstration()
-//        }
+        if !hasBeenLaunchdBefore() {
+            createTemporaryProductForDemonstration()
+        }
     }
 }
 

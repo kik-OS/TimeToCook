@@ -8,6 +8,8 @@
 import Foundation
 import CoreData
 
+// MARK: Protocol
+
 protocol RecentProductCollectionViewViewModelProtocol: AnyObject {
 
     var delegate: RecentProductCollectionViewDelegate? { get set }
@@ -21,40 +23,30 @@ protocol RecentProductCollectionViewViewModelProtocol: AnyObject {
     func cellViewModel(at indexPath: IndexPath) -> RecentProductCollectionViewCellViewModelProtocol?
 }
 
+// MARK: Class
+
 final class RecentProductCollectionViewViewModel: NSObject, RecentProductCollectionViewViewModelProtocol {
 
-
-    private lazy var frc: NSFetchedResultsController<MOProduct> = {
-        let request = NSFetchRequest<MOProduct>(entityName: "MOProduct")
-        request.sortDescriptors = [NSSortDescriptor(key: #keyPath(MOProduct.date), ascending: false)]
-        let frc = NSFetchedResultsController(fetchRequest: request,
-                                             managedObjectContext: storageService.getMainContext(),
-                                          sectionNameKeyPath: nil,
-                                          cacheName: nil)
-        frc.delegate = self
-
-        do {
-            try? frc.performFetch()
-        }
-
-        return frc
-    }()
+    // MARK: Properties
 
     var needUpdate: (() -> Void)?
 
-    func didSelectItem(product: ProductDTO) {
-    delegate?.presentInfoAboutProduct(product: Product(width: product))
+    lazy var fetchResultController: NSFetchedResultsController<MOProduct> = {
+        let fetchResultController = storageService.productFRC
+        fetchResultController.delegate = self
+        return fetchResultController
+    }()
+
+    var contentIsEmpty: Bool {
+        let objects = fetchResultController.fetchedObjects
+        guard let nonOptionalObjects = objects else { return true }
+        return nonOptionalObjects.isEmpty
     }
 
     // MARK: Dependences
 
     private let storageService: StorageServiceProtocol
     weak var delegate: RecentProductCollectionViewDelegate?
-
-    // MARK: - Properties
-
-//    var products: [ProductProtocol] = []
-//    var numberOfItemsInSection: Int { products.count }
 
     // MARK: - Init
 
@@ -64,29 +56,28 @@ final class RecentProductCollectionViewViewModel: NSObject, RecentProductCollect
     
     // MARK: - Methods
 
+    func didSelectItem(product: ProductDTO) {
+        delegate?.presentInfoAboutProduct(product: Product(width: product))
+    }
+
     func cellViewModel(at indexPath: IndexPath) -> RecentProductCollectionViewCellViewModelProtocol? {
-        let product = frc.object(at: indexPath)
+        let product = fetchResultController.object(at: indexPath)
         return RecentProductCollectionViewCellViewModel(product: product)
     }
 
-    var contentIsEmpty = true
-
     func didSelectItemAt(indexPath: IndexPath) {
-        let MOProduct = frc.object(at: indexPath)
+        let MOProduct = fetchResultController.object(at: indexPath)
         let productDTO = ProductDTO(with: MOProduct)
         delegate?.presentInfoAboutProduct(product: Product(width: productDTO))
     }
 
-    func getMainContext() -> NSManagedObjectContext {
-        storageService.getMainContext()
-    }
-
     func numberOfItemsInSection(section: Int) -> Int {
-        guard let sections = frc.sections else { return 0 }
-        contentIsEmpty = false
+        guard let sections = fetchResultController.sections else { return 0 }
         return sections[section].numberOfObjects
     }
 }
+
+// MARK: - Extension
 
 extension RecentProductCollectionViewViewModel: NSFetchedResultsControllerDelegate {
 

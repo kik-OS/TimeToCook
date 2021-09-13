@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - Protocol
+
 protocol RecentProductCollectionViewCellViewModelProtocol: AnyObject {
     var productTitle: String? { get }
     var productProducer: String? { get }
@@ -16,6 +18,8 @@ protocol RecentProductCollectionViewCellViewModelProtocol: AnyObject {
     var productWeight: String { get }
     init(product: MOProduct)
 }
+
+// MARK: - Class
 
 final class RecentProductCollectionViewCellViewModel: RecentProductCollectionViewCellViewModelProtocol {
     
@@ -47,7 +51,7 @@ final class RecentProductCollectionViewCellViewModel: RecentProductCollectionVie
         "\(product.cookingTime)мин.⏱"
     }
     
-    // MARK: - Initializer
+    // MARK: - Init
     
     init(product: MOProduct) {
         self.product = product

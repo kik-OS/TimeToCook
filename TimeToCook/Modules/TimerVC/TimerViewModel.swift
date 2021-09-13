@@ -34,6 +34,8 @@ protocol TimerViewModelProtocol: AnyObject {
     func stopTimer()
 }
 
+// MARK: - Class
+
 final class TimerViewModel: TimerViewModelProtocol {
 
     // MARK: - Services

@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - Protocols
+
 protocol AddNewProductViewControllerDelegate: AnyObject {
     func productWasAdded(product: Product?)
 }
@@ -14,6 +16,8 @@ protocol AddNewProductViewControllerDelegate: AnyObject {
 protocol BarcodeScannerViewControllerDelegate: AnyObject {
     func scanner(barcode: String)
 }
+
+// MARK: - Class
 
 final class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
