@@ -42,10 +42,10 @@ final class TabBarViewModel: TabBarViewModelProtocol {
     var addingNewProductOffer: ((_ code: String) -> Void)?
     var timerDidStep: ((_ time: String) -> Void)?
     var constantForMiddleButton: Float {
-        deviceService.checkSquareScreen() ? 0 : 10
+        deviceService.isSquareScreen ? 0 : 10
     }
     var sizeForMiddleButton: Float {
-        deviceService.checkSquareScreen() ? 68 : 72
+        deviceService.isSquareScreen ? 68 : 72
     }
 
     // MARK: - Initializers

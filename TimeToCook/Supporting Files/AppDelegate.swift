@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         #endif
 
+        /// Подключение FireBase
         FirebaseApp.configure()
         FirebaseConfiguration.shared.setLoggerLevel(.min)
         return true

@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - Protocol
+
 protocol RecentProductCollectionViewCellViewModelProtocol: AnyObject {
     var productTitle: String? { get }
     var productProducer: String? { get }
@@ -14,21 +16,23 @@ protocol RecentProductCollectionViewCellViewModelProtocol: AnyObject {
     var productCookingTime: String? { get }
     var productBarcode: String { get }
     var productWeight: String { get }
-    init(product: ProductProtocol)
+    init(product: MOProduct)
 }
+
+// MARK: - Class
 
 final class RecentProductCollectionViewCellViewModel: RecentProductCollectionViewCellViewModelProtocol {
     
     // MARK: - Properties
     
-    private let product: ProductProtocol
+    private let product: MOProduct
     
     var productWeight: String {
-        "\(product.weight ?? 200) грамм"
+        "\(product.weight ) грамм"
     }
     
     var productBarcode: String {
-        product.code 
+        product.code ?? ""
     }
     
     var productTitle: String? {
@@ -40,16 +44,16 @@ final class RecentProductCollectionViewCellViewModel: RecentProductCollectionVie
     }
     
     var productImage: String {
-        "\(product.category).png"
+        "\(product.category ?? "").png"
     }
     
     var productCookingTime: String? {
         "\(product.cookingTime)мин.⏱"
     }
     
-    // MARK: - Initializer
+    // MARK: - Init
     
-    init(product: ProductProtocol) {
+    init(product: MOProduct) {
         self.product = product
     }
 }

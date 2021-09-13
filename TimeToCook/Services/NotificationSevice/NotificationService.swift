@@ -8,6 +8,8 @@
 import UIKit
 import UserNotifications
 
+// MARK: - Protocol
+
 protocol NotificationServiceProtocol: AnyObject {
     func checkNotificationSettings(completion: @escaping () -> Void)
     func cleanBadgesAtStarting()
@@ -16,6 +18,8 @@ protocol NotificationServiceProtocol: AnyObject {
     func cancelTimerNotification()
     func notificationsAreNotAvailableAlert() -> UIAlertController
 }
+
+// MARK: - Class
 
 final class NotificationService: NSObject, UNUserNotificationCenterDelegate {
 
@@ -89,7 +93,9 @@ final class NotificationService: NSObject, UNUserNotificationCenterDelegate {
             do {
                 return try UNNotificationAttachment(identifier: ImageTitles.timerNotificationContent.title,
                                                     url: URL(fileURLWithPath: path))
-            } catch { }
+            } catch {
+                print(error.localizedDescription)
+            }
         }
         return nil
     }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-// MARK: - Protocols
+// MARK: - Protocol
 
 protocol TimerServiceBarDelegate: AnyObject {
     func timerDidStep(remainingSeconds: Int, isStopped: Bool)
@@ -29,6 +29,8 @@ protocol TimerServiceProtocol: AnyObject {
     func saveTime()
     func readSavedTime()
 }
+
+// MARK: - Class
 
 final class TimerService: TimerServiceProtocol {
 

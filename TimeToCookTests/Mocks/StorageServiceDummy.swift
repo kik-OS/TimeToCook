@@ -6,8 +6,13 @@
 //
 
 import Foundation
+import CoreData
 
 final class StorageServiceDummy: StorageServiceProtocol {
+    var productFRC: NSFetchedResultsController<MOProduct> {
+        NSFetchedResultsController()
+    }
+
     init(coreDataStack: CoreDataStackProtocol) {
 
     }

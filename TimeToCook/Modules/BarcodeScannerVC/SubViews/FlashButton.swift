@@ -53,7 +53,7 @@ final class FlashButton: UIButton {
             block(device)
             device.unlockForConfiguration()
         } catch {
-            
+            print(error.localizedDescription)
         }
     }
     

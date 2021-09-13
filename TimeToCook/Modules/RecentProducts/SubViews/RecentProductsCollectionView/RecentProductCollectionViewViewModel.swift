@@ -6,31 +6,47 @@
 //
 
 import Foundation
+import CoreData
+
+// MARK: Protocol
 
 protocol RecentProductCollectionViewViewModelProtocol: AnyObject {
-    var numberOfItemsInSection: Int { get }
-    var products: [ProductProtocol] { get }
+
     var delegate: RecentProductCollectionViewDelegate? { get set }
+    var needUpdate: (() -> Void)? { get set }
+    var contentIsEmpty: Bool { get }
 
     init(storageService: StorageServiceProtocol)
 
-    func fetchProductFromCoreData(completion: @escaping() -> Void)
-    func cellViewModel(at indexPath: IndexPath) -> RecentProductCollectionViewCellViewModelProtocol?
     func didSelectItemAt(indexPath: IndexPath)
-    func contentIsEmpty() -> Bool
+    func numberOfItemsInSection(section: Int) -> Int
+    func cellViewModel(at indexPath: IndexPath) -> RecentProductCollectionViewCellViewModelProtocol?
 }
 
-final class RecentProductCollectionViewViewModel: RecentProductCollectionViewViewModelProtocol {
+// MARK: Class
+
+final class RecentProductCollectionViewViewModel: NSObject, RecentProductCollectionViewViewModelProtocol {
+
+    // MARK: Properties
+
+    var needUpdate: (() -> Void)?
+
+    lazy var fetchResultController: NSFetchedResultsController<MOProduct> = {
+        let fetchResultController = storageService.productFRC
+        fetchResultController.delegate = self
+        return fetchResultController
+    }()
+
+    var contentIsEmpty: Bool {
+        let objects = fetchResultController.fetchedObjects
+        guard let nonOptionalObjects = objects else { return true }
+        return nonOptionalObjects.isEmpty
+    }
 
     // MARK: Dependences
 
     private let storageService: StorageServiceProtocol
     weak var delegate: RecentProductCollectionViewDelegate?
-
-    // MARK: - Properties
-
-    var products: [ProductProtocol] = []
-    var numberOfItemsInSection: Int { products.count }
 
     // MARK: - Init
 
@@ -39,25 +55,33 @@ final class RecentProductCollectionViewViewModel: RecentProductCollectionViewVie
     }
     
     // MARK: - Methods
-    
-    func fetchProductFromCoreData(completion: @escaping() -> Void) {
-        products = storageService.fetchProducts().map { Product(width: $0) }
-        DispatchQueue.main.async {
-            completion()
-        }
+
+    func didSelectItem(product: ProductDTO) {
+        delegate?.presentInfoAboutProduct(product: Product(width: product))
     }
-    
+
     func cellViewModel(at indexPath: IndexPath) -> RecentProductCollectionViewCellViewModelProtocol? {
-        let product = products[indexPath.row]
+        let product = fetchResultController.object(at: indexPath)
         return RecentProductCollectionViewCellViewModel(product: product)
     }
 
-    func contentIsEmpty() -> Bool {
-        numberOfItemsInSection == 0
+    func didSelectItemAt(indexPath: IndexPath) {
+        let MOProduct = fetchResultController.object(at: indexPath)
+        let productDTO = ProductDTO(with: MOProduct)
+        delegate?.presentInfoAboutProduct(product: Product(width: productDTO))
     }
 
-    func didSelectItemAt(indexPath: IndexPath) {
-        let product = products[indexPath.row]
-        delegate?.presentInfoAboutProduct(product: product)
+    func numberOfItemsInSection(section: Int) -> Int {
+        guard let sections = fetchResultController.sections else { return 0 }
+        return sections[section].numberOfObjects
+    }
+}
+
+// MARK: - Extension
+
+extension RecentProductCollectionViewViewModel: NSFetchedResultsControllerDelegate {
+
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        needUpdate?()
     }
 }

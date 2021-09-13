@@ -64,7 +64,7 @@ final class BarcodeScanner {
                 return captureSession
             }
         } catch {
-            // todo
+            print(error.localizedDescription)
         }
         return nil
     }

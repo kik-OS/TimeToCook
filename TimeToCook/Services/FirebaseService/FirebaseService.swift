@@ -20,6 +20,8 @@ protocol FirebaseServiceProtocol {
     func fetchCategories(completion: @escaping ([Category]) -> Void)
 }
 
+// MARK: - Class
+
 final class FirebaseService: FirebaseServiceProtocol {
 
     // MARK: - Properties

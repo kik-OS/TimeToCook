@@ -47,6 +47,8 @@ protocol AddingNewProductViewModelProtocol: AnyObject {
     func showProductWasAddedNotification()
 }
 
+// MARK: - Class
+
 final class AddingNewProductViewModel: AddingNewProductViewModelProtocol {
     
     // MARK: - Properties

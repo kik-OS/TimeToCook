@@ -11,6 +11,10 @@
 		2F26661B4FA92DE49714460C /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		46F38C47D263775B008B3C70 /* Pods_TimeToCook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6F0E980080CE5202A460A30 /* Pods_TimeToCook.framework */; };
 		A9C72F23750B51104A7FE3D6 /* Pods_TimeToCookSnapshotTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E33CA7C2C06F101BA495DF9 /* Pods_TimeToCookSnapshotTest.framework */; };
+		E40C7B7C26EF3CCA00141D50 /* NameLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C4C1FD26EB4C4A0087EA49 /* NameLabelCell.swift */; };
+		E40C7B7D26EF3CCA00141D50 /* NameLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C4C1FD26EB4C4A0087EA49 /* NameLabelCell.swift */; };
+		E40C7B7E26EF3CCB00141D50 /* NameLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C4C1FD26EB4C4A0087EA49 /* NameLabelCell.swift */; };
+		E40C7B7F26EF3CDE00141D50 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C3C4226A702D7006F1AE9 /* Constants.swift */; };
 		E40F5EB526DBD00C0000C9CD /* AddingNewProductViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40F5EB426DBD00C0000C9CD /* AddingNewProductViewModelTest.swift */; };
 		E419B74626DF9002004315C3 /* MOProduct+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419B74526DF9002004315C3 /* MOProduct+CoreDataClass.swift */; };
 		E419B74726DF9002004315C3 /* MOProduct+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E419B74526DF9002004315C3 /* MOProduct+CoreDataClass.swift */; };
@@ -157,7 +161,6 @@
 		E49CB14226B9811900B99038 /* SingleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB14126B9811900B99038 /* SingleStackView.swift */; };
 		E49CB14426BADC9300B99038 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB14326BADC9300B99038 /* UIFont+Extension.swift */; };
 		E49CB14826BAE52D00B99038 /* ProductNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49CB14726BAE52D00B99038 /* ProductNameView.swift */; };
-		E4B12DCF26DCD50000C27056 /* RecentProductCollectionViewViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B12DCE26DCD50000C27056 /* RecentProductCollectionViewViewModelTest.swift */; };
 		E4B12DD926DD02A500C27056 /* TimeToCookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B12DD826DD02A500C27056 /* TimeToCookUITests.swift */; };
 		E4B12DE126DE126700C27056 /* DeviceServiceDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B12DE026DE126700C27056 /* DeviceServiceDummy.swift */; };
 		E4B94E3526CA8B92003A71DF /* SmallLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B94E3426CA8B92003A71DF /* SmallLabelCell.swift */; };
@@ -367,7 +370,6 @@
 		E49CB14126B9811900B99038 /* SingleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStackView.swift; sourceTree = "<group>"; };
 		E49CB14326BADC9300B99038 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		E49CB14726BAE52D00B99038 /* ProductNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductNameView.swift; sourceTree = "<group>"; };
-		E4B12DCE26DCD50000C27056 /* RecentProductCollectionViewViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentProductCollectionViewViewModelTest.swift; sourceTree = "<group>"; };
 		E4B12DD626DD02A500C27056 /* TimeToCookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeToCookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B12DD826DD02A500C27056 /* TimeToCookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeToCookUITests.swift; sourceTree = "<group>"; };
 		E4B12DDA26DD02A500C27056 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -561,7 +563,6 @@
 		E41C3C5226A702DA006F1AE9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				E42A3C3926D505F000794AD2 /* Coordinator.swift */,
 				E41C3C5626A702DA006F1AE9 /* TimerVC */,
 				E41C3C5E26A702DA006F1AE9 /* CustomTabBar */,
 				E4570FBE26B2A33A0013F7C9 /* ProductInfoVC */,
@@ -660,6 +661,7 @@
 		E41C3C7826A702DA006F1AE9 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E42A3C3926D505F000794AD2 /* Coordinator.swift */,
 				E41C3C8026A702DA006F1AE9 /* TimerService */,
 				E41C3C7E26A702DA006F1AE9 /* DeviceService */,
 				E41C3C7926A702DA006F1AE9 /* StorageService */,
@@ -825,7 +827,6 @@
 				E474E17A26CBE7C400ED18F9 /* Info.plist */,
 				E436E5C826E1510600BE6576 /* Mocks */,
 				E436E5C126E13CDC00BE6576 /* StorageService */,
-				E4B12DCD26DCD4C300C27056 /* RecentProducts */,
 				E4D4236526DB79D500C63BC6 /* TimerViewModel */,
 				E4B09A5326D9077E0091561C /* TabBarViewModel */,
 				E4B09A5426D907AF0091561C /* ProductInfoViewModel */,
@@ -858,14 +859,6 @@
 				E41C3CC326A87304006F1AE9 /* CameraOverlay.swift */,
 			);
 			path = SubViews;
-			sourceTree = "<group>";
-		};
-		E4B12DCD26DCD4C300C27056 /* RecentProducts */ = {
-			isa = PBXGroup;
-			children = (
-				E4B12DCE26DCD50000C27056 /* RecentProductCollectionViewViewModelTest.swift */,
-			);
-			path = RecentProducts;
 			sourceTree = "<group>";
 		};
 		E4B12DD726DD02A500C27056 /* TimeToCookUITests */ = {
@@ -1362,7 +1355,6 @@
 				E4554BC326D0D33C00819A09 /* TimerContentView.swift in Sources */,
 				E4554BBB26D0D2C600819A09 /* StartCookButton.swift in Sources */,
 				E436E5C326E1417500BE6576 /* CoreDataStackMock.swift in Sources */,
-				E4B12DCF26DCD50000C27056 /* RecentProductCollectionViewViewModelTest.swift in Sources */,
 				E4BFBCE726CFA350007A6CF6 /* ProductStub.swift in Sources */,
 				E4BFBCDE26CE5780007A6CF6 /* NotificationService.swift in Sources */,
 				E419B74726DF9002004315C3 /* MOProduct+CoreDataClass.swift in Sources */,
@@ -1420,6 +1412,7 @@
 				E4554BA826D0D0CE00819A09 /* RecentProductCollectionView.swift in Sources */,
 				E4554BAA26D0D0ED00819A09 /* Constants.swift in Sources */,
 				E4554BD126D0D3F600819A09 /* DateFormatter+Extension.swift in Sources */,
+				E40C7B7C26EF3CCA00141D50 /* NameLabelCell.swift in Sources */,
 				E4554BBD26D0D2DF00819A09 /* InstructionCollectionViewCell.swift in Sources */,
 				E4BA159326DEC2B600E73B1A /* ProductDTO.swift in Sources */,
 			);
@@ -1432,6 +1425,8 @@
 				E4B12DD926DD02A500C27056 /* TimeToCookUITests.swift in Sources */,
 				E419B74826DF9002004315C3 /* MOProduct+CoreDataClass.swift in Sources */,
 				E436E5CC26E2150200BE6576 /* MascotSecondImageView.swift in Sources */,
+				E40C7B7D26EF3CCA00141D50 /* NameLabelCell.swift in Sources */,
+				E40C7B7F26EF3CDE00141D50 /* Constants.swift in Sources */,
 				E419B74D26DF900D004315C3 /* MOProduct+CoreDataProperties.swift in Sources */,
 				E419B75226DF974B004315C3 /* CoreDataStack.swift in Sources */,
 			);
@@ -1476,6 +1471,7 @@
 				E4BA157D26DE4D3500E73B1A /* TimerStopButton.swift in Sources */,
 				E4BA157926DE4D1E00E73B1A /* TimerLabel.swift in Sources */,
 				E4BA156D26DE4C5900E73B1A /* RecentProductCollectionViewViewModel.swift in Sources */,
+				E40C7B7E26EF3CCB00141D50 /* NameLabelCell.swift in Sources */,
 				E4BA155926DE4B4200E73B1A /* Inscriptions.swift in Sources */,
 				E4BA155326DE4AF900E73B1A /* ProductInfoViewController.swift in Sources */,
 				E4BA156E26DE4C5E00E73B1A /* StorageService.swift in Sources */,
