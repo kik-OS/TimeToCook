@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class StartCookButton: UIButton {
+class StartCookButton: UIButton {
     
     // MARK: Init
     
