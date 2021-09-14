@@ -50,6 +50,7 @@ final class TimerViewController: UIViewController {
         let backgroundView = TimerBackgroundView()
         let gesture = UITapGestureRecognizer(target: self, action: #selector(dismissByTapAction))
         backgroundView.addGestureRecognizer(gesture)
+        backgroundView.addGestureRecognizer(createLongPressGesture())
         return backgroundView
     }()
     
@@ -240,6 +241,19 @@ final class TimerViewController: UIViewController {
         diagramStackView.disappear { [weak self] in
             self?.pickerStackView.appear()
         }
+    }
+
+    private func createLongPressGesture() -> UILongPressGestureRecognizer {
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self,
+                                                               action: #selector(longPress))
+        longPressRecognizer.numberOfTouchesRequired = 1
+        longPressRecognizer.allowableMovement = 10
+        longPressRecognizer.minimumPressDuration = 3
+        return longPressRecognizer
+    }
+
+    @objc private func longPress() {
+       present(EasterCatViewController(), animated: true, completion: nil)
     }
     
     @objc private func dismissByTapAction() {
