@@ -19,7 +19,7 @@ final class InstructionCollectionView: UICollectionView {
         self.width = width
         super.init(frame: .zero, collectionViewLayout: UICollectionViewLayout())
         decelerationRate = .fast
-        isPagingEnabled = false
+        isPagingEnabled = true
         translatesAutoresizingMaskIntoConstraints = false
         register(InstructionCollectionViewCell.self, forCellWithReuseIdentifier: "instructionCell")
         clipsToBounds = false
@@ -37,9 +37,9 @@ final class InstructionCollectionView: UICollectionView {
     
     func createLayout() {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: width - 40, height: bounds.height - 40)
-        layout.minimumLineSpacing = 20
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        layout.itemSize = CGSize(width: width, height: bounds.height)
+        layout.minimumLineSpacing = 0
+//        layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         layout.scrollDirection = .horizontal
         collectionViewLayout = layout
     }

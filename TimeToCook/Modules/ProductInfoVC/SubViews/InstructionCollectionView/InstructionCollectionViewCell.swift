@@ -10,6 +10,13 @@ import UIKit
 final class InstructionCollectionViewCell: UICollectionViewCell {
     
     // MARK: UI
+
+    private lazy var backView: UIView = {
+     let backView = UIView()
+        backView.backgroundColor = .white
+        backView.translatesAutoresizingMaskIntoConstraints = false
+        return backView
+    }()
     
     private lazy var numberOfCardLabel: UILabel = {
         let numberOfCardLabel = UILabel()
@@ -76,54 +83,65 @@ final class InstructionCollectionViewCell: UICollectionViewCell {
  
     override func layoutSubviews() {
         super.layoutSubviews()
-        layer.shadowRadius = 5
-        layer.shadowOpacity = 0.2
-        layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-        layer.shadowOffset = CGSize(width: 0, height: 0)
-        layer.cornerRadius = 10
-        clipsToBounds = false
+        backView.layer.shadowRadius = 5
+        backView.layer.shadowOpacity = 0.2
+        backView.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        backView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        backView.layer.cornerRadius = 10
+        backView.clipsToBounds = false
     }
     
     // MARK: Private Methodes
     
     private func setupAllConstraints() {
-        contentView.addSubview(instructionImage)
-        contentView.addSubview(numberOfCardLabel)
-        contentView.addSubview(instructionLabel)
-        contentView.addSubview(nextLabel)
+        contentView.addSubview(backView)
+        backView.addSubview(instructionImage)
+        backView.addSubview(numberOfCardLabel)
+        backView.addSubview(instructionLabel)
+        backView.addSubview(nextLabel)
+        setupBackViewConstraints()
         setupInstructionImageConstraints()
         setupNumberOfCardLabelConstraints()
         setupInstructionLabelConstraints()
         setupNextLabelConstraints()
     }
+
+    private func setupBackViewConstraints() {
+        NSLayoutConstraint.activate([
+            backView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            backView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            backView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            backView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
+        ])
+    }
     
     private func setupInstructionImageConstraints() {
         NSLayoutConstraint.activate([
-            instructionImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            instructionImage.topAnchor.constraint(equalTo: contentView.topAnchor),
-            instructionImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            instructionImage.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1 / 3)])
+            instructionImage.leadingAnchor.constraint(equalTo: backView.leadingAnchor),
+            instructionImage.topAnchor.constraint(equalTo: backView.topAnchor),
+            instructionImage.bottomAnchor.constraint(equalTo: backView.bottomAnchor),
+            instructionImage.widthAnchor.constraint(equalTo: backView.widthAnchor, multiplier: 1 / 3)])
     }
     
     private func setupNumberOfCardLabelConstraints() {
         NSLayoutConstraint.activate([
-            numberOfCardLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            numberOfCardLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            numberOfCardLabel.topAnchor.constraint(equalTo: backView.topAnchor, constant: 8),
+            numberOfCardLabel.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -8),
             numberOfCardLabel.bottomAnchor.constraint(equalTo: instructionLabel.topAnchor, constant: -8)])
     }
     
     private func setupInstructionLabelConstraints() {
         NSLayoutConstraint.activate([
             instructionLabel.leadingAnchor.constraint(equalTo: instructionImage.trailingAnchor, constant: 8),
-            instructionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
+            instructionLabel.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -25),
             instructionLabel.bottomAnchor.constraint(equalTo: nextLabel.topAnchor, constant: 8)])
     }
     
     private func setupNextLabelConstraints() {
         NSLayoutConstraint.activate([
             nextLabel.topAnchor.constraint(equalTo: instructionLabel.bottomAnchor, constant: -8),
-            nextLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-            nextLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)])
+            nextLabel.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -8),
+            nextLabel.bottomAnchor.constraint(equalTo: backView.bottomAnchor, constant: -8)])
     }
     
     // MARK: Methods

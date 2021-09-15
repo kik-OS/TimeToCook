@@ -5,8 +5,7 @@
 //  Created by Никита Гвоздиков on 31.07.2021.
 //
 
-/// Намеренно добавлен UIKit для разгрузки ViewController и вынесения логики из него
-import UIKit
+import Foundation
 
 // MARK: - Protocol
 
@@ -20,8 +19,6 @@ protocol ProductInfoViewModelProtocol: AnyObject {
     var needUpdateViewForSecondStep: (() -> Void)? { get set }
     var needUpdateViewForThirdStep: (() -> Void)? { get set }
     var buttonStartCookTapped: Bool { get set }
-    var previousOffset: CGFloat { get set }
-    var currentPage: Int { get set }
     var getNotificationService: NotificationServiceProtocol { get }
 
     init(product: ProductProtocol?,
@@ -29,14 +26,9 @@ protocol ProductInfoViewModelProtocol: AnyObject {
          notificationService: NotificationServiceProtocol)
 
     func getTimerViewController() -> TimerViewController
-    func getAlertForNotification() -> UIAlertController
     func checkCurrentStateAndUpdateView()
     func updateProduct(product: ProductProtocol?)
     func cellViewModel(at indexPath: IndexPath) -> InstructionCollectionViewCellViewModelProtocol?
-    func resetCollectionViewLayout()
-    func targetContentOffset(_ scrollView: UIScrollView,
-                             withVelocity velocity: CGPoint,
-                             collectionView: UICollectionView) -> CGPoint
 }
 
 final class ProductInfoViewModel: ProductInfoViewModelProtocol {
@@ -52,8 +44,6 @@ final class ProductInfoViewModel: ProductInfoViewModelProtocol {
     var needUpdateViewForSecondStep: (() -> Void)?
     var needUpdateViewForThirdStep: (() -> Void)?
     var buttonStartCookTapped = false
-    var previousOffset: CGFloat = 0
-    var currentPage = 0
 
     var product: ProductProtocol? {
         didSet {
@@ -105,10 +95,6 @@ final class ProductInfoViewModel: ProductInfoViewModelProtocol {
         return TimerViewController(viewModel: viewModel)
     }
 
-    func getAlertForNotification() -> UIAlertController {
-        notificationService.notificationsAreNotAvailableAlert()
-    }
-        
     func checkCurrentStateAndUpdateView() {
         if product == nil {
             needUpdateViewForFirstStep?()
@@ -123,35 +109,7 @@ final class ProductInfoViewModel: ProductInfoViewModelProtocol {
         self.product = product
     }
     
-    func targetContentOffset(_ scrollView: UIScrollView,
-                             withVelocity velocity: CGPoint,
-                             collectionView: UICollectionView) -> CGPoint {
-        
-        guard let flowLayout = collectionView.collectionViewLayout
-                as? UICollectionViewFlowLayout else { return .zero }
-        if previousOffset > collectionView.contentOffset.x && velocity.x < 0 {
-            currentPage -= 1
-        } else if previousOffset < collectionView.contentOffset.x && velocity.x > 0 {
-            currentPage += 1
-        }
-        
-        let additional = (flowLayout.itemSize.width
-                            + flowLayout.minimumLineSpacing)
-            - flowLayout.headerReferenceSize.width
-        let updatedOffset = (flowLayout.itemSize.width
-                                + flowLayout.minimumLineSpacing)
-            * CGFloat(currentPage)
-            - additional
-        previousOffset = updatedOffset
-        return CGPoint(x: updatedOffset, y: 0)
-    }
-    
     func cellViewModel(at indexPath: IndexPath) -> InstructionCollectionViewCellViewModelProtocol? {
         InstructionCollectionViewCellViewModel(product: product, indexPath: indexPath)
-    }
-    
-    func resetCollectionViewLayout() {
-        currentPage = 0
-        previousOffset = 0
     }
 }

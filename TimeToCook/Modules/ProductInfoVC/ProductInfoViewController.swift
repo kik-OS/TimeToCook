@@ -252,7 +252,6 @@ final class ProductInfoViewController: UIViewController {
             self?.startCookButton.appearStartCookButtonAnimation()
             self?.collectionView.appearCollectionViewAnimation()
             self?.timerButton.appearTimerButtonAnimation()
-            self?.viewModel.resetCollectionViewLayout()
             self?.collectionView.createLayout()
             self?.mascotImageView.appearMascotAnimation()
         }
@@ -285,7 +284,7 @@ final class ProductInfoViewController: UIViewController {
         timerVC.modalPresentationStyle = .overCurrentContext
         /// Если у пользователя выключены уведомления, вызывается Alert с предложением о включении
         viewModel.getNotificationService.checkNotificationSettings { [weak self] in
-            guard let alert = self?.viewModel.getAlertForNotification() else { return }
+            guard let alert = self?.viewModel.getNotificationService.notificationsAreNotAvailableAlert() else { return }
             self?.present(alert, animated: true)
         }
         timerButton.layer.removeAllAnimations()
@@ -307,14 +306,6 @@ final class ProductInfoViewController: UIViewController {
 
 extension ProductInfoViewController: UICollectionViewDelegate {
 
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint,
-                                   targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let point = viewModel.targetContentOffset(scrollView,
-                                                  withVelocity: velocity,
-                                                  collectionView: collectionView)
-        targetContentOffset.pointee = point
-        collectionView.collectionViewLayoutAnimation(velocity: velocity, point: point)
-    }
 }
 
 // MARK: UICollectionViewDataSource
