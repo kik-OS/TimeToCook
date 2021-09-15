@@ -39,7 +39,6 @@ final class InstructionCollectionView: UICollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: width, height: bounds.height)
         layout.minimumLineSpacing = 0
-//        layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         layout.scrollDirection = .horizontal
         collectionViewLayout = layout
     }

@@ -110,8 +110,8 @@ final class InstructionCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             backView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             backView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            backView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            backView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
+            backView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            backView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
     

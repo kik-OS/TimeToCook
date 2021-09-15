@@ -10,7 +10,7 @@ import UIKit
 final class ProductInfoViewController: UIViewController {
     
     // MARK: UI
-    
+
     private lazy var viewWithContent: ViewWithContent = {
         let viewWithContent = ViewWithContent()
         return viewWithContent
@@ -57,6 +57,12 @@ final class ProductInfoViewController: UIViewController {
         let collectionView = InstructionCollectionView(width: view.bounds.width)
         return collectionView
     }()
+
+    private lazy var pageControl: InstructionPageControl = {
+        let pageControl = InstructionPageControl()
+        pageControl.addTarget(self, action: #selector(pageControlSelectionAction(_:)), for: .valueChanged)
+        return pageControl
+    }()
     
     private lazy var closeButton: CloseButton = {
         let closeButton = CloseButton()
@@ -96,7 +102,7 @@ final class ProductInfoViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         viewModel.checkCurrentStateAndUpdateView()
-        setupCollectionView() // временно
+        setupCollectionView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -117,6 +123,7 @@ final class ProductInfoViewController: UIViewController {
         setupCollectionViewConstraints()
         setupCloseButtonConstraints()
         setupMascotImageConstraints()
+        setupPageControlConstraints()
     }
     
     private func setupViewWithContentConstraints() {
@@ -196,8 +203,7 @@ final class ProductInfoViewController: UIViewController {
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: viewWithContent.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: viewWithContent.trailingAnchor),
-            collectionView.topAnchor.constraint(equalTo: viewWithContent.topAnchor, constant: 15),
-            collectionView.bottomAnchor.constraint(equalTo: timerButton.topAnchor, constant: -35)])
+            collectionView.topAnchor.constraint(equalTo: viewWithContent.topAnchor, constant: 20)])
     }
 
     private func setupCloseButtonConstraints() {
@@ -207,6 +213,15 @@ final class ProductInfoViewController: UIViewController {
             closeButton.topAnchor.constraint(equalTo: viewWithContent.topAnchor, constant: 15),
             closeButton.widthAnchor.constraint(equalToConstant: 20),
             closeButton.heightAnchor.constraint(equalTo: closeButton.widthAnchor)])
+    }
+
+    private func setupPageControlConstraints() {
+        viewWithContent.addSubview(pageControl)
+        NSLayoutConstraint.activate([
+            pageControl.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 5),
+            pageControl.centerXAnchor.constraint(equalTo: viewWithContent.centerXAnchor),
+            pageControl.widthAnchor.constraint(equalTo: viewWithContent.widthAnchor),
+            pageControl.bottomAnchor.constraint(equalTo: timerButton.topAnchor, constant: -35)])
     }
     
     // MARK: Animations
@@ -251,8 +266,9 @@ final class ProductInfoViewController: UIViewController {
             self?.appearContentViewAnimation()
             self?.startCookButton.appearStartCookButtonAnimation()
             self?.collectionView.appearCollectionViewAnimation()
-            self?.timerButton.appearTimerButtonAnimation()
             self?.collectionView.createLayout()
+            self?.pageControl.appearPageControlAnimation()
+            self?.timerButton.appearTimerButtonAnimation()
             self?.mascotImageView.appearMascotAnimation()
         }
     }
@@ -271,7 +287,6 @@ final class ProductInfoViewController: UIViewController {
     private func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.createLayout()
     }
 
     @objc private func startCookButtonTapped() {
@@ -284,7 +299,9 @@ final class ProductInfoViewController: UIViewController {
         timerVC.modalPresentationStyle = .overCurrentContext
         /// Если у пользователя выключены уведомления, вызывается Alert с предложением о включении
         viewModel.getNotificationService.checkNotificationSettings { [weak self] in
-            guard let alert = self?.viewModel.getNotificationService.notificationsAreNotAvailableAlert() else { return }
+            guard let alert = self?.viewModel.getNotificationService.notificationsAreNotAvailableAlert() else {
+                return
+            }
             self?.present(alert, animated: true)
         }
         timerButton.layer.removeAllAnimations()
@@ -300,12 +317,24 @@ final class ProductInfoViewController: UIViewController {
             self?.stillEmpty.alpha = 1
         }
     }
+
+    @objc private func pageControlSelectionAction(_ sender: UIPageControl) {
+        let page = sender.currentPage
+        collectionView.scrollToItem(at: IndexPath(item: page, section: 0), at: .left, animated: true)
+    }
 }
 
 // MARK: UICollectionViewDelegate
 
 extension ProductInfoViewController: UICollectionViewDelegate {
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        pageControl.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+    }
 
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        pageControl.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+    }
 }
 
 // MARK: UICollectionViewDataSource
@@ -313,6 +342,7 @@ extension ProductInfoViewController: UICollectionViewDelegate {
 extension ProductInfoViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int { 7 }
+
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "instructionCell",
@@ -336,11 +366,11 @@ extension ProductInfoViewController {
                         self.view.layoutIfNeeded() })
 
         UIView.animate(withDuration: 0.3,
-            animations: { self.plateImageView.transform = CGAffineTransform(scaleX: 0.7, y: 0.7) },
-            completion: { _ in UIView.animate(withDuration: 0.4) {
-                    self.plateImageView.transform = CGAffineTransform.identity
-            }})
-        }
+                       animations: { self.plateImageView.transform = CGAffineTransform(scaleX: 0.7, y: 0.7) },
+                       completion: { _ in UIView.animate(withDuration: 0.4) {
+                        self.plateImageView.transform = CGAffineTransform.identity
+                       }})
+    }
 
     private func disappearPlateAnimation() {
         UIView.animate(withDuration: 0.1) {
@@ -352,9 +382,10 @@ extension ProductInfoViewController {
 
     private func appearContentViewAnimation() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 2,
-                       initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                        self.contentViewBottomConstraint?.constant = 0
-                        self.view.layoutIfNeeded() })
+                       initialSpringVelocity: 1, options: .curveEaseOut) {
+            self.contentViewBottomConstraint?.constant = 0
+            self.view.layoutIfNeeded()
+        }
     }
 
     private func disappearContentViewAnimation() {
@@ -369,12 +400,13 @@ extension ProductInfoViewController {
             withDuration: 0.5, delay: 0.8,
             usingSpringWithDamping: 0.55,
             initialSpringVelocity: 3,
-            options: .curveEaseOut, animations: {
-                self.productNameLabel.transform = .identity
-                self.productNameLabel.alpha = 1
-                self.productView.transform = .identity
-                self.productView.alpha = 1
-            })}
+            options: .curveEaseOut) {
+            self.productNameLabel.transform = .identity
+            self.productNameLabel.alpha = 1
+            self.productView.transform = .identity
+            self.productView.alpha = 1
+        }
+    }
 
     private func disappearMascotAnimation() {
         UIView.animate(withDuration: 0.2) {
@@ -397,6 +429,10 @@ extension ProductInfoViewController {
     private func disappearCollectionViewAnimation() {
         collectionView.alpha = 0
         collectionView.transform = CGAffineTransform(scaleX: 0.4, y: 0.4)
+        pageControl.alpha = 0
+        pageControl.currentPage = 0
+        collectionView.setContentOffset(CGPoint(x: 0.0, y: 0.0), animated: false)
+        pageControl.transform = CGAffineTransform(scaleX: 0.4, y: 0.4)
     }
 
     private func disappearTimerButtonAnimation() {

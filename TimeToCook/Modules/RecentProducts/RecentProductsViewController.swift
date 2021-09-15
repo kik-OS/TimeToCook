@@ -89,7 +89,7 @@ final class RecentProductsViewController: UIViewController {
             recentProductCollectionView.topAnchor.constraint(equalTo: recentProductLabel.bottomAnchor,
                                                              constant: 10),
             recentProductCollectionView.bottomAnchor.constraint(equalTo: view.centerYAnchor,
-                                                                constant: view.frame.height / 5)
+                                                                constant: view.frame.height / 4.5)
         ])
     }
     
