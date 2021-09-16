@@ -597,7 +597,7 @@
 				E41C3C5626A702DA006F1AE9 /* TimerVC */,
 				E41C3C5E26A702DA006F1AE9 /* CustomTabBar */,
 				E4570FBE26B2A33A0013F7C9 /* ProductInfoVC */,
-				E41C3C6526A702DA006F1AE9 /* RecentProducts */,
+				E41C3C6526A702DA006F1AE9 /* RecentProductVC */,
 				E41C3CC726A9AB06006F1AE9 /* BarcodeScannerVC */,
 				E41C3C5326A702DA006F1AE9 /* AddingNewProductVC */,
 			);
@@ -660,14 +660,14 @@
 			path = Subviews;
 			sourceTree = "<group>";
 		};
-		E41C3C6526A702DA006F1AE9 /* RecentProducts */ = {
+		E41C3C6526A702DA006F1AE9 /* RecentProductVC */ = {
 			isa = PBXGroup;
 			children = (
 				E41C3C6E26A702DA006F1AE9 /* RecentProductViewModel.swift */,
 				E41C3C6F26A702DA006F1AE9 /* RecentProductsViewController.swift */,
 				E4C783A626C3E7D800C95626 /* SubViews */,
 			);
-			path = RecentProducts;
+			path = RecentProductVC;
 			sourceTree = "<group>";
 		};
 		E41C3C6626A702DA006F1AE9 /* RecentProductsCollectionView */ = {
@@ -943,8 +943,8 @@
 		E4C783A626C3E7D800C95626 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
-				E41C3C6626A702DA006F1AE9 /* RecentProductsCollectionView */,
 				E41C3C6926A702DA006F1AE9 /* RecentProductViewCell */,
+				E41C3C6626A702DA006F1AE9 /* RecentProductsCollectionView */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
