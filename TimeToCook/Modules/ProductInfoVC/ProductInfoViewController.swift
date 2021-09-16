@@ -59,13 +59,11 @@ final class ProductInfoViewController: UIViewController, ChangeRootViewProtocol 
         disappearAnimations()
     }
 
-    // MARK: Animations
+    // MARK: Private Methodes
 
     private func disappearAnimations() {
         view()?.startDisappearAnimations()
     }
-
-    // MARK: Private Methodes
 
     private func setupViewModelBindingsForAnimation() {
         viewModel.needUpdateViewForFirstStep = { [weak self] in
