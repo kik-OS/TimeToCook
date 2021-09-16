@@ -11,6 +11,7 @@
 		2F26661B4FA92DE49714460C /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		46F38C47D263775B008B3C70 /* Pods_TimeToCook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6F0E980080CE5202A460A30 /* Pods_TimeToCook.framework */; };
 		A9C72F23750B51104A7FE3D6 /* Pods_TimeToCookSnapshotTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E33CA7C2C06F101BA495DF9 /* Pods_TimeToCookSnapshotTest.framework */; };
+		E407FBF026F32CC4007F1859 /* ProductInfoRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E407FBEF26F32CC4007F1859 /* ProductInfoRootView.swift */; };
 		E40C7B7C26EF3CCA00141D50 /* NameLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C4C1FD26EB4C4A0087EA49 /* NameLabelCell.swift */; };
 		E40C7B7D26EF3CCA00141D50 /* NameLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C4C1FD26EB4C4A0087EA49 /* NameLabelCell.swift */; };
 		E40C7B7E26EF3CCB00141D50 /* NameLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C4C1FD26EB4C4A0087EA49 /* NameLabelCell.swift */; };
@@ -327,6 +328,7 @@
 		A8D3FD782664781008386729 /* Pods-TimeToCookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeToCookTests.release.xcconfig"; path = "Target Support Files/Pods-TimeToCookTests/Pods-TimeToCookTests.release.xcconfig"; sourceTree = "<group>"; };
 		B2994C0D2BE04616AC33466F /* Pods-TimeToCook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimeToCook.release.xcconfig"; path = "Target Support Files/Pods-TimeToCook/Pods-TimeToCook.release.xcconfig"; sourceTree = "<group>"; };
 		B6F0E980080CE5202A460A30 /* Pods_TimeToCook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimeToCook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E407FBEF26F32CC4007F1859 /* ProductInfoRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoRootView.swift; sourceTree = "<group>"; };
 		E40DA50426F222FC006FA120 /* InstructionPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionPageControl.swift; sourceTree = "<group>"; };
 		E40DA50626F224A0006FA120 /* UIPageControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageControl+Extension.swift"; sourceTree = "<group>"; };
 		E40F5EB426DBD00C0000C9CD /* AddingNewProductViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingNewProductViewModelTest.swift; sourceTree = "<group>"; };
@@ -849,6 +851,7 @@
 		E4570FBE26B2A33A0013F7C9 /* ProductInfoVC */ = {
 			isa = PBXGroup;
 			children = (
+				E407FBEF26F32CC4007F1859 /* ProductInfoRootView.swift */,
 				E4F14A3526B556C1008312DA /* ProductInfoViewModel.swift */,
 				E41C3CE826A9E091006F1AE9 /* ProductInfoViewController.swift */,
 				E4570FBF26B2A3530013F7C9 /* SubViews */,
@@ -1310,6 +1313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E407FBF026F32CC4007F1859 /* ProductInfoRootView.swift in Sources */,
 				E47E0C7826BBBC300060BE3A /* StartCookButton.swift in Sources */,
 				E44E9E0F26BEB44900E7082B /* TextFieldsStackView.swift in Sources */,
 				E41C3CB526A702DB006F1AE9 /* TimerService.swift in Sources */,
