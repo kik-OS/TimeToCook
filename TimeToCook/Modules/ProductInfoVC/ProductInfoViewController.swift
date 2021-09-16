@@ -7,6 +7,9 @@
 
 import UIKit
 
+/// Данный протокол добавлен для декомпозиции контролера 
+// MARK: Protocol
+
 protocol ChangeRootViewProtocol {
     associatedtype RootView: UIView
 }
@@ -16,6 +19,8 @@ extension ChangeRootViewProtocol where Self: UIViewController {
         self.view as? RootView
     }
 }
+
+// MARK: Class
 
 final class ProductInfoViewController: UIViewController, ChangeRootViewProtocol {
 
