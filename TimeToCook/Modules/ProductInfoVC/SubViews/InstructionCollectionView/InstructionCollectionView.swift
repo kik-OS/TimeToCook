@@ -8,15 +8,10 @@
 import UIKit
 
 final class InstructionCollectionView: UICollectionView {
-    
-    // MARK: Properties
-    
-    private var width: CGFloat
-    
+
     // MARK: Init
     
-    init(width: CGFloat) {
-        self.width = width
+    init() {
         super.init(frame: .zero, collectionViewLayout: UICollectionViewLayout())
         decelerationRate = .fast
         isPagingEnabled = true
@@ -37,7 +32,7 @@ final class InstructionCollectionView: UICollectionView {
     
     func createLayout() {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: width, height: bounds.height)
+        layout.itemSize = CGSize(width: bounds.width, height: bounds.height)
         layout.minimumLineSpacing = 0
         layout.scrollDirection = .horizontal
         collectionViewLayout = layout
