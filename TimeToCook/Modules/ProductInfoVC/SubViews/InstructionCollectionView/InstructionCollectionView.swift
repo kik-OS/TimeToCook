@@ -13,7 +13,6 @@ final class InstructionCollectionView: UICollectionView {
     
     init() {
         super.init(frame: .zero, collectionViewLayout: UICollectionViewLayout())
-        decelerationRate = .fast
         isPagingEnabled = true
         translatesAutoresizingMaskIntoConstraints = false
         register(InstructionCollectionViewCell.self, forCellWithReuseIdentifier: "instructionCell")

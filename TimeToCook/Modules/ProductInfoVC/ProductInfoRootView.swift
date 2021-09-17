@@ -319,7 +319,6 @@ final class ProductInfoRootView: UIView {
     }
 
     @objc private func closeButtonTapped() {
-        stillEmpty.alpha = 1
         disappearCloseButtonAnimation()
         closeButtonCallBack?()
     }
@@ -409,5 +408,9 @@ final class ProductInfoRootView: UIView {
 
     func scrollCollectionView(to item: Int) {
         collectionView.scrollToItem(at: IndexPath(item: item, section: 0), at: .left, animated: true)
+    }
+
+    func appearStillEmpty() {
+        stillEmpty.alpha = 1
     }
 }

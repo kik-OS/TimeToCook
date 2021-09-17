@@ -61,14 +61,10 @@ final class ProductInfoViewController: UIViewController, ChangeRootViewProtocol 
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        disappearAnimations()
+        view()?.startDisappearAnimations()
     }
 
     // MARK: Private Methodes
-
-    private func disappearAnimations() {
-        view()?.startDisappearAnimations()
-    }
 
     private func setupViewModelBindingsForAnimation() {
         viewModel.needUpdateViewForFirstStep = { [weak self] in
@@ -116,10 +112,11 @@ final class ProductInfoViewController: UIViewController, ChangeRootViewProtocol 
         }
 
         view()?.closeButtonCallBack = { [weak self] in
-            self?.disappearAnimations()
+            self?.view()?.startDisappearAnimations()
             self?.viewModel.updateProduct(product: nil)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
                 self?.viewModel.checkCurrentStateAndUpdateView()
+                self?.view()?.appearStillEmpty()
             }
         }
     }

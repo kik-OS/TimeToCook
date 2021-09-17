@@ -12,6 +12,7 @@ final class NameLabelCell: UILabel {
     init() {
         super.init(frame: .zero)
         font = UIFont(name: "Avenir Next Regular", size: 20)
+        font = font.withSize(20)
         textColor = VarkaColors.mainColor
         numberOfLines = 1
         translatesAutoresizingMaskIntoConstraints = false
