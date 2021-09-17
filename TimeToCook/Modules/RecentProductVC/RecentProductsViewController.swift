@@ -33,7 +33,7 @@ final class RecentProductsViewController: UIViewController {
     }()
     
     private lazy var recentProductCollectionView: RecentProductCollectionView = {
-        let viewModel = viewModel.getRecentProductCollectionViewViewModel()
+        let viewModel = self.viewModel.getRecentProductCollectionViewViewModel()
         let recentProductCollectionView = RecentProductCollectionView(viewModel: viewModel)
         recentProductCollectionView.setDelegate(delegate: self)
         return recentProductCollectionView

@@ -40,7 +40,7 @@ final class BarcodeScannerViewController: UIViewController {
     private lazy var redLine: UIView = {
         let line = UIView(frame: CGRect(x: 25, y: view.center.y - 90,
                                         width: view.frame.width - 50, height: 1))
-        line.backgroundColor = .red.withAlphaComponent(0.7)
+        line.backgroundColor = UIColor(red: 255, green: 0, blue: 0, alpha: 0.7)
         return line
     }()
     

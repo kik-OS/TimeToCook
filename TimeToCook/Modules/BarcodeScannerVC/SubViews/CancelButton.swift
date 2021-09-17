@@ -14,7 +14,7 @@ final class CancelCameraButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setTitle("Отменить", for: .normal)
-        backgroundColor = .black.withAlphaComponent(0.3)
+        backgroundColor = UIColor(white: 0, alpha: 0.3)
         layer.cornerRadius = 20
     }
     

@@ -19,7 +19,7 @@ final class FlashButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addTarget(self, action: #selector(flash), for: .touchUpInside)
-        backgroundColor = .black.withAlphaComponent(0.3)
+        backgroundColor = UIColor(white: 0, alpha: 0.3)
         layer.cornerRadius = frame.width / 2
         setImage(UIImage(systemName: "bolt.fill"), for: .normal)
         changeTintColor()
