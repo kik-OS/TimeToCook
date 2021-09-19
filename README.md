@@ -1,4 +1,4 @@
-# Выпускной проект Школы IOS Сбербанка.
+# Выпускной проект Школы IOS СБЕР
 
 [![rounded-in-photoretrica-2.png](https://i.postimg.cc/HnhpFKw4/rounded-in-photoretrica-2.png)](https://postimg.cc/0K7RwVHb)
 
