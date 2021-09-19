@@ -64,6 +64,11 @@
 
 [![2.jpg](https://i.postimg.cc/SQ7dKgWK/2.jpg)](https://postimg.cc/WtzgW6YR)
 
+
+-**Если попытаться завести таймер с выключенными уведомлениями, приложение подскажет об этом и предложит перейти в настройки**<br>
+
+[![ezgif-com-gif-maker.gif](https://i.postimg.cc/0NCrV9NL/ezgif-com-gif-maker.gif)](https://postimg.cc/p9p2TbzZ)
+
 ## Архитектура
 
 * ViewController содержит только UI и Анимации, вся логика вынесена во ViewModel.
