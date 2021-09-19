@@ -39,8 +39,8 @@ final class Coordinator {
     var getWindow: UIWindow { window }
     
     private func start() {
-        let tabBar = TabBarViewController(viewModel: customTabBarViewModel)
-        let navigationController = CustomNavigationController(rootViewController: tabBar)
+        let tabBarController = TabBarViewController(viewModel: customTabBarViewModel)
+        let navigationController = CustomNavigationController(rootViewController: tabBarController)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
 
